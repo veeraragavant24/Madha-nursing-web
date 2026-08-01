@@ -15,8 +15,145 @@ export default function Footer({ navigate }: FooterProps) {
     if (email) { setSubscribed(true); setEmail('') }
   }
 
-  return (
-    <footer style={{ background: '#060F1E', color: 'white', position: 'relative', overflow: 'hidden' }}>
+
+    return (
+  <>
+    <style>{`
+      .site-footer {
+        background: #060F1E;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 80px 40px 0;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+        padding-bottom: 64px;
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+
+      .footer-column {
+        min-width: 0;
+      }
+
+      .footer-brand-description {
+        max-width: 320px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 24px 0;
+        color: rgba(255,255,255,.28);
+        font-size: 13px;
+      }
+
+      .footer-legal {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .footer-newsletter-form {
+        display: flex;
+        gap: 0;
+        border-radius: 100px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.12);
+      }
+
+      /* TABLET */
+      @media (max-width: 1024px) {
+        .footer-container {
+          padding: 64px 32px 0;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1.5fr 1fr;
+          gap: 48px 60px;
+        }
+      }
+
+      /* MOBILE */
+      @media (max-width: 768px) {
+        .footer-container {
+          padding: 52px 24px 0;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 42px;
+          padding-bottom: 42px;
+        }
+
+        .footer-column {
+          width: 100%;
+        }
+
+        .footer-brand-description {
+          max-width: 100%;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 18px;
+          padding: 24px 0 30px;
+        }
+
+        .footer-legal {
+          gap: 18px;
+        }
+
+        .footer-newsletter-form {
+          width: 100%;
+          max-width: 420px;
+        }
+      }
+
+      /* SMALL PHONE */
+      @media (max-width: 480px) {
+        .footer-container {
+          padding: 44px 20px 0;
+        }
+
+        .footer-grid {
+          gap: 36px;
+          padding-bottom: 36px;
+        }
+
+        .footer-newsletter-form {
+          flex-direction: column;
+          border-radius: 14px;
+          overflow: hidden;
+        }
+
+        .footer-newsletter-form input {
+          width: 100%;
+        }
+
+        .footer-newsletter-form button {
+          width: 100%;
+        }
+
+        .footer-legal {
+          gap: 12px 18px;
+        }
+      }
+    `}</style>
+
+    <footer className="site-footer">
       {/* Decorative top gradient */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 1,
@@ -30,12 +167,12 @@ export default function Footer({ navigate }: FooterProps) {
         pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 40px 0' }}>
+      <div className="footer-container">
         {/* Top section */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 60, paddingBottom: 64, borderBottom: '1px solid rgba(255,255,255,.06)' }}>
+        <div className="footer-grid">
 
           {/* Brand */}
-          <div>
+          <div className="footer-column">
             <button onClick={() => navigate('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
               <div style={{
                 width: 44, height: 44, borderRadius: 12,
@@ -53,7 +190,15 @@ export default function Footer({ navigate }: FooterProps) {
               </div>
             </button>
 
-            <p style={{ color: 'rgba(255,255,255,.45)', fontSize: 14, lineHeight: 1.75, maxWidth: 320, marginBottom: 28 }}>
+            <p
+  className="footer-brand-description"
+  style={{
+    color: 'rgba(255,255,255,.45)',
+    fontSize: 14,
+    lineHeight: 1.75,
+    marginBottom: 28
+  }}
+>
               Shaping compassionate healthcare leaders since 1998. Affiliated to The Tamil Nadu Dr. M.G.R. Medical University, Chennai.
             </p>
 
@@ -105,7 +250,7 @@ export default function Footer({ navigate }: FooterProps) {
           </div>
 
           {/* Quick links */}
-          <div>
+          <div className="footer-column">
             <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Navigate</h4>
             {([['home', 'Home'], ['about', 'About Us'], ['courses', 'Courses'], ['departments', 'Departments'], ['gallery', 'Gallery'], ['contact', 'Contact']] as [Page, string][]).map(([p, l]) => (
               <button key={p} onClick={() => navigate(p)} style={{
@@ -122,7 +267,7 @@ export default function Footer({ navigate }: FooterProps) {
           </div>
 
           {/* Courses */}
-          <div>
+          <div className="footer-column">
             <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Programmes</h4>
             {['B.Sc. Nursing', 'M.Sc. Nursing', 'Post Basic B.Sc.'].map(c => (
               <button key={c} onClick={() => navigate('courses')} style={{
@@ -139,7 +284,7 @@ export default function Footer({ navigate }: FooterProps) {
           </div>
 
           {/* Contact + Newsletter */}
-          <div>
+          <div className="footer-column">
             <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Connect</h4>
 
             <div style={{ marginBottom: 20 }}>
@@ -149,7 +294,7 @@ export default function Footer({ navigate }: FooterProps) {
 
             <div style={{ marginBottom: 20 }}>
               <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 11, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Phone</p>
-              <a href="tel:+914422690001" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 91576 51234</a>
+              <a href="tel:+919157651234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 91576 51234</a>
             </div>
 
             <div style={{ marginBottom: 28 }}>
@@ -162,7 +307,10 @@ export default function Footer({ navigate }: FooterProps) {
             {subscribed ? (
               <p style={{ color: '#18C6C8', fontSize: 13, fontWeight: 600 }}>✓ Subscribed successfully!</p>
             ) : (
-              <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: 0, borderRadius: 100, overflow: 'hidden', border: '1px solid rgba(255,255,255,.12)' }}>
+              <form
+  onSubmit={handleSubscribe}
+  className="footer-newsletter-form"
+>
                 <input
                   type="email" value={email} onChange={e => setEmail(e.target.value)}
                   placeholder="Your email"
@@ -184,12 +332,9 @@ export default function Footer({ navigate }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16,
-          padding: '24px 0', color: 'rgba(255,255,255,.28)', fontSize: 13,
-        }}>
+        <div className="footer-bottom">
           <span>© 2026 Madha College of Nursing. All rights reserved.</span>
-          <div style={{ display: 'flex', gap: 24 }}>
+          <div className="footer-legal">
             {['Privacy Policy', 'Terms of Use', 'Grievance'].map(l => (
               <a key={l} href="#" style={{ color: 'rgba(255,255,255,.28)', textDecoration: 'none', fontSize: 13, transition: 'color .2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#18C6C8')}
@@ -201,6 +346,7 @@ export default function Footer({ navigate }: FooterProps) {
           </div>
         </div>
       </div>
-    </footer>
+        </footer>
+  </>
   )
 }

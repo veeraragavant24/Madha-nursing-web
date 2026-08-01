@@ -113,9 +113,199 @@ export default function Departments({ navigate }: Props) {
   const [active, setActive] = useState(DEPTS[0])
 
   return (
-    <div style={{ paddingTop: 72 }}>
+    <>
+  <style>{`
+    /* ==========================================
+       DEPARTMENTS RESPONSIVE LAYOUT
+    ========================================== */
+
+    .departments-page {
+      padding-top: 72px;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .departments-banner {
+      padding: 100px 40px;
+    }
+
+    .departments-section {
+      padding: 80px 40px;
+    }
+
+    .departments-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .departments-selector {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .department-detail-body {
+      padding: 52px;
+    }
+
+    .department-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .department-main,
+    .department-sidebar {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .department-hod {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .department-hero-title {
+      left: 56px;
+    }
+
+    /* TABLET */
+    @media (max-width: 1024px) {
+      .departments-selector {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .department-detail-body {
+        padding: 40px;
+      }
+
+      .department-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .departments-page {
+        padding-top: 72px;
+      }
+
+      .departments-banner {
+        padding: 70px 20px;
+      }
+
+      .departments-section {
+        padding: 48px 16px;
+      }
+
+      .departments-selector {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      .department-detail-card {
+        border-radius: 20px !important;
+      }
+
+      .department-hero {
+        height: 260px !important;
+      }
+
+      .department-hero-title {
+        left: 20px !important;
+        right: 20px;
+        width: auto;
+      }
+
+      .department-detail-body {
+        padding: 24px 18px;
+      }
+
+      .department-detail-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        width: 100%;
+      }
+
+      .department-main,
+      .department-sidebar {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .department-hod {
+        width: 100%;
+        padding: 18px !important;
+      }
+
+      .department-hod > div:last-child {
+        min-width: 0;
+      }
+
+      .department-hod div {
+        overflow-wrap: anywhere;
+      }
+
+      .department-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .department-sidebar > div {
+        width: 100%;
+        margin-bottom: 0 !important;
+      }
+    }
+
+    /* SMALL PHONE */
+    @media (max-width: 480px) {
+      .departments-banner {
+        padding: 56px 16px;
+      }
+
+      .departments-section {
+        padding: 36px 12px;
+      }
+
+      .department-hero {
+        height: 230px !important;
+      }
+
+      .department-detail-body {
+        padding: 22px 16px;
+      }
+
+      .department-hod {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 14px !important;
+      }
+
+      .department-detail-grid {
+        gap: 24px;
+      }
+    }
+  `}</style>
+
+  <div className="departments-page">
       {/* Banner */}
-      <section style={{ background: 'linear-gradient(160deg,#071A36 0%,#0B2545 100%)', padding: '100px 40px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
+      <section
+  className="departments-banner"
+  style={{
+    background: 'linear-gradient(160deg,#071A36 0%,#0B2545 100%)',
+    position: 'relative',
+    overflow: 'hidden',
+    textAlign: 'center'
+  }}
+>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 60% 40%, rgba(24,198,200,.09) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Academic Departments</span>
@@ -130,9 +320,12 @@ export default function Departments({ navigate }: Props) {
       </section>
 
       {/* Department grid selector */}
-      <section style={{ background: '#F3F7FB', padding: '80px 40px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 64 }}>
+      <section
+  className="departments-section"
+  style={{ background: '#F3F7FB' }}
+>
+  <div className="departments-container">
+    <div className="departments-selector">
             {DEPTS.map((d, i) => (
               <Reveal key={d.id} delay={(i % 3 + 1) as 1 | 2 | 3} type="scale">
                 <button onClick={() => setActive(d)} style={{
@@ -158,16 +351,35 @@ export default function Departments({ navigate }: Props) {
           </div>
 
           {/* Active department detail */}
-          <div style={{ background: 'white', borderRadius: 28, overflow: 'hidden', border: '1px solid rgba(11,37,69,.08)', boxShadow: '0 8px 40px rgba(11,37,69,.08)' }}>
+          <div
+  className="department-detail-card"
+  style={{
+    background: 'white',
+    borderRadius: 28,
+    overflow: 'hidden',
+    border: '1px solid rgba(11,37,69,.08)',
+    boxShadow: '0 8px 40px rgba(11,37,69,.08)'
+  }}
+>
             {/* Top image */}
-            <div style={{ position: 'relative', height: 340 }}>
+           <div
+  className="department-hero"
+  style={{ position: 'relative', height: 340 }}
+>
               <img
                 src={`https://images.unsplash.com/${active.img}?w=1200&h=600&fit=crop&auto=format`}
                 alt={active.name}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${active.color}EE 0%, ${active.color}88 50%, transparent 100%)` }} />
-              <div style={{ position: 'absolute', top: '50%', left: 56, transform: 'translateY(-50%)' }}>
+              <div
+  className="department-hero-title"
+  style={{
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)'
+  }}
+>
                 <div style={{
                   display: 'inline-block', background: 'rgba(255,255,255,.2)', backdropFilter: 'blur(8px)',
                   border: '1px solid rgba(255,255,255,.25)', borderRadius: 100,
@@ -182,12 +394,12 @@ export default function Departments({ navigate }: Props) {
               </div>
             </div>
 
-            <div style={{ padding: '52px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 48 }}>
-                <div>
+          <div className="department-detail-body">
+  <div className="department-detail-grid">
+
+    <div className="department-main">
                   {/* HOD Card */}
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: 18,
+                  <div className="department-hod" style={{
                     background: `linear-gradient(135deg, ${active.color}0D, ${active.color}18)`,
                     border: `1px solid ${active.color}30`,
                     borderRadius: 16, padding: '20px 24px', marginBottom: 32,
@@ -220,7 +432,7 @@ export default function Departments({ navigate }: Props) {
                   ))}
                 </div>
 
-                <div>
+                <div className="department-sidebar">
                   <div style={{ background: '#F3F7FB', borderRadius: 20, padding: '28px', marginBottom: 20 }}>
                     <h4 className="font-jakarta" style={{ fontWeight: 700, fontSize: 14, color: '#0B2545', marginBottom: 16, letterSpacing: '.04em' }}>Facilities</h4>
                     {active.facilities.map(f => (
@@ -251,5 +463,6 @@ export default function Departments({ navigate }: Props) {
         </div>
       </section>
     </div>
+    </>
   )
 }

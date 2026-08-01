@@ -78,13 +78,21 @@ export default function Nav({ currentPage, navigate }: NavProps) {
           flex-shrink: 0;
         }
         .nav-logo-ring {
+  width: 76px;
+  height: 88px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   background: transparent;
+}
+
+.nav-logo-img {
+  display: block;
   width: auto;
-  height: auto;
+  height: 82px;
+  max-width: 100%;
+  object-fit: contain;
 }
        
         .nav-brand-text {
@@ -126,8 +134,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
         .nav-root.solid .nav-college-name { color: #0B2545; font-size: 19px; }
         .nav-root.solid .nav-college-sub  { color: #8A9ABC; font-size: 10px; text-transform: uppercase; }
 
-        overflow: visible;
-position: fixed;
+       
 .nav-root {
     position: fixed;
     top: 0;
@@ -279,34 +286,213 @@ position: fixed;
         .nav-root.solid .nav-divider { display: none; }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 1200px) {
-          .nav-item { padding: 8px 10px; font-size: 13px; }
-          .nav-item::after { left: 10px; right: 10px; }
-          .nav-links { gap: 0px; }
-          .nav-inner { gap: 20px; padding: 0 28px; }
-        }
-        @media (max-width: 1000px) {
-          .nav-links, .nav-right .btn-apply { display: none !important; }
-          .nav-hamburger { display: flex !important; }
-          .nav-inner {
-            grid-template-columns: 1fr auto;
-            padding: 0 24px;
-            height: 76px;
-            gap: 16px;
-          }
-          .nav-right { justify-content: flex-end; }
-          .nav-logo-ring { width: 52px; height: 52px; border-radius: 14px; }
-          .nav-root.transparent .nav-college-name,
-          .nav-root.solid .nav-college-name { font-size: 16px; }
-        }
-        @media (max-width: 480px) {
-          .nav-inner { padding: 0 16px; height: 68px; }
-          .nav-brand { gap: 12px; }
-          .nav-logo-ring { width: 44px; height: 44px; border-radius: 11px; }
-          .nav-root.transparent .nav-college-name,
-          .nav-root.solid .nav-college-name { font-size: 15px; }
-        }
-      `}</style>
+       /* ─────────────────────────────────────
+   RESPONSIVE NAVIGATION
+───────────────────────────────────── */
+
+@media (max-width: 1400px) {
+
+  .nav-inner {
+    grid-template-columns: 430px 1fr auto;
+    gap: 18px;
+    padding: 0 28px;
+  }
+
+  .nav-item {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+
+  .btn-apply {
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 20px;
+  }
+}
+
+
+@media (max-width: 1100px) {
+
+  .nav-links,
+  .nav-right .btn-apply {
+    display: none !important;
+  }
+
+  .nav-hamburger {
+    display: flex !important;
+  }
+
+  .nav-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%;
+    height: 82px;
+    padding: 0 24px;
+    gap: 12px;
+  }
+
+  .nav-brand {
+    width: fit-content;
+    max-width: 100%;
+    gap: 14px;
+    overflow: hidden;
+  }
+
+  .nav-logo-ring {
+    width: 58px;
+    height: 72px;
+  }
+
+  .nav-logo-img {
+    height: 66px;
+  }
+
+  .nav-brand-text {
+    min-width: 0;
+  }
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 17px;
+  }
+
+  .nav-college-sub {
+    font-size: 9px !important;
+  }
+
+  .nav-right {
+    justify-content: flex-end;
+  }
+
+  .nav-hamburger {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    flex-shrink: 0;
+  }
+
+  .nav-drawer {
+    max-height: calc(100vh - 82px);
+    overflow-y: auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .nav-inner {
+  height: 72px;
+  padding: 0 12px;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+  .nav-brand {
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+  .nav-brand-text {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.nav-college-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.nav-right {
+  flex-shrink: 0;
+}
+
+  .nav-logo-ring {
+    width: 48px;
+    height: 66px;
+  }
+
+  .nav-logo-img {
+    height: 60px;
+    width: auto;
+  }
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 14px;
+    line-height: 1.08;
+    white-space: nowrap;
+  }
+
+  .nav-college-sub {
+    font-size: 7px !important;
+    letter-spacing: .035em;
+    white-space: nowrap;
+  }
+
+  .nav-hamburger {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .nav-drawer {
+    padding: 10px 14px 20px;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+  }
+
+  .nav-drawer-item {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+
+  .nav-drawer-apply {
+    padding: 13px 20px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 380px) {
+
+  .nav-inner {
+    padding: 0 10px;
+  }
+
+  .nav-brand {
+    gap: 7px;
+  }
+
+  .nav-logo-ring {
+    width: 43px;
+  }
+
+  .nav-logo-img {
+    height: 54px;
+  }
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 12px;
+  }
+
+  .nav-college-sub {
+    font-size: 6.5px !important;
+  }
+
+  .nav-hamburger {
+    width: 36px;
+    height: 36px;
+ }
+`}</style>
+
 
       <header className={`nav-root ${isScrolled ? 'solid' : 'transparent'}`}>
         <div className="nav-inner">
@@ -317,11 +503,7 @@ position: fixed;
   <img
     src="/logos/favico.png"
     alt="Madha College of Nursing"
-    style={{
-      height: "85px",
-      width: "auto",
-      display: "block"
-    }}
+    className="nav-logo-img"
   />
 </div>
             <div className="nav-brand-text">
