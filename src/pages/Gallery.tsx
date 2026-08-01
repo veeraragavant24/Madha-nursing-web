@@ -29,9 +29,158 @@ export default function Gallery({ navigate }: Props) {
 
   const filtered = filter === 'All' ? IMAGES : IMAGES.filter(img => img.cat === filter)
 
-  return (
-    <div style={{ paddingTop: 72 }}>
+ return (
+  <div className="gallery-page" style={{ paddingTop: 72 }}>
       {/* Banner */}
+      <style>{`
+  .gallery-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .gallery-banner {
+    padding: 100px 40px;
+  }
+
+  .gallery-filter-bar {
+    background: white;
+    border-bottom: 1px solid rgba(11,37,69,.07);
+    position: sticky;
+    top: 72px;
+    z-index: 100;
+  }
+
+  .gallery-filter-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 40px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .gallery-section {
+    padding: 60px 40px 100px;
+  }
+
+  .gallery-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(7,26,54,.97);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .gallery-lightbox-content {
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-banner {
+      padding: 70px 20px !important;
+    }
+
+    .gallery-banner h1 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+    }
+
+    .gallery-banner p {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    .gallery-filter-inner {
+      padding: 12px 16px !important;
+      gap: 8px !important;
+      scrollbar-width: none;
+    }
+
+    .gallery-filter-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-filter-inner button {
+      padding: 9px 18px !important;
+      font-size: 12px !important;
+      flex-shrink: 0;
+    }
+
+    .gallery-section {
+      padding: 40px 20px 64px !important;
+    }
+
+    .masonry-grid {
+      column-count: 2 !important;
+      column-gap: 12px !important;
+    }
+
+    .masonry-item {
+      margin-bottom: 12px !important;
+    }
+
+    .gallery-lightbox {
+      padding: 20px !important;
+    }
+
+    .gallery-lightbox-content {
+      max-height: 75vh !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-banner {
+      padding: 58px 16px !important;
+    }
+
+    .gallery-banner h1 {
+      font-size: 34px !important;
+    }
+
+    .gallery-section {
+      padding: 32px 16px 52px !important;
+    }
+
+    .masonry-grid {
+      column-count: 1 !important;
+    }
+
+    .masonry-item {
+      width: 100% !important;
+      height: 260px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .gallery-lightbox {
+      padding: 16px !important;
+    }
+
+    .gallery-lightbox-content {
+      max-height: 70vh !important;
+    }
+
+    .gallery-lightbox-content img {
+      max-height: 65vh !important;
+    }
+
+    .gallery-lightbox-caption {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-lightbox-caption span:last-child {
+      margin-left: 0 !important;
+    }
+  }
+`}</style>  
       <section style={{ background: 'linear-gradient(160deg,#071A36 0%,#0B2545 100%)', padding: '100px 40px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 60%, rgba(24,198,200,.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
@@ -47,8 +196,8 @@ export default function Gallery({ navigate }: Props) {
       </section>
 
       {/* Filter pills */}
-      <div style={{ background: 'white', borderBottom: '1px solid rgba(11,37,69,.07)', position: 'sticky', top: 72, zIndex: 100 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '16px 40px', display: 'flex', gap: 10, overflowX: 'auto' }}>
+      <div className="gallery-filter-bar">
+        <div className="gallery-filter-inner">
           {CATEGORIES.map(cat => (
             <button key={cat} onClick={() => setFilter(cat)} style={{
               padding: '10px 24px', borderRadius: 100, border: 'none', cursor: 'pointer',
@@ -64,7 +213,10 @@ export default function Gallery({ navigate }: Props) {
       </div>
 
       {/* Masonry gallery */}
-      <section style={{ background: '#F3F7FB', padding: '60px 40px 100px' }}>
+      <section
+  className="gallery-section"
+  style={{ background: '#F3F7FB' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div className="masonry-grid">
             {filtered.map((img, i) => (
@@ -108,12 +260,9 @@ export default function Gallery({ navigate }: Props) {
       {/* Lightbox */}
       {lightbox && (
         <div
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(7,26,54,.97)', zIndex: 2000,
-            display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40,
-          }}
-          onClick={() => setLightbox(null)}
-        >
+  className="gallery-lightbox"
+  onClick={() => setLightbox(null)}
+>
           <button onClick={() => setLightbox(null)} style={{
             position: 'absolute', top: 24, right: 24, background: 'rgba(255,255,255,.1)', border: '1px solid rgba(255,255,255,.2)',
             color: 'white', width: 48, height: 48, borderRadius: 12, cursor: 'pointer', fontSize: 20,
@@ -121,13 +270,19 @@ export default function Gallery({ navigate }: Props) {
           }}>
             ✕
           </button>
-          <div onClick={e => e.stopPropagation()} style={{ maxWidth: 900, maxHeight: '80vh', position: 'relative' }}>
+          <div
+  className="gallery-lightbox-content"
+  onClick={e => e.stopPropagation()}
+>
             <img
               src={`https://images.unsplash.com/${lightbox.id}?w=900&h=700&fit=crop&auto=format`}
               alt={lightbox.alt}
               style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 20 }}
             />
-            <div style={{ textAlign: 'center', marginTop: 20 }}>
+            <div
+  className="gallery-lightbox-caption"
+  style={{ textAlign: 'center', marginTop: 20 }}
+>
               <span className="font-jakarta" style={{ color: 'rgba(255,255,255,.7)', fontSize: 14 }}>{lightbox.alt}</span>
               <span style={{
                 marginLeft: 12, background: 'rgba(24,198,200,.2)', border: '1px solid rgba(24,198,200,.35)',

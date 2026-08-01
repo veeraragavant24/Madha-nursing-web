@@ -66,9 +66,184 @@ export default function Courses({ navigate }: Props) {
   const course = COURSES[active]
 
   return (
-    <div style={{ paddingTop: 72 }}>
+  <div className="courses-page" style={{ paddingTop: 72 }}>
+    <style>{`
+  .courses-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .courses-hero {
+    padding: 100px 40px;
+  }
+
+  .courses-tabs-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .courses-detail-section {
+    padding: 80px 40px;
+  }
+
+  .course-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  .course-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .course-card {
+    padding: 36px;
+  }
+
+  .course-apply-cta {
+    margin-top: 48px;
+    padding: 52px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .courses-hero {
+      padding: 70px 20px !important;
+    }
+
+    .courses-hero h1 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+    }
+
+    .courses-hero p {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    .courses-tabs {
+      top: 72px !important;
+    }
+
+    .courses-tabs-inner {
+      padding: 0 16px !important;
+      gap: 0 !important;
+      scrollbar-width: none;
+    }
+
+    .courses-tabs-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .courses-tabs-inner button {
+      padding: 16px 18px !important;
+      font-size: 12px !important;
+      flex-shrink: 0;
+    }
+
+    .courses-detail-section {
+      padding: 56px 20px !important;
+    }
+
+    .course-header {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+      margin-bottom: 40px !important;
+    }
+
+    .course-header h2 {
+      font-size: 34px !important;
+    }
+
+    .course-header > button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .course-details-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    .course-card {
+      padding: 26px 22px !important;
+      border-radius: 20px !important;
+    }
+
+    .course-card h3 {
+      font-size: 19px !important;
+    }
+
+    .course-faq-card {
+      padding: 26px 22px !important;
+    }
+
+    .course-apply-cta {
+      padding: 34px 24px !important;
+      border-radius: 22px !important;
+      align-items: flex-start !important;
+    }
+
+    .course-apply-cta button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .courses-hero {
+      padding: 58px 16px !important;
+    }
+
+    .courses-hero h1 {
+      font-size: 34px !important;
+    }
+
+    .courses-detail-section {
+      padding: 48px 16px !important;
+    }
+
+    .course-header h2 {
+      font-size: 30px !important;
+    }
+
+    .course-card,
+    .course-faq-card {
+      padding: 24px 18px !important;
+    }
+
+    .course-apply-cta {
+      padding: 30px 20px !important;
+    }
+
+    .course-apply-cta button {
+      padding: 15px 20px !important;
+      font-size: 14px !important;
+    }
+  }
+`}</style>
       {/* Hero */}
-      <section style={{ background: 'linear-gradient(160deg, #071A36 0%, #0B2545 70%, #0E3060 100%)', padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
+      <section
+  className="courses-hero"
+  style={{
+    background: 'linear-gradient(160deg, #071A36 0%, #0B2545 70%, #0E3060 100%)',
+    padding: '100px 40px',
+    position: 'relative',
+    overflow: 'hidden'
+  }}
+>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 80% 40%, rgba(24,198,200,.09) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <img
           src="https://images.unsplash.com/photo-1758270705482-cee87ea98738?w=1600&h=600&fit=crop&auto=format"
@@ -88,8 +263,17 @@ export default function Courses({ navigate }: Props) {
       </section>
 
       {/* Course selector tabs */}
-      <div style={{ background: 'white', borderBottom: '1px solid rgba(11,37,69,.08)', position: 'sticky', top: 72, zIndex: 100 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 40px', display: 'flex', gap: 4, overflowX: 'auto' }}>
+      <div
+  className="courses-tabs"
+  style={{
+    background: 'white',
+    borderBottom: '1px solid rgba(11,37,69,.08)',
+    position: 'sticky',
+    top: 72,
+    zIndex: 100
+  }}
+>
+        <div className="courses-tabs-inner">
           {COURSES.map((c, i) => (
             <button key={c.code} onClick={() => setActive(i)} style={{
               padding: '20px 32px', background: 'none', border: 'none', cursor: 'pointer',
@@ -105,10 +289,13 @@ export default function Courses({ navigate }: Props) {
       </div>
 
       {/* Course detail */}
-      <section style={{ background: '#FAFBFD', padding: '80px 40px' }}>
+      <section
+  className="courses-detail-section"
+  style={{ background: '#FAFBFD', padding: '80px 40px' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           {/* Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 40, alignItems: 'start', marginBottom: 64 }}>
+          <div className="course-header">
             <div>
               <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-jakarta)', fontSize: 12, fontWeight: 700, letterSpacing: '.08em', marginBottom: 20 }}>
                 {course.level}
@@ -132,10 +319,19 @@ export default function Courses({ navigate }: Props) {
           </div>
 
           {/* Details grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 24 }}>
+          <div className="course-details-grid">
             {/* Eligibility */}
             <Reveal type="left">
-              <div style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)', height: '100%' }}>
+              <div
+  className="course-card"
+  style={{
+    background: 'white',
+    borderRadius: 24,
+    padding: '36px',
+    border: '1px solid rgba(11,37,69,.08)',
+    height: '100%'
+  }}
+>
                 <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Eligibility Criteria</h3>
                 {course.eligibility.map(e => (
                   <div key={e} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
@@ -169,10 +365,10 @@ export default function Courses({ navigate }: Props) {
             </Reveal>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 24 }}>
+          <div className="course-details-grid">
             {/* Careers */}
             <Reveal>
-              <div style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
+              <div className="course-card" style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
                 <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Career Opportunities</h3>
                 {course.careers.map(c => (
                   <div key={c} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 12 }}>
@@ -185,7 +381,7 @@ export default function Courses({ navigate }: Props) {
 
             {/* Placements */}
             <Reveal delay={1}>
-              <div style={{ background: 'linear-gradient(135deg, rgba(11,37,69,.04), rgba(24,198,200,.05))', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
+              <div className="course-card" style={{ background: 'linear-gradient(135deg, rgba(11,37,69,.04), rgba(24,198,200,.05))', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
                 <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Where Our Graduates Work</h3>
                 {course.placements.map(p => (
                   <div key={p} style={{
@@ -201,7 +397,15 @@ export default function Courses({ navigate }: Props) {
 
           {/* FAQs */}
           <Reveal>
-            <div style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
+            <div
+  className="course-faq-card"
+  style={{
+    background: 'white',
+    borderRadius: 24,
+    padding: '36px',
+    border: '1px solid rgba(11,37,69,.08)'
+  }}
+>
               <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 28 }}>Frequently Asked Questions</h3>
               {course.faqs.map((faq, i) => (
                 <FaqItem key={i} q={faq.q} a={faq.a} />
@@ -210,7 +414,14 @@ export default function Courses({ navigate }: Props) {
           </Reveal>
 
           {/* Apply CTA */}
-          <div style={{ marginTop: 48, background: 'linear-gradient(135deg, #0B2545, #1E5AA8)', borderRadius: 28, padding: '52px 48px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32 }}>
+          <div
+  className="course-apply-cta"
+  style={{
+    marginTop: 48,
+    background: 'linear-gradient(135deg, #0B2545, #1E5AA8)',
+    borderRadius: 28
+  }}
+>
             <div>
               <div className="font-jakarta" style={{ fontSize: 26, fontWeight: 800, color: 'white', marginBottom: 8 }}>Ready to Apply?</div>
               <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 15 }}>Admissions for batch are now open. Limited seats available.</p>
