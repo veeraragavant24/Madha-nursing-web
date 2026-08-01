@@ -31,7 +31,7 @@ const SLIDES: Slide[] = [
     sub: 'Madha College of Nursing — 25 years of transforming passionate students into world-class nursing professionals. INC approved · TNMGRMU affiliated.',
     ctaLabel: 'Explore Our Campus',
     ctaPage: 'about',
-    ctaSecondaryLabel: 'Apply for 2026–27',
+    ctaSecondaryLabel: 'Apply for Admission',
     ctaSecondaryPage: 'contact',
   },
   {
@@ -147,7 +147,14 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
   return (
     <section
-      style={{ position: 'relative', height: '100vh', minHeight: 700, overflow: 'hidden', background: '#071A36' }}
+  className="hero-slider"
+  style={{
+    position: 'relative',
+    height: '100vh',
+    minHeight: 700,
+    overflow: 'hidden',
+    background: '#071A36'
+  }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -243,7 +250,131 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           color: rgba(255,255,255,.45);
           text-transform: uppercase;
         }
+
+        /* ========================================
+   HERO RESPONSIVE DESIGN
+======================================== */
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 90px 48px 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-bottom-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 48px 48px 36px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+
+  .hero-slider {
+    height: 100svh !important;
+    min-height: 680px !important;
+  }
+
+  .hero-content {
+    padding: 100px 24px 120px !important;
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(36px, 10vw, 52px) !important;
+    line-height: 1.05 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-content p {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+    max-width: 100% !important;
+    margin-bottom: 28px !important;
+  }
+
+  .hero-cta-group {
+    width: 100%;
+    gap: 10px !important;
+  }
+
+  .hero-cta-group button {
+    padding: 13px 18px !important;
+    font-size: 12px !important;
+  }
+
+  .float-badge {
+    display: none !important;
+  }
+
+  .hero-bottom-controls {
+    padding: 20px 24px 24px !important;
+  }
+
+  .hero-bottom-counter {
+    display: none !important;
+  }
+
+  .hero-bottom-arrows {
+    display: none !important;
+  }
+
+  .hero-bottom-dots {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .slider-dot-inner {
+    max-width: 36px;
+  }
+
+  .hero-scroll-cue {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-slider {
+    min-height: 640px !important;
+  }
+
+  .hero-content {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(34px, 10vw, 44px) !important;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
       `}</style>
+
 
       {/* ── Background slides ── */}
       {SLIDES.map((s, i) => {
@@ -290,13 +421,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
       <div style={{ position: 'absolute', bottom: '12%', left: '4%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(30,90,168,.14) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 3 }} />
 
       {/* ── Slide content ── */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 10,
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        maxWidth: 1280, margin: '0 auto', width: '100%',
-        padding: '0 48px', paddingTop: 90,
-        left: '50%', transform: 'translateX(-50%)',
-      }}>
+      <div className="hero-content">
         {/* Badge */}
         <div style={{
           marginBottom: 28,
@@ -341,8 +466,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         </p>
 
         {/* CTAs */}
-        <div style={{
-          display: 'flex', gap: 14, flexWrap: 'wrap',
+        <div className="hero-cta-group" style={{
+  display: 'flex', gap: 14, flexWrap: 'wrap',
           opacity: heroIn ? 1 : 0,
           transform: heroIn ? 'none' : 'translateY(16px)',
           transition: 'all .85s .42s cubic-bezier(.16,1,.3,1)',
@@ -371,15 +496,19 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
       </div>
 
       {/* ── Bottom controls bar ── */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 20,
-        background: 'linear-gradient(to top, rgba(7,26,54,.80) 0%, transparent 100%)',
-        padding: '48px 48px 36px',
-        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
-        opacity: heroIn ? 1 : 0, transition: 'opacity 1s 1s ease',
-      }}>
+      <div
+  className="hero-bottom-controls"
+  style={{
+    background: 'linear-gradient(to top, rgba(7,26,54,.80) 0%, transparent 100%)',
+    opacity: heroIn ? 1 : 0,
+    transition: 'opacity 1s 1s ease',
+  }}
+>
         {/* Slide counter */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div
+  className="hero-bottom-counter"
+  style={{ display: 'flex', alignItems: 'center', gap: 12 }}
+>
           <span className="slide-num">
             {String(current + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
           </span>
@@ -390,7 +519,10 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         </div>
 
         {/* Dot progress indicators */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div
+  className="hero-bottom-dots"
+  style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+>
           {SLIDES.map((_, i) => (
             <button
               key={i}
@@ -406,7 +538,10 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         </div>
 
         {/* Arrow navigation */}
-        <div style={{ display: 'flex', gap: 10 }}>
+       <div
+  className="hero-bottom-arrows"
+  style={{ display: 'flex', gap: 10 }}
+>
           <button
             className="arrow-btn"
             aria-label="Previous slide"
@@ -429,8 +564,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
       </div>
 
       {/* ── Scroll cue ── */}
-      <div style={{
-        position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)',
+      <div className="hero-scroll-cue" style={{
+  position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)',
         zIndex: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
         opacity: heroIn ? 0.6 : 0, transition: 'opacity 1s 1.4s ease',
       }}>

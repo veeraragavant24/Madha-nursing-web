@@ -30,9 +30,166 @@ const ACHIEVEMENTS = [
 
 export default function About({ navigate }: Props) {
   return (
-    <div style={{ paddingTop: 72 }}>
+    <div className="about-page" style={{ paddingTop: 72 }}>
+      <style>{`
+  @media (max-width: 768px) {
+
+    .about-page {
+      padding-top: 72px !important;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* HERO */
+    .about-banner {
+      height: 360px !important;
+    }
+
+    .about-banner h1 {
+      font-size: 38px !important;
+      line-height: 1.08 !important;
+    }
+
+    .about-banner p {
+      font-size: 15px !important;
+      padding: 0 8px;
+    }
+
+    /* VISION + MISSION */
+    .about-vision-section {
+      padding: 64px 20px !important;
+    }
+
+    .about-vision-grid {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+
+    .about-vision-card {
+      padding: 28px 24px !important;
+      border-radius: 22px !important;
+    }
+
+    .about-vision-card h3 {
+      font-size: 23px !important;
+    }
+
+    .about-vision-card p {
+      font-size: 15px !important;
+      line-height: 1.75 !important;
+    }
+
+    /* TIMELINE */
+    .about-timeline-section {
+      padding: 64px 20px !important;
+    }
+
+    .about-timeline-section > div > div:first-child {
+      margin-bottom: 48px !important;
+    }
+
+    .about-timeline-line {
+      left: 9px !important;
+      transform: none !important;
+    }
+
+    .about-timeline-item {
+      justify-content: flex-start !important;
+      padding-left: 38px !important;
+      padding-right: 0 !important;
+      margin-bottom: 28px !important;
+      width: 100%;
+    }
+
+    .about-timeline-dot {
+      left: 9px !important;
+      top: 22px !important;
+    }
+
+    .about-timeline-card {
+      width: 100% !important;
+      max-width: none !important;
+      padding: 24px 22px !important;
+    }
+
+    /* ACHIEVEMENTS */
+    .about-achievements {
+      padding: 64px 20px !important;
+    }
+
+    .about-achievements-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+    }
+
+    .about-achievements-grid > div > div {
+      padding: 26px 12px !important;
+      height: 100%;
+    }
+
+    /* CAMPUS */
+    .about-campus-section {
+      padding: 0 20px 64px !important;
+    }
+
+    .about-campus-card {
+      height: 500px !important;
+      border-radius: 24px !important;
+    }
+
+    .about-campus-card img {
+      object-position: center !important;
+    }
+
+    .about-campus-card > div:nth-of-type(1) {
+      background:
+        linear-gradient(
+          to top,
+          rgba(11,37,69,.94) 0%,
+          rgba(11,37,69,.60) 60%,
+          rgba(11,37,69,.20) 100%
+        ) !important;
+    }
+
+    .about-campus-content {
+      left: 24px !important;
+      right: 24px !important;
+      top: auto !important;
+      bottom: 34px !important;
+      transform: none !important;
+    }
+
+    .about-campus-content > div {
+      font-size: 29px !important;
+    }
+
+    .about-campus-content p {
+      font-size: 14px !important;
+      line-height: 1.65 !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .about-banner {
+      height: 330px !important;
+    }
+
+    .about-banner h1 {
+      font-size: 34px !important;
+    }
+
+    .about-achievements-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    .about-campus-card {
+      height: 470px !important;
+    }
+  }
+`}</style>
       {/* Banner */}
-      <section style={{ position: 'relative', height: 480, overflow: 'hidden', background: '#0B2545' }}>
+      <section className="about-banner" style={{ position: 'relative', height: 480, overflow: 'hidden', background: '#0B2545' }}>
         <img
           src="https://images.unsplash.com/photo-1758270705067-0d7edee57af0?w=1600&h=900&fit=crop&auto=format"
           alt="Madha College students"
@@ -52,9 +209,9 @@ export default function About({ navigate }: Props) {
       </section>
 
       {/* Vision & Mission */}
-      <section style={{ background: '#FAFBFD', padding: '100px 40px' }}>
+      <section className="about-vision-section" style={{ background: '#FAFBFD', padding: '100px 40px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+         <div className="about-vision-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
             {[
               {
                 icon: '🎯',
@@ -70,8 +227,8 @@ export default function About({ navigate }: Props) {
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={(i + 1) as 1 | 2} type="scale">
-                <div style={{
-                  background: 'linear-gradient(135deg, rgba(11,37,69,.04) 0%, rgba(24,198,200,.04) 100%)',
+                <div className="about-vision-card" style={{
+  background: 'linear-gradient(135deg, rgba(11,37,69,.04) 0%, rgba(24,198,200,.04) 100%)',
                   border: '1px solid rgba(11,37,69,.08)', borderRadius: 28, padding: '48px',
                   transition: 'all .4s cubic-bezier(.16,1,.3,1)',
                 }}
@@ -90,7 +247,7 @@ export default function About({ navigate }: Props) {
       </section>
 
       {/* Timeline */}
-      <section style={{ background: '#F3F7FB', padding: '100px 40px' }}>
+     <section className="about-timeline-section" style={{ background: '#F3F7FB', padding: '100px 40px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Our Journey</span></Reveal>
@@ -101,28 +258,28 @@ export default function About({ navigate }: Props) {
             </Reveal>
           </div>
 
-          <div style={{ position: 'relative' }}>
+          <div className="about-timeline" style={{ position: 'relative' }}>
             {/* Center line */}
-            <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'linear-gradient(to bottom, #18C6C8, rgba(24,198,200,.08))', transform: 'translateX(-50%)' }} />
+            <div className="about-timeline-line" style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: 'linear-gradient(to bottom, #18C6C8, rgba(24,198,200,.08))', transform: 'translateX(-50%)' }} />
 
             {TIMELINE.map((item, i) => (
               <Reveal key={item.year} delay={(i % 4 + 1) as 1 | 2 | 3 | 4} type={i % 2 === 0 ? 'left' : 'right'}>
-                <div style={{
-                  display: 'flex', justifyContent: i % 2 === 0 ? 'flex-end' : 'flex-start',
+                <div className="about-timeline-item" style={{
+  display: 'flex', justifyContent: i % 2 === 0 ? 'flex-end' : 'flex-start',
                   paddingRight: i % 2 === 0 ? 'calc(50% + 32px)' : 0,
                   paddingLeft: i % 2 === 0 ? 0 : 'calc(50% + 32px)',
                   marginBottom: 48, position: 'relative',
                 }}>
                   {/* Dot on center line */}
-                  <div style={{
-                    position: 'absolute', left: '50%', top: 20, transform: 'translateX(-50%)',
+                  <div className="about-timeline-dot" style={{
+  position: 'absolute', left: '50%', top: 20, transform: 'translateX(-50%)',
                     width: 18, height: 18, borderRadius: '50%', background: '#18C6C8',
                     boxShadow: '0 0 0 4px rgba(24,198,200,.2), 0 0 0 8px rgba(24,198,200,.08)',
                     zIndex: 2,
                   }} />
 
-                  <div style={{
-                    background: 'white', borderRadius: 20, padding: '28px 32px',
+                  <div className="about-timeline-card" style={{
+  background: 'white', borderRadius: 20, padding: '28px 32px',
                     border: '1px solid rgba(11,37,69,.07)', maxWidth: 380,
                     boxShadow: '0 4px 24px rgba(11,37,69,.06)',
                   }}>
@@ -138,7 +295,7 @@ export default function About({ navigate }: Props) {
       </section>
 
       {/* Achievements grid */}
-      <section style={{ background: '#FAFBFD', padding: '100px 40px' }}>
+      <section className="about-achievements" style={{ background: '#FAFBFD', padding: '100px 40px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <Reveal><span className="section-tag">Achievements</span></Reveal>
@@ -148,7 +305,7 @@ export default function About({ navigate }: Props) {
               </h2>
             </Reveal>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24 }}>
+          <div className="about-achievements-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 24 }}>
             {ACHIEVEMENTS.map((a, i) => (
               <Reveal key={a.label} delay={(i + 1) as 1 | 2 | 3 | 4 | 5 | 6} type="scale">
                 <div style={{
@@ -171,17 +328,17 @@ export default function About({ navigate }: Props) {
       </section>
 
       {/* Campus photo */}
-      <section style={{ padding: '0 40px 100px' }}>
+      <section className="about-campus-section" style={{ padding: '0 40px 100px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <Reveal type="scale">
-            <div style={{ borderRadius: 32, overflow: 'hidden', height: 480, position: 'relative' }}>
+            <div className="about-campus-card" style={{ borderRadius: 32, overflow: 'hidden', height: 480, position: 'relative' }}>
               <img
                 src="https://images.unsplash.com/photo-1680084521816-cc1ad0433ceb?w=1400&h=800&fit=crop&auto=format"
                 alt="Madha College campus"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(11,37,69,.7) 0%, transparent 60%)' }} />
-              <div style={{ position: 'absolute', top: '50%', left: 64, transform: 'translateY(-50%)' }}>
+             <div className="about-campus-content" style={{ position: 'absolute', top: '50%', left: 64, transform: 'translateY(-50%)' }}>
                 <div className="font-jakarta" style={{ fontSize: 36, fontWeight: 800, color: 'white', lineHeight: 1.2, marginBottom: 16 }}>
                   A Campus Built<br/>for Excellence
                 </div>
