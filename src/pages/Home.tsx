@@ -120,7 +120,139 @@ export default function Home({ navigate }: Props) {
   useEffect(() => { const t = setTimeout(() => setHeroIn(true), 100); return () => clearTimeout(t) }, [])
 
   return (
-    <div>
+  <>
+    <style>{`
+      .home-page {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .home-responsive-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .home-departments-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .home-feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .home-research-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+  .home-admissions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.home-admissions-intro {
+  position: sticky;
+  top: 120px;
+}
+
+      @media (max-width: 1024px) {
+        .home-responsive-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .home-departments-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+      .home-admissions-grid {
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+.home-admissions-intro {
+  position: static;
+}
+      .home-research-cards {
+  grid-template-columns: 1fr;
+}
+        .home-responsive-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .home-departments-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .home-feature-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .home-mobile-section {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+          padding-top: 64px !important;
+          padding-bottom: 64px !important;
+        }
+
+        .home-why-image {
+          width: 100%;
+          max-width: 100%;
+        }
+
+        .home-floating-stat {
+          right: 12px !important;
+          bottom: 12px !important;
+          min-width: 150px !important;
+          padding: 16px 18px !important;
+        }
+
+        .home-inc-badge {
+          left: 12px !important;
+          top: 12px !important;
+        }
+
+        .home-dept-card {
+          height: 260px !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .home-mobile-section {
+          padding-left: 16px !important;
+          padding-right: 16px !important;
+          padding-top: 52px !important;
+          padding-bottom: 52px !important;
+        }
+
+        .home-floating-stat {
+          position: relative !important;
+          right: auto !important;
+          bottom: auto !important;
+          width: 100%;
+          margin-top: 14px;
+        }
+
+        .home-dept-card {
+          height: 230px !important;
+        }
+      }
+    `}</style>
+
+    <div className="home-page">
       {/* ═══════════════════════════════════════════
           1. HERO — Cinematic slider
       ═══════════════════════════════════════════ */}
@@ -148,12 +280,15 @@ export default function Home({ navigate }: Props) {
       {/* ═══════════════════════════════════════════
           3. WHY MADHA — Magazine editorial
       ═══════════════════════════════════════════ */}
-      <section style={{ background: '#FAFBFD', padding: '120px 40px' }}>
+      <section
+  className="home-mobile-section"
+  style={{ background: '#FAFBFD', padding: '120px 40px' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+         <div className="home-responsive-grid">
             {/* Image */}
             <Reveal type="left">
-              <div style={{ position: 'relative' }}>
+              <div className="home-why-image" style={{ position: 'relative' }}>
                 <div style={{ borderRadius: 28, overflow: 'hidden', aspectRatio: '4/5' }}>
                   <img
                     src="/about/why madha.jpg"
@@ -164,7 +299,7 @@ export default function Home({ navigate }: Props) {
                   />
                 </div>
                 {/* Floating stat card */}
-                <div className="glass-card" style={{
+                <div className="glass-card home-floating-stat" style={{
                   position: 'absolute', bottom: -24, right: -24,
                   borderRadius: 20, padding: '24px 28px', minWidth: 200,
                   boxShadow: '0 24px 48px rgba(11,37,69,.15)',
@@ -174,8 +309,8 @@ export default function Home({ navigate }: Props) {
                   <div style={{ color: '#9CA9C0', fontSize: 12, marginTop: 2 }}>2024 Batch</div>
                 </div>
                 {/* Accreditation badge */}
-                <div style={{
-                  position: 'absolute', top: 24, left: -24,
+                <div className="home-inc-badge" style={{
+  position: 'absolute', top: 24, left: -24,
                   background: 'linear-gradient(135deg,#18C6C8,#1E5AA8)', borderRadius: 16, padding: '14px 20px',
                   boxShadow: '0 16px 32px rgba(24,198,200,.35)',
                 }}>
@@ -202,7 +337,7 @@ export default function Home({ navigate }: Props) {
                 </p>
               </Reveal>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 40 }}>
+              <div className="home-feature-grid">
                 {[
                   { icon: '🏥', title: '18 Affiliated Hospitals', desc: 'Live clinical rotations across premier hospitals in Chennai and beyond' },
                   { icon: '🔬', title: 'Modern Laboratories', desc: 'Simulation labs, anatomy labs, and drug study rooms with latest equipment' },
@@ -405,7 +540,10 @@ export default function Home({ navigate }: Props) {
       {/* ═══════════════════════════════════════════
           6. DEPARTMENTS — Interactive grid
       ═══════════════════════════════════════════ */}
-      <section style={{ background: '#FAFBFD', padding: '120px 40px' }}>
+      <section
+  className="home-mobile-section"
+  style={{ background: '#FAFBFD', padding: '120px 40px' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
             <div>
@@ -424,10 +562,14 @@ export default function Home({ navigate }: Props) {
             </Reveal>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+          <div className="home-departments-grid">
             {DEPTS.map((d, i) => (
               <Reveal key={d.name} delay={(i + 1) as 1 | 2 | 3 | 4 | 5 | 6} type="scale">
-                <div className="dept-wrap" style={{ height: d.h }} onClick={() => navigate('departments')}>
+                <div
+  className="dept-wrap home-dept-card"
+  style={{ height: d.h }}
+  onClick={() => navigate('departments')}
+>
                   <img
                       src={d.img}
   alt={d.name}
@@ -448,7 +590,7 @@ export default function Home({ navigate }: Props) {
       ═══════════════════════════════════════════ */}
       <section style={{ background: '#F3F7FB', padding: '120px 40px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
+          <div className="home-responsive-grid">
             <div>
               <Reveal><span className="section-tag">Research & Innovation</span></Reveal>
               <Reveal delay={1}>
@@ -474,7 +616,7 @@ export default function Home({ navigate }: Props) {
               </Reveal>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+           <div className="home-research-cards">
               {RESEARCH_ITEMS.map((r, i) => (
                 <Reveal key={r.title} delay={(i + 1) as 1 | 2 | 3 | 4} type="scale">
                   <div style={{
@@ -592,8 +734,8 @@ export default function Home({ navigate }: Props) {
       ═══════════════════════════════════════════ */}
       <section style={{ background: '#F3F7FB', padding: '120px 40px' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, alignItems: 'start' }}>
-            <div style={{ position: 'sticky', top: 120 }}>
+          <div className="home-admissions-grid">
+            <div className="home-admissions-intro">
               <Reveal><span className="section-tag">Admissions 2026</span></Reveal>
               <Reveal delay={1}>
                 <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
@@ -675,7 +817,8 @@ export default function Home({ navigate }: Props) {
             </div>
           </Reveal>
         </div>
-      </section>
+           </section>
     </div>
+  </>
   )
 }
