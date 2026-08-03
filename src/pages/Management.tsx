@@ -64,9 +64,10 @@ function ExecutiveCard({
   person: CardPerson
   index: number
 }) {
-  return (
-    <div
-      style={{
+return (
+  <div
+    className="management-card"
+    style={{
         background: 'white', borderRadius: 28, overflow: 'hidden',
         border: '1px solid rgba(11,37,69,.07)',
         boxShadow: '0 4px 24px rgba(11,37,69,.06)',
@@ -86,7 +87,16 @@ function ExecutiveCard({
       }}
     >
       {/* Portrait — 4:5 ratio column */}
-      <div style={{ width: 240, minHeight: 360, flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
+      <div
+  className="management-card-image"
+  style={{
+    width: 240,
+    minHeight: 360,
+    flexShrink: 0,
+    position: 'relative',
+    overflow: 'hidden'
+  }}
+>
         <img
           src={person.img}
           alt={person.name}
@@ -121,7 +131,17 @@ function ExecutiveCard({
       </div>
 
       {/* Text content */}
-      <div style={{ flex: 1, padding: '40px 36px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 360 }}>
+      <div
+  className="management-card-content"
+  style={{
+    flex: 1,
+    padding: '40px 36px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: 360
+  }}
+>
         <div>
           {/* Category tag */}
           <div style={{
@@ -166,13 +186,226 @@ function ExecutiveCard({
 
 export default function Management({ navigate }: Props) {
   return (
-    <div style={{ paddingTop: 72, background: '#F3F7FB' }}>
+  <div
+    className="management-page"
+    style={{ paddingTop: 72, background: '#F3F7FB' }}
+  >
+    <style>{`
+  .management-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .management-hero {
+    padding: 112px 48px 96px;
+  }
+
+  .management-team-section {
+    padding: 96px 48px;
+  }
+
+  .management-team-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .management-stats-section {
+    padding: 80px 48px;
+  }
+
+  .management-stats-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .management-cta {
+    padding: 96px 48px;
+  }
+
+  .management-cta-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 1100px) {
+    .management-team-grid {
+      grid-template-columns: 1fr;
+      max-width: 850px;
+    }
+
+    .management-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .management-hero {
+      padding: 72px 20px 64px !important;
+    }
+
+    .management-hero h1 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+    }
+
+    .management-hero p {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    .management-team-section {
+      padding: 56px 20px !important;
+    }
+
+    .management-team-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+
+    .management-card {
+      flex-direction: column !important;
+      border-radius: 22px !important;
+    }
+
+    .management-card-image {
+      width: 100% !important;
+      height: 430px !important;
+      min-height: 0 !important;
+    }
+
+    .management-card-image img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+
+    .management-card-content {
+      width: 100% !important;
+      min-height: 0 !important;
+      padding: 30px 26px !important;
+      box-sizing: border-box;
+    }
+
+    .management-card-content h3 {
+      font-size: 22px !important;
+    }
+
+    .management-card-content p {
+      font-size: 14px !important;
+      line-height: 1.8 !important;
+    }
+
+    .management-stats-section {
+      padding: 56px 20px !important;
+    }
+
+    .management-stats-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0 !important;
+    }
+
+    .management-stat {
+      padding: 30px 12px !important;
+    }
+
+    .management-stat:nth-child(odd) {
+      border-left: none !important;
+    }
+
+    .management-stat:nth-child(even) {
+      border-left: 1px solid rgba(255,255,255,.07) !important;
+    }
+
+    .management-stat .text-teal-g {
+      font-size: 34px !important;
+    }
+
+    .management-cta {
+      padding: 64px 20px !important;
+    }
+
+    .management-cta h2 {
+      font-size: 34px !important;
+    }
+
+    .management-cta p {
+      font-size: 15px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .management-hero {
+      padding: 58px 16px 52px !important;
+    }
+
+    .management-hero h1 {
+      font-size: 34px !important;
+    }
+
+    .management-team-section {
+      padding: 48px 16px !important;
+    }
+
+    .management-card-image {
+      height: 390px !important;
+    }
+
+    .management-card-content {
+      padding: 26px 20px !important;
+    }
+
+    .management-card-content h3 {
+      font-size: 20px !important;
+    }
+
+    .management-stats-section {
+      padding: 48px 16px !important;
+    }
+
+    .management-stat {
+      padding: 26px 8px !important;
+    }
+
+    .management-stat .text-teal-g {
+      font-size: 30px !important;
+    }
+
+    .management-cta {
+      padding: 56px 16px !important;
+    }
+
+    .management-cta h2 {
+      font-size: 30px !important;
+    }
+
+    .management-cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .management-cta-buttons button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+`}</style>
       {/* ── Hero Banner ── */}
-      <section style={{
-        position: 'relative', overflow: 'hidden',
-        background: 'linear-gradient(160deg, #071A36 0%, #0B2545 55%, #0E3060 100%)',
-        padding: '112px 48px 96px',
-      }}>
+     <section
+  className="management-hero"
+  style={{
+    position: 'relative',
+    overflow: 'hidden',
+    background: 'linear-gradient(160deg, #071A36 0%, #0B2545 55%, #0E3060 100%)'
+  }}
+>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 560, height: 560, borderRadius: '50%', background: 'radial-gradient(circle, rgba(24,198,200,.07) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-20%', left: '-8%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(30,90,168,.12) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <div style={{
@@ -198,8 +431,8 @@ export default function Management({ navigate }: Props) {
       </section>
 
       {/* ── Executive Cards Grid ── */}
-      <section style={{ padding: '96px 48px' }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 28 }}>
+      <section className="management-team-section">
+  <div className="management-team-grid">
           {TEAM.map((person, i) => (
             <Reveal key={person.name} delay={(i % 2 + 1) as 1 | 2} type="scale">
               <ExecutiveCard person={person} index={i} />
@@ -209,15 +442,20 @@ export default function Management({ navigate }: Props) {
       </section>
 
       {/* ── Stats strip ── */}
-      <section style={{ background: 'linear-gradient(135deg, #071A36 0%, #0B2545 100%)', padding: '80px 48px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 2 }}>
+      <section
+  className="management-stats-section"
+  style={{
+    background: 'linear-gradient(135deg, #071A36 0%, #0B2545 100%)'
+  }}
+>
+        <div className="management-stats-grid">
           {[
             { num: '25+', label: 'Years of Vision', sub: 'Since 1998' },
             { num: '3,200+', label: 'Alumni Placed', sub: 'Across 35 Countries' },
             { num: '120+', label: 'Faculty Members', sub: 'Doctorate Qualified' },
             { num: '18', label: 'Hospital Partners', sub: 'Clinical Training' },
           ].map((s, i) => (
-            <div key={s.label} style={{
+           <div key={s.label} className="management-stat" style={{
               padding: '40px 32px', textAlign: 'center',
               borderLeft: i > 0 ? '1px solid rgba(255,255,255,.07)' : 'none',
             }}>
@@ -230,7 +468,13 @@ export default function Management({ navigate }: Props) {
       </section>
 
       {/* ── CTA ── */}
-      <section style={{ background: '#FAFBFD', padding: '96px 48px', textAlign: 'center' }}>
+      <section
+  className="management-cta"
+  style={{
+    background: '#FAFBFD',
+    textAlign: 'center'
+  }}
+>
         <Reveal>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Join Our Community</span>
         </Reveal>
@@ -248,7 +492,7 @@ export default function Management({ navigate }: Props) {
           <p style={{ color: '#6A7A96', fontSize: 17, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
             Our leadership team is committed to your success. Reach out to begin your journey at Madha College of Nursing.
           </p>
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="management-cta-buttons">
             <button onClick={() => navigate('contact')} className="btn-teal" style={{ fontSize: 15, padding: '16px 40px' }}>
               Apply Now — Batch
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

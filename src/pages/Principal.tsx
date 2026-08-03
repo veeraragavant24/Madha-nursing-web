@@ -17,13 +17,260 @@ const ACHIEVEMENTS = [
 ]
 
 export default function Principal({ navigate }: Props) {
-  return (
-    <div style={{ paddingTop: 72 }}>
+ return (
+  <div className="principal-page" style={{ paddingTop: 72 }}>
+    <style>{`
+  .principal-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .principal-hero {
+    padding: 80px 40px 0;
+  }
+
+  .principal-hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .principal-hero-content {
+    padding-bottom: 80px;
+  }
+
+  .principal-achievements {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .principal-achievement {
+    text-align: center;
+  }
+
+  .principal-portrait-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .principal-portrait {
+    width: 340px;
+    height: 400px;
+  }
+
+  /* LETTER */
+  .principal-letter-section {
+    padding: 100px 40px;
+  }
+
+  .principal-letter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .principal-info-card {
+    padding: 28px;
+  }
+
+  .principal-message-card {
+    padding: 52px;
+  }
+
+  .principal-signature {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* CTA */
+  .principal-cta {
+    padding: 80px 40px;
+  }
+
+  @media (max-width: 900px) {
+    .principal-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .principal-letter-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .principal-hero {
+      padding: 64px 20px 0 !important;
+    }
+
+    .principal-hero-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    .principal-hero-content {
+      padding-bottom: 0 !important;
+      text-align: center;
+    }
+
+    .principal-hero-content h1 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+    }
+
+    .principal-achievements {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 12px !important;
+      margin-top: 32px !important;
+    }
+
+    .principal-achievement {
+      padding: 10px;
+    }
+
+    .principal-portrait-wrap {
+      width: 100%;
+      justify-content: center !important;
+    }
+
+    .principal-portrait {
+      width: min(100%, 360px) !important;
+      height: 430px !important;
+      border-radius: 24px 24px 0 0 !important;
+    }
+
+    .principal-letter-section {
+      padding: 60px 20px !important;
+    }
+
+    .principal-letter-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+
+    .principal-letter-heading h2 {
+      font-size: 34px !important;
+    }
+
+    .principal-info-card {
+      padding: 24px 22px !important;
+    }
+
+    .principal-message-card {
+      padding: 34px 26px !important;
+      border-radius: 22px !important;
+    }
+
+    .principal-message-card p,
+    .principal-message-card > div {
+      font-size: 15px !important;
+      line-height: 1.8 !important;
+    }
+
+    .principal-quote {
+      font-size: 64px !important;
+    }
+
+    .principal-cta {
+      padding: 60px 20px !important;
+    }
+
+    .principal-cta h3 {
+      font-size: 28px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .principal-hero {
+      padding: 54px 16px 0 !important;
+    }
+
+    .principal-hero-content h1 {
+      font-size: 34px !important;
+    }
+
+    .principal-achievements {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 20px 8px !important;
+    }
+
+    .principal-achievement .text-gold-g {
+      font-size: 27px !important;
+    }
+
+    .principal-achievement div:last-child {
+      font-size: 11px !important;
+    }
+
+    .principal-portrait {
+      width: 100% !important;
+      height: 400px !important;
+    }
+
+    .principal-letter-section {
+      padding: 48px 16px !important;
+    }
+
+    .principal-letter-heading h2 {
+      font-size: 30px !important;
+    }
+
+    .principal-info-card {
+      padding: 22px 18px !important;
+    }
+
+    .principal-message-card {
+      padding: 28px 20px !important;
+    }
+
+    .principal-signature {
+      align-items: flex-start !important;
+      gap: 14px !important;
+    }
+
+    .principal-signature-avatar {
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+    }
+
+    .principal-cta {
+      padding: 52px 16px !important;
+    }
+
+    .principal-cta button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+`}</style>
       {/* Banner */}
-      <section style={{ background: 'linear-gradient(160deg, #071A36 0%, #0B2545 100%)', padding: '80px 40px 0', overflow: 'hidden', position: 'relative' }}>
+      <section
+  className="principal-hero"
+  style={{
+    background: 'linear-gradient(160deg, #071A36 0%, #0B2545 100%)',
+    overflow: 'hidden',
+    position: 'relative'
+  }}
+>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 70% 60%, rgba(24,198,200,.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
-        <div style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'end', position: 'relative', zIndex: 2 }}>
-          <div style={{ paddingBottom: 80 }}>
+        <div className="principal-hero-grid">
+          <div className="principal-hero-content">
             <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Principal's Office</span>
             <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 5vw, 66px)', fontWeight: 800, color: 'white', lineHeight: 1.08, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
               Dr. B. Tamilarasi<br/>
@@ -31,9 +278,13 @@ export default function Principal({ navigate }: Props) {
             </h1>
             <div style={{ color: 'rgba(255,255,255,.55)', fontSize: 16, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
             <div style={{ color: 'rgba(255,255,255,.4)', fontSize: 14 }}>M.Sc. Nursing, PhD , M.Phil</div>
-            <div style={{ display: 'flex', gap: 24, marginTop: 40, flexWrap: 'wrap' }}>
+           <div className="principal-achievements">
               {ACHIEVEMENTS.map(a => (
-                <div key={a.label} style={{ textAlign: 'center' }}>
+  <div
+    key={a.label}
+    className="principal-achievement"
+    style={{ textAlign: 'center' }}
+  >
                   <div className="font-jakarta text-gold-g" style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-.02em' }}>{a.val}</div>
                   <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 12, marginTop: 4 }}>{a.label}</div>
                 </div>
@@ -42,7 +293,7 @@ export default function Principal({ navigate }: Props) {
           </div>
 
           {/* Portrait */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+         <div className="principal-portrait-wrap">
             <div style={{
               width: 340, height: 400, borderRadius: '28px 28px 0 0',
               background: 'linear-gradient(135deg, rgba(24,198,200,.15), rgba(30,90,168,.2))',
@@ -62,11 +313,14 @@ export default function Principal({ navigate }: Props) {
       </section>
 
       {/* Letter from Principal */}
-      <section style={{ background: '#FAFBFD', padding: '100px 40px' }}>
+      <section
+  className="principal-letter-section"
+  style={{ background: '#FAFBFD' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 80, alignItems: 'start' }}>
-            <div>
-              <Reveal><span className="section-tag">Letter from the Principal</span></Reveal>
+          <div className="principal-letter-grid">
+           
+             <div className="principal-letter-heading">
               <Reveal delay={1}>
                 <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 800, color: '#0B2545', lineHeight: 1.15, letterSpacing: '-.02em', marginTop: 20, marginBottom: 32 }}>
                   A Message to<br/>Every Aspiring<br/>
@@ -75,7 +329,16 @@ export default function Principal({ navigate }: Props) {
               </Reveal>
               {/* Sidebar qualifications */}
               <Reveal delay={2}>
-                <div style={{ background: '#F3F7FB', borderRadius: 20, padding: '28px', border: '1px solid rgba(11,37,69,.06)', marginBottom: 28 }}>
+                <div
+  className="principal-info-card"
+  style={{
+    background: '#F3F7FB',
+    borderRadius: 20,
+    padding: '28px',
+    border: '1px solid rgba(11,37,69,.06)',
+    marginBottom: 28
+  }}
+>
                   <div className="font-jakarta" style={{ fontSize: 11, fontWeight: 700, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Qualifications</div>
                   {['M.Sc. Nursing (Medical Surgical Nursing)', 'Ph.D in Nursing Science — TNMGRMU', 'Master of Business Administration — Anna University', 'PG Diploma in Hospital Management'].map(q => (
                     <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
@@ -86,7 +349,15 @@ export default function Principal({ navigate }: Props) {
                 </div>
               </Reveal>
               <Reveal delay={3}>
-                <div style={{ background: '#F3F7FB', borderRadius: 20, padding: '28px', border: '1px solid rgba(11,37,69,.06)' }}>
+                <div
+  className="principal-info-card"
+  style={{
+    background: '#F3F7FB',
+    borderRadius: 20,
+    padding: '28px',
+    border: '1px solid rgba(11,37,69,.06)'
+  }}
+>
                   <div className="font-jakarta" style={{ fontSize: 11, fontWeight: 700, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Awards & Recognition</div>
                   {[
                     'Best Principal Award — Tamil Nadu Nursing Council, 2022',
@@ -105,9 +376,19 @@ export default function Principal({ navigate }: Props) {
 
             <div>
               <Reveal type="right">
-                <div style={{ background: 'white', borderRadius: 28, padding: '52px', border: '1px solid rgba(11,37,69,.08)', boxShadow: '0 8px 32px rgba(11,37,69,.07)', position: 'relative' }}>
+               <div
+  className="principal-message-card"
+  style={{
+    background: 'white',
+    borderRadius: 28,
+    padding: '52px',
+    border: '1px solid rgba(11,37,69,.08)',
+    boxShadow: '0 8px 32px rgba(11,37,69,.07)',
+    position: 'relative'
+  }}
+>
                   {/* Quote mark */}
-                  <div className="font-jakarta" style={{ fontSize: 80, color: '#18C6C8', lineHeight: 0.8, opacity: 0.25, marginBottom: 24, fontStyle: 'italic' }}>"</div>
+                 <div className="font-jakarta principal-quote" style={{ fontSize: 80, color: '#18C6C8', lineHeight: 0.8, opacity: 0.25, marginBottom: 24, fontStyle: 'italic' }}>"</div>
 
                   <div style={{ color: '#16213E', fontSize: 16, lineHeight: 1.9, fontStyle: 'italic' }}>
                     Dear aspiring nurses,
@@ -126,9 +407,16 @@ export default function Principal({ navigate }: Props) {
                     Come, let us serve together.
                   </p>
 
-                  <div style={{ marginTop: 36, paddingTop: 28, borderTop: '1px solid rgba(11,37,69,.08)', display: 'flex', alignItems: 'center', gap: 20 }}>
-                    <div style={{
-                      width: 56, height: 56, borderRadius: 16,
+                  <div
+  className="principal-signature"
+  style={{
+    marginTop: 36,
+    paddingTop: 28,
+    borderTop: '1px solid rgba(11,37,69,.08)'
+  }}
+>
+                    <div className="principal-signature-avatar" style={{
+  width: 56, height: 56, borderRadius: 16,
                       background: 'linear-gradient(135deg, #0B2545, #18C6C8)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
@@ -149,7 +437,13 @@ export default function Principal({ navigate }: Props) {
       </section>
 
       {/* CTA */}
-      <section style={{ background: '#F3F7FB', padding: '80px 40px', textAlign: 'center' }}>
+      <section
+  className="principal-cta"
+  style={{
+    background: '#F3F7FB',
+    textAlign: 'center'
+  }}
+>
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <Reveal>
             <h3 className="font-jakarta" style={{ fontSize: 32, fontWeight: 800, color: '#0B2545', marginBottom: 16, lineHeight: 1.2 }}>

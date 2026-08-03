@@ -19,10 +19,214 @@ export default function Contact({ navigate }: Props) {
     if (form.name && form.email) setSubmitted(true)
   }
 
-  return (
-    <div style={{ paddingTop: 72 }}>
+ return (
+  <div className="contact-page" style={{ paddingTop: 72 }}>
       {/* Banner */}
-      <section style={{ background: 'linear-gradient(160deg,#071A36 0%,#0B2545 100%)', padding: '100px 40px', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
+      <style>{`
+  .contact-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .contact-banner {
+    padding: 100px 40px;
+  }
+
+  .contact-main-section {
+    padding: 80px 40px;
+  }
+
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+
+  .contact-info-card {
+    height: 100%;
+  }
+
+  .contact-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contact-form-card {
+    padding: 48px;
+  }
+
+  .contact-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .contact-map {
+    height: 340px;
+  }
+
+  .contact-helpline {
+    padding: 32px;
+  }
+
+  .contact-helpline-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .contact-social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-info-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-content-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-banner {
+      padding: 70px 20px !important;
+    }
+
+    .contact-banner h1 {
+      font-size: 40px !important;
+      line-height: 1.08 !important;
+    }
+
+    .contact-banner p {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+      padding: 0 4px;
+    }
+
+    .contact-main-section {
+      padding: 56px 20px !important;
+    }
+
+    .contact-info-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 14px !important;
+      margin-bottom: 48px !important;
+    }
+
+    .contact-info-card {
+      padding: 24px 16px !important;
+      border-radius: 18px !important;
+    }
+
+    .contact-info-card > div:first-child {
+      font-size: 28px !important;
+    }
+
+    .contact-content-grid {
+      grid-template-columns: 1fr !important;
+      gap: 28px !important;
+    }
+
+    .contact-form-card {
+      padding: 28px 22px !important;
+      border-radius: 22px !important;
+    }
+
+    .contact-form-card h2 {
+      font-size: 25px !important;
+    }
+
+    .contact-form-row {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+
+    .contact-map {
+      height: 300px !important;
+      border-radius: 20px !important;
+    }
+
+    .contact-map iframe {
+      height: 300px !important;
+    }
+
+    .contact-helpline {
+      padding: 26px 20px !important;
+      border-radius: 20px !important;
+    }
+
+    .contact-helpline-links {
+      flex-direction: column;
+      gap: 10px !important;
+    }
+
+    .contact-helpline-links a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .contact-social-links a {
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-banner {
+      padding: 58px 16px !important;
+    }
+
+    .contact-banner h1 {
+      font-size: 34px !important;
+    }
+
+    .contact-main-section {
+      padding: 48px 16px !important;
+    }
+
+    .contact-info-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .contact-info-card {
+      padding: 26px 20px !important;
+    }
+
+    .contact-form-card {
+      padding: 26px 18px !important;
+    }
+
+    .contact-map,
+    .contact-map iframe {
+      height: 260px !important;
+    }
+
+    .contact-social-links {
+      flex-direction: column;
+    }
+
+    .contact-social-links a {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+`}</style>
+      <section
+  className="contact-banner"
+  style={{
+    background: 'linear-gradient(160deg,#071A36 0%,#0B2545 100%)',
+    position: 'relative',
+    overflow: 'hidden',
+    textAlign: 'center'
+  }}
+>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 60%, rgba(24,198,200,.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Get in Touch</span>
@@ -37,18 +241,21 @@ export default function Contact({ navigate }: Props) {
       </section>
 
       {/* Contact info cards */}
-      <section style={{ background: '#F3F7FB', padding: '80px 40px' }}>
+      <section
+  className="contact-main-section"
+  style={{ background: '#F3F7FB' }}
+>
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 24, marginBottom: 80 }}>
+          <div className="contact-info-grid">
             {[
               { icon: '📍', title: 'Visit Us', lines: ['Madha Nagar, Somangalam Road, Kundrathur,', 'Chennai – 600 069, Tamil Nadu'] },
-              { icon: '📞', title: 'Call Us', lines: ['+91 91576 51234', '+91 91576 51234'] },
+              { icon: '📞', title: 'Call Us', lines: ['+91 91576 51234', '+91 72749 01234'] },
               { icon: '✉️', title: 'Email Us', lines: ['info@madhanursing.in', ] },
               { icon: '🕐', title: 'Office Hours', lines: ['Mon – Sat: 9:00 AM – 5:30 PM', 'Sunday: Closed'] },
             ].map((item, i) => (
               <Reveal key={item.title} delay={(i + 1) as 1 | 2 | 3 | 4} type="scale">
-                <div style={{
-                  background: 'white', borderRadius: 24, padding: '32px 28px', textAlign: 'center',
+                <div className="contact-info-card" style={{
+  background: 'white', borderRadius: 24, padding: '32px 28px', textAlign: 'center',
                   border: '1px solid rgba(11,37,69,.07)',
                   transition: 'all .4s cubic-bezier(.16,1,.3,1)',
                 }}
@@ -64,10 +271,19 @@ export default function Contact({ navigate }: Props) {
           </div>
 
           {/* Form + Map */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
+          <div className="contact-content-grid">
             {/* Admission enquiry form */}
             <Reveal type="left">
-              <div style={{ background: 'white', borderRadius: 28, padding: '48px', border: '1px solid rgba(11,37,69,.08)', boxShadow: '0 8px 32px rgba(11,37,69,.07)' }}>
+              <div
+  className="contact-form-card"
+  style={{
+    background: 'white',
+    borderRadius: 28,
+    padding: '48px',
+    border: '1px solid rgba(11,37,69,.08)',
+    boxShadow: '0 8px 32px rgba(11,37,69,.07)'
+  }}
+>
                 <h2 className="font-jakarta" style={{ fontSize: 28, fontWeight: 800, color: '#0B2545', marginBottom: 8 }}>
                   Admission Enquiry
                 </h2>
@@ -84,7 +300,7 @@ export default function Contact({ navigate }: Props) {
                   </div>
                 ) : (
                   <form onSubmit={handle}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                    <div className="contact-form-row">
                       <div>
                         <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Full Name *</label>
                         <input required className="input-field" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Enter Your Name" />
@@ -130,7 +346,17 @@ export default function Contact({ navigate }: Props) {
             {/* Map + contact info */}
             <div>
               <Reveal type="right">
-                <div style={{ borderRadius: 24, overflow: 'hidden', height: 340, background: '#E8EEF7', marginBottom: 24, position: 'relative' }}>
+                <div
+  className="contact-map"
+  style={{
+    borderRadius: 24,
+    overflow: 'hidden',
+    height: 340,
+    background: '#E8EEF7',
+    marginBottom: 24,
+    position: 'relative'
+  }}
+>
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5!2d80.0788!3d13.0122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAw!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
                     width="100%" height="340" style={{ border: 0 }} allowFullScreen loading="lazy"
@@ -141,9 +367,17 @@ export default function Contact({ navigate }: Props) {
 
               {/* Quick contact */}
               <Reveal type="right" delay={1}>
-                <div style={{ background: 'linear-gradient(135deg,#0B2545,#1E5AA8)', borderRadius: 24, padding: '32px', marginBottom: 16 }}>
+                <div
+  className="contact-helpline"
+  style={{
+    background: 'linear-gradient(135deg,#0B2545,#1E5AA8)',
+    borderRadius: 24,
+    padding: '32px',
+    marginBottom: 16
+  }}
+>
                   <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 18, color: 'white', marginBottom: 20 }}>Admissions Helpline</h3>
-                  <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <div className="contact-helpline-links">
                     <a href="tel:+91 91576 51234" style={{
                       display: 'flex', alignItems: 'center', gap: 10,
                       background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.2)',
@@ -175,7 +409,7 @@ export default function Contact({ navigate }: Props) {
               <Reveal type="right" delay={2}>
                 <div style={{ background: 'white', borderRadius: 24, padding: '28px', border: '1px solid rgba(11,37,69,.08)' }}>
                   <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 16, color: '#0B2545', marginBottom: 16 }}>Follow Our Journey</h3>
-                  <div style={{ display: 'flex', gap: 12 }}>
+                 <div className="contact-social-links">
                     {['Instagram', 'Facebook', ].map(s => (
                       <a key={s} href="#" aria-label={s} style={{
                         flex: 1, background: '#F3F7FB', border: '1px solid rgba(11,37,69,.08)',
