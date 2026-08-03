@@ -34,14 +34,89 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   return (
     <>
       <style>{`
-        .nav-root {
-          position: fixed;
-          top: 0; left: 0; right: 0;
-          z-index: 1000;
-          transition: background .35s cubic-bezier(.16,1,.3,1),
-                      box-shadow .35s cubic-bezier(.16,1,.3,1),
-                      backdrop-filter .35s;
-        }
+
+      /* =====================================
+   TOP CONTACT BAR
+===================================== */
+
+.top-contact-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 34px;
+  background: #071a36;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+}
+
+.top-contact-inner {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 28px;
+}
+
+
+
+.top-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+a.top-contact-item:hover {
+  color: #18C6C8;
+}
+
+@media (max-width: 768px) {
+  .top-contact-bar {
+    height: 30px;
+  }
+
+  .nav-root {
+  top: 30px !important;
+}
+
+  .top-contact-inner {
+    padding: 0 12px;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .top-contact-item {
+    font-size: 10px;
+  }
+
+  .top-address {
+    display: none;
+  }
+}
+
+       .nav-root {
+  position: fixed;
+  top: 34px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1900;
+
+  transition:
+    background .35s cubic-bezier(.16,1,.3,1),
+    box-shadow .35s cubic-bezier(.16,1,.3,1),
+    backdrop-filter .35s;
+}
         .nav-root.transparent {
           background: transparent;
           box-shadow: none;
@@ -135,20 +210,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
         .nav-root.solid .nav-college-sub  { color: #8A9ABC; font-size: 10px; text-transform: uppercase; }
 
        
-.nav-root {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
 
-    overflow: visible;
-
-    transition:
-        background .35s cubic-bezier(.16,1,.3,1),
-        box-shadow .35s cubic-bezier(.16,1,.3,1),
-        backdrop-filter .35s;
-}
        
 
         /* ── CENTER NAV LINKS ── */
@@ -493,6 +555,27 @@ export default function Nav({ currentPage, navigate }: NavProps) {
  }
 `}</style>
 
+{/* TOP CONTACT BAR */}
+<div className="top-contact-bar">
+  <div className="top-contact-inner">
+
+    <a href="tel:+9191576 51234" className="top-contact-item">
+      <span>☎</span>
+      <span>+91 91576 51234</span>
+    </a>
+
+    <a href="info@madhanursing.in" className="top-contact-item">
+      <span>✉</span>
+      <span>info@madhanursing.in</span>
+    </a>
+
+    <div className="top-contact-item top-address">
+      <span>📍</span>
+      <span>Madha Nagar, Somangalam Road, Kundrathur, Chennai - 600069</span>
+    </div>
+
+  </div>
+</div>
 
       <header className={`nav-root ${isScrolled ? 'solid' : 'transparent'}`}>
         <div className="nav-inner">

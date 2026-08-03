@@ -197,6 +197,32 @@ export default function Home({ navigate }: Props) {
      TABLET
   ================================= */
 
+  /* ================================
+   HOME STATS
+================================ */
+
+.home-stats-section {
+  padding: 80px 40px;
+}
+
+.home-stats-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.home-stat-divider {
+  width: 1px;
+  height: 80px;
+  background: rgba(255,255,255,.08);
+  margin: auto;
+}
   @media (max-width: 1024px) {
 
     .home-responsive-grid {
@@ -215,6 +241,19 @@ export default function Home({ navigate }: Props) {
   ================================= */
 
   @media (max-width: 768px) {
+
+  .home-stats-section {
+  padding: 56px 20px !important;
+}
+
+.home-stats-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 20px;
+}
+
+.home-stat-divider {
+  display: none;
+}
 
     .home-admissions-grid {
       grid-template-columns: 1fr;
@@ -319,6 +358,15 @@ export default function Home({ navigate }: Props) {
 
   @media (max-width: 480px) {
 
+  .home-stats-section {
+  padding: 48px 16px !important;
+}
+
+.home-stats-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 12px;
+}
+
     .home-mobile-section {
       padding-left: 16px !important;
       padding-right: 16px !important;
@@ -370,11 +418,18 @@ export default function Home({ navigate }: Props) {
       {/* ═══════════════════════════════════════════
           2. ANIMATED STATS
       ═══════════════════════════════════════════ */}
-      <section ref={statsRef} style={{ background: 'linear-gradient(160deg, #071A36 0%, #0B2545 50%, #0E3060 100%)', padding: '80px 40px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 48, alignItems: 'center' }}>
+     <section
+  ref={statsRef}
+  className="home-stats-section"
+  style={{
+    background:
+      'linear-gradient(160deg, #071A36 0%, #0B2545 50%, #0E3060 100%)'
+  }}
+>
+  <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+    <div className="home-stats-grid">
             <StatItem value={25} suffix="+" label="Years of Excellence" start={statsVisible} />
-            <div style={{ width: 1, height: 80, background: 'rgba(255,255,255,.08)', margin: 'auto' }} />
+            <div className="home-stat-divider" />
             <StatItem value={3200} suffix="+" label="Alumni Placed Globally" start={statsVisible} />
             <div style={{ width: 1, height: 80, background: 'rgba(255,255,255,.08)', margin: 'auto' }} />
             <StatItem value={18} suffix="" label="Affiliated Hospitals" start={statsVisible} />

@@ -6,21 +6,22 @@ interface Props { navigate: (p: Page) => void }
 const CATEGORIES = ['All', 'Campus', 'Clinical', 'Laboratory', 'Events', 'Students']
 
 const IMAGES = [
-  { id: 'photo-1758270704262-ecc82b23dc37', cat: 'Students', alt: 'Professor lecturing students', h: 280 },
-  { id: 'photo-1691139601099-932c01ec198b', cat: 'Clinical', alt: 'Nurse caring for patient', h: 200 },
-  { id: 'photo-1614935151651-0bea6508db6b', cat: 'Laboratory', alt: 'Research laboratory', h: 240 },
-  { id: 'photo-1680084521816-cc1ad0433ceb', cat: 'Campus', alt: 'College campus building', h: 220 },
-  { id: 'photo-1765896387387-0538bc9f997e', cat: 'Clinical', alt: 'Nurse smiling with patient', h: 260 },
-  { id: 'photo-1758270705067-0d7edee57af0', cat: 'Students', alt: 'Students in class', h: 190 },
-  { id: 'photo-1511174511562-5f7f18b874f8', cat: 'Laboratory', alt: 'Microscopy research', h: 230 },
-  { id: 'photo-1639772823849-6efbd173043c', cat: 'Laboratory', alt: 'Lab work with test tubes', h: 210 },
-  { id: 'photo-1758270704286-83476deb3bd1', cat: 'Students', alt: 'Students raising hands', h: 270 },
-  { id: 'photo-1758206523766-7c5380ce2f47', cat: 'Clinical', alt: 'Clinical training session', h: 200 },
-  { id: 'photo-1656321717360-be568acc171b', cat: 'Campus', alt: 'Campus view', h: 240 },
-  { id: 'photo-1758270705482-cee87ea98738', cat: 'Students', alt: 'Students discussion', h: 220 },
-  { id: 'photo-1582719471384-894fbb16e074', cat: 'Clinical', alt: 'Medical professional', h: 280 },
-  { id: 'photo-1783519890730-3436fd0bf965', cat: 'Clinical', alt: 'Medical students practice', h: 200 },
-  { id: 'photo-1582560475093-ba66accbc424', cat: 'Laboratory', alt: 'Laboratory research', h: 230 },
+  { id: '/gallery/lamplight2026/lamp-1.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 280 },
+  { id: '/gallery/lamplight2026/lamp-2.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 200 },
+  { id: '/gallery/lamplight2026/lamp-3.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 540 },
+  { id: '/gallery/lamplight2026/lamp-4.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 220 },
+  { id: '/gallery/lamplight2026/lamp-5.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 260 },
+  { id: '/gallery/lamplight2026/lamp-6.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 190 },
+  { id: '/gallery/lamplight2026/lamp-7.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 230 },
+  { id: '/gallery/lamplight2026/lamp-8.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 210 },
+  { id: '/gallery/lamplight2026/lamp-9.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 270 },
+  { id: '/gallery/lamplight2026/lamp-10.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 200 },
+  { id: '/gallery/lamplight2026/lamp-11.jpeg', cat: 'Events', alt: 'Lamplighting Cermonoy', h: 240 },
+ 
+
+
+  
+ 
 ]
 
 export default function Gallery({ navigate }: Props) {
@@ -222,7 +223,7 @@ export default function Gallery({ navigate }: Props) {
             {filtered.map((img, i) => (
               <div key={`${img.id}-${i}`} className="masonry-item" style={{ height: img.h, position: 'relative', cursor: 'pointer' }} onClick={() => setLightbox(img)}>
                 <img
-                  src={`https://images.unsplash.com/${img.id}?w=600&h=${img.h * 2}&fit=crop&auto=format`}
+                  src={img.id}
                   alt={img.alt}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, display: 'block' }}
                 />
@@ -275,7 +276,7 @@ export default function Gallery({ navigate }: Props) {
   onClick={e => e.stopPropagation()}
 >
             <img
-              src={`https://images.unsplash.com/${lightbox.id}?w=900&h=700&fit=crop&auto=format`}
+              src={lightbox.id}
               alt={lightbox.alt}
               style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: 20 }}
             />

@@ -294,7 +294,8 @@ export default function Footer({ navigate }: FooterProps) {
 
             <div style={{ marginBottom: 20 }}>
               <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 11, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Phone</p>
-              <a href="tel:+919157651234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 91576 51234</a>
+              <a href="tel:+919157651234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 91576 51234</a><br />
+               <a href="tel:+917274901234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 72749 01234</a>
             </div>
 
             <div style={{ marginBottom: 28 }}>

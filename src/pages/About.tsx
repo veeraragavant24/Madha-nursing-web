@@ -191,7 +191,7 @@ export default function About({ navigate }: Props) {
       {/* Banner */}
       <section className="about-banner" style={{ position: 'relative', height: 480, overflow: 'hidden', background: '#0B2545' }}>
         <img
-          src="https://images.unsplash.com/photo-1758270705067-0d7edee57af0?w=1600&h=900&fit=crop&auto=format"
+          src="/campus/madaha-nursing-college-9.jpg"
           alt="Madha College students"
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.25 }}
         />
@@ -333,7 +333,7 @@ export default function About({ navigate }: Props) {
           <Reveal type="scale">
             <div className="about-campus-card" style={{ borderRadius: 32, overflow: 'hidden', height: 480, position: 'relative' }}>
               <img
-                src="https://images.unsplash.com/photo-1680084521816-cc1ad0433ceb?w=1400&h=800&fit=crop&auto=format"
+                src="/campus/madaha-nursing-college-9.jpg"
                 alt="Madha College campus"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
