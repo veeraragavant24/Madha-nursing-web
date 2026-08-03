@@ -122,135 +122,244 @@ export default function Home({ navigate }: Props) {
   return (
   <>
     <style>{`
-      .home-page {
-        width: 100%;
-        overflow-x: hidden;
-      }
+  .home-page {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-      .home-responsive-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-      }
+  .home-responsive-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
 
-      .home-departments-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-      }
+  .home-departments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
 
-      .home-feature-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 40px;
-      }
+  .home-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
 
-      .home-research-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+  .home-research-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
   .home-admissions-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 80px;
-  align-items: start;
-}
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    align-items: start;
+  }
 
-.home-admissions-intro {
-  position: sticky;
-  top: 120px;
-}
+  .home-admissions-intro {
+    position: sticky;
+    top: 120px;
+  }
 
-      @media (max-width: 1024px) {
-        .home-responsive-grid {
-          grid-template-columns: 1fr;
-          gap: 48px;
-        }
+  /* ================================
+     CLINICAL TRAINING - DESKTOP
+  ================================= */
 
-        .home-departments-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
+  .home-clinical-section {
+    padding: 140px 40px;
+  }
 
-      @media (max-width: 768px) {
-      .home-admissions-grid {
-  grid-template-columns: 1fr;
-  gap: 48px;
-}
+  .home-clinical-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
 
-.home-admissions-intro {
-  position: static;
-}
-      .home-research-cards {
-  grid-template-columns: 1fr;
-}
-        .home-responsive-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
+  .home-clinical-content,
+  .home-clinical-timeline {
+    min-width: 0;
+    width: 100%;
+  }
 
-        .home-departments-grid {
-          grid-template-columns: 1fr;
-        }
+  .home-clinical-step {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+  }
 
-        .home-feature-grid {
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
 
-        .home-mobile-section {
-          padding-left: 20px !important;
-          padding-right: 20px !important;
-          padding-top: 64px !important;
-          padding-bottom: 64px !important;
-        }
+  /* ================================
+     TABLET
+  ================================= */
 
-        .home-why-image {
-          width: 100%;
-          max-width: 100%;
-        }
+  @media (max-width: 1024px) {
 
-        .home-floating-stat {
-          right: 12px !important;
-          bottom: 12px !important;
-          min-width: 150px !important;
-          padding: 16px 18px !important;
-        }
+    .home-responsive-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
 
-        .home-inc-badge {
-          left: 12px !important;
-          top: 12px !important;
-        }
+    .home-departments-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 
-        .home-dept-card {
-          height: 260px !important;
-        }
-      }
 
-      @media (max-width: 480px) {
-        .home-mobile-section {
-          padding-left: 16px !important;
-          padding-right: 16px !important;
-          padding-top: 52px !important;
-          padding-bottom: 52px !important;
-        }
+  /* ================================
+     MOBILE
+  ================================= */
 
-        .home-floating-stat {
-          position: relative !important;
-          right: auto !important;
-          bottom: auto !important;
-          width: 100%;
-          margin-top: 14px;
-        }
+  @media (max-width: 768px) {
 
-        .home-dept-card {
-          height: 230px !important;
-        }
-      }
-    `}</style>
+    .home-admissions-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .home-admissions-intro {
+      position: static;
+    }
+
+    .home-research-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .home-responsive-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .home-departments-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .home-feature-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .home-mobile-section {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-top: 64px !important;
+      padding-bottom: 64px !important;
+    }
+
+    .home-why-image {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .home-floating-stat {
+      right: 12px !important;
+      bottom: 12px !important;
+      min-width: 150px !important;
+      padding: 16px 18px !important;
+    }
+
+    .home-inc-badge {
+      left: 12px !important;
+      top: 12px !important;
+    }
+
+    .home-dept-card {
+      height: 260px !important;
+    }
+
+
+    /* CLINICAL TRAINING MOBILE */
+
+    .home-clinical-section {
+      padding: 64px 20px !important;
+    }
+
+    .home-clinical-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 52px !important;
+      width: 100% !important;
+    }
+
+    .home-clinical-content {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    .home-clinical-timeline {
+      width: 100% !important;
+      min-width: 0 !important;
+      padding-top: 8px;
+    }
+
+    .home-clinical-step {
+      display: flex !important;
+      width: 100% !important;
+      gap: 18px !important;
+    }
+
+    .home-clinical-section h2 {
+      font-size: 34px !important;
+    }
+
+    .home-clinical-section p {
+      max-width: 100% !important;
+      overflow-wrap: break-word;
+    }
+  }
+
+
+  /* ================================
+     SMALL MOBILE
+  ================================= */
+
+  @media (max-width: 480px) {
+
+    .home-mobile-section {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+      padding-top: 52px !important;
+      padding-bottom: 52px !important;
+    }
+
+    .home-clinical-section {
+      padding: 56px 16px !important;
+    }
+
+    .home-clinical-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+
+    .home-clinical-step {
+      gap: 14px !important;
+    }
+
+    .home-clinical-section h2 {
+      font-size: 32px !important;
+    }
+
+    .home-clinical-section p {
+      font-size: 15px !important;
+    }
+
+    .home-floating-stat {
+      position: relative !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .home-dept-card {
+      height: 230px !important;
+    }
+  }
+`}</style>
 
     <div className="home-page">
       {/* ═══════════════════════════════════════════
@@ -449,7 +558,14 @@ export default function Home({ navigate }: Props) {
       {/* ═══════════════════════════════════════════
           5. CLINICAL TRAINING — Dark immersive
       ═══════════════════════════════════════════ */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#071A36', padding: '140px 40px' }}>
+      <section
+  className="home-clinical-section"
+  style={{
+    position: 'relative',
+    overflow: 'hidden',
+    background: '#071A36'
+  }}
+>
         <div style={{
           position: 'absolute', inset: 0,
           backgroundImage: `url(https://images.unsplash.com/photo-1758206523766-7c5380ce2f47?w=1600&h=900&fit=crop&auto=format)`,
@@ -465,9 +581,9 @@ export default function Home({ navigate }: Props) {
         <div style={{ position: 'absolute', bottom: -200, right: -200, width: 700, height: 700, borderRadius: '50%', background: 'radial-gradient(circle, rgba(24,198,200,.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start' }}>
-            {/* Left — content */}
-            <div>
+          <div className="home-clinical-grid">
+          {/* Left — content */}
+<div className="home-clinical-content">
               <Reveal type="left">
                 <span className="section-tag" style={{ color: '#18C6C8' }}>Clinical Excellence</span>
               </Reveal>
@@ -506,8 +622,8 @@ export default function Home({ navigate }: Props) {
               </Reveal>
             </div>
 
-            {/* Right — Timeline */}
-            <div>
+           {/* Right — Timeline */}
+<div className="home-clinical-timeline">
               {[
                 { year: 'Year 1', title: 'Foundation & Theory', desc: 'Anatomy, Physiology, Biochemistry, Microbiology, and Nursing Foundations with lab practicals.' },
                 { year: 'Year 2', title: 'Medical & Surgical Nursing', desc: 'Clinical postings at the medicine, surgery, and orthopaedics wards of affiliated hospitals.' },
@@ -515,7 +631,10 @@ export default function Home({ navigate }: Props) {
                 { year: 'Year 4', title: 'Internship & Leadership', desc: '12-month paid internship with primary responsibility for patient care and team coordination.' },
               ].map((step, i) => (
                 <Reveal key={step.year} delay={(i + 1) as 1 | 2 | 3 | 4} type="right">
-                  <div style={{ display: 'flex', gap: 24, marginBottom: i < 3 ? 0 : 0 }}>
+                  <div
+  className="home-clinical-step"
+  style={{ marginBottom: i < 3 ? 0 : 0 }}
+>
                     {/* Timeline column */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20 }}>
                       <div className="timeline-dot" />
