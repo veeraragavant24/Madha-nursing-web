@@ -198,11 +198,11 @@ export default function About({ navigate }: Props) {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(11,37,69,.9) 0%, rgba(30,90,168,.6) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 40px' }}>
           <span className="section-tag" style={{ marginBottom: 20 }}>About Us</span>
-          <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em' }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em' }}>
             Our Story &<br/>
             <span className="text-teal-g">Our Mission</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.65)', fontSize: 18, maxWidth: 560, marginTop: 20, lineHeight: 1.7 }}>
+          <p style={{ color: 'rgba(255,255,255,.65)', fontSize: 20, maxWidth: 560, marginTop: 20, lineHeight: 1.7 }}>
             25 years of transforming lives through compassionate nursing education
           </p>
         </div>
@@ -236,7 +236,7 @@ export default function About({ navigate }: Props) {
                   onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.08)'; el.style.boxShadow = 'none'; el.style.transform = 'none' }}
                 >
                   <div style={{ fontSize: 40, marginBottom: 20 }}>{item.icon}</div>
-                  <h3 className="font-jakarta" style={{ fontSize: 28, fontWeight: 800, color: item.color, marginBottom: 16, letterSpacing: '-.01em' }}>{item.title}</h3>
+                  <h3 className="font-sans" style={{ fontSize: 28, fontWeight: 600, color: item.color, marginBottom: 16, letterSpacing: '-.01em' }}>{item.title}</h3>
                   <p style={{ color: '#6A7A96', fontSize: 16, lineHeight: 1.8 }}>{item.text}</p>
                   <div style={{ marginTop: 24, width: 48, height: 3, background: 'linear-gradient(90deg,#18C6C8,#1E5AA8)', borderRadius: 2 }} />
                 </div>
@@ -252,7 +252,7 @@ export default function About({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Our Journey</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 800, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
                 25 Years of <span className="text-teal-g">Excellence</span>
               </h2>
             </Reveal>
@@ -283,9 +283,9 @@ export default function About({ navigate }: Props) {
                     border: '1px solid rgba(11,37,69,.07)', maxWidth: 380,
                     boxShadow: '0 4px 24px rgba(11,37,69,.06)',
                   }}>
-                    <div className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, color: '#18C6C8', letterSpacing: '.08em', marginBottom: 8 }}>{item.year}</div>
-                    <div className="font-jakarta" style={{ fontSize: 18, fontWeight: 800, color: '#0B2545', marginBottom: 10 }}>{item.title}</div>
-                    <p style={{ color: '#6A7A96', fontSize: 14, lineHeight: 1.7 }}>{item.desc}</p>
+                    <div className="font-sans" style={{ fontSize: 13, fontWeight: 700, color: '#18C6C8', letterSpacing: '.08em', marginBottom: 8 }}>{item.year}</div>
+                    <div className="font-sans" style={{ fontSize: 18, fontWeight: 700, color: '#0B2545', marginBottom: 10 }}>{item.title}</div>
+                    <p style={{ color: '#6A7A96', fontSize: 15, lineHeight: 1.7 }}>{item.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -300,7 +300,7 @@ export default function About({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <Reveal><span className="section-tag">Achievements</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 800, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
                 Milestones That <span className="text-teal-g">Define Us</span>
               </h2>
             </Reveal>
@@ -318,8 +318,8 @@ export default function About({ navigate }: Props) {
                   onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.07)'; el.style.transform = 'none'; el.style.boxShadow = '0 2px 12px rgba(11,37,69,.04)' }}
                 >
                   <div style={{ fontSize: 36, marginBottom: 16 }}>{a.icon}</div>
-                  <div className="font-jakarta" style={{ fontWeight: 800, fontSize: 18, color: '#0B2545', marginBottom: 6 }}>{a.label}</div>
-                  <div style={{ color: '#18C6C8', fontSize: 13, fontWeight: 600 }}>{a.sub}</div>
+                  <div className="font-sans" style={{ fontWeight: 700, fontSize: 19, color: '#0B2545', marginBottom: 6 }}>{a.label}</div>
+                  <div style={{ color: '#18C6C8', fontSize: 14, fontWeight: 600 }}>{a.sub}</div>
                 </div>
               </Reveal>
             ))}
@@ -339,10 +339,10 @@ export default function About({ navigate }: Props) {
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(11,37,69,.7) 0%, transparent 60%)' }} />
              <div className="about-campus-content" style={{ position: 'absolute', top: '50%', left: 64, transform: 'translateY(-50%)' }}>
-                <div className="font-jakarta" style={{ fontSize: 36, fontWeight: 800, color: 'white', lineHeight: 1.2, marginBottom: 16 }}>
-                  A Campus Built<br/>for Excellence
-                </div>
-                <p style={{ color: 'rgba(255,255,255,.7)', fontSize: 16, maxWidth: 360, lineHeight: 1.7 }}>
+                  <div className="font-sans" style={{ fontSize: 38, fontWeight: 700, color: 'white', lineHeight: 1.2, marginBottom: 16 }}>
+                    A Campus Built<br/>for Excellence
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,.7)', fontSize: 17, maxWidth: 360, lineHeight: 1.7 }}>
                   80-acre campus with world-class laboratories, hostel, library, and dedicated clinical simulation centre.
                 </p>
                 <button onClick={() => navigate('contact')} className="btn-teal" style={{ marginTop: 28 }}>

@@ -252,11 +252,11 @@ export default function Courses({ navigate }: Props) {
         />
         <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Academic Programmes</span>
-          <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
             Nursing Courses<br/>
             <span className="text-teal-g">That Shape Careers</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 18, maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
+          <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 20, maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
             TNMGRMU affiliated, INC approved programmes built for the 21st century healthcare landscape.
           </p>
         </div>
@@ -277,7 +277,7 @@ export default function Courses({ navigate }: Props) {
           {COURSES.map((c, i) => (
             <button key={c.code} onClick={() => setActive(i)} style={{
               padding: '20px 32px', background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-jakarta)', fontWeight: 700, fontSize: 14,
+              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
               color: active === i ? c.color : '#8A9ABC',
               borderBottom: `3px solid ${active === i ? c.color : 'transparent'}`,
               whiteSpace: 'nowrap', transition: 'all .25s',
@@ -297,17 +297,17 @@ export default function Courses({ navigate }: Props) {
           {/* Header */}
           <div className="course-header">
             <div>
-              <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-jakarta)', fontSize: 12, fontWeight: 700, letterSpacing: '.08em', marginBottom: 20 }}>
+              <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, letterSpacing: '.08em', marginBottom: 20 }}>
                 {course.level}
               </div>
-              <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 800, color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>
                 {course.code} <span style={{ color: course.color }}>{course.name.replace(/^[A-Za-z.\s]+\s/, '')}</span>
               </h2>
               <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
                 {[['Duration', course.duration], ['Intake', course.intake]].map(([label, val]) => (
                   <div key={label}>
-                    <div style={{ color: '#9CA9C0', fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
-                    <div className="font-jakarta" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545' }}>{val}</div>
+                    <div style={{ color: '#9CA9C0', fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
+                    <div className="font-sans" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545' }}>{val}</div>
                   </div>
                 ))}
               </div>
@@ -332,7 +332,7 @@ export default function Courses({ navigate }: Props) {
     height: '100%'
   }}
 >
-                <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Eligibility Criteria</h3>
+                <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Eligibility Criteria</h3>
                 {course.eligibility.map(e => (
                   <div key={e} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 14 }}>
                     <div style={{ width: 22, height: 22, borderRadius: 6, background: 'rgba(24,198,200,.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
@@ -347,13 +347,13 @@ export default function Courses({ navigate }: Props) {
             {/* Curriculum */}
             <Reveal type="right">
               <div style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)', height: '100%' }}>
-                <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Curriculum Overview</h3>
+                <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Curriculum Overview</h3>
                 {course.curriculum.map((c, i) => (
                   <div key={c} style={{ display: 'flex', gap: 16, marginBottom: 18 }}>
                     <div style={{
                       width: 28, height: 28, borderRadius: 8,
                       background: `linear-gradient(135deg, ${course.color}, #18C6C8)`,
-                      color: 'white', fontFamily: 'var(--font-jakarta)', fontWeight: 800, fontSize: 12,
+                      color: 'white', fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 12,
                       display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                     }}>
                       {i + 1}
@@ -369,7 +369,7 @@ export default function Courses({ navigate }: Props) {
             {/* Careers */}
             <Reveal>
               <div className="course-card" style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
-                <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Career Opportunities</h3>
+                <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Career Opportunities</h3>
                 {course.careers.map(c => (
                   <div key={c} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 12 }}>
                     <div style={{ color: '#F59E0B', fontSize: 16, lineHeight: 1, marginTop: 2 }}>→</div>
@@ -382,7 +382,7 @@ export default function Courses({ navigate }: Props) {
             {/* Placements */}
             <Reveal delay={1}>
               <div className="course-card" style={{ background: 'linear-gradient(135deg, rgba(11,37,69,.04), rgba(24,198,200,.05))', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
-                <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Where Our Graduates Work</h3>
+                <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Where Our Graduates Work</h3>
                 {course.placements.map(p => (
                   <div key={p} style={{
                     background: 'white', borderRadius: 12, padding: '14px 18px', marginBottom: 10,
@@ -406,7 +406,7 @@ export default function Courses({ navigate }: Props) {
     border: '1px solid rgba(11,37,69,.08)'
   }}
 >
-              <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 20, color: '#0B2545', marginBottom: 28 }}>Frequently Asked Questions</h3>
+              <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 28 }}>Frequently Asked Questions</h3>
               {course.faqs.map((faq, i) => (
                 <FaqItem key={i} q={faq.q} a={faq.a} />
               ))}
@@ -423,12 +423,12 @@ export default function Courses({ navigate }: Props) {
   }}
 >
             <div>
-              <div className="font-jakarta" style={{ fontSize: 26, fontWeight: 800, color: 'white', marginBottom: 8 }}>Ready to Apply?</div>
-              <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 15 }}>Admissions for batch are now open. Limited seats available.</p>
+              <div className="font-sans" style={{ fontSize: 28, fontWeight: 700, color: 'white', marginBottom: 8 }}>Ready to Apply?</div>
+              <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 16 }}>Admissions for batch are now open. Limited seats available.</p>
             </div>
             <button onClick={() => navigate('contact')} style={{
               background: '#18C6C8', color: 'white', padding: '16px 40px', borderRadius: 100,
-              fontFamily: 'var(--font-jakarta)', fontWeight: 700, fontSize: 15, border: 'none', cursor: 'pointer',
+              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 15, border: 'none', cursor: 'pointer',
               transition: 'all .3s', boxShadow: '0 8px 24px rgba(24,198,200,.4)',
             }}
               onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-3px)'; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 16px 40px rgba(24,198,200,.5)' }}
@@ -452,7 +452,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         padding: '18px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20,
         textAlign: 'left',
       }}>
-        <span className="font-jakarta" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545', lineHeight: 1.4 }}>{q}</span>
+        <span className="font-sans" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545', lineHeight: 1.4 }}>{q}</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18C6C8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .25s', flexShrink: 0 }}>
           <polyline points="6 9 12 15 18 9"/>
         </svg>

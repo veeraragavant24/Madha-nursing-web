@@ -56,7 +56,7 @@ export default function Footer({ navigate }: FooterProps) {
         gap: 16px;
         padding: 24px 0;
         color: rgba(255,255,255,.28);
-        font-size: 13px;
+        font-size: 15px;
       }
 
       .footer-legal {
@@ -185,8 +185,8 @@ export default function Footer({ navigate }: FooterProps) {
                 </svg>
               </div>
               <div style={{ textAlign: 'left' }}>
-                <div className="font-jakarta" style={{ color: 'white', fontWeight: 800, fontSize: 17, lineHeight: 1.2 }}>Madha College</div>
-                <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 11, fontWeight: 500, letterSpacing: '.05em' }}>of Nursing, Chennai</div>
+                <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 17, lineHeight: 1.2 }}>Madha College</div>
+                <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 14, fontWeight: 500, letterSpacing: '.05em' }}>of Nursing, Chennai</div>
               </div>
             </button>
 
@@ -194,7 +194,7 @@ export default function Footer({ navigate }: FooterProps) {
   className="footer-brand-description"
   style={{
     color: 'rgba(255,255,255,.45)',
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 1.75,
     marginBottom: 28
   }}
@@ -208,7 +208,7 @@ export default function Footer({ navigate }: FooterProps) {
                 <span key={tag} style={{
                   background: 'rgba(24,198,200,.08)', border: '1px solid rgba(24,198,200,.2)',
                   color: '#18C6C8', padding: '4px 12px', borderRadius: 100,
-                  fontSize: 10, fontWeight: 700, letterSpacing: '.12em', fontFamily: 'var(--font-jakarta)',
+                  fontSize: 14, fontWeight: 600, letterSpacing: '.12em', fontFamily: 'var(--font-sans)',
                 }}>
                   {tag}
                 </span>
@@ -251,11 +251,11 @@ export default function Footer({ navigate }: FooterProps) {
 
           {/* Quick links */}
           <div className="footer-column">
-            <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Navigate</h4>
+            <h4 className="font-sans" style={{ fontSize: 17, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Navigate</h4>
             {([['home', 'Home'], ['about', 'About Us'], ['courses', 'Courses'], ['departments', 'Departments'], ['gallery', 'Gallery'], ['contact', 'Contact']] as [Page, string][]).map(([p, l]) => (
               <button key={p} onClick={() => navigate(p)} style={{
                 display: 'block', background: 'none', border: 'none', cursor: 'pointer', padding: '7px 0',
-                color: 'rgba(255,255,255,.55)', fontSize: 14, fontFamily: 'var(--font-inter)',
+                color: 'rgba(255,255,255,.55)', fontSize: 16, fontFamily: 'var(--font-sans)',
                 textAlign: 'left', width: '100%', transition: 'color .2s',
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#18C6C8')}
@@ -268,11 +268,11 @@ export default function Footer({ navigate }: FooterProps) {
 
           {/* Courses */}
           <div className="footer-column">
-            <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Programmes</h4>
+            <h4 className="font-sans" style={{ fontSize: 17, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Programmes</h4>
             {['B.Sc. Nursing', 'M.Sc. Nursing', 'Post Basic B.Sc.'].map(c => (
               <button key={c} onClick={() => navigate('courses')} style={{
                 display: 'block', background: 'none', border: 'none', cursor: 'pointer', padding: '7px 0',
-                color: 'rgba(255,255,255,.55)', fontSize: 14, fontFamily: 'var(--font-inter)',
+                color: 'rgba(255,255,255,.55)', fontSize: 16, fontFamily: 'var(--font-sans)',
                 textAlign: 'left', width: '100%', transition: 'color .2s',
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#18C6C8')}
@@ -285,28 +285,28 @@ export default function Footer({ navigate }: FooterProps) {
 
           {/* Contact + Newsletter */}
           <div className="footer-column">
-            <h4 className="font-jakarta" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Connect</h4>
+            <h4 className="font-sans" style={{ fontSize: 17, fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', marginBottom: 24 }}>Connect</h4>
 
             <div style={{ marginBottom: 20 }}>
-              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 11, fontWeight: 600, letterSpacing: '.08em', marginBottom: 6, textTransform: 'uppercase' }}>Address</p>
-              <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, lineHeight: 1.65 }}>Madha Nagar,  Somangalam Road, Kundrathur,<br/>Chennai – 600 069,<br/>Tamil Nadu, India</p>
+              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 14, fontWeight: 600, letterSpacing: '.08em', marginBottom: 6, textTransform: 'uppercase' }}>Address</p>
+              <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 15, lineHeight: 1.65 }}>Madha Nagar,  Somangalam Road, Kundrathur,<br/>Chennai – 600 069,<br/>Tamil Nadu, India</p>
             </div>
 
             <div style={{ marginBottom: 20 }}>
-              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 11, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Phone</p>
-              <a href="tel:+919157651234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 91576 51234</a><br />
-               <a href="tel:+917274901234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, textDecoration: 'none' }}>+91 72749 01234</a>
+              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 14, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Phone</p>
+              <a href="tel:+919157651234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 15, textDecoration: 'none' }}>+91 91576 51234</a><br />
+               <a href="tel:+917274901234" style={{ color: 'rgba(255,255,255,.6)', fontSize: 15, textDecoration: 'none' }}>+91 72749 01234</a>
             </div>
 
             <div style={{ marginBottom: 28 }}>
-              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 11, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Email</p>
-              <a href="mailto:admissions@madhacollege.edu.in" style={{ color: '#18C6C8', fontSize: 13, textDecoration: 'none' }}>info@madhanursing.in</a>
+              <p style={{ color: 'rgba(255,255,255,.38)', fontSize: 14, fontWeight: 600, letterSpacing: '.08em', marginBottom: 4, textTransform: 'uppercase' }}>Email</p>
+              <a href="mailto:admissions@madhacollege.edu.in" style={{ color: '#18C6C8', fontSize: 15, textDecoration: 'none' }}>info@madhanursing.in</a>
             </div>
 
             {/* Newsletter */}
-            <p style={{ color: 'rgba(255,255,255,.5)', fontSize: 12, marginBottom: 10 }}>Stay updated with news & admissions</p>
+            <p style={{ color: 'rgba(255,255,255,.5)', fontSize: 15, marginBottom: 10 }}>Stay updated with news & admissions</p>
             {subscribed ? (
-              <p style={{ color: '#18C6C8', fontSize: 13, fontWeight: 600 }}>✓ Subscribed successfully!</p>
+              <p style={{ color: '#18C6C8', fontSize: 15, fontWeight: 600 }}>✓ Subscribed successfully!</p>
             ) : (
               <form
   onSubmit={handleSubscribe}
@@ -317,12 +317,12 @@ export default function Footer({ navigate }: FooterProps) {
                   placeholder="Your email"
                   style={{
                     flex: 1, background: 'rgba(255,255,255,.06)', border: 'none', padding: '11px 18px',
-                    color: 'white', fontSize: 13, fontFamily: 'var(--font-inter)', outline: 'none',
+                    color: 'white', fontSize: 15, fontFamily: 'var(--font-sans)', outline: 'none',
                   }}
                 />
                 <button type="submit" style={{
                   background: 'linear-gradient(135deg,#18C6C8,#1E5AA8)', color: 'white', border: 'none',
-                  padding: '11px 20px', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'var(--font-jakarta)',
+                  padding: '11px 20px', cursor: 'pointer', fontSize: 15, fontWeight: 600, fontFamily: 'var(--font-sans)',
                   whiteSpace: 'nowrap',
                 }}>
                   Subscribe
@@ -337,7 +337,7 @@ export default function Footer({ navigate }: FooterProps) {
           <span>© 2026 Madha College of Nursing. All rights reserved.</span>
           <div className="footer-legal">
             {['Privacy Policy', 'Terms of Use', 'Grievance'].map(l => (
-              <a key={l} href="#" style={{ color: 'rgba(255,255,255,.28)', textDecoration: 'none', fontSize: 13, transition: 'color .2s' }}
+              <a key={l} href="#" style={{ color: 'rgba(255,255,255,.28)', textDecoration: 'none', fontSize: 15, transition: 'color .2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#18C6C8')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,.28)')}
               >

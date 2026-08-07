@@ -272,12 +272,12 @@ export default function Principal({ navigate }: Props) {
         <div className="principal-hero-grid">
           <div className="principal-hero-content">
             <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Principal's Office</span>
-            <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 5vw, 66px)', fontWeight: 800, color: 'white', lineHeight: 1.08, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
+            <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 70px)', fontWeight: 700, color: 'white', lineHeight: 1.08, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
               Dr. B. Tamilarasi<br/>
               
             </h1>
-            <div style={{ color: 'rgba(255,255,255,.55)', fontSize: 16, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
-            <div style={{ color: 'rgba(255,255,255,.4)', fontSize: 14 }}>M.Sc. Nursing, PhD , M.Phil</div>
+            <div style={{ color: 'rgba(255,255,255,.55)', fontSize: 18, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
+            <div style={{ color: 'rgba(255,255,255,.4)', fontSize: 15 }}>M.Sc. Nursing, PhD , M.Phil</div>
            <div className="principal-achievements">
               {ACHIEVEMENTS.map(a => (
   <div
@@ -285,7 +285,7 @@ export default function Principal({ navigate }: Props) {
     className="principal-achievement"
     style={{ textAlign: 'center' }}
   >
-                  <div className="font-jakarta text-gold-g" style={{ fontSize: 32, fontWeight: 800, letterSpacing: '-.02em' }}>{a.val}</div>
+                  <div className="font-sans text-gold-g" style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-.02em' }}>{a.val}</div>
                   <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 12, marginTop: 4 }}>{a.label}</div>
                 </div>
               ))}
@@ -322,7 +322,7 @@ export default function Principal({ navigate }: Props) {
            
              <div className="principal-letter-heading">
               <Reveal delay={1}>
-                <h2 className="font-jakarta" style={{ fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 800, color: '#0B2545', lineHeight: 1.15, letterSpacing: '-.02em', marginTop: 20, marginBottom: 32 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 3.5vw, 46px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.15, letterSpacing: '-.02em', marginTop: 20, marginBottom: 32 }}>
                   A Message to<br/>Every Aspiring<br/>
                   <span className="text-teal-g">Nurse</span>
                 </h2>
@@ -339,7 +339,7 @@ export default function Principal({ navigate }: Props) {
     marginBottom: 28
   }}
 >
-                  <div className="font-jakarta" style={{ fontSize: 11, fontWeight: 700, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Qualifications</div>
+                  <div className="font-sans" style={{ fontSize: 11, fontWeight: 600, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Qualifications</div>
                   {['M.Sc. Nursing (Medical Surgical Nursing)', 'Ph.D in Nursing Science — TNMGRMU', 'Master of Business Administration — Anna University', 'PG Diploma in Hospital Management'].map(q => (
                     <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
                       <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#18C6C8', marginTop: 6, flexShrink: 0 }} />
@@ -358,7 +358,7 @@ export default function Principal({ navigate }: Props) {
     border: '1px solid rgba(11,37,69,.06)'
   }}
 >
-                  <div className="font-jakarta" style={{ fontSize: 11, fontWeight: 700, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Awards & Recognition</div>
+                  <div className="font-sans" style={{ fontSize: 11, fontWeight: 600, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Awards & Recognition</div>
                   {[
                     'Best Principal Award — Tamil Nadu Nursing Council, 2022',
                     'Excellence in Nursing Research — INC, 2020',
@@ -388,22 +388,22 @@ export default function Principal({ navigate }: Props) {
   }}
 >
                   {/* Quote mark */}
-                 <div className="font-jakarta principal-quote" style={{ fontSize: 80, color: '#18C6C8', lineHeight: 0.8, opacity: 0.25, marginBottom: 24, fontStyle: 'italic' }}>"</div>
+                 <div className="font-sans principal-quote" style={{ fontSize: 80, color: '#18C6C8', lineHeight: 0.8, opacity: 0.25, marginBottom: 24, fontStyle: 'italic' }}>"</div>
 
-                  <div style={{ color: '#16213E', fontSize: 16, lineHeight: 1.9, fontStyle: 'italic' }}>
+                  <div style={{ color: '#16213E', fontSize: 17, lineHeight: 1.9, fontStyle: 'italic' }}>
                     Dear aspiring nurses,
                   </div>
                   <br/>
-                  <p style={{ color: '#4A5A78', fontSize: 16, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
                     Nursing is not a profession you choose — it is a calling you answer. When you walk through the doors of Madha College of Nursing, you are joining a tradition of care, compassion, and clinical excellence that has touched over 3,200 lives and, through them, countless patients across the world.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 16, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
                     At Madha, we don't just teach nursing — we shape nurses. Our curriculum bridges rigorous academic theory with immersive clinical training at 18 affiliated hospitals. Our faculty are researchers, clinicians, and mentors who invest deeply in your growth, not just your grades.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 16, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
                     I invite you to explore our campus, meet our faculty, and discover for yourself why Madha College has earned its reputation as one of South India's premier nursing institutions. Your journey toward becoming an exceptional nurse begins here.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 16, lineHeight: 1.9 }}>
+                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9 }}>
                     Come, let us serve together.
                   </p>
 
@@ -421,10 +421,10 @@ export default function Principal({ navigate }: Props) {
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <span className="font-jakarta" style={{ fontSize: 18, fontWeight: 800, color: 'white' }}>AS</span>
+                      <span className="font-sans" style={{ fontSize: 18, fontWeight: 700, color: 'white' }}>AS</span>
                     </div>
                     <div>
-                      <div className="font-jakarta" style={{ fontWeight: 800, fontSize: 17, color: '#0B2545' }}>Dr. B. Tamilarasi</div>
+                      <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>Dr. B. Tamilarasi</div>
                       <div style={{ color: '#8A9ABC', fontSize: 13, marginTop: 3 }}>Principal, Madha College of Nursing</div>
                       <div style={{ color: '#18C6C8', fontSize: 12, marginTop: 2 }}>M.Sc., Ph.D., M.Phil</div>
                     </div>
@@ -446,7 +446,7 @@ export default function Principal({ navigate }: Props) {
 >
         <div style={{ maxWidth: 600, margin: '0 auto' }}>
           <Reveal>
-            <h3 className="font-jakarta" style={{ fontSize: 32, fontWeight: 800, color: '#0B2545', marginBottom: 16, lineHeight: 1.2 }}>
+            <h3 className="font-sans" style={{ fontSize: 32, fontWeight: 600, color: '#0B2545', marginBottom: 16, lineHeight: 1.2 }}>
               Meet Us in Person
             </h3>
           </Reveal>

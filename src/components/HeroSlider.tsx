@@ -245,8 +245,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         }
 
         .slide-num {
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 11px; font-weight: 700; letter-spacing: .18em;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 14px; font-weight: 600; letter-spacing: .18em;
           color: rgba(255,255,255,.45);
           text-transform: uppercase;
         }
@@ -295,13 +295,13 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   }
 
   .hero-content h1 {
-    font-size: clamp(36px, 10vw, 52px) !important;
+    font-size: clamp(38px, 10vw, 52px) !important;
     line-height: 1.05 !important;
     max-width: 100% !important;
   }
 
   .hero-content p {
-    font-size: 15px !important;
+    font-size: 17px !important;
     line-height: 1.65 !important;
     max-width: 100% !important;
     margin-bottom: 28px !important;
@@ -314,7 +314,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
   .hero-cta-group button {
     padding: 13px 18px !important;
-    font-size: 12px !important;
+    font-size: 15px !important;
   }
 
   .float-badge {
@@ -359,7 +359,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   }
 
   .hero-content h1 {
-    font-size: clamp(34px, 10vw, 44px) !important;
+    font-size: clamp(38px, 10vw, 44px) !important;
   }
 
   .hero-cta-group {
@@ -442,9 +442,9 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           transform: heroIn ? 'none' : 'translateY(28px)',
           transition: 'all .85s .15s cubic-bezier(.16,1,.3,1)',
         }}>
-          <h1 key={`h-${current}`} className="font-jakarta" style={{
-            fontSize: 'clamp(38px, 5.5vw, 84px)',
-            fontWeight: 800, lineHeight: 1.06, letterSpacing: '-.03em',
+          <h1 key={`h-${current}`} className="font-sans" style={{
+            fontSize: 'clamp(38px, 5vw, 76px)',
+            fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
             color: 'white', maxWidth: 780,
             animation: `fadeUp .75s cubic-bezier(.16,1,.3,1) forwards`,
           }}>
@@ -455,7 +455,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
         {/* Sub */}
         <p key={`p-${current}`} style={{
-          fontSize: 17, color: 'rgba(255,255,255,.70)', lineHeight: 1.78,
+          fontSize: 20, color: 'rgba(255,255,255,.70)', lineHeight: 1.78,
           maxWidth: 540, marginBottom: 44,
           opacity: heroIn ? 1 : 0,
           transform: heroIn ? 'none' : 'translateY(16px)',
@@ -473,11 +473,11 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           transition: 'all .85s .42s cubic-bezier(.16,1,.3,1)',
           animation: `fadeUp .7s .2s cubic-bezier(.16,1,.3,1) both`,
         }}>
-          <button onClick={() => navigate(slide.ctaPage)} className="btn-teal" style={{ fontSize: 14, padding: '16px 36px' }}>
+          <button onClick={() => navigate(slide.ctaPage)} className="btn-teal" style={{ fontSize: 16, padding: '16px 36px' }}>
             {slide.ctaLabel}
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 14, padding: '15px 36px' }}>
+          <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 15, padding: '15px 36px' }}>
             {slide.ctaSecondaryLabel}
           </button>
         </div>
@@ -489,8 +489,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         }}>
           <div className="glass-dark" style={{ borderRadius: 24, padding: '28px 32px', textAlign: 'center', minWidth: 176 }}>
             <div style={{ fontSize: 34, marginBottom: 8 }}>🏆</div>
-            <div className="font-jakarta" style={{ color: '#18C6C8', fontSize: 13, fontWeight: 700, letterSpacing: '.06em', marginBottom: 4 }}>INC Approved</div>
-            <div style={{ color: 'rgba(255,255,255,.50)', fontSize: 11 }}>TNMGRMU Affiliated</div>
+            <div className="font-sans" style={{ color: '#18C6C8', fontSize: 15, fontWeight: 700, letterSpacing: '.06em', marginBottom: 4 }}>INC Approved</div>
+            <div style={{ color: 'rgba(255,255,255,.50)', fontSize: 14 }}>TNMGRMU Affiliated</div>
           </div>
         </div>
       </div>

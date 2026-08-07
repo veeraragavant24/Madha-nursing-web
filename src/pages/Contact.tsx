@@ -230,11 +230,11 @@ export default function Contact({ navigate }: Props) {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 60%, rgba(24,198,200,.1) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Get in Touch</span>
-          <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
             We'd Love to<br/>
             <span className="text-teal-g">Hear From You</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 18, maxWidth: 500, margin: '24px auto 0', lineHeight: 1.75 }}>
+          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 20, maxWidth: 500, margin: '24px auto 0', lineHeight: 1.75 }}>
             Whether it's an admissions query, research collaboration, or a campus visit — reach us anytime.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function Contact({ navigate }: Props) {
                   onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.07)'; el.style.transform = 'none'; el.style.boxShadow = 'none' }}
                 >
                   <div style={{ fontSize: 32, marginBottom: 16 }}>{item.icon}</div>
-                  <div className="font-jakarta" style={{ fontWeight: 800, fontSize: 16, color: '#0B2545', marginBottom: 10 }}>{item.title}</div>
+                  <div className="font-sans" style={{ fontWeight: 700, fontSize: 16, color: '#0B2545', marginBottom: 10 }}>{item.title}</div>
                   {item.lines.map(l => <div key={l} style={{ color: '#6A7A96', fontSize: 14, lineHeight: 1.7 }}>{l}</div>)}
                 </div>
               </Reveal>
@@ -284,15 +284,15 @@ export default function Contact({ navigate }: Props) {
     boxShadow: '0 8px 32px rgba(11,37,69,.07)'
   }}
 >
-                <h2 className="font-jakarta" style={{ fontSize: 28, fontWeight: 800, color: '#0B2545', marginBottom: 8 }}>
+                <h2 className="font-sans" style={{ fontSize: 30, fontWeight: 700, color: '#0B2545', marginBottom: 8 }}>
                   Admission Enquiry
                 </h2>
-                <p style={{ color: '#8A9ABC', fontSize: 14, marginBottom: 36 }}>Fill in your details and our admissions team will contact you within 24 hours.</p>
+                <p style={{ color: '#8A9ABC', fontSize: 15, marginBottom: 36 }}>Fill in your details and our admissions team will contact you within 24 hours.</p>
 
                 {submitted ? (
                   <div style={{ textAlign: 'center', padding: '48px 0' }}>
                     <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-                    <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 22, color: '#0B2545', marginBottom: 12 }}>Thank You!</h3>
+                    <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 22, color: '#0B2545', marginBottom: 12 }}>Thank You!</h3>
                     <p style={{ color: '#6A7A96', fontSize: 15, lineHeight: 1.7 }}>We've received your enquiry. Our admissions team will reach out to <strong>{form.email}</strong> within 24 hours.</p>
                     <button onClick={() => setSubmitted(false)} className="btn-teal" style={{ marginTop: 28 }}>
                       Submit Another Enquiry
@@ -302,21 +302,21 @@ export default function Contact({ navigate }: Props) {
                   <form onSubmit={handle}>
                     <div className="contact-form-row">
                       <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Full Name *</label>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Full Name *</label>
                         <input required className="input-field" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} placeholder="Enter Your Name" />
                       </div>
                       <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Email Address *</label>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Email Address *</label>
                         <input required type="email" className="input-field" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} placeholder="your@email.com" />
                       </div>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
                       <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Phone Number</label>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Phone Number</label>
                         <input className="input-field" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} placeholder="+91 91576 51234  " />
                       </div>
                       <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Programme of Interest</label>
+                        <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Programme of Interest</label>
                         <select className="input-field" value={form.course} onChange={e => setForm(f => ({ ...f, course: e.target.value }))}>
                           <option value="">Select Programme</option>
                           <option>B.Sc. Nursing</option>
@@ -326,7 +326,7 @@ export default function Contact({ navigate }: Props) {
                       </div>
                     </div>
                     <div style={{ marginBottom: 28 }}>
-                      <label style={{ display: 'block', fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Your Message</label>
+                      <label style={{ display: 'block', fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 12, color: '#4A5A78', marginBottom: 8, letterSpacing: '.04em' }}>Your Message</label>
                       <textarea
                         className="input-field" rows={4} value={form.message}
                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
@@ -376,13 +376,13 @@ export default function Contact({ navigate }: Props) {
     marginBottom: 16
   }}
 >
-                  <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 18, color: 'white', marginBottom: 20 }}>Admissions Helpline</h3>
+                  <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 18, color: 'white', marginBottom: 20 }}>Admissions Helpline</h3>
                   <div className="contact-helpline-links">
                     <a href="tel:+91 91576 51234" style={{
                       display: 'flex', alignItems: 'center', gap: 10,
                       background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.2)',
                       borderRadius: 100, padding: '12px 20px', color: 'white', textDecoration: 'none',
-                      fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 14,
+                      fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
                     }}>
                       📞 +91 91576 51234
                     </a>
@@ -390,7 +390,7 @@ export default function Contact({ navigate }: Props) {
                       display: 'flex', alignItems: 'center', gap: 10,
                       background: 'rgba(255,255,255,.12)', border: '1px solid rgba(255,255,255,.2)',
                       borderRadius: 100, padding: '12px 20px', color: 'white', textDecoration: 'none',
-                      fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 14,
+                      fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
                     }}>
                       📞 +91 72749 01234
                     </a>
@@ -398,7 +398,7 @@ export default function Contact({ navigate }: Props) {
                       display: 'flex', alignItems: 'center', gap: 10,
                       background: 'rgba(37,211,102,.2)', border: '1px solid rgba(37,211,102,.35)',
                       borderRadius: 100, padding: '12px 20px', color: 'white', textDecoration: 'none',
-                      fontFamily: 'var(--font-jakarta)', fontWeight: 600, fontSize: 14,
+                      fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
                     }}>
                       💬 WhatsApp Us
                     </a>
@@ -408,13 +408,13 @@ export default function Contact({ navigate }: Props) {
 
               <Reveal type="right" delay={2}>
                 <div style={{ background: 'white', borderRadius: 24, padding: '28px', border: '1px solid rgba(11,37,69,.08)' }}>
-                  <h3 className="font-jakarta" style={{ fontWeight: 800, fontSize: 16, color: '#0B2545', marginBottom: 16 }}>Follow Our Journey</h3>
+                  <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 16, color: '#0B2545', marginBottom: 16 }}>Follow Our Journey</h3>
                  <div className="contact-social-links">
                     {['Instagram', 'Facebook', ].map(s => (
                       <a key={s} href="#" aria-label={s} style={{
                         flex: 1, background: '#F3F7FB', border: '1px solid rgba(11,37,69,.08)',
                         borderRadius: 12, padding: '12px 0', textAlign: 'center', textDecoration: 'none',
-                        color: '#6A7A96', fontSize: 12, fontFamily: 'var(--font-jakarta)', fontWeight: 600,
+                        color: '#6A7A96', fontSize: 12, fontFamily: 'var(--font-sans)', fontWeight: 600,
                         transition: 'all .25s',
                       }}
                         onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = '#0B2545'; el.style.color = 'white'; el.style.borderColor = '#0B2545' }}

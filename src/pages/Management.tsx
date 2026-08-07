@@ -122,7 +122,7 @@ return (
             backdropFilter: 'blur(12px)',
             border: '1px solid rgba(255,255,255,.25)',
             borderRadius: 100, padding: '6px 16px',
-            fontFamily: 'var(--font-jakarta)', fontSize: 11, fontWeight: 700,
+            fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600,
             letterSpacing: '.1em', textTransform: 'uppercase', color: 'white',
           }}>
             {person.title}
@@ -149,14 +149,14 @@ return (
             background: `${person.accent}12`,
             border: `1px solid ${person.accent}28`,
             borderRadius: 100, padding: '4px 14px', marginBottom: 14,
-            fontFamily: 'var(--font-jakarta)', fontSize: 10, fontWeight: 700,
+            fontFamily: 'var(--font-sans)', fontSize: 10, fontWeight: 600,
             letterSpacing: '.12em', textTransform: 'uppercase', color: person.accent,
           }}>
             {person.tag}
           </div>
 
-          <h3 className="font-jakarta" style={{
-            fontSize: 22, fontWeight: 800, color: '#0B2545',
+          <h3 className="font-sans" style={{
+            fontSize: 22, fontWeight: 600, color: '#0B2545',
             lineHeight: 1.2, letterSpacing: '-.01em', marginBottom: 8,
           }}>
             {person.name}
@@ -416,15 +416,15 @@ export default function Management({ navigate }: Props) {
 
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Leadership</span>
-          <h1 className="font-jakarta" style={{
+          <h1 className="font-sans" style={{
             fontSize: 'clamp(38px, 5.5vw, 76px)',
-            fontWeight: 800, lineHeight: 1.06, letterSpacing: '-.03em',
+            fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
             color: 'white', marginBottom: 24,
           }}>
             The Minds Behind<br/>
             <span className="text-teal-g">Madha College</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 18, lineHeight: 1.8, maxWidth: 540, margin: '0 auto' }}>
+          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 20, lineHeight: 1.8, maxWidth: 540, margin: '0 auto' }}>
             A leadership team combining medicine, nursing science, hospital administration, and global healthcare education expertise.
           </p>
         </div>
@@ -459,8 +459,8 @@ export default function Management({ navigate }: Props) {
               padding: '40px 32px', textAlign: 'center',
               borderLeft: i > 0 ? '1px solid rgba(255,255,255,.07)' : 'none',
             }}>
-              <div className="font-jakarta text-teal-g" style={{ fontSize: 44, fontWeight: 800, letterSpacing: '-.03em', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
-              <div className="font-jakarta" style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{s.label}</div>
+              <div className="font-sans text-teal-g" style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-.03em', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
+              <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{s.label}</div>
               <div style={{ color: 'rgba(255,255,255,.38)', fontSize: 12 }}>{s.sub}</div>
             </div>
           ))}
@@ -479,8 +479,8 @@ export default function Management({ navigate }: Props) {
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Join Our Community</span>
         </Reveal>
         <Reveal delay={1}>
-          <h2 className="font-jakarta" style={{
-            fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 800,
+          <h2 className="font-sans" style={{
+            fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 700,
             color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em',
             marginTop: 20, marginBottom: 20,
           }}>
@@ -489,7 +489,7 @@ export default function Management({ navigate }: Props) {
           </h2>
         </Reveal>
         <Reveal delay={2}>
-          <p style={{ color: '#6A7A96', fontSize: 17, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
+          <p style={{ color: '#6A7A96', fontSize: 18, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
             Our leadership team is committed to your success. Reach out to begin your journey at Madha College of Nursing.
           </p>
           <div className="management-cta-buttons">

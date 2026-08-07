@@ -71,7 +71,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   gap: 7px;
   color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -96,7 +96,7 @@ a.top-contact-item:hover {
   }
 
   .top-contact-item {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .top-address {
@@ -134,9 +134,9 @@ a.top-contact-item:hover {
           padding: 0 20px;
           height: 105px;
           display: grid;
-          grid-template-columns: 520px 1fr auto;
+          grid-template-columns: 550px 1fr auto;
           align-items: center;
-          gap: 32px;
+          gap: 18px;
         }
 
         /* ── BRAND ── */
@@ -177,36 +177,41 @@ a.top-contact-item:hover {
           white-space: nowrap;
         }
         .nav-college-name {
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          font-weight: 800;
-          letter-spacing: -.01em;
-          line-height: 1.1;
-          white-space: nowrap;
-          transition: color .3s;
-        }
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.05;
+  white-space: nowrap;
+  transition: color .3s;
+}
         .nav-college-sub {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Source Sans Pro', sans-serif;
           font-weight: 500;
           letter-spacing: .06em;
           transition: color .3s;
         }
         /* transparent state (home hero) */
         .nav-root.transparent .nav-college-name {
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .nav-root.solid .nav-college-name {
     color: #0B2545;
     font-size: 28px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
 }
         .nav-root.transparent .nav-college-sub  { color: rgba(255,255,255,.55); font-size: 13px; text-transform: uppercase; }
         /* solid state (scrolled / inner pages) */
-        .nav-root.solid .nav-college-name { color: #0B2545; font-size: 19px; }
+        .nav-root.solid .nav-college-name {
+  color: #0B2545;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+}
         .nav-root.solid .nav-college-sub  { color: #8A9ABC; font-size: 10px; text-transform: uppercase; }
 
        
@@ -227,9 +232,9 @@ a.top-contact-item:hover {
           padding: 10px 16px;
           border-radius: 10px;
           position: relative;
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: 'Source Sans Pro', sans-serif;
           font-size: 17px;
-          font-weight: 700;
+          font-weight: 600;
           letter-spacing: .01em;
           transition: color .2s, background .2s;
           white-space: nowrap;
@@ -273,8 +278,8 @@ a.top-contact-item:hover {
           border-radius: 100px;
           border: none;
           cursor: pointer;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          font-weight: 700;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-weight: 600;
           font-size: 17px;
           letter-spacing: .02em;
           background: linear-gradient(135deg, #18C6C8 0%, #0FA3B1 100%);
@@ -323,8 +328,8 @@ a.top-contact-item:hover {
           cursor: pointer;
           padding: 14px 12px;
           border-radius: 12px;
-          font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 16px;
+          font-family: 'Source Sans Pro', sans-serif;
+          font-size: 18px;
           font-weight: 600;
           color: #4A5A78;
           text-align: left;
@@ -333,7 +338,7 @@ a.top-contact-item:hover {
         }
         .nav-drawer-item:last-of-type { border-bottom: none; }
         .nav-drawer-item:hover, .nav-drawer-item.active { background: rgba(24,198,200,.08); color: #0B2545; }
-        .nav-drawer-item.active { color: #1E5AA8; font-weight: 700; }
+        .nav-drawer-item.active { color: #1E5AA8; font-weight: 600; }
         .nav-drawer-apply {
           margin-top: 16px;
           width: 100%;
@@ -512,12 +517,12 @@ a.top-contact-item:hover {
 
   .nav-drawer-item {
     padding: 12px 12px;
-    font-size: 14px;
+    font-size: 17px;
   }
 
   .nav-drawer-apply {
     padding: 13px 20px;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 

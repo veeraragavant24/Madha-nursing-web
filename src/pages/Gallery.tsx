@@ -186,11 +186,11 @@ export default function Gallery({ navigate }: Props) {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 50% 60%, rgba(24,198,200,.08) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Campus Life</span>
-          <h1 className="font-jakarta" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
             Life at<br/>
             <span className="text-teal-g">Madha College</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 18, maxWidth: 500, margin: '24px auto 0', lineHeight: 1.75 }}>
+          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 20, maxWidth: 500, margin: '24px auto 0', lineHeight: 1.75 }}>
             Glimpses of learning, healing, research, and the vibrant community that defines us.
           </p>
         </div>
@@ -202,7 +202,7 @@ export default function Gallery({ navigate }: Props) {
           {CATEGORIES.map(cat => (
             <button key={cat} onClick={() => setFilter(cat)} style={{
               padding: '10px 24px', borderRadius: 100, border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-jakarta)', fontWeight: 700, fontSize: 13,
+              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 13,
               background: filter === cat ? '#0B2545' : '#F3F7FB',
               color: filter === cat ? 'white' : '#6A7A96',
               transition: 'all .25s', whiteSpace: 'nowrap',
@@ -246,7 +246,7 @@ export default function Gallery({ navigate }: Props) {
                   >
                     <span style={{
                       background: 'rgba(24,198,200,.9)', color: 'white', padding: '4px 12px', borderRadius: 100,
-                      fontFamily: 'var(--font-jakarta)', fontSize: 11, fontWeight: 700, letterSpacing: '.1em',
+                      fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600, letterSpacing: '.1em',
                     }}>
                       {img.cat}
                     </span>
@@ -284,11 +284,11 @@ export default function Gallery({ navigate }: Props) {
   className="gallery-lightbox-caption"
   style={{ textAlign: 'center', marginTop: 20 }}
 >
-              <span className="font-jakarta" style={{ color: 'rgba(255,255,255,.7)', fontSize: 14 }}>{lightbox.alt}</span>
+              <span className="font-sans" style={{ color: 'rgba(255,255,255,.7)', fontSize: 14 }}>{lightbox.alt}</span>
               <span style={{
                 marginLeft: 12, background: 'rgba(24,198,200,.2)', border: '1px solid rgba(24,198,200,.35)',
                 color: '#18C6C8', padding: '3px 10px', borderRadius: 100,
-                fontFamily: 'var(--font-jakarta)', fontSize: 11, fontWeight: 700,
+                fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600,
               }}>
                 {lightbox.cat}
               </span>
