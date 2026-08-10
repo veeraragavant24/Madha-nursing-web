@@ -66,7 +66,7 @@ export default function Courses({ navigate }: Props) {
   const course = COURSES[active]
 
   return (
-  <div className="courses-page" style={{ paddingTop: 72 }}>
+  <div className="courses-page">
     <style>{`
   .courses-page {
     width: 100%;
@@ -74,7 +74,7 @@ export default function Courses({ navigate }: Props) {
   }
 
   .courses-hero {
-    padding: 100px 40px;
+    padding: 190px 40px 100px;
   }
 
   .courses-tabs-inner {
@@ -121,7 +121,7 @@ export default function Courses({ navigate }: Props) {
 
   @media (max-width: 768px) {
     .courses-hero {
-      padding: 70px 20px !important;
+      padding: 160px 20px 70px !important;
     }
 
     .courses-hero h1 {
@@ -204,7 +204,7 @@ export default function Courses({ navigate }: Props) {
 
   @media (max-width: 480px) {
     .courses-hero {
-      padding: 58px 16px !important;
+      padding: 155px 16px 58px !important;
     }
 
     .courses-hero h1 {
@@ -239,7 +239,7 @@ export default function Courses({ navigate }: Props) {
   className="courses-hero"
   style={{
     background: 'linear-gradient(160deg, #071A36 0%, #0B2545 70%, #0E3060 100%)',
-    padding: '100px 40px',
+    padding: '190px 40px 100px',
     position: 'relative',
     overflow: 'hidden'
   }}
@@ -252,11 +252,11 @@ export default function Courses({ navigate }: Props) {
         />
         <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Academic Programmes</span>
-          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(40px, 5vw, 80px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
             Nursing Courses<br/>
             <span className="text-teal-g">That Shape Careers</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 20, maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
+          <p style={{ color: '#F1F5F9', fontSize: 20, maxWidth: 560, margin: '0 auto', lineHeight: 1.75 }}>
             TNMGRMU affiliated, INC approved programmes built for the 21st century healthcare landscape.
           </p>
         </div>
@@ -277,8 +277,8 @@ export default function Courses({ navigate }: Props) {
           {COURSES.map((c, i) => (
             <button key={c.code} onClick={() => setActive(i)} style={{
               padding: '20px 32px', background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
-              color: active === i ? c.color : '#8A9ABC',
+              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 15,
+              color: active === i ? c.color : '#475569',
               borderBottom: `3px solid ${active === i ? c.color : 'transparent'}`,
               whiteSpace: 'nowrap', transition: 'all .25s',
             }}>
@@ -297,17 +297,17 @@ export default function Courses({ navigate }: Props) {
           {/* Header */}
           <div className="course-header">
             <div>
-              <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, letterSpacing: '.08em', marginBottom: 20 }}>
+              <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, letterSpacing: '.08em', marginBottom: 20 }}>
                 {course.level}
               </div>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em', marginBottom: 16 }}>
                 {course.code} <span style={{ color: course.color }}>{course.name.replace(/^[A-Za-z.\s]+\s/, '')}</span>
               </h2>
               <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap' }}>
                 {[['Duration', course.duration], ['Intake', course.intake]].map(([label, val]) => (
                   <div key={label}>
-                    <div style={{ color: '#9CA9C0', fontSize: 11, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
-                    <div className="font-sans" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545' }}>{val}</div>
+                    <div style={{ color: '#475569', fontSize: 13, fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 4 }}>{label}</div>
+                    <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>{val}</div>
                   </div>
                 ))}
               </div>
@@ -338,7 +338,7 @@ export default function Courses({ navigate }: Props) {
                     <div style={{ width: 22, height: 22, borderRadius: 6, background: 'rgba(24,198,200,.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#18C6C8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
-                    <span style={{ color: '#4A5A78', fontSize: 14, lineHeight: 1.6 }}>{e}</span>
+                    <span style={{ color: '#1E293B', fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.7 }}>{e}</span>
                   </div>
                 ))}
               </div>
@@ -358,7 +358,7 @@ export default function Courses({ navigate }: Props) {
                     }}>
                       {i + 1}
                     </div>
-                    <span style={{ color: '#4A5A78', fontSize: 14, lineHeight: 1.65 }}>{c}</span>
+                    <span style={{ color: '#1E293B', fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.75 }}>{c}</span>
                   </div>
                 ))}
               </div>
@@ -373,7 +373,7 @@ export default function Courses({ navigate }: Props) {
                 {course.careers.map(c => (
                   <div key={c} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 12 }}>
                     <div style={{ color: '#F59E0B', fontSize: 16, lineHeight: 1, marginTop: 2 }}>→</div>
-                    <span style={{ color: '#4A5A78', fontSize: 14, lineHeight: 1.6 }}>{c}</span>
+                    <span style={{ color: '#1E293B', fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.7 }}>{c}</span>
                   </div>
                 ))}
               </div>
@@ -386,7 +386,7 @@ export default function Courses({ navigate }: Props) {
                 {course.placements.map(p => (
                   <div key={p} style={{
                     background: 'white', borderRadius: 12, padding: '14px 18px', marginBottom: 10,
-                    border: '1px solid rgba(11,37,69,.06)', fontSize: 14, color: '#4A5A78', lineHeight: 1.5,
+                    border: '1px solid rgba(11,37,69,.06)', fontSize: 'clamp(15px, 1.3vw, 17px)', color: '#1E293B', lineHeight: 1.6,
                   }}>
                     {p}
                   </div>
@@ -424,7 +424,7 @@ export default function Courses({ navigate }: Props) {
 >
             <div>
               <div className="font-sans" style={{ fontSize: 28, fontWeight: 700, color: 'white', marginBottom: 8 }}>Ready to Apply?</div>
-              <p style={{ color: 'rgba(255,255,255,.6)', fontSize: 16 }}>Admissions for batch are now open. Limited seats available.</p>
+              <p style={{ color: '#F1F5F9', fontSize: 17 }}>Admissions for batch are now open. Limited seats available.</p>
             </div>
             <button onClick={() => navigate('contact')} style={{
               background: '#18C6C8', color: 'white', padding: '16px 40px', borderRadius: 100,
@@ -452,13 +452,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         padding: '18px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20,
         textAlign: 'left',
       }}>
-        <span className="font-sans" style={{ fontWeight: 700, fontSize: 15, color: '#0B2545', lineHeight: 1.4 }}>{q}</span>
+        <span className="font-sans" style={{ fontWeight: 700, fontSize: 16, color: '#0B2545', lineHeight: 1.4 }}>{q}</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18C6C8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .25s', flexShrink: 0 }}>
           <polyline points="6 9 12 15 18 9"/>
         </svg>
       </button>
       {open && (
-        <div style={{ color: '#6A7A96', fontSize: 14, lineHeight: 1.75, paddingBottom: 18 }}>{a}</div>
+        <div style={{ color: '#1E293B', fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.75, paddingBottom: 18 }}>{a}</div>
       )}
     </div>
   )

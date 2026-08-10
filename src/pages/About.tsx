@@ -30,19 +30,27 @@ const ACHIEVEMENTS = [
 
 export default function About({ navigate }: Props) {
   return (
-    <div className="about-page" style={{ paddingTop: 72 }}>
+    <div className="about-page">
       <style>{`
+  .about-hero-content {
+    padding-top: 190px !important;
+  }
+
   @media (max-width: 768px) {
 
     .about-page {
-      padding-top: 72px !important;
-      width: 100%;
-      overflow-x: hidden;
-    }
+  padding-top: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
 
     /* HERO */
     .about-banner {
-      height: 360px !important;
+      height: 430px !important;
+    }
+
+    .about-hero-content {
+      padding-top: 160px !important;
     }
 
     .about-banner h1 {
@@ -172,7 +180,11 @@ export default function About({ navigate }: Props) {
   @media (max-width: 480px) {
 
     .about-banner {
-      height: 330px !important;
+      height: 410px !important;
+    }
+
+    .about-hero-content {
+      padding-top: 155px !important;
     }
 
     .about-banner h1 {
@@ -189,20 +201,20 @@ export default function About({ navigate }: Props) {
   }
 `}</style>
       {/* Banner */}
-      <section className="about-banner" style={{ position: 'relative', height: 480, overflow: 'hidden', background: '#0B2545' }}>
+      <section className="about-banner" style={{ position: 'relative', height: 520, overflow: 'hidden', background: '#0B2545' }}>
         <img
           src="/campus/madaha-nursing-college-9.jpg"
           alt="Madha College students"
           style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.25 }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(11,37,69,.9) 0%, rgba(30,90,168,.6) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 40px' }}>
+        <div className="about-hero-content" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center', textAlign: 'center', padding: '190px 40px 0' }}>
           <span className="section-tag" style={{ marginBottom: 20 }}>About Us</span>
-          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em' }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(40px, 5vw, 80px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em' }}>
             Our Story &<br/>
             <span className="text-teal-g">Our Mission</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.65)', fontSize: 20, maxWidth: 560, marginTop: 20, lineHeight: 1.7 }}>
+          <p style={{ color: '#F1F5F9', fontSize: 20, maxWidth: 560, marginTop: 20, lineHeight: 1.7 }}>
             25 years of transforming lives through compassionate nursing education
           </p>
         </div>
@@ -237,7 +249,7 @@ export default function About({ navigate }: Props) {
                 >
                   <div style={{ fontSize: 40, marginBottom: 20 }}>{item.icon}</div>
                   <h3 className="font-sans" style={{ fontSize: 28, fontWeight: 600, color: item.color, marginBottom: 16, letterSpacing: '-.01em' }}>{item.title}</h3>
-                  <p style={{ color: '#6A7A96', fontSize: 16, lineHeight: 1.8 }}>{item.text}</p>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.8 }}>{item.text}</p>
                   <div style={{ marginTop: 24, width: 48, height: 3, background: 'linear-gradient(90deg,#18C6C8,#1E5AA8)', borderRadius: 2 }} />
                 </div>
               </Reveal>
@@ -252,7 +264,7 @@ export default function About({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Our Journey</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
                 25 Years of <span className="text-teal-g">Excellence</span>
               </h2>
             </Reveal>
@@ -283,9 +295,9 @@ export default function About({ navigate }: Props) {
                     border: '1px solid rgba(11,37,69,.07)', maxWidth: 380,
                     boxShadow: '0 4px 24px rgba(11,37,69,.06)',
                   }}>
-                    <div className="font-sans" style={{ fontSize: 13, fontWeight: 700, color: '#18C6C8', letterSpacing: '.08em', marginBottom: 8 }}>{item.year}</div>
+                    <div className="font-sans" style={{ fontSize: 14, fontWeight: 700, color: '#18C6C8', letterSpacing: '.08em', marginBottom: 8 }}>{item.year}</div>
                     <div className="font-sans" style={{ fontSize: 18, fontWeight: 700, color: '#0B2545', marginBottom: 10 }}>{item.title}</div>
-                    <p style={{ color: '#6A7A96', fontSize: 15, lineHeight: 1.7 }}>{item.desc}</p>
+                    <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{item.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -300,7 +312,7 @@ export default function About({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <Reveal><span className="section-tag">Achievements</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, color: '#0B2545', marginTop: 20, lineHeight: 1.1, letterSpacing: '-.02em' }}>
                 Milestones That <span className="text-teal-g">Define Us</span>
               </h2>
             </Reveal>
@@ -342,7 +354,7 @@ export default function About({ navigate }: Props) {
                   <div className="font-sans" style={{ fontSize: 38, fontWeight: 700, color: 'white', lineHeight: 1.2, marginBottom: 16 }}>
                     A Campus Built<br/>for Excellence
                   </div>
-                  <p style={{ color: 'rgba(255,255,255,.7)', fontSize: 17, maxWidth: 360, lineHeight: 1.7 }}>
+                  <p style={{ color: '#F1F5F9', fontSize: 'clamp(16px, 1.35vw, 18px)', maxWidth: 360, lineHeight: 1.7 }}>
                   80-acre campus with world-class laboratories, hostel, library, and dedicated clinical simulation centre.
                 </p>
                 <button onClick={() => navigate('contact')} className="btn-teal" style={{ marginTop: 28 }}>

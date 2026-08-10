@@ -18,7 +18,7 @@ function StatItem({ value, suffix, label, start }: { value: number; suffix: stri
         <span className="text-gold-g">{count}</span>
         <span style={{ color: '#18C6C8', fontSize: 'clamp(28px, 3vw, 44px)' }}>{suffix}</span>
       </div>
-      <div style={{ color: 'rgba(255,255,255,.55)', fontSize: 17, fontWeight: 500, marginTop: 8, letterSpacing: '.04em' }}>{label}</div>
+      <div style={{ color: '#CBD5E1', fontSize: 17, fontWeight: 500, marginTop: 8, letterSpacing: '.04em' }}>{label}</div>
     </div>
   )
 }
@@ -481,7 +481,7 @@ export default function Home({ navigate }: Props) {
                 }}>
                   <div className="font-sans" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, color: '#0B2545', letterSpacing: '-.03em', lineHeight: 1 }}>98%</div>
                   <div style={{ color: '#1E5AA8', fontSize: 17, fontWeight: 600, marginTop: 6 }}>Placement Rate</div>
-                  <div style={{ color: '#9CA9C0', fontSize: 15, marginTop: 2 }}>2024 Batch</div>
+                  <div style={{ color: '#475569', fontSize: 15, marginTop: 2 }}>2024 Batch</div>
                 </div>
                 {/* Accreditation badge */}
                 <div className="home-inc-badge" style={{
@@ -490,7 +490,7 @@ export default function Home({ navigate }: Props) {
                   boxShadow: '0 16px 32px rgba(24,198,200,.35)',
                 }}>
                   <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 17 }}>INC</div>
-                  <div style={{ color: 'rgba(255,255,255,.75)', fontSize: 14, fontWeight: 600, letterSpacing: '.08em' }}>APPROVED</div>
+                  <div style={{ color: '#F1F5F9', fontSize: 14, fontWeight: 600, letterSpacing: '.08em' }}>APPROVED</div>
                 </div>
               </div>
             </Reveal>
@@ -501,13 +501,13 @@ export default function Home({ navigate }: Props) {
                 <span className="section-tag">Why Madha College</span>
               </Reveal>
               <Reveal delay={2}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
                   Where Compassion<br/>Meets Clinical<br/>
                   <span className="text-teal-g">Excellence</span>
                 </h2>
               </Reveal>
               <Reveal delay={3}>
-                <p style={{ color: '#5A6A8A', fontSize: 18, lineHeight: 1.8, marginBottom: 36 }}>
+                <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 36 }}>
                   At Madha College of Nursing, we believe that great nurses are made through rigorous academic training, hands-on clinical exposure, and character development rooted in compassion. Our 25-year legacy reflects a deep commitment to producing healthcare professionals who lead with both skill and heart.
                 </p>
               </Reveal>
@@ -530,7 +530,7 @@ export default function Home({ navigate }: Props) {
                     >
                       <div style={{ fontSize: 24, marginBottom: 10 }}>{item.icon}</div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 6 }}>{item.title}</div>
-                      <div style={{ color: '#7A8BAA', fontSize: 16, lineHeight: 1.6 }}>{item.desc}</div>
+                      <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{item.desc}</div>
                     </div>
                   </Reveal>
                 ))}
@@ -555,13 +555,13 @@ export default function Home({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Academic Programmes</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
                 Pathways to a<br/>
                 <span className="text-navy-g">Nursing Career</span>
               </h2>
             </Reveal>
             <Reveal delay={2}>
-              <p style={{ color: '#6A7A96', fontSize: 18, maxWidth: 520, margin: '20px auto 0', lineHeight: 1.7 }}>
+              <p style={{ color: '#1E293B', fontSize: 18, maxWidth: 520, margin: '20px auto 0', lineHeight: 1.7 }}>
                 Affiliated to TNMGRMU, our programmes are designed to meet global healthcare standards with strong clinical exposure from day one.
               </p>
             </Reveal>
@@ -584,17 +584,17 @@ export default function Home({ navigate }: Props) {
                       <div className="font-sans" style={{ fontSize: 40, fontWeight: 700, color: '#0B2545', letterSpacing: '-.02em', lineHeight: 1, marginBottom: 12 }}>
                         {p.code}
                       </div>
-                      <div className="font-sans" style={{ fontWeight: 600, fontSize: 16, color: '#16213E', lineHeight: 1.4, marginBottom: 20 }}>
+                      <div className="font-sans" style={{ fontWeight: 600, fontSize: 17, color: '#16213E', lineHeight: 1.4, marginBottom: 20 }}>
                         {p.name}
                       </div>
                       <div style={{ display: 'flex', gap: 20 }}>
                         <div>
-                          <div style={{ color: '#9CA9C0', fontSize: 14, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>Duration</div>
-                          <div className="font-sans" style={{ fontWeight: 700, fontSize: 16, color: '#0B2545' }}>{p.duration}</div>
+                          <div style={{ color: '#475569', fontSize: 15, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>Duration</div>
+                          <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>{p.duration}</div>
                         </div>
                         <div>
-                          <div style={{ color: '#9CA9C0', fontSize: 14, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>Intake</div>
-                          <div className="font-sans" style={{ fontWeight: 700, fontSize: 16, color: '#0B2545' }}>{p.intake}</div>
+                          <div style={{ color: '#475569', fontSize: 15, fontWeight: 600, letterSpacing: '.08em', textTransform: 'uppercase', marginBottom: 3 }}>Intake</div>
+                          <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>{p.intake}</div>
                         </div>
                       </div>
                     </div>
@@ -603,7 +603,7 @@ export default function Home({ navigate }: Props) {
                     borderTop: '1px solid rgba(11,37,69,.06)', padding: '18px 28px',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   }}>
-                    <span style={{ color: '#18C6C8', fontSize: 15, fontWeight: 600 }}>View Programme</span>
+                    <span style={{ color: '#18C6C8', fontSize: 16, fontWeight: 600 }}>View Programme</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#18C6C8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </div>
                 </div>
@@ -634,7 +634,7 @@ export default function Home({ navigate }: Props) {
 >
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: `url(https://images.unsplash.com/photo-1758206523766-7c5380ce2f47?w=1600&h=900&fit=crop&auto=format)`,
+          backgroundImage: "url('/departments/Medical-Surgical-Nursing/1.jpg')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           opacity: 0.18,
         }} />
@@ -654,13 +654,13 @@ export default function Home({ navigate }: Props) {
                 <span className="section-tag" style={{ color: '#18C6C8' }}>Clinical Excellence</span>
               </Reveal>
               <Reveal type="left" delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: 'white', marginTop: 20, marginBottom: 24 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: 'white', marginTop: 20, marginBottom: 24 }}>
                   Hands-On Training<br/>at Premier<br/>
                   <span className="text-teal-g">Hospitals</span>
                 </h2>
               </Reveal>
               <Reveal type="left" delay={2}>
-                <p style={{ color: 'rgba(255,255,255,.60)', fontSize: 18, lineHeight: 1.8, marginBottom: 48 }}>
+                <p style={{ color: '#F1F5F9', fontSize: 18, lineHeight: 1.8, marginBottom: 48 }}>
                   Our students spend 50% of their academic time in live hospital environments. Through structured rotations across 18 affiliated hospitals, they develop clinical competency that employers recognise from day one.
                 </p>
               </Reveal>
@@ -671,8 +671,8 @@ export default function Home({ navigate }: Props) {
                   <Reveal key={h} type="left">
                     <span style={{
                       background: 'rgba(24,198,200,.10)', border: '1px solid rgba(24,198,200,.22)',
-                      color: 'rgba(255,255,255,.75)', padding: '8px 16px', borderRadius: 100,
-                      fontSize: 14, fontWeight: 500, display: 'inline-block',
+                      color: '#F1F5F9', padding: '8px 16px', borderRadius: 100,
+                      fontSize: 15, fontWeight: 500, display: 'inline-block',
                     }}>
                       {h}
                     </span>
@@ -708,11 +708,11 @@ export default function Home({ navigate }: Props) {
                     </div>
                     {/* Content */}
                     <div style={{ paddingBottom: 40 }}>
-                      <div className="font-sans" style={{ fontSize: 14, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#18C6C8', marginBottom: 8 }}>
+                      <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#18C6C8', marginBottom: 8 }}>
                         {step.year}
                       </div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: 'white', marginBottom: 10 }}>{step.title}</div>
-                      <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 16, lineHeight: 1.7 }}>{step.desc}</p>
+                      <p style={{ color: '#F1F5F9', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.7 }}>{step.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -734,7 +734,7 @@ export default function Home({ navigate }: Props) {
             <div>
               <Reveal><span className="section-tag">Our Departments</span></Reveal>
               <Reveal delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 16 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 16 }}>
                   Six Specialised<br/>
                   <span className="text-teal-g">Nursing Departments</span>
                 </h2>
@@ -778,13 +778,13 @@ export default function Home({ navigate }: Props) {
             <div>
               <Reveal><span className="section-tag">Research & Innovation</span></Reveal>
               <Reveal delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
                   Advancing Nursing<br/>Science in<br/>
                   <span className="text-teal-g">South Asia</span>
                 </h2>
               </Reveal>
               <Reveal delay={2}>
-                <p style={{ color: '#6A7A96', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>
+                <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>
                   Our faculty and research scholars pursue impactful research funded by DST, ICMR, and international bodies — driving meaningful improvements in patient care and healthcare policy.
                 </p>
               </Reveal>
@@ -793,7 +793,7 @@ export default function Home({ navigate }: Props) {
                   {[{ val: '48+', label: 'Research Papers' }, { val: '₹1.2Cr', label: 'Grant Funding' }, { val: '6', label: 'Active Projects' }].map(s => (
                     <div key={s.label}>
                       <div className="font-sans text-gold-g" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, letterSpacing: '-.02em' }}>{s.val}</div>
-                      <div style={{ color: '#8A9ABC', fontSize: 17, fontWeight: 500, marginTop: 4 }}>{s.label}</div>
+                      <div style={{ color: '#475569', fontSize: 17, fontWeight: 500, marginTop: 4 }}>{s.label}</div>
                     </div>
                   ))}
                 </div>
@@ -813,8 +813,8 @@ export default function Home({ navigate }: Props) {
                   >
                     <div style={{ fontSize: 28, marginBottom: 14 }}>{r.icon}</div>
                     <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 8, lineHeight: 1.3 }}>{r.title}</div>
-                    <div className="font-sans" style={{ fontSize: 14, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.stat}</div>
-                    <div style={{ color: '#8A9ABC', fontSize: 16, lineHeight: 1.65 }}>{r.desc}</div>
+                    <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.stat}</div>
+                    <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{r.desc}</div>
                   </div>
                 </Reveal>
               ))}
@@ -831,7 +831,7 @@ export default function Home({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 64 }}>
             <Reveal><span className="section-tag">Campus Life</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
                 Life at<br/>
                 <span className="text-teal-g">Madha College</span>
               </h2>
@@ -870,7 +870,7 @@ export default function Home({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Student Voices</span></Reveal>
             <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: 'white', marginTop: 20 }}>
+              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: 'white', marginTop: 20 }}>
                 Stories from Our<br/>
                 <span className="text-teal-g">Alumni</span>
               </h2>
@@ -887,7 +887,7 @@ export default function Home({ navigate }: Props) {
                       <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     ))}
                   </div>
-                  <p style={{ color: 'rgba(255,255,255,.75)', fontSize: 18, lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic' }}>
+                  <p style={{ color: '#F1F5F9', fontSize: 18, lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic' }}>
                     "{t.quote}"
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -902,8 +902,8 @@ export default function Home({ navigate }: Props) {
                     </div>
                     <div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: 'white' }}>{t.name}</div>
-                      <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 14, marginTop: 2 }}>{t.role}</div>
-                      <div style={{ color: '#18C6C8', fontSize: 14, marginTop: 2 }}>{t.hospital}</div>
+                      <div style={{ color: '#CBD5E1', fontSize: 15, marginTop: 2 }}>{t.role}</div>
+                      <div style={{ color: '#18C6C8', fontSize: 15, marginTop: 2 }}>{t.hospital}</div>
                     </div>
                   </div>
                 </div>
@@ -922,13 +922,13 @@ export default function Home({ navigate }: Props) {
             <div className="home-admissions-intro">
               <Reveal><span className="section-tag">Admissions 2026</span></Reveal>
               <Reveal delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
                   Your Journey<br/>Starts Here.<br/>
                   <span className="text-teal-g">Step by Step.</span>
                 </h2>
               </Reveal>
               <Reveal delay={2}>
-                <p style={{ color: '#6A7A96', fontSize: 18, lineHeight: 1.8, marginBottom: 36 }}>
+                <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 36 }}>
                   Applications for the academic year are now open. Limited seats available. Early applicants receive priority counselling.
                 </p>
               </Reveal>
@@ -955,7 +955,7 @@ export default function Home({ navigate }: Props) {
                     </div>
                     <div style={{ paddingBottom: 48, paddingTop: 8 }}>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 10 }}>{step.title}</div>
-                      <p style={{ color: '#6A7A96', fontSize: 16, lineHeight: 1.7 }}>{step.desc}</p>
+                      <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.7 }}>{step.desc}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -978,12 +978,12 @@ export default function Home({ navigate }: Props) {
             </div>
           </Reveal>
           <Reveal delay={1}>
-            <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.03em', color: 'white', marginBottom: 24 }}>
+            <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.03em', color: 'white', marginBottom: 24 }}>
               Ready to Begin<br/>Your Nursing Career?
             </h2>
           </Reveal>
           <Reveal delay={2}>
-            <p style={{ color: 'rgba(255,255,255,.65)', fontSize: 20, lineHeight: 1.75, marginBottom: 44 }}>
+            <p style={{ color: '#F1F5F9', fontSize: 20, lineHeight: 1.75, marginBottom: 44 }}>
               Talk to our admissions team, visit the campus, or apply online. We're here to guide you every step of the way.
             </p>
           </Reveal>

@@ -22,76 +22,73 @@ interface Slide {
 }
 
 const SLIDES: Slide[] = [
+  // 01 — CAMPUS BUILDING
   {
     id: 'campus',
     img: '/hero/slide-1.jpg',
-    imgPos: 'center 35%',
-    badge: 'Estd. 1998 · Chennai, Tamil Nadu',
-    headline: ['A Legacy of', 'Healthcare Excellence'],
-    sub: 'Madha College of Nursing — 25 years of transforming passionate students into world-class nursing professionals. INC approved · TNMGRMU affiliated.',
-    ctaLabel: 'Explore Our Campus',
+    imgPos: 'center 45%',
+    badge: 'Welcome to Madha College of Nursing',
+    headline: ['Building Futures.', 'Inspiring Care.'],
+    sub: 'Begin your nursing journey at Madha College of Nursing — an institution committed to academic excellence, professional values, and compassionate healthcare.',
+    ctaLabel: 'Discover Madha',
     ctaPage: 'about',
     ctaSecondaryLabel: 'Apply for Admission',
     ctaSecondaryPage: 'contact',
   },
+
+  // 02 — STUDENTS PRACTICAL
   {
-    id: 'education',
+    id: 'practical',
     img: '/hero/slide-2.jpg',
-    imgPos: 'center 40%',
-    badge: 'Academic Excellence',
-    headline: ['Where Compassion', 'Meets Clinical Mastery'],
-    sub: 'Rigorous, evidence-based nursing education delivered by doctorate-qualified faculty with state-of-the-art simulation labs and modern digital classrooms.',
-    ctaLabel: 'View All Programmes',
+    imgPos: 'center 45%',
+    badge: 'Hands-On Nursing Education',
+    headline: ['Where Learning', 'Becomes Practice.'],
+    sub: 'Build confidence and clinical competence through hands-on practical training, modern nursing laboratories, and learning experiences designed for real-world healthcare.',
+    ctaLabel: 'Explore Our Programmes',
     ctaPage: 'courses',
-    ctaSecondaryLabel: 'Meet Our Faculty',
+    ctaSecondaryLabel: 'Our Departments',
     ctaSecondaryPage: 'departments',
   },
+
+  // 03 — STUDENT EVENT
   {
-    id: 'clinical',
+    id: 'student-event',
     img: '/hero/slide-3.jpg',
-    imgPos: 'center 30%',
-    badge: 'Hospital-Integrated Training',
-    headline: ['50% of Your Journey', 'Happens at the Bedside'],
-    sub: 'Live clinical rotations across 18 affiliated hospitals in Chennai. Real patients, real responsibility, real confidence — from your very first year.',
-    ctaLabel: 'Our Hospital Partners',
-    ctaPage: 'departments',
-    ctaSecondaryLabel: 'Student Experiences',
-    ctaSecondaryPage: 'gallery',
-  },
-  {
-    id: '/hero/slide-4.jpg',
-    img: '/hero/slide-4.jpg',
-    imgPos: 'center 50%',
-    badge: 'Research & Innovation',
-    headline: ['Laboratories Built', 'for the Next Decade'],
-    sub: 'Cutting-edge simulation suites, anatomy labs, pharmacology rooms, and a research centre backed by DST and ICMR grants with 48+ published papers.',
-    ctaLabel: 'Research & Departments',
-    ctaPage: 'departments',
-    ctaSecondaryLabel: 'Our Facilities',
+    imgPos: 'center 45%',
+    badge: 'Life Beyond the Classroom',
+    headline: ['Learn. Connect.', 'Grow Together.'],
+    sub: 'College life at Madha extends beyond academics — giving students opportunities to participate, collaborate, lead, celebrate, and create meaningful experiences together.',
+    ctaLabel: 'Explore Campus Life',
+    ctaPage: 'gallery',
+    ctaSecondaryLabel: 'Discover Madha',
     ctaSecondaryPage: 'about',
   },
+
+  // 04 — STUDENT EVENT / CELEBRATION
   {
-    id: 'studentlife',
-    img: '/hero/slide-5.jpg',
+    id: 'celebration',
+    img: '/hero/slide-4.jpg',
     imgPos: 'center 45%',
-    badge: 'Campus Life',
-    headline: ['More Than a Degree —', 'A Complete Experience'],
-    sub: 'Hostel accommodation, sports, cultural events, mentorship programmes, and a vibrant student community that becomes your lifelong professional network.',
-    ctaLabel: 'Gallery & Campus Life',
+    badge: 'Celebrating Life at Madha',
+    headline: ['Moments That Become', 'Memories for Life.'],
+    sub: 'From cultural celebrations and college events to student activities, every experience builds confidence, friendship, teamwork, and a strong sense of community.',
+    ctaLabel: 'View Our Gallery',
     ctaPage: 'gallery',
-    ctaSecondaryLabel: 'Contact Us',
-    ctaSecondaryPage: 'contact',
+    ctaSecondaryLabel: 'About Our College',
+    ctaSecondaryPage: 'about',
   },
+
+  // 05 — GRADUATION
   {
-    id: 'admissions',
-    img: '/hero/slide-6.jpg',
-    imgPos: 'center 25%',
-    badge: 'Admissions 2026–27 Open',
-    headline: ['Your Future in', 'Healthcare Starts Here'],
-    sub: 'Applications for B.Sc., M.Sc., and Post Basic B.Sc. Nursing are now open. Limited seats. Early applicants receive priority counselling.',
-    ctaLabel: 'Apply Now — 2026 Batch',
+    id: 'graduation',
+    img: '/hero/slide-5.jpg',
+    imgPos: 'center 40%',
+    badge: 'Your Journey · Your Future',
+    headline: ['From Madha to a', 'World of Possibilities.'],
+    sub: 'Every lesson, practical experience, and milestone leads to this moment — stepping forward as a skilled, confident, and compassionate nursing professional.',
+    ctaLabel: 'Begin Your Journey',
     ctaPage: 'contact',
-    ctaSecondaryLabel: 'Admission Process',
+    ctaSecondaryLabel: 'View Our Programmes',
     ctaSecondaryPage: 'courses',
   },
 ]
@@ -245,9 +242,9 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
         }
 
         .slide-num {
-          font-family: 'Source Sans Pro', sans-serif;
+          font-family: 'Roboto Condensed', sans-serif;
           font-size: 14px; font-weight: 600; letter-spacing: .18em;
-          color: rgba(255,255,255,.45);
+          color: #CBD5E1;
           text-transform: uppercase;
         }
 
@@ -443,7 +440,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           transition: 'all .85s .15s cubic-bezier(.16,1,.3,1)',
         }}>
           <h1 key={`h-${current}`} className="font-sans" style={{
-            fontSize: 'clamp(38px, 5vw, 76px)',
+            fontSize: 'clamp(40px, 5vw, 80px)',
             fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
             color: 'white', maxWidth: 780,
             animation: `fadeUp .75s cubic-bezier(.16,1,.3,1) forwards`,
@@ -455,7 +452,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
         {/* Sub */}
         <p key={`p-${current}`} style={{
-          fontSize: 20, color: 'rgba(255,255,255,.70)', lineHeight: 1.78,
+          fontSize: 20, color: '#F1F5F9', lineHeight: 1.78,
           maxWidth: 540, marginBottom: 44,
           opacity: heroIn ? 1 : 0,
           transform: heroIn ? 'none' : 'translateY(16px)',
@@ -487,11 +484,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           position: 'absolute', right: '5%', top: '50%', transform: 'translateY(-50%)',
           opacity: heroIn ? 1 : 0, transition: 'opacity 1s .8s ease',
         }}>
-          <div className="glass-dark" style={{ borderRadius: 24, padding: '28px 32px', textAlign: 'center', minWidth: 176 }}>
-            <div style={{ fontSize: 34, marginBottom: 8 }}>🏆</div>
-            <div className="font-sans" style={{ color: '#18C6C8', fontSize: 15, fontWeight: 700, letterSpacing: '.06em', marginBottom: 4 }}>INC Approved</div>
-            <div style={{ color: 'rgba(255,255,255,.50)', fontSize: 14 }}>TNMGRMU Affiliated</div>
-          </div>
+          
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Roboto+Condensed:wght@300;400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -9,7 +9,7 @@
   --color-softwhite: #FAFBFD;
   --color-sectionbg: #F3F7FB;
   --color-ink: #16213E;
-  --font-sans: 'Source Sans Pro', sans-serif;
+ --font-sans: 'Roboto Condensed', sans-serif;
 }
 
 /* ─────────────────────────────────────────
@@ -218,7 +218,7 @@ body {
 /* ─── Section tag ─── */
 .section-tag {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600;
   letter-spacing: .12em; text-transform: uppercase; color: #18C6C8;
 }
 .section-tag::before {
@@ -297,7 +297,7 @@ body {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(24,198,200,.14); border: 1px solid rgba(24,198,200,.38);
   color: #18C6C8; padding: 8px 20px; border-radius: 100px;
-  font-family: var(--font-sans); font-size: 14px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
 }
 .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #18C6C8; animation: pulse-dot 2s infinite; flex-shrink: 0; }
 
