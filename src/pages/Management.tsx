@@ -164,7 +164,7 @@ return (
 
           <div style={{ width: 36, height: 3, background: `linear-gradient(90deg, ${person.accent}, #18C6C8)`, borderRadius: 2, marginBottom: 18 }} />
 
-          <p style={{ color: '#44536B', fontSize: 14, lineHeight: 1.9,fontWeight: 400, marginBottom: 22 }}>
+          <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9,fontWeight: 400, marginBottom: 22 }}>
             {person.bio}
           </p>
 
@@ -172,7 +172,7 @@ return (
             {person.quals.map(q => (
               <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: person.accent, marginTop: 6, flexShrink: 0 }} />
-                <span style={{ color: '#4A5A78', fontSize: 12.5, lineHeight: 1.6 }}>{q}</span>
+                <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.6 }}>{q}</span>
               </div>
             ))}
           </div>
@@ -188,7 +188,7 @@ export default function Management({ navigate }: Props) {
   return (
   <div
     className="management-page"
-    style={{ paddingTop: 72, background: '#F3F7FB' }}
+    style={{ background: '#F3F7FB' }}
   >
     <style>{`
   .management-page {
@@ -197,7 +197,7 @@ export default function Management({ navigate }: Props) {
   }
 
   .management-hero {
-    padding: 112px 48px 96px;
+    padding: 190px 48px 96px;
   }
 
   .management-team-section {
@@ -248,7 +248,7 @@ export default function Management({ navigate }: Props) {
 
   @media (max-width: 768px) {
     .management-hero {
-      padding: 72px 20px 64px !important;
+      padding: 160px 20px 64px !important;
     }
 
     .management-hero h1 {
@@ -343,7 +343,7 @@ export default function Management({ navigate }: Props) {
 
   @media (max-width: 480px) {
     .management-hero {
-      padding: 58px 16px 52px !important;
+      padding: 155px 16px 52px !important;
     }
 
     .management-hero h1 {
@@ -417,14 +417,14 @@ export default function Management({ navigate }: Props) {
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
           <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Leadership</span>
           <h1 className="font-sans" style={{
-            fontSize: 'clamp(38px, 5.5vw, 76px)',
+            fontSize: 'clamp(40px, 5.5vw, 80px)',
             fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
             color: 'white', marginBottom: 24,
           }}>
             The Minds Behind<br/>
             <span className="text-teal-g">Madha College</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 20, lineHeight: 1.8, maxWidth: 540, margin: '0 auto' }}>
+          <p style={{ color: '#F1F5F9', fontSize: 20, lineHeight: 1.8, maxWidth: 540, margin: '0 auto' }}>
             A leadership team combining medicine, nursing science, hospital administration, and global healthcare education expertise.
           </p>
         </div>
@@ -460,8 +460,8 @@ export default function Management({ navigate }: Props) {
               borderLeft: i > 0 ? '1px solid rgba(255,255,255,.07)' : 'none',
             }}>
               <div className="font-sans text-teal-g" style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-.03em', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
-              <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{s.label}</div>
-              <div style={{ color: 'rgba(255,255,255,.38)', fontSize: 12 }}>{s.sub}</div>
+              <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 6 }}>{s.label}</div>
+              <div style={{ color: 'rgba(255,255,255,.38)', fontSize: 13 }}>{s.sub}</div>
             </div>
           ))}
         </div>
@@ -489,7 +489,7 @@ export default function Management({ navigate }: Props) {
           </h2>
         </Reveal>
         <Reveal delay={2}>
-          <p style={{ color: '#6A7A96', fontSize: 18, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
+          <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
             Our leadership team is committed to your success. Reach out to begin your journey at Madha College of Nursing.
           </p>
           <div className="management-cta-buttons">

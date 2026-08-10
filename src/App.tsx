@@ -15,10 +15,17 @@ type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact'
 export default function App() {
   const [page, setPage] = useState<Page>('home')
 
-  const navigate = (p: Page) => {
-    setPage(p)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+const navigate = (p: Page) => {
+  // Change page
+  setPage(p)
+
+  // Immediately return to the top
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'auto',
+  })
+}
 
   useEffect(() => {
     const titles: Record<Page, string> = {
@@ -31,6 +38,7 @@ export default function App() {
       management: 'Management — Madha College of Nursing',
       principal: "Principal's Office — Madha College of Nursing",
     }
+
     document.title = titles[page]
   }, [page])
 

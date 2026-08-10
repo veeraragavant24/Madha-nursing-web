@@ -22,14 +22,33 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const onScroll = () => {
+    setScrolled(window.scrollY > 20)
+  }
 
-  useEffect(() => { setMenuOpen(false) }, [currentPage])
+  // Set the correct state immediately when the page loads
+  onScroll()
 
-  const isScrolled = scrolled || currentPage !== 'home'
+  window.addEventListener('scroll', onScroll, { passive: true })
+
+  return () => {
+    window.removeEventListener('scroll', onScroll)
+  }
+}, [])
+
+ useEffect(() => {
+  setMenuOpen(false)
+  setScrolled(false)
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'auto',
+  })
+}, [currentPage])
+
+  
+ const isScrolled = scrolled
 
   return (
     <>
@@ -45,12 +64,18 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   left: 0;
   right: 0;
   width: 100%;
-  height: 34px;
+  height: 42px;
   background: #071a36;
   z-index: 2000;
   display: flex;
   align-items: center;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 }
+
+
 
 .top-contact-inner {
   max-width: 1280px;
@@ -64,15 +89,19 @@ export default function Nav({ currentPage, navigate }: NavProps) {
 }
 
 
-
 .top-contact-item {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: rgba(255, 255, 255, 0.92);
+  gap: 8px;
+
+  color: #ffffff;
   text-decoration: none;
-  font-size: 14px;
+
+  font-family: 'Roboto Condensed', sans-serif;
+ font-size: 17px;
   font-weight: 500;
+  letter-spacing: 0.01em;
+
   white-space: nowrap;
 }
 
@@ -81,69 +110,128 @@ a.top-contact-item:hover {
 }
 
 @media (max-width: 768px) {
-  .top-contact-bar {
-    height: 30px;
+  .nav-root.solid {
+    top: 30px;
   }
-
-  .nav-root {
-  top: 30px !important;
 }
 
   .top-contact-inner {
     padding: 0 12px;
     justify-content: center;
-    gap: 18px;
+    gap: 35px;
   }
 
   .top-contact-item {
-    font-size: 12px;
+    font-size: 15px;
   }
 
-  .top-address {
-    display: none;
-  }
+  
 }
 
-       .nav-root {
+/* =========================================
+   HEADER — BASE
+========================================= */
+
+.nav-root {
   position: fixed;
-  top: 34px;
+  top: 42px;
   left: 0;
   right: 0;
   width: 100%;
+  height: 105px;
   z-index: 1900;
 
-  transition:
-    background .35s cubic-bezier(.16,1,.3,1),
-    box-shadow .35s cubic-bezier(.16,1,.3,1),
-    backdrop-filter .35s;
-}
-        .nav-root.transparent {
-          background: transparent;
-          box-shadow: none;
-        }
-        .nav-root.solid {
-          background: #ffffff;
-          box-shadow: 0 2px 24px rgba(11,37,69,.09), 0 1px 0 rgba(11,37,69,.06);
-        }
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 
+  transition:
+    width 0.45s cubic-bezier(.16,1,.3,1),
+    left 0.45s cubic-bezier(.16,1,.3,1),
+    top 0.45s cubic-bezier(.16,1,.3,1),
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-radius 0.35s ease;
+}
+
+
+/* =========================================
+   BEFORE SCROLL
+   FULL WIDTH / TRANSPARENT
+========================================= */
+
+.nav-root.transparent {
+  position: fixed;
+  top: 42px;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  height: 105px;
+
+  transform: none;
+
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+
+  z-index: 1900;
+}
+
+
+/* =========================================
+   AFTER SCROLL
+   COMPACT WHITE CARD
+========================================= */
+
+.nav-root.solid {
+  position: fixed;
+
+    top: 42px;
+  left: 50%;
+  right: auto;
+
+  width: min(1280px, calc(100% - 48px));
+  height: 92px;
+
+  transform: translateX(-50%);
+
+  background: #ffffff;
+
+  box-shadow: 0 8px 30px rgba(11,37,69,.16);
+
+  border-radius: 0 0 14px 14px;
+
+  z-index: 1900;
+}
         /* 3-column grid — brand gets a fixed minimum so it never
            bleeds into the centred nav links */
         .nav-inner {
-          max-width: 1800px;
-          margin: 0 auto;
-          padding: 0 20px;
-          height: 105px;
-          display: grid;
-          grid-template-columns: 550px 1fr auto;
-          align-items: center;
-          gap: 18px;
-        }
+  width: 100%;
+  max-width: 1800px;
+
+  margin: 0 auto;
+  padding: 0 40px;
+
+  height: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    500px
+    minmax(0, 1fr)
+    150px;
+
+  align-items: center;
+
+  gap: 20px;
+}
 
         /* ── BRAND ── */
         .nav-brand {
           display: flex;
           align-items: center;
-          gap: 22px;
+          gap: 14px;
           background: none;
           border: none;
           cursor: pointer;
@@ -152,22 +240,47 @@ a.top-contact-item:hover {
           text-align: left;
           flex-shrink: 0;
         }
-        .nav-logo-ring {
+       .nav-logo-ring {
   width: 76px;
   height: 88px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   flex-shrink: 0;
   background: transparent;
 }
 
 .nav-logo-img {
   display: block;
+
   width: auto;
-  height: 82px;
+  height: 105px;
+
   max-width: 100%;
   object-fit: contain;
+}
+
+.nav-logo-img {
+  display: block;
+  width: auto;
+  height: 105px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* =========================================
+   SCROLL — COMPACT LOGO
+========================================= */
+
+.nav-root.solid .nav-logo-ring {
+   width: 76px;
+  height: 86px;
+}
+
+.nav-root.solid .nav-logo-img {
+  height: 78px;
 }
        
         .nav-brand-text {
@@ -178,6 +291,7 @@ a.top-contact-item:hover {
         }
         .nav-college-name {
   font-family: 'Cinzel', serif;
+  font-size: 23px;
   font-weight: 700;
   letter-spacing: 0.035em;
   line-height: 1.05;
@@ -185,66 +299,160 @@ a.top-contact-item:hover {
   transition: color .3s;
 }
         .nav-college-sub {
-          font-family: 'Source Sans Pro', sans-serif;
+          font-family: 'Roboto Condensed', sans-serif;
+           font-size: 10px;
           font-weight: 500;
           letter-spacing: .06em;
           transition: color .3s;
         }
         /* transparent state (home hero) */
-        .nav-root.transparent .nav-college-name {
+        /* =========================================
+   COLLEGE NAME — NORMAL
+========================================= */
+
+.nav-root.transparent .nav-college-name {
   color: #ffffff;
+
+  font-family: 'Cinzel', serif;
   font-size: 25px;
   font-weight: 800;
+
   line-height: 1;
+  letter-spacing: 0.035em;
+
+  white-space: nowrap;
 }
+
+.nav-root.transparent .nav-college-sub {
+  color: rgba(255,255,255,.72);
+
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   COLLEGE NAME — SCROLL
+========================================= */
 
 .nav-root.solid .nav-college-name {
-    color: #0B2545;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
-        .nav-root.transparent .nav-college-sub  { color: rgba(255,255,255,.55); font-size: 13px; text-transform: uppercase; }
-        /* solid state (scrolled / inner pages) */
-        .nav-root.solid .nav-college-name {
-  color: #0B2545;
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.025em;
-}
-        .nav-root.solid .nav-college-sub  { color: #8A9ABC; font-size: 10px; text-transform: uppercase; }
 
+.nav-root.solid .nav-college-sub {
+  color: #8A9ABC;
+  font-size: 10px;
+  text-transform: uppercase;
+}
        
 
        
 
         /* ── CENTER NAV LINKS ── */
         .nav-links {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          justify-content: flex-start;
-        }
-        .nav-item {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 10px 16px;
-          border-radius: 10px;
-          position: relative;
-          font-family: 'Source Sans Pro', sans-serif;
-          font-size: 17px;
-          font-weight: 600;
-          letter-spacing: .01em;
-          transition: color .2s, background .2s;
-          white-space: nowrap;
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+
+  gap: 0;
+
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+  
+/* =========================================
+   MENU — NORMAL
+========================================= */
+
+.nav-root.transparent .nav-item {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  padding: 10px 9px;
+
+  margin: 0;
+
+  border-radius: 10px;
+
+  position: relative;
+
+  font-family: 'Roboto Condensed', sans-serif;
+
+  font-size: 18px;
+  line-height: 1;
+
+  font-weight: 400;
+
+  letter-spacing: .01em;
+
+  color: rgba(255,255,255,.92);
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  transition:
+    color .2s,
+    background .2s;
+}
+
+
+/* =========================================
+   MENU — SCROLL
+========================================= */
+
+.nav-root.solid .nav-item {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  padding: 10px 14px;
+
+  margin: 0;
+
+  border-radius: 8px;
+
+  position: relative;
+
+  font-family: 'Roboto Condensed', sans-serif;
+
+  font-size: 16px;
+  line-height: 1;
+
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  color: #163B72;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+}
         .nav-root.transparent .nav-item       { color: rgba(255,255,255,.80); }
         .nav-root.transparent .nav-item:hover { color: #ffffff; background: rgba(255,255,255,.10); }
         .nav-root.transparent .nav-item.active { color: #ffffff; }
-        .nav-root.solid .nav-item       { color: #4A5A78; }
+        .nav-root.solid .nav-item {
+  color: #163B72;
+  font-weight: 400;
+}
+  .nav-root.solid .nav-item:last-child {
+  margin-right: 40px;
+}
         .nav-root.solid .nav-item:hover { color: #0B2545; background: rgba(11,37,69,.05); }
-        .nav-root.solid .nav-item.active { color: #0B2545; }
+        .nav-root.solid .nav-item.active {
+  color: #0B2545;
+  font-weight: 500;
+}
 
         /* active underline bar */
         .nav-item::after {
@@ -270,32 +478,91 @@ a.top-contact-item:hover {
           align-items: center;
           gap: 16px;
         }
-        .btn-apply {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          padding: 16px 34px;
-          border-radius: 100px;
-          border: none;
-          cursor: pointer;
-          font-family: 'Source Sans Pro', sans-serif;
-          font-weight: 600;
-          font-size: 17px;
-          letter-spacing: .02em;
-          background: linear-gradient(135deg, #18C6C8 0%, #0FA3B1 100%);
-          color: #ffffff;
-          box-shadow: 0 6px 20px rgba(24,198,200,.35);
-          transition: transform .3s cubic-bezier(.16,1,.3,1),
-                      box-shadow .3s cubic-bezier(.16,1,.3,1);
-          white-space: nowrap;
-        }
+        /* =========================================
+   APPLY BUTTON — NORMAL
+========================================= */
+
+.nav-root.transparent .btn-apply {
+  width: 140px;
+  height: 50px;
+
+  padding: 12px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border-radius: 100px;
+  border: none;
+
+  cursor: pointer;
+
+  font-family: 'Roboto Condensed', sans-serif;
+
+ font-size: 16px;
+font-weight: 700;
+  letter-spacing: .01em;
+
+  background: linear-gradient(
+    135deg,
+    #18C6C8 0%,
+    #0FA3B1 100%
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 20px rgba(24,198,200,.30);
+
+  white-space: nowrap;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+/* =========================================
+   APPLY BUTTON — SCROLL
+========================================= */
+
+.nav-root.solid .btn-apply {
+  width: 125px;
+  height: 48px;
+
+  padding: 10px 12px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  border-radius: 100px;
+
+  background: linear-gradient(
+    135deg,
+    #18C6C8 0%,
+    #0FA3B1 100%
+  );
+
+  color: #ffffff;
+
+  white-space: nowrap;
+}
+
         .btn-apply:hover {
           transform: translateY(-3px);
           box-shadow: 0 14px 36px rgba(24,198,200,.50);
         }
-        .nav-root.solid .btn-apply {
-          box-shadow: 0 4px 16px rgba(24,198,200,.30);
-        }
+        
 
         /* ── HAMBURGER ── */
         .nav-hamburger {
@@ -328,7 +595,7 @@ a.top-contact-item:hover {
           cursor: pointer;
           padding: 14px 12px;
           border-radius: 12px;
-          font-family: 'Source Sans Pro', sans-serif;
+          font-family: 'Roboto Condensed', sans-serif;
           font-size: 18px;
           font-weight: 600;
           color: #4A5A78;
@@ -360,27 +627,54 @@ a.top-contact-item:hover {
 @media (max-width: 1400px) {
 
   .nav-inner {
-    grid-template-columns: 430px 1fr auto;
-    gap: 18px;
-    padding: 0 28px;
+    grid-template-columns: 430px minmax(0, 1fr) 135px;
+    gap: 0;
+    padding: 0 24px;
+    align-items: center;
   }
 
-  .nav-item {
-    padding: 10px 10px;
-    font-size: 14px;
+  /* MENU AREA */
+  .nav-links {
+    display: flex;
+    align-items: center;
+   justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+    gap: 0;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: visible;
   }
 
-  .btn-apply {
-    padding: 14px 24px;
-    font-size: 14px;
+ 
+
+  /* APPLY AREA */
+  .nav-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 0;
   }
 
-  .nav-root.transparent .nav-college-name,
+ 
+
+  .btn-apply svg {
+    width: 11px;
+    height: 11px;
+  }
+
+  /* COLLEGE NAME */
   .nav-root.solid .nav-college-name {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
+  /* COLLEGE NAME */
+  .nav-root.solid .nav-college-name {
+    font-size: 16px;
+  }
+}
 
 @media (max-width: 1100px) {
 
@@ -392,15 +686,25 @@ a.top-contact-item:hover {
   .nav-hamburger {
     display: flex !important;
   }
+.nav-root,
+.nav-root.solid {
+  left: 0;
+  width: 100%;
+  transform: none;
+}
+.nav-inner {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 18px;
+  height: 100%;
 
-  .nav-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    width: 100%;
-    height: 82px;
-    padding: 0 24px;
-    gap: 12px;
-  }
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 125px;
+
+  align-items: center;
+  gap: 4px;
+}
 
   .nav-brand {
     width: fit-content;
@@ -411,7 +715,7 @@ a.top-contact-item:hover {
 
   .nav-logo-ring {
     width: 58px;
-    height: 72px;
+    height: 105px;
   }
 
   .nav-logo-img {
@@ -432,8 +736,12 @@ a.top-contact-item:hover {
   }
 
   .nav-right {
-    justify-content: flex-end;
-  }
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
 
   .nav-hamburger {
     width: 44px;
@@ -557,6 +865,46 @@ a.top-contact-item:hover {
   .nav-hamburger {
     width: 36px;
     height: 36px;
+
+    /* FINAL STICKY HEADER ALIGNMENT */
+/* =========================================
+   STICKY HEADER FINAL ALIGNMENT
+========================================= */
+
+/* =========================================
+   CONTACT BAR — ALWAYS VISIBLE
+========================================= */
+
+.top-contact-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 42px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+}
+
+.top-contact-inner {
+  width: 100%;
+  max-width: 1280px;
+  height: 42px;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+
+
+.top-address {
+  display: inline-flex !important;
+}
  }
 `}</style>
 

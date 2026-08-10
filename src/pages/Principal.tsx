@@ -18,7 +18,7 @@ const ACHIEVEMENTS = [
 
 export default function Principal({ navigate }: Props) {
  return (
-  <div className="principal-page" style={{ paddingTop: 72 }}>
+  <div className="principal-page">
     <style>{`
   .principal-page {
     width: 100%;
@@ -27,7 +27,7 @@ export default function Principal({ navigate }: Props) {
 
   /* HERO */
   .principal-hero {
-    padding: 80px 40px 0;
+    padding: 190px 40px 0;
   }
 
   .principal-hero-grid {
@@ -113,7 +113,7 @@ export default function Principal({ navigate }: Props) {
   @media (max-width: 768px) {
 
     .principal-hero {
-      padding: 64px 20px 0 !important;
+      padding: 160px 20px 0 !important;
     }
 
     .principal-hero-grid {
@@ -197,7 +197,7 @@ export default function Principal({ navigate }: Props) {
   @media (max-width: 480px) {
 
     .principal-hero {
-      padding: 54px 16px 0 !important;
+      padding: 155px 16px 0 !important;
     }
 
     .principal-hero-content h1 {
@@ -272,12 +272,12 @@ export default function Principal({ navigate }: Props) {
         <div className="principal-hero-grid">
           <div className="principal-hero-content">
             <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Principal's Office</span>
-            <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 70px)', fontWeight: 700, color: 'white', lineHeight: 1.08, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
+            <h1 className="font-sans" style={{ fontSize: 'clamp(40px, 5vw, 74px)', fontWeight: 700, color: 'white', lineHeight: 1.08, letterSpacing: '-.03em', marginTop: 16, marginBottom: 24 }}>
               Dr. B. Tamilarasi<br/>
               
             </h1>
-            <div style={{ color: 'rgba(255,255,255,.55)', fontSize: 18, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
-            <div style={{ color: 'rgba(255,255,255,.4)', fontSize: 15 }}>M.Sc. Nursing, PhD , M.Phil</div>
+            <div style={{ color: '#F1F5F9', fontSize: 18, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
+            <div style={{ color: '#CBD5E1', fontSize: 16 }}>M.Sc. Nursing, PhD , M.Phil</div>
            <div className="principal-achievements">
               {ACHIEVEMENTS.map(a => (
   <div
@@ -286,7 +286,7 @@ export default function Principal({ navigate }: Props) {
     style={{ textAlign: 'center' }}
   >
                   <div className="font-sans text-gold-g" style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-.02em' }}>{a.val}</div>
-                  <div style={{ color: 'rgba(255,255,255,.45)', fontSize: 12, marginTop: 4 }}>{a.label}</div>
+                  <div style={{ color: '#CBD5E1', fontSize: 13, marginTop: 4 }}>{a.label}</div>
                 </div>
               ))}
             </div>
@@ -322,7 +322,7 @@ export default function Principal({ navigate }: Props) {
            
              <div className="principal-letter-heading">
               <Reveal delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(32px, 3.5vw, 46px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.15, letterSpacing: '-.02em', marginTop: 20, marginBottom: 32 }}>
+                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 3.5vw, 48px)', fontWeight: 700, color: '#0B2545', lineHeight: 1.15, letterSpacing: '-.02em', marginTop: 20, marginBottom: 32 }}>
                   A Message to<br/>Every Aspiring<br/>
                   <span className="text-teal-g">Nurse</span>
                 </h2>
@@ -343,7 +343,7 @@ export default function Principal({ navigate }: Props) {
                   {['M.Sc. Nursing (Medical Surgical Nursing)', 'Ph.D in Nursing Science — TNMGRMU', 'Master of Business Administration — Anna University', 'PG Diploma in Hospital Management'].map(q => (
                     <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
                       <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#18C6C8', marginTop: 6, flexShrink: 0 }} />
-                      <span style={{ color: '#6A7A96', fontSize: 13, lineHeight: 1.5 }}>{q}</span>
+                      <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.5 }}>{q}</span>
                     </div>
                   ))}
                 </div>
@@ -367,7 +367,7 @@ export default function Principal({ navigate }: Props) {
                   ].map(a => (
                     <div key={a} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
                       <span style={{ color: '#F59E0B', fontSize: 14 }}>★</span>
-                      <span style={{ color: '#6A7A96', fontSize: 13, lineHeight: 1.5 }}>{a}</span>
+                      <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.5 }}>{a}</span>
                     </div>
                   ))}
                 </div>
@@ -394,16 +394,16 @@ export default function Principal({ navigate }: Props) {
                     Dear aspiring nurses,
                   </div>
                   <br/>
-                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9, marginBottom: 20 }}>
                     Nursing is not a profession you choose — it is a calling you answer. When you walk through the doors of Madha College of Nursing, you are joining a tradition of care, compassion, and clinical excellence that has touched over 3,200 lives and, through them, countless patients across the world.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9, marginBottom: 20 }}>
                     At Madha, we don't just teach nursing — we shape nurses. Our curriculum bridges rigorous academic theory with immersive clinical training at 18 affiliated hospitals. Our faculty are researchers, clinicians, and mentors who invest deeply in your growth, not just your grades.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9, marginBottom: 20 }}>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9, marginBottom: 20 }}>
                     I invite you to explore our campus, meet our faculty, and discover for yourself why Madha College has earned its reputation as one of South India's premier nursing institutions. Your journey toward becoming an exceptional nurse begins here.
                   </p>
-                  <p style={{ color: '#4A5A78', fontSize: 17, lineHeight: 1.9 }}>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9 }}>
                     Come, let us serve together.
                   </p>
 
@@ -425,7 +425,7 @@ export default function Principal({ navigate }: Props) {
                     </div>
                     <div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>Dr. B. Tamilarasi</div>
-                      <div style={{ color: '#8A9ABC', fontSize: 13, marginTop: 3 }}>Principal, Madha College of Nursing</div>
+                      <div style={{ color: '#475569', fontSize: 14, marginTop: 3 }}>Principal, Madha College of Nursing</div>
                       <div style={{ color: '#18C6C8', fontSize: 12, marginTop: 2 }}>M.Sc., Ph.D., M.Phil</div>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ export default function Principal({ navigate }: Props) {
             </h3>
           </Reveal>
           <Reveal delay={1}>
-            <p style={{ color: '#6A7A96', fontSize: 16, lineHeight: 1.7, marginBottom: 32 }}>
+            <p style={{ color: '#1E293B', fontSize: 17, lineHeight: 1.7, marginBottom: 32 }}>
               Schedule a meeting with the Principal's office for admissions guidance, research collaboration, or campus visits.
             </p>
           </Reveal>

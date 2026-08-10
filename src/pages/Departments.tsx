@@ -120,13 +120,13 @@ export default function Departments({ navigate }: Props) {
     ========================================== */
 
     .departments-page {
-      padding-top: 72px;
+      padding-top: 0;
       width: 100%;
       overflow-x: hidden;
     }
 
     .departments-banner {
-      padding: 100px 40px;
+      padding: 190px 40px 100px;
     }
 
     .departments-section {
@@ -192,11 +192,11 @@ export default function Departments({ navigate }: Props) {
     /* MOBILE */
     @media (max-width: 768px) {
       .departments-page {
-        padding-top: 72px;
+        padding-top: 0;
       }
 
       .departments-banner {
-        padding: 70px 20px;
+        padding: 160px 20px 70px;
       }
 
       .departments-section {
@@ -268,7 +268,7 @@ export default function Departments({ navigate }: Props) {
     /* SMALL PHONE */
     @media (max-width: 480px) {
       .departments-banner {
-        padding: 56px 16px;
+        padding: 155px 16px 56px;
       }
 
       .departments-section {
@@ -309,11 +309,11 @@ export default function Departments({ navigate }: Props) {
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(circle at 60% 40%, rgba(24,198,200,.09) 0%, transparent 55%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Academic Departments</span>
-          <h1 className="font-sans" style={{ fontSize: 'clamp(38px, 5vw, 76px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
+          <h1 className="font-sans" style={{ fontSize: 'clamp(40px, 5vw, 80px)', fontWeight: 700, color: 'white', lineHeight: 1.1, letterSpacing: '-.03em', marginTop: 16 }}>
             Six Specialised<br/>
             <span className="text-teal-g">Nursing Departments</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,.55)', fontSize: 20, maxWidth: 520, margin: '24px auto 0', lineHeight: 1.75 }}>
+          <p style={{ color: '#F1F5F9', fontSize: 20, maxWidth: 520, margin: '24px auto 0', lineHeight: 1.75 }}>
             Each department is led by highly qualified faculty with deep clinical and research expertise.
           </p>
         </div>
@@ -338,13 +338,13 @@ export default function Departments({ navigate }: Props) {
                   <div style={{
                     display: 'inline-block', background: active.id === d.id ? 'rgba(255,255,255,.2)' : `${d.color}18`,
                     borderRadius: 8, padding: '4px 10px', marginBottom: 12,
-                    fontFamily: 'var(--font-sans)', fontSize: 10, fontWeight: 600, letterSpacing: '.12em',
+                    fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, letterSpacing: '.12em',
                     color: active.id === d.id ? 'white' : d.color,
                   }}>
                     {d.abbr}
                   </div>
-                  <div className="font-sans" style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.3 }}>{d.name}</div>
-                  <div style={{ fontSize: 12, marginTop: 8, opacity: active.id === d.id ? 0.7 : 0.5 }}>{d.faculty} Faculty · {d.students} Students</div>
+                  <div className="font-sans" style={{ fontWeight: 700, fontSize: 15, lineHeight: 1.3 }}>{d.name}</div>
+                  <div style={{ fontSize: 13, marginTop: 8, opacity: active.id === d.id ? 0.7 : 0.5 }}>{d.faculty} Faculty · {d.students} Students</div>
                 </button>
               </Reveal>
             ))}
@@ -414,20 +414,20 @@ export default function Departments({ navigate }: Props) {
                       </svg>
                     </div>
                     <div>
-                      <div style={{ color: '#9CA9C0', fontSize: 10, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 4 }}>Head of Department</div>
+                      <div style={{ color: '#475569', fontSize: 12, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 4 }}>Head of Department</div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545', lineHeight: 1.2 }}>{active.head}</div>
-                      <div style={{ color: '#6A7A96', fontSize: 14, marginTop: 3 }}>{active.headDesig}</div>
+                      <div style={{ color: '#475569', fontSize: 15, marginTop: 3 }}>{active.headDesig}</div>
                     </div>
                   </div>
 
                   <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 16 }}>Department Overview</h3>
-                  <p style={{ color: '#6A7A96', fontSize: 16, lineHeight: 1.8, marginBottom: 36 }}>{active.overview}</p>
+                  <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.8, marginBottom: 36 }}>{active.overview}</p>
 
                   <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 16 }}>Active Research Projects</h3>
                   {active.research.map(r => (
                     <div key={r} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', marginBottom: 12 }}>
                       <div style={{ width: 8, height: 8, borderRadius: '50%', background: active.color, marginTop: 6, flexShrink: 0 }} />
-                      <span style={{ color: '#4A5A78', fontSize: 15, lineHeight: 1.65 }}>{r}</span>
+                      <span style={{ color: '#1E293B', fontSize: 'clamp(15px, 1.3vw, 17px)', lineHeight: 1.7 }}>{r}</span>
                     </div>
                   ))}
                 </div>
@@ -438,7 +438,7 @@ export default function Departments({ navigate }: Props) {
                     {active.facilities.map(f => (
                       <div key={f} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 10 }}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={active.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginTop: 3, flexShrink: 0 }}><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style={{ color: '#6A7A96', fontSize: 13, lineHeight: 1.55 }}>{f}</span>
+                        <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.55 }}>{f}</span>
                       </div>
                     ))}
                   </div>
@@ -447,7 +447,7 @@ export default function Departments({ navigate }: Props) {
                     {active.labs.map(l => (
                       <div key={l} style={{
                         background: 'white', borderRadius: 10, padding: '10px 16px', marginBottom: 8,
-                        border: `1px solid ${active.color}22`, fontSize: 13, color: '#4A5A78',
+                        border: `1px solid ${active.color}22`, fontSize: 14, color: '#475569',
                       }}>
                         {l}
                       </div>
