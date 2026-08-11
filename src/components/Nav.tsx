@@ -1,25 +1,43 @@
 import { useEffect, useState } from 'react'
 
-type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
+type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal' | 'news-events'
 
 interface NavProps {
   currentPage: Page
   navigate: (p: Page) => void
 }
 
-const NAV_LINKS: { label: string; page: Page }[] = [
+interface NavLink {
+  label: string
+  page: Page
+}
+
+interface NavEntry extends NavLink {
+  children?: NavLink[]
+}
+
+const NAV_ITEMS: NavEntry[] = [
   { label: 'Home', page: 'home' },
-  { label: 'About Us', page: 'about' },
+  {
+    label: 'About Us',
+    page: 'about',
+    children: [
+      { label: 'About College', page: 'about' },
+      { label: 'Management', page: 'management' },
+      { label: 'Principal', page: 'principal' },
+    ],
+  },
   { label: 'Courses', page: 'courses' },
   { label: 'Departments', page: 'departments' },
   { label: 'Gallery', page: 'gallery' },
+  { label: 'News & Events', page: 'news-events' },
   { label: 'Contact Us', page: 'contact' },
-  { label: 'Management', page: 'management' },
 ]
 
 export default function Nav({ currentPage, navigate }: NavProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
 
   useEffect(() => {
   const onScroll = () => {
@@ -38,6 +56,7 @@ export default function Nav({ currentPage, navigate }: NavProps) {
 
  useEffect(() => {
   setMenuOpen(false)
+  setAboutOpen(false)
   setScrolled(false)
 
   window.scrollTo({
@@ -49,6 +68,8 @@ export default function Nav({ currentPage, navigate }: NavProps) {
 
   
  const isScrolled = scrolled
+
+  const aboutActive = currentPage === 'about' || currentPage === 'management' || currentPage === 'principal'
 
   return (
     <>
@@ -563,6 +584,74 @@ font-weight: 700;
           box-shadow: 0 14px 36px rgba(24,198,200,.50);
         }
         
+        /* ── ABOUT US DROPDOWN ── */
+        .nav-dropdown-trigger {
+          position: relative;
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+        .nav-item-chevron {
+          display: inline-block;
+          margin-left: 5px;
+          flex-shrink: 0;
+          transition: transform .3s cubic-bezier(.16,1,.3,1);
+        }
+        .nav-dropdown-trigger:hover .nav-item-chevron {
+          transform: rotate(180deg);
+        }
+        .nav-dropdown {
+          position: absolute;
+          top: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-50%) translateY(10px);
+          min-width: 196px;
+          padding: 8px;
+          background: #ffffff;
+          border: 1px solid rgba(11,37,69,.08);
+          border-radius: 14px;
+          box-shadow: 0 20px 48px rgba(11,37,69,.16);
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity .28s cubic-bezier(.16,1,.3,1), transform .28s cubic-bezier(.16,1,.3,1), visibility .28s;
+          z-index: 2100;
+        }
+        .nav-dropdown-trigger:hover .nav-dropdown,
+        .nav-dropdown-trigger:focus-within .nav-dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(0);
+        }
+        .nav-dropdown-item {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 11px 14px;
+          border-radius: 10px;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 16px;
+          font-weight: 500;
+          color: #163B72;
+          text-align: left;
+          white-space: nowrap;
+          transition: background .2s, color .2s;
+        }
+        .nav-dropdown-item + .nav-dropdown-item {
+          border-top: 1px solid rgba(11,37,69,.05);
+          border-radius: 10px;
+        }
+        .nav-dropdown-item:hover,
+        .nav-dropdown-item.active {
+          background: rgba(24,198,200,.08);
+          color: #0B2545;
+        }
+        .nav-dropdown-item.active {
+          color: #1E5AA8;
+          font-weight: 600;
+        }
 
         /* ── HAMBURGER ── */
         .nav-hamburger {
@@ -610,6 +699,50 @@ font-weight: 700;
           margin-top: 16px;
           width: 100%;
           justify-content: center;
+        }
+        .nav-drawer-item.has-children {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .nav-drawer-chevron {
+          transition: transform .3s ease;
+          flex-shrink: 0;
+        }
+        .nav-drawer-chevron.open {
+          transform: rotate(180deg);
+        }
+        .nav-drawer-sub {
+          padding: 2px 0 8px;
+          margin-left: 12px;
+          border-left: 1px solid rgba(11,37,69,.06);
+          display: flex;
+          flex-direction: column;
+        }
+        .nav-drawer-sub-item {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 12px 12px 12px 22px;
+          border-radius: 10px;
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 17px;
+          font-weight: 500;
+          color: #4A5A78;
+          text-align: left;
+          transition: background .2s, color .2s;
+        }
+        .nav-drawer-sub-item:hover,
+        .nav-drawer-sub-item.active {
+          background: rgba(24,198,200,.08);
+          color: #0B2545;
+        }
+        .nav-drawer-sub-item.active {
+          color: #1E5AA8;
+          font-weight: 600;
         }
 
         /* Divider line under transparent nav */
@@ -950,14 +1083,40 @@ font-weight: 700;
 
           {/* CENTER — Navigation */}
           <nav className="nav-links" aria-label="Primary navigation">
-            {NAV_LINKS.map(({ label, page }) => (
+            {NAV_ITEMS.map(item => item.children ? (
+              <div key={item.page} className="nav-dropdown-trigger">
+                <button
+                  className={`nav-item ${aboutActive ? 'active' : ''}`}
+                  onClick={() => navigate(item.page)}
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {item.label}
+                  <svg className="nav-item-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </button>
+                <div className="nav-dropdown" role="menu">
+                  {item.children.map(child => (
+                    <button
+                      key={child.page}
+                      role="menuitem"
+                      className={`nav-dropdown-item ${currentPage === child.page ? 'active' : ''}`}
+                      onClick={() => navigate(child.page)}
+                    >
+                      {child.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
               <button
-                key={page}
-                className={`nav-item ${currentPage === page ? 'active' : ''}`}
-                onClick={() => navigate(page)}
-                aria-current={currentPage === page ? 'page' : undefined}
+                key={item.page}
+                className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
+                onClick={() => navigate(item.page)}
+                aria-current={currentPage === item.page ? 'page' : undefined}
               >
-                {label}
+                {item.label}
               </button>
             ))}
           </nav>
@@ -1000,14 +1159,42 @@ font-weight: 700;
         {/* Mobile drawer */}
         {menuOpen && (
           <div className="nav-drawer" role="menu">
-            {NAV_LINKS.map(({ label, page }) => (
+            {NAV_ITEMS.map(item => item.children ? (
+              <div key={item.page}>
+                <button
+                  className={`nav-drawer-item has-children ${aboutActive ? 'active' : ''}`}
+                  onClick={() => setAboutOpen(o => !o)}
+                  aria-expanded={aboutOpen}
+                  role="menuitem"
+                >
+                  {item.label}
+                  <svg className={`nav-drawer-chevron ${aboutOpen ? 'open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </button>
+                {aboutOpen && (
+                  <div className="nav-drawer-sub" role="menu">
+                    {item.children.map(child => (
+                      <button
+                        key={child.page}
+                        className={`nav-drawer-sub-item ${currentPage === child.page ? 'active' : ''}`}
+                        onClick={() => navigate(child.page)}
+                        role="menuitem"
+                      >
+                        {child.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
               <button
-                key={page}
-                className={`nav-drawer-item ${currentPage === page ? 'active' : ''}`}
-                onClick={() => navigate(page)}
+                key={item.page}
+                className={`nav-drawer-item ${currentPage === item.page ? 'active' : ''}`}
+                onClick={() => navigate(item.page)}
                 role="menuitem"
               >
-                {label}
+                {item.label}
               </button>
             ))}
             <button className="btn-apply nav-drawer-apply" onClick={() => navigate('contact')}>

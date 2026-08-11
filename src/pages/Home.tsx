@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { useIntersect } from '../hooks/useIntersect'
 import { useCounter } from '../hooks/useCounter'
 import HeroSlider from '../components/HeroSlider'
+import Reveal from '../components/Reveal'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
 
@@ -19,17 +19,6 @@ function StatItem({ value, suffix, label, start }: { value: number; suffix: stri
         <span style={{ color: '#18C6C8', fontSize: 'clamp(28px, 3vw, 44px)' }}>{suffix}</span>
       </div>
       <div style={{ color: '#CBD5E1', fontSize: 17, fontWeight: 500, marginTop: 8, letterSpacing: '.04em' }}>{label}</div>
-    </div>
-  )
-}
-
-/* ─── Reveal wrapper ─── */
-function Reveal({ children, className = '', delay = 0, type = 'up' }: { children: React.ReactNode; className?: string; delay?: number; type?: 'up' | 'left' | 'right' | 'scale' }) {
-  const { ref, visible } = useIntersect()
-  const cls = type === 'left' ? 'reveal-left' : type === 'right' ? 'reveal-right' : type === 'scale' ? 'reveal-scale' : 'reveal'
-  return (
-    <div ref={ref} className={`${cls} ${visible ? 'visible' : ''} ${delay ? `delay-${delay}` : ''} ${className}`}>
-      {children}
     </div>
   )
 }
@@ -76,15 +65,19 @@ const RESEARCH_ITEMS = [
 ]
 
 const GALLERY_IMGS = [
-  { id: 'photo-1758270704262-ecc82b23dc37', h: 260, alt: 'Lecture hall' },
-  { id: 'photo-1691139601099-932c01ec198b', h: 180, alt: 'Clinical training' },
-  { id: 'photo-1614935151651-0bea6508db6b', h: 220, alt: 'Laboratory research' },
-  { id: 'photo-1680084521816-cc1ad0433ceb', h: 200, alt: 'Campus building' },
-  { id: 'photo-1765896387387-0538bc9f997e', h: 240, alt: 'Nurse with patient' },
-  { id: 'photo-1758270705067-0d7edee57af0', h: 180, alt: 'Students studying' },
-  { id: 'photo-1511174511562-5f7f18b874f8', h: 220, alt: 'Microscopy lab' },
-  { id: 'photo-1639772823849-6efbd173043c', h: 200, alt: 'Research lab' },
-  { id: 'photo-1758270704286-83476deb3bd1', h: 260, alt: 'Classroom' },
+  { src: '/campus/madaha-nursing-college-9.jpg', h: 260, alt: 'Madha College campus' },
+{ src: '/gallery/lamplight2026/lamp-5.jpeg', h: 260, alt: 'Lamplighting' },
+{ src: '/gallery/Xmas 25/16.JPG', h: 260, alt: 'Chirstmas celebration' },
+  
+  
+  { src: '/departments/Mental Health Nrsing/1.jpeg', h: 240, alt: 'Nursing students' },
+  { src: '/gallery/pongal-2025/3.jpg', h: 260, alt: 'Pongal Festivel' },
+  { src: '/gallery/graduation-2026/7.JPG', h: 260, alt: 'Graduation Day' },
+  
+  
+  { src: '/departments/Medical-Surgical-Nursing/1.jpg', h: 220, alt: 'Nursing students' },
+  { src: '/gallery/Xmas 25/10.JPG', h: 260, alt: 'Chirstmas celebration' },
+  { src: '/gallery/graduation-2026/6.JPG', h: 260, alt: 'Graduation Day' },
 ]
 
 const ADMISSION_STEPS = [
@@ -461,18 +454,39 @@ export default function Home({ navigate }: Props) {
 >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
          <div className="home-responsive-grid">
-            {/* Image */}
-            <Reveal type="left">
-              <div className="home-why-image" style={{ position: 'relative' }}>
-                <div style={{ borderRadius: 28, overflow: 'hidden', aspectRatio: '4/5' }}>
-                  <img
-                    src="/about/why madha.jpg"
-                    alt="Why Madha College"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform .6s cubic-bezier(.16,1,.3,1)' }}
-                    onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.04)')}
-                    onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
-                  />
-                </div>
+            {/* Video */}
+<Reveal type="left">
+  <div className="home-why-image" style={{ position: 'relative' }}>
+    <div
+      style={{
+        borderRadius: 28,
+        overflow: 'hidden',
+        aspectRatio: '4/5',
+        position: 'relative',
+        background: '#0B2545',
+        transition: 'transform .6s cubic-bezier(.16,1,.3,1)',
+      }}
+      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+    >
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls={false}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+        }}
+      >
+        <source src="/videos/why-madha.mp4" type="video/mp4" />
+      </video>
+    </div>
                 {/* Floating stat card */}
                 <div className="glass-card home-floating-stat" style={{
                   position: 'absolute', bottom: -24, right: -24,
@@ -840,9 +854,9 @@ export default function Home({ navigate }: Props) {
 
           <div className="masonry-grid">
             {GALLERY_IMGS.map((img, i) => (
-              <div key={img.id} className="masonry-item" style={{ height: img.h }}>
+              <div key={i} className="masonry-item" style={{ height: img.h }}>
                 <img
-                  src={`https://images.unsplash.com/${img.id}?w=500&h=${img.h * 2}&fit=crop&auto=format`}
+                  src={img.src}
                   alt={img.alt}
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, display: 'block' }}
                 />
