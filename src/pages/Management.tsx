@@ -1,13 +1,7 @@
-import { useIntersect } from '../hooks/useIntersect'
+import Reveal from '../components/Reveal'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
 interface Props { navigate: (p: Page) => void }
-
-function Reveal({ children, delay = 0, type = 'up' }: { children: React.ReactNode; delay?: number; type?: 'up' | 'left' | 'right' | 'scale' }) {
-  const { ref, visible } = useIntersect()
-  const cls = type === 'left' ? 'reveal-left' : type === 'right' ? 'reveal-right' : type === 'scale' ? 'reveal-scale' : 'reveal'
-  return <div ref={ref} className={`${cls} ${visible ? 'visible' : ''} ${delay ? `delay-${delay}` : ''}`}>{children}</div>
-}
 
 const TEAM = [
   {

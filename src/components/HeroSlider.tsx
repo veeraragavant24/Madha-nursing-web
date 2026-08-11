@@ -386,6 +386,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
               opacity: isActive ? 1 : 0,
               transition: `opacity ${TRANSITION_MS}ms cubic-bezier(.4,0,.2,1)`,
               zIndex: isActive ? 2 : 1,
+              willChange: 'opacity',
             }}
           >
             {/* Parallax wrapper */}
