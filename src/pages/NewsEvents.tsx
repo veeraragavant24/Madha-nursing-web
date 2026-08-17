@@ -806,6 +806,6 @@ export default function NewsEvents({ navigate }: Props) {
           </Reveal>
         </section>
       )}
-    </div>
+        </div>
   )
 }

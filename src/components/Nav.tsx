@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal' | 'news-events'
 
@@ -39,9 +39,101 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
 
+  // NORMAL HEADER
+const normalNameRef = useRef<HTMLSpanElement>(null)
+const normalRibbonRef = useRef<HTMLDivElement>(null)
+
+// SCROLLED HEADER
+const scrolledNameRef = useRef<HTMLSpanElement>(null)
+const scrolledRibbonRef = useRef<HTMLDivElement>(null)
+ /* =========================================================
+   NORMAL HEADER — COMPLETELY INDEPENDENT
+========================================================= */
+useEffect(() => {
+  if (scrolled) return
+
+  const measureNormalHeader = () => {
+    const name = normalNameRef.current
+    const ribbon = normalRibbonRef.current
+
+    if (!name || !ribbon) return
+
+    const nameW = name.offsetWidth
+    const ribbonW = ribbon.offsetWidth
+
+    const start = -(nameW - ribbonW) / 2
+    const travel = nameW
+
+    ribbon.style.setProperty(
+      '--shine-start',
+      `${start}px`
+    )
+
+    ribbon.style.setProperty(
+      '--shine-travel',
+      `${travel}px`
+    )
+  }
+
+  measureNormalHeader()
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(measureNormalHeader)
+  }
+
+  window.addEventListener('resize', measureNormalHeader)
+
+  return () => {
+    window.removeEventListener('resize', measureNormalHeader)
+  }
+}, [scrolled])
+
+
+/* =========================================================
+   SCROLLED HEADER — COMPLETELY INDEPENDENT
+========================================================= */
+useEffect(() => {
+  if (!scrolled) return
+
+  const measureScrolledHeader = () => {
+    const name = scrolledNameRef.current
+    const ribbon = scrolledRibbonRef.current
+
+    if (!name || !ribbon) return
+
+    const nameW = name.offsetWidth
+    const ribbonW = ribbon.offsetWidth
+
+    const start = -(nameW - ribbonW) / 2
+    const travel = nameW
+
+    ribbon.style.setProperty(
+      '--shine-start',
+      `${start}px`
+    )
+
+    ribbon.style.setProperty(
+      '--shine-travel',
+      `${travel}px`
+    )
+  }
+
+  measureScrolledHeader()
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(measureScrolledHeader)
+  }
+
+  window.addEventListener('resize', measureScrolledHeader)
+
+  return () => {
+    window.removeEventListener('resize', measureScrolledHeader)
+  }
+}, [scrolled])
+
   useEffect(() => {
   const onScroll = () => {
-    setScrolled(window.scrollY > 20)
+    setScrolled(window.scrollY > 50)
   }
 
   // Set the correct state immediately when the page loads
@@ -92,8 +184,14 @@ export default function Nav({ currentPage, navigate }: NavProps) {
   align-items: center;
 
   transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.top-contact-bar.top-contact-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 
@@ -159,20 +257,22 @@ a.top-contact-item:hover {
   left: 0;
   right: 0;
   width: 100%;
-  height: 105px;
+  height: 92px;
   z-index: 1900;
 
   background: transparent;
-  box-shadow: none;
   border-radius: 0;
+  box-shadow: none;
 
   transition:
-    width 0.45s cubic-bezier(.16,1,.3,1),
-    left 0.45s cubic-bezier(.16,1,.3,1),
-    top 0.45s cubic-bezier(.16,1,.3,1),
-    background 0.35s ease,
-    box-shadow 0.35s ease,
-    border-radius 0.35s ease;
+    width 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.45s ease,
+    box-shadow 0.55s ease,
+    border-radius 0.55s ease,
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 
@@ -183,18 +283,20 @@ a.top-contact-item:hover {
 
 .nav-root.transparent {
   position: fixed;
+
   top: 42px;
   left: 0;
   right: 0;
 
   width: 100%;
-  height: 105px;
+  height: 92px;
 
-  transform: none;
+  transform: translateY(0);
 
   background: transparent;
   box-shadow: none;
   border-radius: 0;
+  border: 0;
 
   z-index: 1900;
 }
@@ -208,63 +310,81 @@ a.top-contact-item:hover {
 .nav-root.solid {
   position: fixed;
 
-    top: 42px;
+  top: 16px;
   left: 50%;
   right: auto;
 
-  width: min(1280px, calc(100% - 48px));
-  height: 92px;
+  width: 90%;
+  max-width: 1600px;
+  height: 74px;
 
   transform: translateX(-50%);
 
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
 
-  box-shadow: 0 8px 30px rgba(11,37,69,.16);
+  border: 1px solid rgba(255, 255, 255, 0.30);
 
-  border-radius: 0 0 14px 14px;
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.12);
+
+  border-radius: 14px;
 
   z-index: 1900;
 }
+
+/* Premium floating header transition */
+.nav-root.solid .nav-inner {
+  animation: headerCardIn 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes headerCardIn {
+  from {
+    opacity: 0.7;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  
         /* 3-column grid — brand gets a fixed minimum so it never
            bleeds into the centred nav links */
         .nav-inner {
   width: 100%;
-  max-width: 1800px;
+  max-width: none;
 
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 28px;
 
   height: 100%;
 
-  display: grid;
-
-  grid-template-columns:
-    500px
-    minmax(0, 1fr)
-    150px;
-
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 
   gap: 20px;
 }
 
         /* ── BRAND ── */
         .nav-brand {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0;
-          min-width: 0;
-          text-align: left;
-          flex-shrink: 0;
-        }
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  min-width: 0;
+  text-align: left;
+  flex-shrink: 0;
+}
        .nav-logo-ring {
-  width: 76px;
-  height: 88px;
-
+  width: 92px;
+  height: 92px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,19 +396,18 @@ a.top-contact-item:hover {
 .nav-logo-img {
   display: block;
 
-  width: auto;
-  height: 105px;
+  width: 92px;
+  height: 92px;
 
-  max-width: 100%;
   object-fit: contain;
-}
+  border-radius: 50%;
 
-.nav-logo-img {
-  display: block;
-  width: auto;
-  height: 105px;
-  max-width: 100%;
-  object-fit: contain;
+  transition: all .5s ease;
+
+  filter:
+    drop-shadow(0 0 8px rgba(255,255,255,.95))
+    drop-shadow(0 0 18px rgb(255,255,255))
+    drop-shadow(0 0 30px rgb(255,255,255));
 }
 
 /* =========================================
@@ -296,35 +415,144 @@ a.top-contact-item:hover {
 ========================================= */
 
 .nav-root.solid .nav-logo-ring {
-   width: 76px;
-  height: 86px;
+  width: 68px;
+  height: 68px;
 }
 
 .nav-root.solid .nav-logo-img {
-  height: 78px;
+  width: 68px;
+  height: 68px;
 }
-       
-        .nav-brand-text {
-          display: flex;
-          flex-direction: column;
-          gap: 1px;
-          white-space: nowrap;
-        }
+
+        /* ── PREMIUM DIVIDER (brand) ── */
+        .premium-divider {
+  position: relative;
+  align-self: center;
+
+  width: 250px;
+  height: 4px;
+
+  margin: 7px 0 3px;
+
+  border-radius: 3px;
+
+background: linear-gradient(
+  90deg,
+  #8a6200 0%,
+  #f0b00e 18%,
+  #f6d76a 42%,
+  #fff0a6 50%,
+  #f6d76a 58%,
+  #d39e17 82%,
+  #705206 100%
+);
+
+  box-shadow:
+    0 1px 4px rgba(184, 134, 11, 0.45),
+    0 0 8px rgba(212, 175, 55, 0.25);
+
+  overflow: visible;
+}
+
+.premium-divider::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 14px;
+  height: 14px;
+
+  background: #e6b71d;
+  border: 1px solid #e0be41;
+
+  transform: translate(-50%, -50%) rotate(45deg);
+
+  box-shadow:
+    0 1px 4px rgba(184, 134, 11, 0.45);
+}
+
+/* ── GOLD RIBBON LIGHT SWEEP (extended travel to name width) ── */
+.premium-divider::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  height: 100%;
+
+  left: var(--shine-start, -150px);
+
+  width: 90px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.75) 42%,
+    #FFFFFF 50%,
+    rgba(255, 255, 255, 0.75) 58%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent 100%
+  );
+
+  filter:
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
+
+  pointer-events: none;
+
+  animation: extendedRibbonShine 3.8s ease-in-out infinite;
+}
+
+@keyframes extendedRibbonShine {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(var(--shine-travel, 500px)) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.nav-brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  white-space: nowrap;
+}
         .nav-college-name {
   font-family: 'Cinzel', serif;
-  font-size: 23px;
+  font-size: 34px;
   font-weight: 700;
-  letter-spacing: 0.035em;
-  line-height: 1.05;
+  letter-spacing: 0.055em;
+  line-height: 1;
   white-space: nowrap;
-  transition: color .3s;
+  text-align: center;
+  transition: color .5s ease, text-shadow .5s ease, letter-spacing .5s ease, font-size .5s ease;
 }
         .nav-college-sub {
-          font-family: 'Roboto Condensed', sans-serif;
-           font-size: 10px;
-          font-weight: 500;
-          letter-spacing: .06em;
-          transition: color .3s;
+          font-family: 'Inter', sans-serif;
+          font-size: 12px;
+          font-weight: 900;
+          letter-spacing: 0.85em;
+          line-height: 1;
+          margin-top: 8px;
+          text-align: center;
+          text-transform: uppercase;
+          white-space: nowrap;
+          transition: color .5s ease, letter-spacing .5s ease;
         }
         /* transparent state (home hero) */
         /* =========================================
@@ -335,19 +563,21 @@ a.top-contact-item:hover {
   color: #ffffff;
 
   font-family: 'Cinzel', serif;
-  font-size: 25px;
-  font-weight: 800;
+  font-size: 34px;
+  font-weight: 700;
 
   line-height: 1;
-  letter-spacing: 0.035em;
+  letter-spacing: 0.08em;
 
   white-space: nowrap;
+
+  text-shadow: 0 3px 15px rgba(0,0,0,.45);
 }
 
 .nav-root.transparent .nav-college-sub {
-  color: rgba(255,255,255,.72);
+  color: #ffffff;
 
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
 }
 
@@ -357,15 +587,18 @@ a.top-contact-item:hover {
 ========================================= */
 
 .nav-root.solid .nav-college-name {
-  font-size: 32px;
+  color: #163B72;
+  font-size: 34px;
   font-weight: 700;
   letter-spacing: 0.08em;
+  line-height: 1;
   white-space: nowrap;
+  text-shadow: none;
 }
 
 .nav-root.solid .nav-college-sub {
-  color: #8A9ABC;
-  font-size: 10px;
+  color: #6B7280;
+  font-size: 12px;
   text-transform: uppercase;
 }
        
@@ -405,16 +638,16 @@ a.top-contact-item:hover {
 
   position: relative;
 
-  font-family: 'Roboto Condensed', sans-serif;
+ font-family: 'Inter', sans-serif;
 
-  font-size: 18px;
-  line-height: 1;
+font-size: 14px;
+line-height: 1;
 
-  font-weight: 400;
+font-weight: 500;
 
   letter-spacing: .01em;
 
-  color: rgba(255,255,255,.92);
+  color: #ffffff;
 
   white-space: nowrap;
 
@@ -444,14 +677,14 @@ a.top-contact-item:hover {
 
   position: relative;
 
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Manrope', sans-serif;
 
-  font-size: 16px;
-  line-height: 1;
+ font-size: 14px;
+line-height: 1;
 
-  font-weight: 400;
+font-weight: 500;
 
-  letter-spacing: 0;
+letter-spacing: 0;
 
   color: #163B72;
 
@@ -464,11 +697,9 @@ a.top-contact-item:hover {
         .nav-root.transparent .nav-item.active { color: #ffffff; }
         .nav-root.solid .nav-item {
   color: #163B72;
-  font-weight: 400;
+  font-weight: 500;
 }
-  .nav-root.solid .nav-item:last-child {
-  margin-right: 40px;
-}
+  
         .nav-root.solid .nav-item:hover { color: #0B2545; background: rgba(11,37,69,.05); }
         .nav-root.solid .nav-item.active {
   color: #0B2545;
@@ -484,7 +715,7 @@ a.top-contact-item:hover {
           right: 14px;
           height: 2.5px;
           border-radius: 2px;
-          background: #18C6C8;
+          background: #D4AF37;
           transform: scaleX(0);
           transform-origin: center;
           transition: transform .3s cubic-bezier(.16,1,.3,1);
@@ -504,9 +735,8 @@ a.top-contact-item:hover {
 ========================================= */
 
 .nav-root.transparent .btn-apply {
-  width: 140px;
-  height: 50px;
-
+  width: 132px;
+  height: 46px;
   padding: 12px;
 
   display: inline-flex;
@@ -521,18 +751,17 @@ a.top-contact-item:hover {
 
   cursor: pointer;
 
-  font-family: 'Roboto Condensed', sans-serif;
+ font-family: 'Manrope', sans-serif;
 
  font-size: 16px;
 font-weight: 700;
   letter-spacing: .01em;
 
   background: linear-gradient(
-    135deg,
-    #18C6C8 0%,
-    #0FA3B1 100%
-  );
-
+  135deg,
+  #2563EB 0%,
+  #06B6D4 100%
+);
   color: #ffffff;
 
   box-shadow:
@@ -551,8 +780,8 @@ font-weight: 700;
 ========================================= */
 
 .nav-root.solid .btn-apply {
-  width: 125px;
-  height: 48px;
+  width: 115px;
+  height: 44px;
 
   padding: 10px 12px;
 
@@ -760,7 +989,7 @@ font-weight: 700;
 @media (max-width: 1400px) {
 
   .nav-inner {
-    grid-template-columns: 430px minmax(0, 1fr) 135px;
+   
     gap: 0;
     padding: 0 24px;
     align-items: center;
@@ -797,15 +1026,12 @@ font-weight: 700;
     height: 11px;
   }
 
-  /* COLLEGE NAME */
-  .nav-root.solid .nav-college-name {
-    font-size: 16px;
-  }
+  
 }
 
   /* COLLEGE NAME */
   .nav-root.solid .nav-college-name {
-    font-size: 16px;
+    font-size: 24px;
   }
 }
 
@@ -832,12 +1058,9 @@ font-weight: 700;
   padding: 0 18px;
   height: 100%;
 
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr) 125px;
-
-  align-items: center;
-  gap: 4px;
-}
+ display: flex;
+align-items: center;
+justify-content: space-between;
 
   .nav-brand {
     width: fit-content;
@@ -847,12 +1070,13 @@ font-weight: 700;
   }
 
   .nav-logo-ring {
-    width: 58px;
+    width: 74px;
     height: 105px;
   }
 
   .nav-logo-img {
-    height: 66px;
+    width: 78px;
+    height: 78px;
   }
 
   .nav-brand-text {
@@ -861,11 +1085,20 @@ font-weight: 700;
 
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 17px;
+    font-size: 25px;
   }
 
   .nav-college-sub {
     font-size: 9px !important;
+  }
+
+  .premium-divider {
+    width: 150px;
+    height: 4px;
+  }
+
+  .premium-divider::before {
+    width: 57px;
   }
 
   .nav-right {
@@ -922,18 +1155,18 @@ font-weight: 700;
 }
 
   .nav-logo-ring {
-    width: 48px;
+    width: 60px;
     height: 66px;
   }
 
   .nav-logo-img {
-    height: 60px;
-    width: auto;
+    width: 72px;
+    height: 72px;
   }
 
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 14px;
+    font-size: 21px;
     line-height: 1.08;
     white-space: nowrap;
   }
@@ -942,6 +1175,15 @@ font-weight: 700;
     font-size: 7px !important;
     letter-spacing: .035em;
     white-space: nowrap;
+  }
+
+  .premium-divider {
+    width: 150px;
+    height: 4px;
+  }
+
+  .premium-divider::before {
+    width: 45px;
   }
 
   .nav-hamburger {
@@ -979,20 +1221,30 @@ font-weight: 700;
   }
 
   .nav-logo-ring {
-    width: 43px;
+    width: 54px;
   }
 
   .nav-logo-img {
-    height: 54px;
+    width: 64px;
+    height: 64px;
   }
 
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 12px;
+    font-size: 18px;
   }
 
   .nav-college-sub {
     font-size: 6.5px !important;
+  }
+
+  .premium-divider {
+    width: 130px;
+    height: 4px;
+  }
+
+  .premium-divider::before {
+    width: 39px;
   }
 
   .nav-hamburger {
@@ -1042,7 +1294,7 @@ font-weight: 700;
 `}</style>
 
 {/* TOP CONTACT BAR */}
-<div className="top-contact-bar">
+<div className={`top-contact-bar ${isScrolled ? 'top-contact-hidden' : ''}`}>
   <div className="top-contact-inner">
 
     <a href="tel:+9191576 51234" className="top-contact-item">
@@ -1063,146 +1315,668 @@ font-weight: 700;
   </div>
 </div>
 
-      <header className={`nav-root ${isScrolled ? 'solid' : 'transparent'}`}>
-        <div className="nav-inner">
+     {/* =========================================================
+    NORMAL / UNSCROLLED HEADER
+    This header exists ONLY when page is at the top.
+========================================================= */}
 
-          {/* LEFT — Brand */}
-          <button className="nav-brand" onClick={() => navigate('home')} aria-label="Madha College of Nursing — Home">
-           <div className="nav-logo-ring">
-  <img
-    src="/logos/favico.png"
-    alt="Madha College of Nursing"
-    className="nav-logo-img"
-  />
-</div>
-            <div className="nav-brand-text">
-              <span className="nav-college-name">MADHA COLLEGE OF NURSING</span>
-              <span className="nav-college-sub">Chennai, Tamil Nadu · Est. 1998</span>
-            </div>
-          </button>
+{!isScrolled && (
+  <header className="nav-root transparent normal-header">
+    <div className="nav-inner">
 
-          {/* CENTER — Navigation */}
-          <nav className="nav-links" aria-label="Primary navigation">
-            {NAV_ITEMS.map(item => item.children ? (
-              <div key={item.page} className="nav-dropdown-trigger">
-                <button
-                  className={`nav-item ${aboutActive ? 'active' : ''}`}
-                  onClick={() => navigate(item.page)}
-                  aria-haspopup="true"
-                  aria-expanded="false"
+      {/* NORMAL — BRAND */}
+      <button
+        className="nav-brand"
+        onClick={() => navigate('home')}
+        aria-label="Madha College of Nursing — Home"
+      >
+        <div className="nav-logo-ring">
+
+          <img
+            src="/logos/favico.png"
+            alt="Madha College of Nursing"
+            className="nav-logo-img"
+          />
+
+        </div>
+
+        <div className="nav-brand-text">
+
+          <span
+            className="nav-college-name"
+            ref={normalNameRef}
+          >
+            MADHA COLLEGE OF NURSING
+          </span>
+
+          <div
+            className="premium-divider"
+            ref={normalRibbonRef}
+            aria-hidden="true"
+          />
+
+        </div>
+      </button>
+
+
+      {/* NORMAL — NAVIGATION */}
+      <nav
+        className="nav-links"
+        aria-label="Primary navigation"
+      >
+        {NAV_ITEMS.map(item =>
+          item.children ? (
+
+            <div
+              key={item.page}
+              className="nav-dropdown-trigger"
+            >
+
+              <button
+                className={`nav-item ${
+                  aboutActive ? 'active' : ''
+                }`}
+                onClick={() => navigate(item.page)}
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {item.label}
+
+                <svg
+                  className="nav-item-chevron"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  {item.label}
-                  <svg className="nav-item-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
-                </button>
-                <div className="nav-dropdown" role="menu">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              <div
+                className="nav-dropdown"
+                role="menu"
+              >
+                {item.children.map(child => (
+                  <button
+                    key={child.page}
+                    role="menuitem"
+                    className={`nav-dropdown-item ${
+                      currentPage === child.page
+                        ? 'active'
+                        : ''
+                    }`}
+                    onClick={() => navigate(child.page)}
+                  >
+                    {child.label}
+                  </button>
+                ))}
+              </div>
+
+            </div>
+
+          ) : (
+
+            <button
+              key={item.page}
+              className={`nav-item ${
+                currentPage === item.page
+                  ? 'active'
+                  : ''
+              }`}
+              onClick={() => navigate(item.page)}
+              aria-current={
+                currentPage === item.page
+                  ? 'page'
+                  : undefined
+              }
+            >
+              {item.label}
+            </button>
+
+          )
+        )}
+      </nav>
+
+
+      {/* NORMAL — RIGHT */}
+      <div className="nav-right">
+
+        <button
+          className="btn-apply"
+          onClick={() => navigate('contact')}
+        >
+          Apply Now
+
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+
+        </button>
+
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label={
+            menuOpen
+              ? 'Close menu'
+              : 'Open menu'
+          }
+          aria-expanded={menuOpen}
+        >
+
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          >
+            {menuOpen ? (
+              <>
+                <line
+                  x1="18"
+                  y1="6"
+                  x2="6"
+                  y2="18"
+                />
+
+                <line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"
+                />
+              </>
+            ) : (
+              <>
+                <line
+                  x1="4"
+                  y1="7"
+                  x2="20"
+                  y2="7"
+                />
+
+                <line
+                  x1="4"
+                  y1="12"
+                  x2="20"
+                  y2="12"
+                />
+
+                <line
+                  x1="4"
+                  y1="17"
+                  x2="20"
+                  y2="17"
+                />
+              </>
+            )}
+          </svg>
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div
+      className="nav-divider"
+      aria-hidden="true"
+    />
+
+    {/* NORMAL — MOBILE DRAWER */}
+    {menuOpen && (
+      <div
+        className="nav-drawer"
+        role="menu"
+      >
+
+        {NAV_ITEMS.map(item =>
+          item.children ? (
+
+            <div key={item.page}>
+
+              <button
+                className={`nav-drawer-item has-children ${
+                  aboutActive ? 'active' : ''
+                }`}
+                onClick={() =>
+                  setAboutOpen(o => !o)
+                }
+                aria-expanded={aboutOpen}
+                role="menuitem"
+              >
+                {item.label}
+
+                <svg
+                  className={`nav-drawer-chevron ${
+                    aboutOpen ? 'open' : ''
+                  }`}
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              {aboutOpen && (
+                <div
+                  className="nav-drawer-sub"
+                  role="menu"
+                >
                   {item.children.map(child => (
                     <button
                       key={child.page}
+                      className={`nav-drawer-sub-item ${
+                        currentPage === child.page
+                          ? 'active'
+                          : ''
+                      }`}
+                      onClick={() =>
+                        navigate(child.page)
+                      }
                       role="menuitem"
-                      className={`nav-dropdown-item ${currentPage === child.page ? 'active' : ''}`}
-                      onClick={() => navigate(child.page)}
                     >
                       {child.label}
                     </button>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <button
-                key={item.page}
-                className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
-                onClick={() => navigate(item.page)}
-                aria-current={currentPage === item.page ? 'page' : undefined}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+              )}
 
-          {/* RIGHT — CTA + hamburger */}
-          <div className="nav-right">
-            <button className="btn-apply" onClick={() => navigate('contact')}>
-              Apply Now
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
+            </div>
+
+          ) : (
+
             <button
-              className="nav-hamburger"
-              onClick={() => setMenuOpen(o => !o)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
+              key={item.page}
+              className={`nav-drawer-item ${
+                currentPage === item.page
+                  ? 'active'
+                  : ''
+              }`}
+              onClick={() =>
+                navigate(item.page)
+              }
+              role="menuitem"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">
-                {menuOpen ? (
-                  <>
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                  </>
-                ) : (
-                  <>
-                    <line x1="4" y1="7"  x2="20" y2="7"/>
-                    <line x1="4" y1="12" x2="20" y2="12"/>
-                    <line x1="4" y1="17" x2="20" y2="17"/>
-                  </>
-                )}
-              </svg>
+              {item.label}
             </button>
-          </div>
+
+          )
+        )}
+
+        <button
+          className="btn-apply nav-drawer-apply"
+          onClick={() => navigate('contact')}
+        >
+          Apply Now →
+        </button>
+
+      </div>
+    )}
+
+  </header>
+)}
+
+
+{/* =========================================================
+    SCROLLED HEADER
+    This header exists ONLY after scrolling.
+========================================================= */}
+
+{isScrolled && (
+  <header className="nav-root solid scrolled-header">
+
+    <div className="nav-inner">
+
+      {/* SCROLLED — BRAND */}
+      <button
+        className="nav-brand"
+        onClick={() => navigate('home')}
+        aria-label="Madha College of Nursing — Home"
+      >
+
+        <div className="nav-logo-ring">
+
+          <img
+            src="/logos/favico.png"
+            alt="Madha College of Nursing"
+            className="nav-logo-img"
+          />
+
         </div>
 
-        {/* Subtle bottom line in transparent mode */}
-        <div className="nav-divider" aria-hidden="true" />
+        <div className="nav-brand-text">
 
-        {/* Mobile drawer */}
-        {menuOpen && (
-          <div className="nav-drawer" role="menu">
-            {NAV_ITEMS.map(item => item.children ? (
-              <div key={item.page}>
-                <button
-                  className={`nav-drawer-item has-children ${aboutActive ? 'active' : ''}`}
-                  onClick={() => setAboutOpen(o => !o)}
-                  aria-expanded={aboutOpen}
-                  role="menuitem"
-                >
-                  {item.label}
-                  <svg className={`nav-drawer-chevron ${aboutOpen ? 'open' : ''}`} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M6 9l6 6 6-6"/>
-                  </svg>
-                </button>
-                {aboutOpen && (
-                  <div className="nav-drawer-sub" role="menu">
-                    {item.children.map(child => (
-                      <button
-                        key={child.page}
-                        className={`nav-drawer-sub-item ${currentPage === child.page ? 'active' : ''}`}
-                        onClick={() => navigate(child.page)}
-                        role="menuitem"
-                      >
-                        {child.label}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : (
+          <span
+            className="nav-college-name"
+            ref={scrolledNameRef}
+          >
+            MADHA COLLEGE OF NURSING
+          </span>
+
+          <div
+            className="premium-divider"
+            ref={scrolledRibbonRef}
+            aria-hidden="true"
+          />
+
+        </div>
+
+      </button>
+
+
+      {/* SCROLLED — NAVIGATION */}
+      <nav
+        className="nav-links"
+        aria-label="Primary navigation"
+      >
+
+        {NAV_ITEMS.map(item =>
+          item.children ? (
+
+            <div
+              key={item.page}
+              className="nav-dropdown-trigger"
+            >
+
               <button
-                key={item.page}
-                className={`nav-drawer-item ${currentPage === item.page ? 'active' : ''}`}
+                className={`nav-item ${
+                  aboutActive ? 'active' : ''
+                }`}
                 onClick={() => navigate(item.page)}
-                role="menuitem"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
                 {item.label}
+
+                <svg
+                  className="nav-item-chevron"
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+
               </button>
-            ))}
-            <button className="btn-apply nav-drawer-apply" onClick={() => navigate('contact')}>
-              Apply Now →
+
+              <div
+                className="nav-dropdown"
+                role="menu"
+              >
+                {item.children.map(child => (
+                  <button
+                    key={child.page}
+                    role="menuitem"
+                    className={`nav-dropdown-item ${
+                      currentPage === child.page
+                        ? 'active'
+                        : ''
+                    }`}
+                    onClick={() =>
+                      navigate(child.page)
+                    }
+                  >
+                    {child.label}
+                  </button>
+                ))}
+              </div>
+
+            </div>
+
+          ) : (
+
+            <button
+              key={item.page}
+              className={`nav-item ${
+                currentPage === item.page
+                  ? 'active'
+                  : ''
+              }`}
+              onClick={() =>
+                navigate(item.page)
+              }
+              aria-current={
+                currentPage === item.page
+                  ? 'page'
+                  : undefined
+              }
+            >
+              {item.label}
             </button>
-          </div>
+
+          )
         )}
-      </header>
+
+      </nav>
+
+
+      {/* SCROLLED — RIGHT */}
+      <div className="nav-right">
+
+        <button
+          className="btn-apply"
+          onClick={() => navigate('contact')}
+        >
+          Apply Now
+
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+
+        </button>
+
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label={
+            menuOpen
+              ? 'Close menu'
+              : 'Open menu'
+          }
+          aria-expanded={menuOpen}
+        >
+
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+          >
+
+            {menuOpen ? (
+              <>
+                <line
+                  x1="18"
+                  y1="6"
+                  x2="6"
+                  y2="18"
+                />
+
+                <line
+                  x1="6"
+                  y1="6"
+                  x2="18"
+                  y2="18"
+                />
+              </>
+            ) : (
+              <>
+                <line
+                  x1="4"
+                  y1="7"
+                  x2="20"
+                  y2="7"
+                />
+
+                <line
+                  x1="4"
+                  y1="12"
+                  x2="20"
+                  y2="12"
+                />
+
+                <line
+                  x1="4"
+                  y1="17"
+                  x2="20"
+                  y2="17"
+                />
+              </>
+            )}
+
+          </svg>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    {/* SCROLLED — MOBILE DRAWER */}
+    {menuOpen && (
+      <div
+        className="nav-drawer"
+        role="menu"
+      >
+
+        {NAV_ITEMS.map(item =>
+          item.children ? (
+
+            <div key={item.page}>
+
+              <button
+                className={`nav-drawer-item has-children ${
+                  aboutActive ? 'active' : ''
+                }`}
+                onClick={() =>
+                  setAboutOpen(o => !o)
+                }
+                aria-expanded={aboutOpen}
+                role="menuitem"
+              >
+
+                {item.label}
+
+                <svg
+                  className={`nav-drawer-chevron ${
+                    aboutOpen ? 'open' : ''
+                  }`}
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+
+              </button>
+
+              {aboutOpen && (
+                <div
+                  className="nav-drawer-sub"
+                  role="menu"
+                >
+
+                  {item.children.map(child => (
+                    <button
+                      key={child.page}
+                      className={`nav-drawer-sub-item ${
+                        currentPage === child.page
+                          ? 'active'
+                          : ''
+                      }`}
+                      onClick={() =>
+                        navigate(child.page)
+                      }
+                      role="menuitem"
+                    >
+                      {child.label}
+                    </button>
+                  ))}
+
+                </div>
+              )}
+
+            </div>
+
+          ) : (
+
+            <button
+              key={item.page}
+              className={`nav-drawer-item ${
+                currentPage === item.page
+                  ? 'active'
+                  : ''
+              }`}
+              onClick={() =>
+                navigate(item.page)
+              }
+              role="menuitem"
+            >
+              {item.label}
+            </button>
+
+          )
+        )}
+
+        <button
+          className="btn-apply nav-drawer-apply"
+          onClick={() => navigate('contact')}
+        >
+          Apply Now →
+        </button>
+
+      </div>
+    )}
+
+  </header>
+)}
     </>
   )
 }
