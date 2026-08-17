@@ -561,6 +561,26 @@ export default function Home({ navigate }: Props) {
         </div>
       </section>
 
+{/* =====================================================
+    FULL SCREEN COLLEGE DRONE VIDEO
+===================================================== */}
+<section className="relative w-full h-screen overflow-hidden bg-[#061B36]">
+
+  <video
+    className="absolute inset-0 w-full h-full object-cover"
+    src="/videos/college-drone.mp4"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  />
+
+  {/* Premium dark overlay */}
+  <div className="absolute inset-0 bg-[#061B36]/25 pointer-events-none" />
+
+</section>
+
       {/* ═══════════════════════════════════════════
           4. PROGRAMS — Premium horizontal cards
       ═══════════════════════════════════════════ */}
@@ -569,6 +589,7 @@ export default function Home({ navigate }: Props) {
           <div style={{ textAlign: 'center', marginBottom: 72 }}>
             <Reveal><span className="section-tag">Academic Programmes</span></Reveal>
             <Reveal delay={1}>
+              
               <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
                 Pathways to a<br/>
                 <span className="text-navy-g">Nursing Career</span>
