@@ -168,7 +168,7 @@ begin
         'Conference',
         '2026-09-12',
         'Madha College Auditorium',
-        '/campus/madaha-nursing-college-9.jpg',
+        '/campus/madaha-nursing-college-9.webp',
         true,
         true
       ),
@@ -178,7 +178,7 @@ begin
         'Campus Event',
         '2026-09-26',
         'College Campus Grounds',
-        '/campus/madaha-nursing-college-9.jpg',
+        '/campus/madaha-nursing-college-9.webp',
         true,
         false
       ),
@@ -188,7 +188,7 @@ begin
         'Community',
         '2026-10-10',
         'Kundrathur Community Hall',
-        '/campus/madaha-nursing-college-9.jpg',
+        '/campus/madaha-nursing-college-9.webp',
         true,
         false
       );

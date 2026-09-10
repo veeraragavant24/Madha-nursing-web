@@ -8,14 +8,23 @@ const COURSES = [
   {
     code: 'B.Sc.',
     name: 'Bachelor of Science in Nursing',
-    duration: '4 Years + 1 Year Internship',
+    duration: '4 Years ',
     intake: '100 Seats',
     level: 'Undergraduate',
     color: '#0B2545',
     eligibility: ['10+2 with Physics, Chemistry, Biology & English', 'Minimum 45% aggregate (General category)', 'Minimum 40% aggregate (Reserved category)', 'Age: 17–35 years as on December 31', 'Physical fitness certificate required'],
-    curriculum: ['Year 1: Anatomy, Physiology, Biochemistry, Nutrition, Nursing Foundations', 'Year 2: Medical Surgical Nursing I, Pharmacology, Pathology, Community Health Nursing I', 'Year 3: Medical Surgical Nursing II, Child Health, Midwifery & OBG, Mental Health', 'Year 4: Community Health II, Research, Management, Clinical Specialties'],
+    curriculum: [
+      'Semester I: Communicative English, Applied Anatomy, Applied Physiology, Applied Sociology, Applied Psychology, Nursing Foundations I. Mandatory Module: First Aid as part of Nursing Foundation I Course',
+      'Semester II: Applied Biochemistry, Applied Nutrition and Dietetics, Nursing Foundations II, Health/Nursing Informatics & Technology. Mandatory Module: Health Assessment as part of Nursing Foundation II Course',
+      'Semester III: Applied Microbiology and Infection Control including Safety, Pharmacology I, Pathology I, Adult Health (Medical Surgical) Nursing I with integrated pathophysiology. Mandatory Module: BCLS as part of Adult Health Nursing I',
+      'Semester IV: Pharmacology II, Pathology II & Genetics, Adult Health Nursing II with integrated pathophysiology including Geriatric Nursing, Professionalism, Professional Values & Ethics including Bioethics. Mandatory Modules: Fundamentals of Prescribing under Pharmacology II; Palliative care module under Adult Health Nursing II',
+      'Semester V: Child Health Nursing I, Mental Health Nursing I, Community Health Nursing I (including Environmental Science & Epidemiology), Educational Technology/Nursing Education, Introduction to Forensic Nursing and Indian Laws. Mandatory Modules: Essential Newborn Care (ENBC), Facility Based Newborn Care (FBNBC), IMNCI and PLS as part of Child Health Nursing',
+      'Semester VI: Child Health Nursing II, Mental Health Nursing II, Nursing Management & Leadership, Midwifery/Obstetrics and Gynecology (OBG) Nursing I. Mandatory Module: SBA Module under OBG Nursing I/II (VI/VII Semester)',
+      'Semester VII: Community Health Nursing II, Nursing Research & Statistics, Midwifery/Obstetrics and Gynecology (OBG) Nursing II. Mandatory Module: Safe delivery app under OBG Nursing I/II (VI/VII Semester)',
+      'Semester VIII: Internship (Intensive Practicum/Residency Posting)'
+    ],
     careers: ['Staff Nurse — Government & Private Hospitals', 'ICU / CCU / Operation Theatre Nurse', 'Nurse Educator & Clinical Trainer', 'Public Health Nurse', 'International Nursing (USA, UK, UAE, Australia, Canada)'],
-    placements: ['Apollo Hospitals, Chennai', 'Fortis Healthcare, Pan India', 'AIIMS, New Delhi', 'Government General Hospital, Chennai', 'International placements in 25+ countries'],
+    placements: ['Apollo Hospitals, Chennai', 'Sri Ramachandra Hospital, Chennai', 'AIIMS, New Delhi', 'Government General Hospital, Chennai', 'International placements in 25+ countries'],
     faqs: [
       { q: 'Is INC approval required for nursing admission?', a: 'Yes. Madha College of Nursing is INC approved and TNMGRMU affiliated, ensuring your degree is recognised across India and internationally.' },
       { q: 'Is the internship paid?', a: 'Yes. The 12-month internship in the final year is a paid internship at affiliated hospitals with a monthly stipend.' },
@@ -29,10 +38,12 @@ const COURSES = [
     intake: '30 Seats',
     level: 'Postgraduate',
     color: '#1E5AA8',
-    eligibility: ['B.Sc. Nursing from recognised university', 'Minimum 55% aggregate in B.Sc. Nursing', 'Registered with State Nursing Council', 'Must have nursing practice experience (preferred)'],
-    curriculum: ['Semester 1: Advanced Nursing Practice, Nursing Education, Biostatistics', 'Semester 2: Research Methodology, Clinical Specialisation Theory', 'Semester 3: Clinical Practicum I, Thesis Research Begins', 'Semester 4: Clinical Practicum II, Thesis Submission & Viva'],
-    careers: ['Nursing Faculty / Lecturer', 'Clinical Nurse Specialist', 'Nursing Research Associate', 'Hospital Nursing Superintendent', 'International Clinical Trainer'],
-    placements: ['Nursing Faculty positions at affiliated colleges', 'Clinical Specialist roles at super-specialty hospitals', 'Research Associate — ICMR, DST-funded projects'],
+    eligibility: ['B.Sc. Nursing from recognised university', 'P.B.B.Sc. Nursing with B.Sc. Nursing', 'Registered with State Nursing Council', 'Must have nursing practice experience (preferred)'],
+curriculum: [
+  'Year I: Nursing Education, Advanced Nursing Practice, Nursing Research & Statistics, Clinical Specialty I',
+  'Year II: Nursing Management, Clinical Specialty II, Dissertation Submission & Viva',
+],    careers: ['Nursing Faculty / Lecturer', 'Clinical Nurse Specialist', 'Nursing Research Associate', 'Hospital Nursing Superintendent', 'International Clinical Trainer'],
+    placements: ['Nursing Faculty positions at affiliated colleges', 'Clinical Specialist roles at super-specialty hospitals',],
     faqs: [
       { q: 'What specialisations are available?', a: 'Medical Surgical, Paediatric, OBG, Community Health, Mental Health, and Critical Care Nursing.' },
       { q: 'Is the thesis mandatory?', a: 'Yes. All M.Sc. students must complete an independent research thesis reviewed by external experts.' },
@@ -45,9 +56,11 @@ const COURSES = [
     intake: '30 Seats',
     level: 'Undergraduate',
     color: '#18C6C8',
-    eligibility: ['GNM (General Nursing & Midwifery) diploma', 'Minimum 55% aggregate in GNM', 'Registered with State Nursing Council', 'Working as a nurse (preferred but not mandatory)'],
-    curriculum: ['Year 1: Biological Sciences, Behavioural Sciences, Nursing Foundations revision', 'Year 2: Advanced Nursing Theory, Research Methodology, Clinical Specialties'],
-    careers: ['Upgrade from GNM to B.Sc. credential', 'Senior Staff Nurse / Charge Nurse', 'Eligibility to pursue M.Sc. Nursing', 'Government sector promotions requiring degree'],
+    eligibility: ['GNM (General Nursing & Midwifery) diploma', 'Registered with State Nursing Council', 'Working as a nurse (preferred but not mandatory)'],
+curriculum: [
+  'Year I: Nursing Foundation, Nutrition & Dietetics, Biochemistry & Biophysics, Psychology, Maternal Nursing, Child Health Nursing, Microbiology, Medical-Surgical Nursing, English',
+  'Year II: Sociology, Community Health Nursing, Mental Health Nursing, Introduction to Nursing Education, Management & Research',
+],    careers: ['Upgrade from GNM to B.Sc. credential', 'Senior Staff Nurse / Charge Nurse', 'Eligibility to pursue M.Sc. Nursing', 'Government sector promotions requiring degree'],
     placements: ['All government hospital promotional tracks', 'Private super-specialty hospitals requiring degree qualification'],
     faqs: [
       { q: 'Can I do this while working?', a: 'The curriculum is designed to accommodate working nurses with blended learning options available.' },
@@ -242,6 +255,8 @@ export default function Courses({ navigate }: Props) {
         <img
           src="https://images.unsplash.com/photo-1758270705482-cee87ea98738?w=1600&h=600&fit=crop&auto=format"
           alt="Nursing students"
+          loading="lazy"
+          decoding="async"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.12 }}
         />
         <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 2, textAlign: 'center' }}>

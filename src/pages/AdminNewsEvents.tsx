@@ -1,7 +1,56 @@
 import { useEffect, useMemo, useState } from 'react'
-import { getSupabase, supabaseConfigured } from '../lib/supabase'
 import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
+
+const API_BASE = 'http://localhost:5021/api'
+
+function getAdminToken() {
+  return localStorage.getItem('adminToken')
+}
+
+async function apiRequest(
+  endpoint: string,
+  options: RequestInit = {}
+) {
+  const token = getAdminToken()
+
+  const response = await fetch(`${API_BASE}${endpoint}`, {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token
+        ? {
+            Authorization: `Bearer ${token}`,
+          }
+        : {}),
+      ...(options.headers || {}),
+    },
+  })
+
+  if (response.status === 401 || response.status === 403) {
+    throw new Error('UNAUTHORIZED')
+  }
+
+  if (!response.ok) {
+    let message = 'API request failed.'
+
+    try {
+      const data = await response.json()
+      message = data?.message || data?.title || message
+    } catch {
+      // ignore invalid JSON
+    }
+
+    throw new Error(message)
+  }
+
+  if (response.status === 204) {
+    return null
+  }
+
+  return response.json()
+}
+
 
 interface Props {
   goToLogin: () => void
@@ -64,56 +113,90 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
   }, [notice])
 
   async function fetchEvents() {
-    setFetching(true)
+  setFetching(true)
+
+  try {
+    const data = await apiRequest('/news-events')
+
+    const mapped: NewsEventRow[] = (data ?? [])
+      .map((event: any) => ({
+        id: event.id,
+        title: event.title,
+        description: event.description ?? null,
+        category: event.category ?? null,
+        event_date: event.eventDate
+          ? event.eventDate.split('T')[0]
+          : '',
+        location: event.location ?? null,
+        image_url: event.imageUrl ?? null,
+        published: Boolean(event.published),
+        featured: Boolean(event.featured),
+        created_at: event.createdAt,
+        updated_at: event.updatedAt ?? null,
+      }))
+      .sort(
+        (a: NewsEventRow, b: NewsEventRow) =>
+          b.event_date.localeCompare(a.event_date)
+      )
+
+    setEvents(mapped)
+  } catch (error) {
+    console.error('News Events API error:', error)
+
+    if (error instanceof Error && error.message === 'UNAUTHORIZED') {
+      localStorage.removeItem('adminToken')
+      localStorage.removeItem('adminUser')
+      goToLogin()
+      return
+    }
+
+    setNotice({
+      type: 'error',
+      message: 'Unable to load events.',
+    })
+  } finally {
+    setFetching(false)
+  }
+}
+
+  useEffect(() => {
+  let cancelled = false
+
+  async function boot() {
+    const token = localStorage.getItem('adminToken')
+
+    if (!token) {
+      if (!cancelled) {
+        goToLogin()
+      }
+      return
+    }
+
     try {
-      const { data, error } = await getSupabase()
-        .from('news_events')
-        .select('*')
-        .order('event_date', { ascending: false })
-      if (error) throw error
-      setEvents(data ?? [])
-    } catch {
-      setNotice({ type: 'error', message: 'Unable to load events.' })
-    } finally {
-      setFetching(false)
+      if (!cancelled) {
+        setAuthState('ok')
+      }
+
+      await fetchEvents()
+    } catch (error) {
+      console.error('Admin dashboard error:', error)
+
+      if (!cancelled) {
+        localStorage.removeItem('adminToken')
+        localStorage.removeItem('adminUser')
+        setAuthState('denied')
+      }
     }
   }
 
-  useEffect(() => {
-    let cancelled = false
-    async function boot() {
-      if (!supabaseConfigured) {
-        if (!cancelled) setAuthState('denied')
-        return
-      }
-      try {
-        const supabase = getSupabase()
-        const { data: sessionData } = await supabase.auth.getSession()
-        if (cancelled) return
-        if (!sessionData.session) {
-          goToLogin()
-          return
-        }
-        const { data: admin } = await supabase
-          .from('admin_users')
-          .select('role')
-          .eq('user_id', sessionData.session.user.id)
-          .maybeSingle()
-        if (cancelled) return
-        if (!admin || admin.role !== 'admin') {
-          setAuthState('denied')
-          return
-        }
-        setAuthState('ok')
-        fetchEvents()
-      } catch {
-        if (!cancelled) setAuthState('denied')
-      }
-    }
-    boot()
-    return () => { cancelled = true }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  boot()
+
+  return () => {
+    cancelled = true
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
   const counts = useMemo(() => ({
     total: events.length,
@@ -162,121 +245,238 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     setFormOpen(true)
   }
 
-  async function handleImageUpload(file: File) {
-    const allowed = ['image/jpeg', 'image/png', 'image/webp']
-    if (!allowed.includes(file.type)) {
-      setFormError('Only JPG, PNG or WEBP images are allowed.')
-      return
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      setFormError('Image must be 5 MB or smaller.')
-      return
-    }
-    setUploading(true)
-    setFormError(null)
-    try {
-      const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg'
-      const path = `uploads/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`
-      const { error: upError } = await getSupabase()
-        .storage
-        .from('news-events')
-        .upload(path, file, { cacheControl: '3600', upsert: false })
-      if (upError) throw upError
-      const { data } = getSupabase().storage.from('news-events').getPublicUrl(path)
-      setForm(f => ({ ...f, image_url: data.publicUrl }))
-      setPreviewUrl(data.publicUrl)
-    } catch {
-      setFormError('Image upload failed. Please try again.')
-    } finally {
-      setUploading(false)
-    }
+ async function handleImageUpload(file: File) {
+  const allowed = [
+    'image/jpeg',
+    'image/png',
+    'image/webp',
+  ]
+
+  if (!allowed.includes(file.type)) {
+    setFormError('Only JPG, PNG or WEBP images are allowed.')
+    return
   }
+
+  const maxSize = 20 * 1024 * 1024
+
+  if (file.size > maxSize) {
+    setFormError('Image must be 20 MB or smaller.')
+    return
+  }
+
+  setFormError(null)
+  setUploading(true)
+
+  try {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    const response = await fetch(
+      'http://localhost:5021/api/news-events/upload',
+      {
+        method: 'POST',
+        body: formData,
+      }
+    )
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(
+        data?.message || 'Image upload failed.'
+      )
+    }
+
+    const imageUrl = `http://localhost:5021${data.imageUrl}`
+
+    setPreviewUrl(imageUrl)
+
+    setForm((current) => ({
+      ...current,
+      image_url: imageUrl,
+    }))
+  } catch (error) {
+    console.error('Image upload error:', error)
+
+    setFormError(
+      error instanceof Error
+        ? error.message
+        : 'Unable to upload image.'
+    )
+  } finally {
+    setUploading(false)
+  }
+}
 
   async function handleSave(e: React.FormEvent) {
-    e.preventDefault()
-    if (!form.title.trim() || !form.event_date) {
-      setFormError('Title and date are required.')
+  e.preventDefault()
+
+  if (!form.title.trim() || !form.event_date) {
+    setFormError('Title and date are required.')
+    return
+  }
+
+  setSaving(true)
+  setFormError(null)
+
+  try {
+    const payload = {
+      title: form.title.trim(),
+      description: form.description.trim() || null,
+      category: form.category.trim() || null,
+      eventDate: form.event_date,
+      location: form.location.trim() || null,
+      imageUrl: form.image_url.trim() || null,
+      published: form.published,
+      featured: form.featured,
+    }
+
+    if (formMode === 'edit' && formEventId) {
+      await apiRequest(`/news-events/${formEventId}`, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+      })
+
+      setNotice({
+        type: 'success',
+        message: 'Event updated.',
+      })
+    } else {
+      await apiRequest('/news-events', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      })
+
+      setNotice({
+        type: 'success',
+        message: 'Event created.',
+      })
+    }
+
+    setFormOpen(false)
+    await fetchEvents()
+
+  } catch (error) {
+    console.error('Save event error:', error)
+
+    if (
+      error instanceof Error &&
+      error.message === 'UNAUTHORIZED'
+    ) {
+      localStorage.removeItem('adminToken')
+      localStorage.removeItem('adminUser')
+      goToLogin()
       return
     }
-    setSaving(true)
-    setFormError(null)
-    try {
-      if (formMode === 'edit' && formEventId) {
-        const { error } = await getSupabase().from('news_events').update({
-          title: form.title.trim(),
-          description: form.description.trim(),
-          category: form.category.trim(),
-          event_date: form.event_date,
-          location: form.location.trim(),
-          image_url: form.image_url,
-          published: form.published,
-          featured: form.featured,
-        }).eq('id', formEventId)
-        if (error) throw error
-        setNotice({ type: 'success', message: 'Event updated.' })
-      } else {
-        const { error } = await getSupabase().from('news_events').insert({
-          title: form.title.trim(),
-          description: form.description.trim(),
-          category: form.category.trim(),
-          event_date: form.event_date,
-          location: form.location.trim(),
-          image_url: form.image_url,
-          published: form.published,
-          featured: form.featured,
-        })
-        if (error) throw error
-        setNotice({ type: 'success', message: 'Event created.' })
-      }
-      setFormOpen(false)
-      await fetchEvents()
-    } catch {
-      setFormError('Unable to save the event. Please try again.')
-    } finally {
-      setSaving(false)
-    }
+
+    setFormError(
+      error instanceof Error
+        ? error.message
+        : 'Unable to save the event. Please try again.'
+    )
+  } finally {
+    setSaving(false)
   }
+}
 
   async function handleTogglePublished(e: NewsEventRow) {
-    setBusyId(e.id)
-    try {
-      const { error } = await getSupabase().from('news_events')
-        .update({ published: !e.published })
-        .eq('id', e.id)
-      if (error) throw error
-      await fetchEvents()
-      setNotice({ type: 'success', message: e.published ? 'Event unpublished.' : 'Event published.' })
-    } catch {
-      setNotice({ type: 'error', message: 'Unable to update publish status.' })
-    } finally {
-      setBusyId(null)
+  setBusyId(e.id)
+
+  try {
+    await apiRequest(`/news-events/${e.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        title: e.title,
+        description: e.description,
+        category: e.category,
+        eventDate: e.event_date,
+        location: e.location,
+        imageUrl: e.image_url,
+        published: !e.published,
+        featured: e.featured,
+      }),
+    })
+
+    await fetchEvents()
+
+    setNotice({
+      type: 'success',
+      message: e.published
+        ? 'Event unpublished.'
+        : 'Event published.',
+    })
+
+  } catch (error) {
+    console.error('Publish status error:', error)
+
+    if (
+      error instanceof Error &&
+      error.message === 'UNAUTHORIZED'
+    ) {
+      localStorage.removeItem('adminToken')
+      localStorage.removeItem('adminUser')
+      goToLogin()
+      return
     }
+
+    setNotice({
+      type: 'error',
+      message: 'Unable to update publish status.',
+    })
+
+  } finally {
+    setBusyId(null)
   }
+}
 
   async function handleDeleteConfirm() {
-    if (!deleteTarget) return
-    setDeleting(true)
-    try {
-      const { error } = await getSupabase().from('news_events').delete().eq('id', deleteTarget.id)
-      if (error) throw error
-      setDeleteTarget(null)
-      await fetchEvents()
-      setNotice({ type: 'success', message: 'Event deleted.' })
-    } catch {
-      setNotice({ type: 'error', message: 'Unable to delete the event.' })
-    } finally {
-      setDeleting(false)
-    }
-  }
+  if (!deleteTarget) return
 
-  async function handleLogout() {
-    try {
-      await getSupabase().auth.signOut()
-    } catch {
-      // still redirect
+  setDeleting(true)
+
+  try {
+    await apiRequest(`/news-events/${deleteTarget.id}`, {
+      method: 'DELETE',
+    })
+
+    setDeleteTarget(null)
+
+    await fetchEvents()
+
+    setNotice({
+      type: 'success',
+      message: 'Event deleted.',
+    })
+
+  } catch (error) {
+    console.error('Delete event error:', error)
+
+    if (
+      error instanceof Error &&
+      error.message === 'UNAUTHORIZED'
+    ) {
+      localStorage.removeItem('adminToken')
+      localStorage.removeItem('adminUser')
+      goToLogin()
+      return
     }
-    goToLogin()
+
+    setNotice({
+      type: 'error',
+      message: 'Unable to delete the event.',
+    })
+
+  } finally {
+    setDeleting(false)
   }
+}
+
+ function handleLogout() {
+  localStorage.removeItem('adminToken')
+  localStorage.removeItem('adminUser')
+
+  goToLogin()
+}
 
   return (
     <div className="admin-page">
@@ -1122,13 +1322,11 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
             </svg>
           </div>
           <div className="admin-state-title">
-            {supabaseConfigured ? 'Not authorized' : 'Supabase is not configured'}
+            Admin session expired
           </div>
-          <p className="admin-state-sub">
-            {supabaseConfigured
-              ? 'You must be logged in as an authorized administrator to manage News &amp; Events.'
-              : 'Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file, then run the schema in supabase/news_events.sql.'}
-          </p>
+         <p className="admin-state-sub">
+  Your admin session is no longer valid. Please log in again.
+</p>
           <button className="admin-modal-btn cancel" style={{ maxWidth: 220, margin: '0 auto', display: 'block', width: '100%' }} onClick={goToLogin}>
             Go to login
           </button>
@@ -1354,6 +1552,8 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
                       className="admin-upload-preview"
                       src={previewUrl || form.image_url}
                       alt="Event preview"
+                      loading="lazy"
+                      decoding="async"
                       onError={(ev) => {
                         const t = ev.currentTarget
                         t.onerror = null
@@ -1385,7 +1585,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
                       }}
                     />
                   </label>
-                  <span className="admin-upload-hint">JPG, JPEG, PNG or WEBP · max 5 MB</span>
+                  <span className="admin-upload-hint">JPG, JPEG, PNG or WEBP · max 20 MB</span>
                 </div>
               </div>
 

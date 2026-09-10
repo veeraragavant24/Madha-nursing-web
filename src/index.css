@@ -281,11 +281,9 @@ body {
 .section-tag {
   display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-sans); font-size: 15px; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: #18C6C8;
+ letter-spacing: .12em; text-transform: uppercase; color: #18C6C8;
 }
-.section-tag::before {
-  content: ''; display: block; width: 28px; height: 2px; background: #18C6C8; border-radius: 2px;
-}
+
 
 /* ─── Cards & interactive ─── */
 .card-lift { transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s cubic-bezier(.16,1,.3,1); }

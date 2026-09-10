@@ -13,13 +13,18 @@ const DEPTS = [
     color: '#0B2545',
     img: 'photo-1691139601099-932c01ec198b',
     head: 'Dr. Kanimozhi',
-    headDesig: 'M.Sc. Nursing — Vice-principal & Head of Department',
-    faculty: 12,
-    students: 240,
+    headDesig: 'M.Sc. Nursing,Ph.D — Vice-principal & Head of Department',
+    
     overview: 'The Department of Medical Surgical Nursing is the cornerstone of our nursing curriculum, training students to manage complex medical and surgical patient care across specialties including cardiology, neurology, nephrology, and oncology.',
-    facilities: ['40-bed simulation ward with mannequins', 'Cardiac monitoring lab', 'Wound care simulation centre', 'IV therapy practice lab', 'Drug calculation room'],
-    research: ['Post-operative pain management protocols (DST funded)', 'ICU nursing outcomes research', 'Diabetic wound care efficacy study'],
-    labs: ['Nursing Skills Lab (Capacity: 60)', 'Clinical Simulation Centre', 'Anatomy & Physiology Lab'],
+    facilities: ['40-bed simulation ward with mannequins', 'Cardiac monitoring ', 'Wound care simulation centre', 'IV therapy practice ', 'Drug calculation room'],
+research: [
+  'Simulation Training in IM Injection',
+  'Fast Track System in Emergency Department',
+  'Emergency Codes',
+  'Safe Patient Handoffs',
+  'Infection Control Protocols',
+],
+    labs: ['Nursing Skills lab ', 'Clinical Simulation Centre', 'Anatomy & Physiology '],
   },
   {
     id: 'pdn',
@@ -30,12 +35,16 @@ const DEPTS = [
     img: 'photo-1765896387387-0538bc9f997e',
     head: 'Ms Reheetha jeslin A',
     headDesig: 'M.Sc. Nursing (Paediatric) — Associate Professor & Head of Department',
-    faculty: 8,
-    students: 120,
+    
     overview: 'Dedicated to the care of neonates, infants, children, and adolescents, this department equips nurses with specialised skills in growth monitoring, immunisation, paediatric pharmacology, and NICU care.',
-    facilities: ['Neonatal care simulation unit', 'Paediatric emergency simulation', 'Growth & development assessment lab', 'Immunisation training station'],
-    research: ['Neonatal thermoregulation outcomes', 'Childhood immunisation compliance studies (ICMR funded)'],
-    labs: ['Paediatric Nursing Skills Lab', 'NICU Simulation Suite'],
+    facilities: ['Neonatal care simulation unit', 'Paediatric emergency simulation', 'Growth & development assessment ', 'Immunisation training station'],
+research: [
+  'Neonatal Hypothyroidism',
+  'Pediatric Pain Scale',
+  'Human Milk Donation',
+  'Autism Awareness Programme',
+  'Newborn Care',
+],    labs: ['Paediatric Nursing Skills lab', 'NICU Simulation Suite'],
   },
   {
     id: 'chn',
@@ -45,13 +54,16 @@ const DEPTS = [
     color: '#18C6C8',
     img: 'photo-1758270704262-ecc82b23dc37',
     head: 'Ms. Kanchana.S',
-    headDesig: 'M.Sc. Nursing, M.Phil. (Public Health) — Professor & Head of Department',
-    faculty: 10,
-    students: 180,
+    headDesig: 'M.Sc. Nursing,  — Professor & Head of Department',
+   
     overview: 'Community Health Nursing prepares students to serve as change agents in public health, primary care, and rural outreach settings. Special emphasis on epidemiology, school health, and environmental health.',
-    facilities: ['Community health simulation centre', 'Epidemiology mapping lab', 'Mobile health camp vehicle', 'School health demonstration room'],
-    research: ['Urban slum health outcomes study (₹18L DST grant)', 'Rural immunisation programme evaluation', 'Occupational health nursing in textile workers'],
-    labs: ['Public Health Lab', 'Epidemiology & Statistics Room'],
+    facilities: ['Community health simulation centre', 'Epidemiology mapping ', 'Mobile health camp vehicle', 'School health demonstration room'],
+research: [
+  'Rainbow Growth Chart Awareness Programme',
+  'Kayakalp Initiative Programme',
+  'TeCHO+ Initiative Awareness Programme',
+  'Biomedical Waste Management',
+],    labs: ['Community Public Health lab', 'Epidemiology & Statistics Room'],
   },
   {
     id: 'obg',
@@ -61,13 +73,16 @@ const DEPTS = [
     color: '#F59E0B',
     img: 'photo-1676281050264-178eff38874a',
     head: 'Ms. Jessy Rani. P',
-    headDesig: 'M.Sc. Nursing (OBG), DNB — Professor & Head of Department',
-    faculty: 9,
-    students: 160,
+    headDesig: 'M.Sc. Nursing (OBG),  — Professor & Head of Department',
+    
     overview: 'This department provides comprehensive training in antenatal, intrapartum, and postnatal nursing care, along with gynaecological nursing and reproductive health. Students gain hands-on experience in Madha Medical College Hospital\'s maternity wing.',
-    facilities: ['Obstetrics simulation suite (delivery room)', 'Antenatal care assessment lab', 'Newborn resuscitation station', 'Gynaecology examination lab'],
-    research: ['Postnatal depression screening tools', 'Kangaroo mother care outcomes', 'High-risk pregnancy nursing outcomes (TNMGRMU funded)'],
-    labs: ['OBG Skills Lab', 'Labour Room Simulation Suite'],
+    facilities: ['Obstetrics simulation suite (delivery room)', 'Antenatal care assessment ', 'Newborn resuscitation station', 'Gynaecology examination '],
+research: [
+  'Iron Supplementation for Multipara Mothers',
+  'Labour Care Guide Initiatives',
+  'Calcium Supplementation Tool Kit Awareness',
+  'Skill Training Programme for Primi Gravida',
+],    labs: ['OBG Skills lab ', 'Labour Room Simulation Suite'],
   },
   {
     id: 'psy',
@@ -77,13 +92,17 @@ const DEPTS = [
     color: '#7C3AED',
     img: 'photo-1511174511562-5f7f18b874f8',
     head: 'Dr. Saranya.P',
-    headDesig: 'M.Sc. Nursing (Psychiatric) — Associate Professor &   Head of Department',
-    faculty: 7,
-    students: 80,
+    headDesig: 'M.Sc. Nursing (Psychiatric),Ph.D. — Associate Professor &   Head of Department',
+    
     overview: 'Mental health is a growing priority in Indian healthcare. This department trains nurses in therapeutic communication, de-escalation, psychopharmacology, and evidence-based mental health interventions.',
-    facilities: ['Therapeutic communication lab', 'Mental status examination room', 'Group therapy simulation space', 'Relaxation & mindfulness studio'],
-    research: ['Stigma reduction in psychiatric nursing care', 'Substance abuse intervention programmes', 'Nurse burnout & mental health study'],
-    labs: ['Psychiatric Skills Lab', 'Behavioural Simulation Suite'],
+    facilities: ['Therapeutic communication ', 'Mental status examination room', 'Group therapy simulation space', 'Relaxation & mindfulness studio'],
+research: [
+  'Lifeskill Training',
+  'Bullying Prevention Awareness Programme',
+  'Problem-Solving Ability Among Students',
+  'Positive Self-Talk Programme',
+  'Dual-Task Training on Quality of Life',
+],    labs: ['Psychiatric Skills lab', 'Behavioural Simulation Suite'],
   },
   {
     id: 'rnd',
@@ -93,11 +112,10 @@ const DEPTS = [
     color: '#059669',
     img: 'photo-1614935151651-0bea6508db6b',
     head: 'Ms. Catherine Baby Suhasini.H',
-    headDesig: 'M.Sc. Nursing, M.Phil. — Associate Professor & Head of Department',
-    faculty: 6,
-    students: 40,
+    headDesig: 'M.Sc. Nursing,  — Associate Professor & Head of Department',
+    
     overview: 'The Department of Nursing Research drives evidence-based practice, supports faculty research projects, and applies for national and international grants. It serves as the intellectual engine of the institution.',
-    facilities: ['Dedicated faculty research room', 'Statistical computing lab (SPSS, R, STATA)', 'Digital library with 12,000+ e-journals', 'Writing & publication support cell'],
+    facilities: ['Dedicated faculty research room', 'Statistical computing  (SPSS, R, STATA)', 'Digital library with  e-journals', 'Writing & publication support cell'],
     research: ['Systematic reviews in nursing practice', 'Nursing theory development projects', 'Interdisciplinary health research with MMCH'],
     labs: ['Research Methodology Lab', 'Biostatistics Computing Centre'],
   },
@@ -338,7 +356,7 @@ export default function Departments({ navigate }: Props) {
                     {d.abbr}
                   </div>
                   <div className="font-sans" style={{ fontWeight: 700, fontSize: 15, lineHeight: 1.3 }}>{d.name}</div>
-                  <div style={{ fontSize: 13, marginTop: 8, opacity: active.id === d.id ? 0.7 : 0.5 }}>{d.faculty} Faculty · {d.students} Students</div>
+                  <div style={{ fontSize: 13, marginTop: 8, opacity: active.id === d.id ? 0.7 : 0.5 }}></div>
                 </button>
               </Reveal>
             ))}
@@ -363,6 +381,7 @@ export default function Departments({ navigate }: Props) {
               <img
                 src={`https://images.unsplash.com/${active.img}?w=1200&h=600&fit=crop&auto=format`}
                 alt={active.name}
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${active.color}EE 0%, ${active.color}88 50%, transparent 100%)` }} />

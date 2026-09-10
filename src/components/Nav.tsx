@@ -178,15 +178,17 @@ useEffect(() => {
   right: 0;
   width: 100%;
   height: 42px;
-  background: #071a36;
+  background: #032f70;
   z-index: 2000;
   display: flex;
-  align-items: center;
-
+ justify-content: flex-start;
+   
+      
   transition:
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+    
 
 .top-contact-bar.top-contact-hidden {
   transform: translateY(-100%);
@@ -197,16 +199,22 @@ useEffect(() => {
 
 
 .top-contact-inner {
-  max-width: 1280px;
+  max-width: 100%;
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
+  margin: 0;
+  padding: 0 160px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 28px;
+  box-sizing: border-box;
 }
 
+/* Keep address on the RIGHT side */
+.top-contact-inner .top-address {
+  margin-left: auto;
+}
 
 .top-contact-item {
   display: inline-flex;
@@ -227,22 +235,23 @@ useEffect(() => {
 a.top-contact-item:hover {
   color: #18C6C8;
 }
-
 @media (max-width: 768px) {
-  .nav-root.solid {
-    top: 30px;
-  }
-}
-
   .top-contact-inner {
     padding: 0 12px;
-    justify-content: center;
-    gap: 35px;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .top-contact-inner .top-address {
+    margin-left: auto;
   }
 
   .top-contact-item {
     font-size: 15px;
   }
+}
+
+
 
   
 }
@@ -284,7 +293,7 @@ a.top-contact-item:hover {
 .nav-root.transparent {
   position: fixed;
 
-  top: 42px;
+  top: 65px;
   left: 0;
   right: 0;
 
@@ -318,7 +327,7 @@ a.top-contact-item:hover {
   max-width: 1600px;
   height: 74px;
 
-  transform: translateX(-50%);
+  transform: translateX(-50% );
 
   background: rgba(255, 255, 255, 0.90);
   backdrop-filter: blur(16px) saturate(1.1);
@@ -332,6 +341,11 @@ a.top-contact-item:hover {
   border-radius: 14px;
 
   z-index: 1900;
+}
+  @media (min-width: 1401px) {
+  .nav-inner {
+    transform: translateX(30px) !important;
+  }
 }
 
 /* Premium floating header transition */
@@ -511,15 +525,17 @@ background: linear-gradient(
   }
 
   10% {
+    transform: translateX(0) skewX(-20deg);
     opacity: 1;
   }
 
-  85% {
+  90% {
+    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
     opacity: 1;
   }
 
   100% {
-    transform: translateX(var(--shine-travel, 500px)) skewX(-20deg);
+    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
     opacity: 0;
   }
 }
@@ -534,7 +550,7 @@ background: linear-gradient(
 }
         .nav-college-name {
   font-family: 'Cinzel', serif;
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 0.055em;
   line-height: 1;
@@ -563,7 +579,7 @@ background: linear-gradient(
   color: #ffffff;
 
   font-family: 'Cinzel', serif;
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
 
   line-height: 1;
@@ -588,7 +604,7 @@ background: linear-gradient(
 
 .nav-root.solid .nav-college-name {
   color: #163B72;
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -614,7 +630,7 @@ background: linear-gradient(
   width: 100%;
   min-width: 0;
 
-  gap: 0;
+  gap: 18px;
 
   flex-wrap: nowrap;
   white-space: nowrap;
@@ -640,7 +656,7 @@ background: linear-gradient(
 
  font-family: 'Inter', sans-serif;
 
-font-size: 14px;
+font-size: 16px;
 line-height: 1;
 
 font-weight: 500;
@@ -729,6 +745,7 @@ letter-spacing: 0;
           justify-content: flex-end;
           align-items: center;
           gap: 16px;
+           margin-right: 90px;
         }
         /* =========================================
    APPLY BUTTON — NORMAL
@@ -738,6 +755,8 @@ letter-spacing: 0;
   width: 132px;
   height: 46px;
   padding: 12px;
+
+  transform: translateX(-50px);
 
   display: inline-flex;
 
@@ -982,315 +1001,1654 @@ font-weight: 700;
         .nav-root.solid .nav-divider { display: none; }
 
         /* ── RESPONSIVE ── */
-       /* ─────────────────────────────────────
-   RESPONSIVE NAVIGATION
-───────────────────────────────────── */
+/* =========================================================
+   CLEAN RESPONSIVE HEADER
+   Desktop > 1400px: existing desktop rules remain unchanged.
+   769px–1400px: laptop sizing adapts fluidly.
+   <=768px: mobile/tablet uses the existing hamburger drawer.
+   ========================================================= */
+/* =========================================================
+   LAPTOP RESPONSIVE ONLY
+   769px → 1400px
 
-@media (max-width: 1400px) {
+   BRAND  |  MENU  |  APPLY NOW
+   Desktop above 1400px = unchanged
+   Mobile below 769px = unchanged
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1400px) {
+
+  /* =====================================================
+     MAIN HEADER
+     ===================================================== */
+
+/* =====================================================
+   LAPTOP HEADER POSITION
+   ===================================================== */
+
+/* WHITE SCROLL HEADER */
+.nav-root.solid {
+  left: 50% !important;
+  right: auto !important;
+
+  width: 90% !important;
+  max-width: 1600px !important;
+
+  transform: translateX(-50%) !important;
+}
+
+/* NORMAL TRANSPARENT HEADER */
+.nav-root.transparent {
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+
+  transform: none !important;
+}
 
   .nav-inner {
-   
-    gap: 0;
-    padding: 0 24px;
-    align-items: center;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+
+    padding-left: clamp(10px, 1vw, 18px) !important;
+    padding-right: clamp(10px, 1vw, 18px) !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    box-sizing: border-box !important;
   }
 
-  /* MENU AREA */
-  .nav-links {
-    display: flex;
-    align-items: center;
-   justify-content: flex-start;
-    width: 100%;
-    min-width: 0;
-    gap: 0;
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    overflow: visible;
+
+  /* =====================================================
+     1. BRAND AREA
+     LOGO + COLLEGE TITLE
+     ===================================================== */
+
+  .nav-brand {
+    flex: 0 1 clamp(420px, 42vw, 620px) !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    max-width: clamp(420px, 42vw, 620px) !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: clamp(8px, .8vw, 12px) !important;
+
+    padding-right: clamp(8px, 1vw, 16px) !important;
+
+    margin-right: clamp(8px, 1vw, 18px) !important;
+
+    border-right: none !important;
+
+    overflow: visible !important;
   }
 
- 
 
-  /* APPLY AREA */
-  .nav-right {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    min-width: 0;
+  /* =====================================================
+     LOGO
+     ===================================================== */
+
+  .nav-logo-ring {
+    width: clamp(54px, 4.8vw, 72px) !important;
+    height: clamp(54px, 4.8vw, 72px) !important;
+
+    flex-shrink: 0 !important;
   }
 
- 
-
-  .btn-apply svg {
-    width: 11px;
-    height: 11px;
+  .nav-logo-img {
+    width: clamp(54px, 4.8vw, 72px) !important;
+    height: clamp(54px, 4.8vw, 72px) !important;
   }
 
-  
-}
 
-  /* COLLEGE NAME */
+  /* =====================================================
+     COLLEGE TITLE CONTAINER
+     ===================================================== */
+
+  .nav-brand-text {
+    min-width: 0 !important;
+
+    flex: 1 1 auto !important;
+
+    max-width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     COLLEGE TITLE
+     ===================================================== */
+
+  .nav-college-name,
+  .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 24px;
+
+    display: block !important;
+
+    width: auto !important;
+
+    max-width: 100% !important;
+
+    font-family: 'Cinzel', serif !important;
+
+font-size: clamp(20px, 1.8vw, 26px) !important;  
+
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: clamp(.035em, .08vw, .08em) !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    text-overflow: clip !important;
+
+    text-align: center !important;
   }
+
+
+  /* =====================================================
+     GOLD RIBBON
+     CENTERED UNDER COLLEGE TITLE
+     SHINE STAYS INSIDE RIBBON
+     ===================================================== */
+
+ .premium-divider {
+  position: relative !important;
+
+  width: clamp(220px, 22vw, 250px) !important;
+  height: 4px !important;
+
+  margin: 7px auto 3px !important;
+
+  align-self: center !important;
+
+  border-radius: 3px !important;
+
+  background: linear-gradient(
+    90deg,
+    #8a6200 0%,
+    #f0b00e 18%,
+    #f6d76a 42%,
+    #fff0a6 50%,
+    #f6d76a 58%,
+    #d39e17 82%,
+    #705206 100%
+  ) !important;
+
+  box-shadow:
+    0 1px 4px rgba(184, 134, 11, 0.45),
+    0 0 8px rgba(212, 175, 55, 0.25) !important;
+
+  overflow: visible !important;
 }
 
-@media (max-width: 1100px) {
+  /* =====================================================
+     2. MENU AREA
+     ===================================================== */
 
-  .nav-links,
+  .nav-links {
+
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: clamp(1px, .22vw, 4px) !important;
+
+    padding: 0 clamp(6px, 1vw, 14px) !important;
+
+    flex-wrap: nowrap !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     MENU BUTTONS
+     ===================================================== */
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+
+    flex: 0 0 auto !important;
+
+    padding-top: clamp(5px, .4vw, 8px) !important;
+
+    padding-bottom: clamp(5px, .4vw, 8px) !important;
+
+    padding-left: clamp(6px, .25vw, 12px) !important;
+
+    padding-right: clamp(6px, .25vw, 12px) !important;
+
+    margin-left: clamp(1px, .08vw, 2px) !important;
+
+    margin-right: clamp(1px, .08vw, 2px) !important;
+
+    font-size: clamp(13.5px, .8vw, 18px) !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* =====================================================
+     ABOUT ARROW
+     ===================================================== */
+
+  .nav-item-chevron {
+
+    width: clamp(6px, .5vw, 8px) !important;
+
+    height: clamp(6px, .5vw, 8px) !important;
+
+    margin-left: 2px !important;
+  }
+
+
+  /* =====================================================
+     UNDERLINE
+     ===================================================== */
+
+  .nav-item::after {
+    left: 3px !important;
+    right: 3px !important;
+  }
+
+
+  /* =====================================================
+     3. APPLY NOW AREA
+     ===================================================== */
+
+  .nav-right {
+
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: flex-end !important;
+
+    margin-left: 0 !important;
+
+    margin-right: 0 !important;
+
+    padding-left: clamp(10px, 1vw, 18px) !important;
+
+    gap: clamp(4px, .4vw, 8px) !important;
+  }
+
+
+  /* =====================================================
+     APPLY BUTTON — NORMAL HEADER
+     ===================================================== */
+
+  .nav-root.transparent .btn-apply {
+
+    width: clamp(100px, 7vw, 122px) !important;
+
+    height: clamp(38px, 2.8vw, 44px) !important;
+
+    padding: clamp(6px, .45vw, 9px) !important;
+
+    font-size: clamp(10px, .82vw, 14px) !important;
+
+    gap: 4px !important;
+
+    transform: none !important;
+
+    position: relative !important;
+
+    left: -20px !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* =====================================================
+     APPLY BUTTON — SCROLLED HEADER
+     ===================================================== */
+
+  .nav-root.solid .btn-apply {
+
+    width: clamp(94px, 6.5vw, 112px) !important;
+
+    height: clamp(36px, 2.6vw, 41px) !important;
+
+    padding: clamp(6px, .45vw, 9px) !important;
+
+    font-size: clamp(10px, .76vw, 13px) !important;
+
+    gap: 4px !important;
+
+    transform: none !important;
+
+    position: relative !important;
+
+    left: -5px !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* =====================================================
+     HAMBURGER
+     ===================================================== */
+
+  .nav-hamburger {
+    display: none !important;
+  }
+
+}
+
+/* ---------- SMALL PHONE: 480px and below ---------- */
+
+@media (max-width: 480px) {
+
+  .top-contact-bar {
+    height: 38px !important;
+  }
+
+  .top-contact-inner {
+    height: 38px !important;
+    padding: 0 10px !important;
+    gap: 8px !important;
+  }
+
+  .top-contact-item {
+    font-size: 7.5px !important;
+  }
+
+  .top-contact-inner .top-contact-item:nth-child(2) {
+    display: none !important;
+  }
+
+  .top-contact-inner .top-address {
+    margin-left: auto !important;
+    max-width: 58% !important;
+    min-width: 0 !important;
+  }
+
+  .nav-inner {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .nav-brand {
+    max-width: calc(100% - 44px) !important;
+    gap: 6px !important;
+  }
+
+  .nav-logo-ring {
+    width: 48px !important;
+    height: 52px !important;
+  }
+
+  .nav-logo-img {
+    width: 52px !important;
+    height: 52px !important;
+  }
+/* =========================================================
+   MOBILE RESPONSIVE
+   0px → 768px
+
+   MOBILE LAYOUT:
+   LOGO | COLLEGE TITLE | HAMBURGER
+
+   DESKTOP MENU = HIDDEN
+   MOBILE DRAWER = USED
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =====================================================
+     TOP CONTACT BAR
+     ===================================================== */
+
+  .top-contact-bar {
+    height: 38px !important;
+  }
+
+  .top-contact-inner {
+    width: 100% !important;
+    height: 38px !important;
+
+    padding: 0 10px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 8px !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .top-contact-item {
+    display: inline-flex !important;
+    align-items: center !important;
+
+    gap: 5px !important;
+
+    font-size: 8px !important;
+
+    white-space: nowrap !important;
+  }
+
+  .top-contact-inner .top-contact-item:nth-child(2) {
+    display: none !important;
+  }
+
+  .top-contact-inner .top-address {
+    margin-left: auto !important;
+
+    max-width: 58% !important;
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* =====================================================
+   MOBILE HEADER POSITION
+   ===================================================== */
+
+/* WHITE SCROLL HEADER */
+.nav-root.solid {
+  left: 50% !important;
+  right: auto !important;
+
+  width: calc(100% - 20px) !important;
+  max-width: none !important;
+
+  height: 64px !important;
+
+  top: 10px !important;
+
+  transform: translateX(-50%) !important;
+
+  border-radius: 14px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* NORMAL TRANSPARENT HEADER */
+.nav-root.transparent {
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  transform: none !important;
+
+  border-radius: 0 !important;
+}
+
+
+  /* =====================================================
+     MOBILE HEADER INNER
+     ===================================================== */
+
+  .nav-inner {
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    height: 100% !important;
+
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: space-between !important;
+
+    gap: 6px !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =====================================================
+     MOBILE BRAND
+     ===================================================== */
+
+  .nav-brand {
+
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+
+    min-width: 0 !important;
+
+    max-width: calc(100% - 48px) !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 7px !important;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    border: none !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     MOBILE LOGO
+     ===================================================== */
+
+  .nav-logo-ring {
+
+    width: 48px !important;
+    height: 48px !important;
+
+    flex: 0 0 48px !important;
+
+    flex-shrink: 0 !important;
+  }
+
+  .nav-logo-img {
+
+    width: 48px !important;
+    height: 48px !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+  /* =====================================================
+     MOBILE TITLE CONTAINER
+     ===================================================== */
+
+  .nav-brand-text {
+
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+
+    max-width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 0 !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     MOBILE COLLEGE TITLE
+     ===================================================== */
+
+  .nav-college-name,
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    font-family: 'Cinzel', serif !important;
+
+    font-size: clamp(15px, 4.8vw, 21px) !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0.025em !important;
+
+    text-align: center !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    text-overflow: clip !important;
+
+    animation: mobileCollegeTitleIn 0.8s ease-out both !important;
+  }
+
+
+  /* =====================================================
+     MOBILE TITLE ANIMATION
+     ===================================================== */
+
+  @keyframes mobileCollegeTitleIn {
+
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  }
+
+
+  /* =====================================================
+     MOBILE GOLD RIBBON
+     ===================================================== */
+
+  .premium-divider {
+
+    width: clamp(100px, 28vw, 145px) !important;
+
+    max-width: 100% !important;
+
+    height: 3px !important;
+
+    margin: 6px auto 2px !important;
+
+    align-self: center !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     HIDE DESKTOP NAVIGATION
+     ===================================================== */
+
+  .nav-links {
+    display: none !important;
+  }
+
+
+  /* =====================================================
+     MOBILE RIGHT SIDE
+     ===================================================== */
+
+  .nav-right {
+
+    flex: 0 0 auto !important;
+
+    width: auto !important;
+
+    min-width: 40px !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: flex-end !important;
+
+    gap: 0 !important;
+
+    border: none !important;
+  }
+
+
+  /* =====================================================
+     HIDE HEADER APPLY BUTTON
+     APPLY BUTTON REMAINS IN DRAWER
+     ===================================================== */
+
   .nav-right .btn-apply {
     display: none !important;
   }
 
+
+  /* =====================================================
+     MOBILE HAMBURGER
+     ===================================================== */
+
   .nav-hamburger {
+
     display: flex !important;
+
+    width: 38px !important;
+
+    height: 38px !important;
+
+    flex: 0 0 38px !important;
+
+    padding: 7px !important;
+
+    margin: 0 !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    border-radius: 10px !important;
   }
-.nav-root,
-.nav-root.solid {
-  left: 0;
-  width: 100%;
-  transform: none;
+
+  .nav-hamburger svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+
+  /* =====================================================
+     MOBILE DIVIDER
+     ===================================================== */
+
+  .nav-root.transparent .nav-divider {
+
+    display: block !important;
+
+    height: 1px !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15),
+        transparent
+      ) !important;
+  }
+
+  .nav-root.solid .nav-divider {
+    display: none !important;
+  }
+
+
+  /* =====================================================
+     MOBILE DRAWER
+     ===================================================== */
+
+  .nav-drawer {
+
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+
+    border-top: 1px solid rgba(11,37,69,.06) !important;
+
+    padding: 10px 14px 18px !important;
+
+    background: #ffffff !important;
+
+    max-height: calc(100vh - 90px) !important;
+
+    overflow-y: auto !important;
+  }
+
+
+  /* =====================================================
+     DRAWER MENU ITEMS
+     ===================================================== */
+
+  .nav-drawer-item {
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    width: 100% !important;
+
+    min-height: 46px !important;
+
+    padding: 13px 12px !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 17px !important;
+
+    border-radius: 10px !important;
+  }
+
+
+  /* =====================================================
+     DRAWER SUB MENU
+     ===================================================== */
+
+  .nav-drawer-sub {
+
+    margin-left: 8px !important;
+
+    padding: 2px 0 6px !important;
+  }
+
+  .nav-drawer-sub-item {
+
+    width: 100% !important;
+
+    padding: 11px 12px 11px 20px !important;
+
+    font-size: 16px !important;
+  }
+
+
+  /* =====================================================
+     DRAWER APPLY BUTTON
+     ===================================================== */
+
+  .nav-drawer-apply {
+
+    display: inline-flex !important;
+
+    width: 100% !important;
+
+    min-height: 44px !important;
+
+    margin-top: 12px !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+  }
+
 }
-.nav-inner {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0 18px;
-  height: 100%;
 
- display: flex;
-align-items: center;
-justify-content: space-between;
 
-  .nav-brand {
-    width: fit-content;
-    max-width: 100%;
-    gap: 14px;
-    overflow: hidden;
+/* =========================================================
+   SMALL MOBILE
+   480px AND BELOW
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .top-contact-item {
+    font-size: 7.5px !important;
+  }
+
+  .nav-inner {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
 
   .nav-logo-ring {
-    width: 74px;
-    height: 105px;
+    width: 46px !important;
+    height: 46px !important;
+
+    flex-basis: 46px !important;
   }
 
   .nav-logo-img {
-    width: 78px;
-    height: 78px;
+    width: 46px !important;
+    height: 46px !important;
   }
 
-  .nav-brand-text {
-    min-width: 0;
+  .nav-brand {
+    gap: 6px !important;
+
+    max-width: calc(100% - 44px) !important;
   }
 
+  .nav-college-name,
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 25px;
-  }
 
-  .nav-college-sub {
-    font-size: 9px !important;
+    font-size: clamp(14px, 4.7vw, 19px) !important;
+
+    letter-spacing: 0.02em !important;
   }
 
   .premium-divider {
-    width: 150px;
-    height: 4px;
+    width: clamp(90px, 28vw, 135px) !important;
+
+    height: 2px !important;
+
+    margin-top: 5px !important;
   }
 
-  .premium-divider::before {
-    width: 57px;
+  .nav-hamburger {
+    width: 36px !important;
+    height: 36px !important;
+
+    flex-basis: 36px !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE VIEW
+   0px → 768px
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* =====================================================
+     TOP CONTACT BAR
+     ===================================================== */
+
+  .top-contact-bar {
+    height: 38px !important;
+  }
+
+  .top-contact-inner {
+    width: 100% !important;
+    height: 38px !important;
+    padding: 0 10px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 8px !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .top-contact-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+
+    font-size: 8px !important;
+    white-space: nowrap !important;
+  }
+
+  .top-contact-inner .top-contact-item:nth-child(2) {
+    display: none !important;
+  }
+
+  .top-contact-inner .top-address {
+    margin-left: auto !important;
+    max-width: 55% !important;
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+
+  /* =====================================================
+     MOBILE HEADER
+     ===================================================== */
+
+  .nav-root.transparent,
+  .nav-root.solid {
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    border-radius: 0 !important;
+
+    transform: none !important;
+
+    overflow: visible !important;
+  }
+ /* MOVE NORMAL MOBILE HEADER UP */
+  .nav-root.transparent {
+    top: 25px !important;
+  }
+
+  /* =====================================================
+     SCROLL HEADER PADDING
+     ===================================================== */
+
+  .nav-root.solid .nav-inner {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+
+  /* =====================================================
+     HEADER INNER
+     ===================================================== */
+
+  .nav-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    height: 100% !important;
+
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 6px !important;
+
+    box-sizing: border-box !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     BRAND
+     ===================================================== */
+
+  .nav-brand {
+    flex: 1 1 auto !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    max-width: calc(100% - 46px) !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 7px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     LOGO
+     ===================================================== */
+
+  .nav-logo-ring {
+    width: 48px !important;
+    height: 48px !important;
+
+    flex: 0 0 48px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-logo-img {
+    width: 48px !important;
+    height: 48px !important;
+
+    flex: 0 0 48px !important;
+    flex-shrink: 0 !important;
+  }
+
+
+  /* =====================================================
+     TITLE CONTAINER
+     ===================================================== */
+
+  .nav-brand-text {
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+    max-width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 0 !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     COLLEGE TITLE — SMALLER
+     ===================================================== */
+
+  .nav-college-name,
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    font-family: 'Cinzel', serif !important;
+
+    font-size: clamp(13px, 4vw, 18px) !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    letter-spacing: 0.02em !important;
+
+    text-align: center !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    text-overflow: clip !important;
+
+    animation: mobileCollegeTitleIn 0.8s ease-out both !important;
+  }
+
+
+  /* =====================================================
+     TITLE ANIMATION
+     ===================================================== */
+
+  @keyframes mobileCollegeTitleIn {
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  /* =====================================================
+     GOLD RIBBON — SMALLER
+     ===================================================== */
+
+  .premium-divider {
+    width: clamp(80px, 24vw, 120px) !important;
+
+    height: 2px !important;
+
+    margin: 4px auto 2px !important;
+
+    align-self: center !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+  /* =====================================================
+     HIDE DESKTOP MENU
+     ===================================================== */
+
+  .nav-links {
+    display: none !important;
+  }
+
+
+  /* =====================================================
+     MOBILE RIGHT SIDE
+     ===================================================== */
+
+  .nav-right {
+    flex: 0 0 40px !important;
+
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 0 !important;
+
+    border: none !important;
+  }
+
+
+  /* =====================================================
+     HIDE HEADER APPLY BUTTON
+     ===================================================== */
+
+  .nav-right .btn-apply {
+    display: none !important;
+  }
+
+
+  /* =====================================================
+     HAMBURGER
+     ===================================================== */
+
+  .nav-hamburger {
+    display: flex !important;
+
+    width: 38px !important;
+    height: 38px !important;
+
+    flex: 0 0 38px !important;
+
+    padding: 7px !important;
+    margin: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 10px !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .nav-hamburger svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+
+  /* =====================================================
+     MOBILE DIVIDER
+     ===================================================== */
+
+  .nav-root.transparent .nav-divider {
+    display: block !important;
+
+    width: 100% !important;
+    height: 1px !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.15),
+        transparent
+      ) !important;
+  }
+
+  .nav-root.solid .nav-divider {
+    display: none !important;
+  }
+
+
+  /* =====================================================
+     MOBILE DRAWER
+     ===================================================== */
+
+  .nav-drawer {
+    position: relative !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    padding: 10px 14px 18px !important;
+
+    box-sizing: border-box !important;
+
+    background: #ffffff !important;
+
+    border-top: 1px solid rgba(11,37,69,.08) !important;
+
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+
+    max-height: calc(100vh - 90px) !important;
+  }
+
+
+  /* =====================================================
+     MENU ITEMS — SEPARATE FROM HEADER
+     ===================================================== */
+
+  .nav-drawer-item {
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+
+    min-height: 46px !important;
+
+    padding: 13px 12px !important;
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 17px !important;
+
+    text-align: left !important;
+
+    border-radius: 10px !important;
+  }
+
+
+  /* =====================================================
+     ABOUT US
+     ===================================================== */
+
+  .nav-drawer-item.has-children {
+    display: flex !important;
+    align-items: center !important;
+
+    justify-content: space-between !important;
+  }
+
+
+  /* =====================================================
+     SUB MENU
+     ===================================================== */
+
+  .nav-drawer-sub {
+    width: 100% !important;
+
+    margin: 0 0 4px 8px !important;
+
+    padding: 2px 0 6px !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .nav-drawer-sub-item {
+    display: flex !important;
+    align-items: center !important;
+
+    width: 100% !important;
+
+    min-height: 42px !important;
+
+    padding: 11px 12px 11px 20px !important;
+
+    box-sizing: border-box !important;
+
+    font-size: 16px !important;
+  }
+
+
+  /* =====================================================
+     DRAWER APPLY NOW
+     ===================================================== */
+
+  .nav-drawer-apply {
+    display: flex !important;
+
+    width: 100% !important;
+
+    min-height: 44px !important;
+
+    margin: 12px 0 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE — 480px AND BELOW
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .top-contact-inner {
+    padding: 0 8px !important;
+  }
+
+  .top-contact-item {
+    font-size: 7.5px !important;
+  }
+
+  .top-contact-inner .top-address {
+    max-width: 52% !important;
+  }
+
+  .nav-inner {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .nav-root.solid .nav-inner {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .nav-brand {
+    gap: 6px !important;
+
+    max-width: calc(100% - 44px) !important;
+  }
+
+  .nav-logo-ring {
+    width: 46px !important;
+    height: 46px !important;
+
+    flex-basis: 46px !important;
+  }
+
+  .nav-logo-img {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .nav-college-name,
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: clamp(12px, 4.2vw, 17px) !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .premium-divider {
+    width: clamp(75px, 23vw, 110px) !important;
+    height: 2px !important;
+    margin-top: 4px !important;
   }
 
   .nav-right {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 0;
-}
-
-  .nav-hamburger {
-    width: 44px;
-    height: 44px;
-    padding: 10px;
-    flex-shrink: 0;
-  }
-
-  .nav-drawer {
-    max-height: calc(100vh - 82px);
-    overflow-y: auto;
-  }
-}
-
-
-@media (max-width: 600px) {
-
-  .nav-inner {
-  height: 72px;
-  padding: 0 12px;
-  gap: 8px;
-  grid-template-columns: minmax(0, 1fr) auto;
-}
-
-  .nav-brand {
-  gap: 8px;
-  width: 100%;
-  min-width: 0;
-  overflow: hidden;
-}
-  .nav-brand-text {
-  min-width: 0;
-  overflow: hidden;
-}
-
-.nav-college-name {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-.nav-right {
-  flex-shrink: 0;
-}
-
-  .nav-logo-ring {
-    width: 60px;
-    height: 66px;
-  }
-
-  .nav-logo-img {
-    width: 72px;
-    height: 72px;
-  }
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-    font-size: 21px;
-    line-height: 1.08;
-    white-space: nowrap;
-  }
-
-  .nav-college-sub {
-    font-size: 7px !important;
-    letter-spacing: .035em;
-    white-space: nowrap;
-  }
-
-  .premium-divider {
-    width: 150px;
-    height: 4px;
-  }
-
-  .premium-divider::before {
-    width: 45px;
+    flex-basis: 38px !important;
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
   }
 
   .nav-hamburger {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+    width: 36px !important;
+    height: 36px !important;
+    flex-basis: 36px !important;
   }
 
-  .nav-drawer {
-    padding: 10px 14px 20px;
-    max-height: calc(100vh - 72px);
-    overflow-y: auto;
-  }
-
-  .nav-drawer-item {
-    padding: 12px 12px;
-    font-size: 17px;
-  }
-
-  .nav-drawer-apply {
-    padding: 13px 20px;
-    font-size: 15px;
-  }
 }
 
+
+/* =========================================================
+   EXTRA SMALL MOBILE — 380px AND BELOW
+   ========================================================= */
 
 @media (max-width: 380px) {
 
   .nav-inner {
-    padding: 0 10px;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  .nav-root.solid .nav-inner {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 
   .nav-brand {
-    gap: 7px;
+    gap: 5px !important;
+
+    max-width: calc(100% - 38px) !important;
   }
 
   .nav-logo-ring {
-    width: 54px;
+    width: 42px !important;
+    height: 42px !important;
+
+    flex-basis: 42px !important;
   }
 
   .nav-logo-img {
-    width: 64px;
-    height: 64px;
+    width: 42px !important;
+    height: 42px !important;
   }
 
+  .nav-college-name,
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 18px;
-  }
-
-  .nav-college-sub {
-    font-size: 6.5px !important;
+    font-size: 13px !important;
+    letter-spacing: 0 !important;
   }
 
   .premium-divider {
-    width: 130px;
-    height: 4px;
+    width: 82px !important;
+    height: 2px !important;
+    margin-top: 4px !important;
   }
 
-  .premium-divider::before {
-    width: 39px;
+  .nav-right {
+    flex-basis: 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
   }
 
   .nav-hamburger {
-    width: 36px;
-    height: 36px;
+    width: 34px !important;
+    height: 34px !important;
+    flex-basis: 34px !important;
+  }
 
-    /* FINAL STICKY HEADER ALIGNMENT */
-/* =========================================
-   STICKY HEADER FINAL ALIGNMENT
-========================================= */
+  .nav-hamburger svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
 
-/* =========================================
-   CONTACT BAR — ALWAYS VISIBLE
-========================================= */
+}
+/* =====================================================
+   MOBILE BODY FLOATING APPLY NOW
+   SHOW ONLY IN SCROLLED HEADER
+   ===================================================== */
 
-.top-contact-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 42px;
-  z-index: 2000;
-  display: flex;
-  align-items: center;
+@media (max-width: 768px) {
+
+  .nav-root.solid .nav-right .btn-apply {
+
+    display: inline-flex !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: fixed !important;
+
+    right: 0 !important;
+    top: 50vh !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    transform: translateY(-50%) !important;
+
+    width: clamp(68px, 18vw, 88px) !important;
+    height: clamp(28px, 8vw, 36px) !important;
+
+    margin: 0 !important;
+    padding: 5px 7px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: clamp(8px, 2.5vw, 10px) !important;
+
+    gap: 2px !important;
+
+    white-space: nowrap !important;
+
+    z-index: 99999 !important;
+
+    border-radius: 16px 0 0 16px !important;
+  }
+
+}@media (max-width: 768px) {
+
+  .home-stats-grid {
+    display: grid !important;
+
+    grid-template-columns: repeat(6, 1fr) !important;
+
+    gap: 32px 8px !important;
+
+    align-items: center !important;
+    justify-items: center !important;
+  }
+
+  /* Hide all divider elements */
+  .home-stats-grid > div:nth-child(even) {
+    display: none !important;
+  }
+
+  /* FIRST ROW */
+  .home-stats-grid > div:nth-child(1) {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(3) {
+    grid-column: 3 / 5 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(5) {
+    grid-column: 5 / 7 !important;
+    grid-row: 1 !important;
+  }
+
+  /* SECOND ROW — CENTERED */
+  .home-stats-grid > div:nth-child(7) {
+    grid-column: 2 / 4 !important;
+    grid-row: 2 !important;
+  }
+
+  .home-stats-grid > div:nth-child(9) {
+    grid-column: 4 / 6 !important;
+    grid-row: 2 !important;
+  }
+
+  .home-stats-grid > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+
 }
 
-.top-contact-inner {
-  width: 100%;
-  max-width: 1280px;
-  height: 42px;
-  margin: 0 auto;
-  padding: 0 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-
-
-
-.top-address {
-  display: inline-flex !important;
-}
- }
 `}</style>
 
 {/* TOP CONTACT BAR */}

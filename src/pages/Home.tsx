@@ -25,12 +25,12 @@ function StatItem({ value, suffix, label, start }: { value: number; suffix: stri
 
 /* ─── Department cards data ─── */
 const DEPTS = [
-  { name: 'Medical Surgical Nursing', tag: 'MSN', img: '/departments/msn.jpg' },
-  { name: 'Paediatric Nursing', tag: 'PDN', img: '/departments/pdn.jpg' },
-  { name: 'Community Health Nursing', tag: 'CHN', img: '/departments/chn.jpg' },
-  { name: 'Obstetrics & Gynaecology', tag: 'OBG', img: '/departments/obg.jpg' },
-  { name: 'Psychiatric Nursing', tag: 'PSY', img: '/departments/psy.jpg' },
-  { name: 'Research & Development', tag: 'R&D', img: '/departments/r&d.jpg' },
+  { name: 'Medical Surgical Nursing', tag: 'MSN', img: '/departments/msn.webp' },
+  { name: 'Paediatric Nursing', tag: 'PDN', img: '/departments/pdn.webp' },
+  { name: 'Community Health Nursing', tag: 'CHN', img: '/departments/chn.webp' },
+  { name: 'Obstetrics & Gynaecology', tag: 'OBG', img: '/departments/obg.webp' },
+  { name: 'Psychiatric Nursing', tag: 'PSY', img: '/departments/psy.webp' },
+  { name: 'Research & Development', tag: 'R&D', img: '/departments/r&d.webp' },
 ]
 
 const PROGRAMS = [
@@ -58,26 +58,26 @@ const TESTIMONIALS = [
 ]
 
 const RESEARCH_ITEMS = [
-  { icon: '🔬', title: 'Infectious Disease Management', stat: '14 Published Papers', desc: 'Pioneering research on post-COVID respiratory care protocols adopted across Tamil Nadu.' },
-  { icon: '🧬', title: 'Paediatric Care Innovation', stat: '₹28L Research Grant', desc: 'DST-funded project on neonatal care practices improving outcomes in rural healthcare settings.' },
-  { icon: '🏥', title: 'Community Health Outreach', stat: '12,000+ Patients Served', desc: 'Longitudinal study on community nursing interventions in urban slums of Chennai.' },
-  { icon: '📊', title: 'Evidence-Based Practice', stat: '96 Conference Presentations', desc: 'Faculty and students presenting research at national and international nursing conferences.' },
+  { icon: '🔬', title: 'Infectious Disease Management',  desc: 'Researchers have explored the post-pandemic impact on health, transformation needs, and challenges brought by the pandemic to the field of infectious disease management.' },
+  { icon: '🧬', title: 'Paediatric Care Innovation',  desc: 'Our faculty are actively involved in original research papers, reviews, and commentaries on the etiology and treatment of diseases and disorders affecting children.' },
+  { icon: '🏥', title: 'Community Health Outreach',  desc: 'The institution recognizes the importance of integrating social responsibility and community engagement into research projects to achieve its vision and mission of enhancing the quality of teaching, research, and service.' },
+  { icon: '📊', title: 'Evidence-Based Practice',  desc: 'Our researchers focus on integrating the best available evidence with healthcare educators’ expertise and clients’ needs while considering the practice environment for students.' },
 ]
 
 const GALLERY_IMGS = [
-  { src: '/campus/madaha-nursing-college-9.jpg', h: 260, alt: 'Madha College campus' },
-{ src: '/gallery/lamplight2026/lamp-5.jpeg', h: 260, alt: 'Lamplighting' },
-{ src: '/gallery/Xmas 25/16.JPG', h: 260, alt: 'Chirstmas celebration' },
+  { src: '/campus/madaha-nursing-college-9.webp', h: 260, alt: 'Madha College campus' },
+{ src: '/gallery/lamplight2026/lamp-5.webp', h: 260, alt: 'Lamplighting' },
+{ src: '/gallery/Xmas 25/16.webp', h: 260, alt: 'Chirstmas celebration' },
   
   
-  { src: '/departments/Mental Health Nrsing/1.jpeg', h: 240, alt: 'Nursing students' },
-  { src: '/gallery/pongal-2025/3.jpg', h: 260, alt: 'Pongal Festivel' },
-  { src: '/gallery/graduation-2026/7.JPG', h: 260, alt: 'Graduation Day' },
+  { src: '/departments/Mental Health Nrsing/1.webp', h: 240, alt: 'Nursing students' },
+  { src: '/gallery/pongal-2025/3.webp', h: 260, alt: 'Pongal Festivel' },
+  { src: '/gallery/graduation-2026/7.webp', h: 260, alt: 'Graduation Day' },
   
   
-  { src: '/departments/Medical-Surgical-Nursing/1.jpg', h: 220, alt: 'Nursing students' },
-  { src: '/gallery/Xmas 25/10.JPG', h: 260, alt: 'Chirstmas celebration' },
-  { src: '/gallery/graduation-2026/6.JPG', h: 260, alt: 'Graduation Day' },
+  { src: '/departments/Medical-Surgical-Nursing/1.webp', h: 220, alt: 'Nursing students' },
+  { src: '/gallery/Xmas 25/10.webp', h: 260, alt: 'Chirstmas celebration' },
+  { src: '/gallery/graduation-2026/6.webp', h: 260, alt: 'Graduation Day' },
 ]
 
 const ADMISSION_STEPS = [
@@ -88,7 +88,110 @@ const ADMISSION_STEPS = [
   { num: '05', title: 'Begin Your Journey', desc: 'Report on the designated date for orientation, hostel allotment and academic induction.' },
 ]
 
+
+const SEMESTER_SUBJECTS = [
+  {
+    semester: 'SEMESTER I',
+    subjects: [
+      'Communicative English',
+      'Applied Anatomy',
+      'Applied Physiology',
+      'Applied Sociology',
+      'Applied Psychology',
+      'Nursing Foundations I',
+    ],
+    mandatoryModules: [
+      'First Aid as part of Nursing Foundation I Course',
+    ],
+  },
+  {
+    semester: 'SEMESTER II',
+    subjects: [
+      'Applied Biochemistry',
+      'Applied Nutrition and Dietetics',
+      'Nursing Foundations II',
+      'Health/Nursing Informatics & Technology',
+    ],
+    mandatoryModules: [
+      'Health Assessment as part of Nursing Foundation II Course',
+    ],
+  },
+  {
+    semester: 'SEMESTER III',
+    subjects: [
+      'Applied Microbiology and Infection Control including Safety',
+      'Pharmacology I',
+      'Pathology I',
+      'Adult Health (Medical Surgical) Nursing I with integrated pathophysiology',
+    ],
+    mandatoryModules: [
+      'BCLS as part of Adult Health Nursing I',
+    ],
+  },
+  {
+    semester: 'SEMESTER IV',
+    subjects: [
+      'Pharmacology II',
+      'Pathology II & Genetics',
+      'Adult Health Nursing II with integrated pathophysiology including Geriatric Nursing',
+      'Professionalism, Professional Values & Ethics including Bioethics',
+    ],
+    mandatoryModules: [
+      'Fundamentals of Prescribing under Pharmacology II',
+      'Palliative care module under Adult Health Nursing II',
+    ],
+  },
+  {
+    semester: 'SEMESTER V',
+    subjects: [
+      'Child Health Nursing I',
+      'Mental Health Nursing I',
+      'Community Health Nursing I (including Environmental Science & Epidemiology)',
+      'Educational Technology/Nursing Education',
+      'Introduction to Forensic Nursing and Indian Laws',
+    ],
+    mandatoryModules: [
+      'Essential Newborn Care (ENBC)',
+      'Facility Based Newborn Care (FBNBC)',
+      'IMNCI and PLS as part of Child Health Nursing',
+    ],
+  },
+  {
+    semester: 'SEMESTER VI',
+    subjects: [
+      'Child Health Nursing II',
+      'Mental Health Nursing II',
+      'Nursing Management & Leadership',
+      'Midwifery/Obstetrics and Gynecology (OBG) Nursing I',
+    ],
+    mandatoryModules: [
+      'SBA Module under OBG Nursing I/II (VI/VII Semester)',
+    ],
+  },
+  {
+    semester: 'SEMESTER VII',
+    subjects: [
+      'Community Health Nursing II',
+      'Nursing Research & Statistics',
+      'Midwifery/Obstetrics and Gynecology (OBG) Nursing II',
+    ],
+    mandatoryModules: [
+      'Safe delivery app under OBG Nursing I/II (VI/VII Semester)',
+    ],
+  },
+  {
+    semester: 'SEMESTER VIII',
+    subjects: [
+      'Internship (Intensive Practicum/Residency Posting)',
+    ],
+    mandatoryModules: [],
+  },
+]
+
 export default function Home({ navigate }: Props) {
+  /* Semester accordion */
+  const [openSemester, setOpenSemester] = useState<number | null>(null)
+
   /* Hero parallax */
   const [scrollY, setScrollY] = useState(0)
   useEffect(() => {
@@ -196,6 +299,125 @@ export default function Home({ navigate }: Props) {
     width: 100%;
   }
 
+  /* ================================
+     SEMESTER HOVER / CLICK DETAILS
+  ================================= */
+
+  .home-semester-accordion {
+    width: 100%;
+  }
+
+  /* Clean, spacious semester list — no divider lines or boxes */
+  .home-semester-item {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  .home-semester-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .home-semester-header {
+    width: 100%;
+    min-height: 44px;
+    padding: 6px 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .home-semester-title {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: .10em;
+    color: #18C6C8;
+    transition: color .25s ease, transform .25s ease;
+  }
+
+  .home-semester-item:hover .home-semester-title,
+  .home-semester-item.open .home-semester-title {
+    color: #5FE3E5;
+    transform: translateX(5px);
+  }
+
+  .home-semester-content {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    transition: max-height .4s ease, opacity .3s ease, padding .4s ease, margin .4s ease;
+  }
+
+  .home-semester-item:hover .home-semester-content,
+  .home-semester-item.open .home-semester-content {
+    max-height: 700px;
+    opacity: 1;
+    padding: 18px 20px 20px;
+    margin-top: 8px;
+    background: rgba(255,255,255,.035);
+    border-radius: 14px;
+  }
+
+  .home-semester-subject {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 8px 0;
+    color: #E2E8F0;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .home-semester-number {
+    min-width: 26px;
+    color: #18C6C8;
+    font-weight: 700;
+  }
+
+  .home-semester-subject-name {
+    flex: 1;
+    color: #E8F0F7;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .home-semester-mandatory {
+    margin-top: 14px;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(24,198,200,.07);
+  }
+
+  .home-semester-mandatory-title {
+    margin-bottom: 8px;
+    color: #18C6C8;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .home-semester-mandatory-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+    color: #CBD5E1;
+    font-size: 15px;
+    line-height: 1.55;
+  }
 
   /* ================================
      TABLET
@@ -411,6 +633,7 @@ export default function Home({ navigate }: Props) {
       height: 230px !important;
     }
   }
+    
 `}</style>
 
     <div className="home-page">
@@ -529,16 +752,21 @@ export default function Home({ navigate }: Props) {
               <div className="home-feature-grid">
                 {[
                   { icon: '🏥', title: '18 Affiliated Hospitals', desc: 'Live clinical rotations across premier hospitals in Chennai and beyond' },
-                  { icon: '🔬', title: 'Modern Laboratories', desc: 'Simulation labs, anatomy labs, and drug study rooms with latest equipment' },
-                  { icon: '📚', title: 'Research Culture', desc: 'DST and ICMR funded research projects with international journal publications' },
+                  { icon: '🔬', title: 'Modern Laboratories', desc: 'A specialized educational environment with high-fidelity simulation stations, clinical practice beds and workstations, task trainers, and anatomy models.' },
+                  { icon: '📚', title: 'Research Culture', desc: 'Research activities in an institution involve systematic investigations and scholarly publications presented at national and international forums.' },
                   { icon: '🌍', title: 'Global Alumni Network', desc: 'Graduates working in USA, UK, UAE, Canada, Australia, and 25+ countries' },
                 ].map((item, i) => (
                   <Reveal key={item.title} delay={(i + 3) as 1 | 2 | 3 | 4 | 5 | 6} type="scale">
                     <div style={{
-                      background: '#F3F7FB', borderRadius: 20, padding: '22px',
-                      border: '1px solid rgba(11,37,69,.06)',
-                      transition: 'all .3s cubic-bezier(.16,1,.3,1)',
-                    }}
+  background: '#F3F7FB',
+  borderRadius: 20,
+  padding: '22px',
+  border: '1px solid rgba(11,37,69,.06)',
+  transition: 'all .3s cubic-bezier(.16,1,.3,1)',
+  height: '100%',
+  minHeight: 240,
+  boxSizing: 'border-box',
+}}
                       onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'white'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(24,198,200,.3)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 32px rgba(11,37,69,.1)'; (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)' }}
                       onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = '#F3F7FB'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(11,37,69,.06)'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; (e.currentTarget as HTMLDivElement).style.transform = 'none' }}
                     >
@@ -669,7 +897,7 @@ export default function Home({ navigate }: Props) {
 >
         <div style={{
           position: 'absolute', inset: 0,
-          backgroundImage: "url('/departments/Medical-Surgical-Nursing/1.jpg')",
+          backgroundImage: "url('/departments/Medical-Surgical-Nursing/1.webp')",
           backgroundSize: 'cover', backgroundPosition: 'center',
           opacity: 0.18,
         }} />
@@ -702,7 +930,7 @@ export default function Home({ navigate }: Props) {
 
               {/* Hospital list */}
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 48 }}>
-                {['Madha Medical College Hospital', 'Apollo Hospitals', 'Government General Hospital', 'Rajiv Gandhi Govt. Hospital', 'Sri Ramachandra Medical Centre', 'Fortis Malar Hospital'].map(h => (
+                {['Madha Medical College Hospital'].map(h => (
                   <Reveal key={h} type="left">
                     <span style={{
                       background: 'rgba(24,198,200,.10)', border: '1px solid rgba(24,198,200,.22)',
@@ -725,33 +953,65 @@ export default function Home({ navigate }: Props) {
 
            {/* Right — Timeline */}
 <div className="home-clinical-timeline">
-              {[
-                { year: 'Year 1', title: 'Foundation & Theory', desc: 'Anatomy, Physiology, Biochemistry, Microbiology, and Nursing Foundations with lab practicals.' },
-                { year: 'Year 2', title: 'Medical & Surgical Nursing', desc: 'Clinical postings at the medicine, surgery, and orthopaedics wards of affiliated hospitals.' },
-                { year: 'Year 3', title: 'Specialty Rotations', desc: 'Paediatrics, Obstetrics, Psychiatry, Community Health and Operation Theatre experience.' },
-                { year: 'Year 4', title: 'Internship & Leadership', desc: '12-month paid internship with primary responsibility for patient care and team coordination.' },
-              ].map((step, i) => (
-                <Reveal key={step.year} delay={(i + 1) as 1 | 2 | 3 | 4} type="right">
+              <div className="home-semester-accordion">
+              {SEMESTER_SUBJECTS.map((semester, index) => {
+                const isOpen = openSemester === index
+
+                return (
                   <div
-  className="home-clinical-step"
-  style={{ marginBottom: i < 3 ? 0 : 0 }}
->
-                    {/* Timeline column */}
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20 }}>
-                      <div className="timeline-dot" />
-                      {i < 3 && <div className="timeline-line" />}
-                    </div>
-                    {/* Content */}
-                    <div style={{ paddingBottom: 40 }}>
-                      <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, letterSpacing: '.14em', textTransform: 'uppercase', color: '#18C6C8', marginBottom: 8 }}>
-                        {step.year}
-                      </div>
-                      <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: 'white', marginBottom: 10 }}>{step.title}</div>
-                      <p style={{ color: '#F1F5F9', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.7 }}>{step.desc}</p>
+                    key={semester.semester}
+                    className={`home-semester-item ${isOpen ? 'open' : ''}`}
+                  >
+                    <button
+                      type="button"
+                      className="home-semester-header"
+                      onClick={() =>
+                        setOpenSemester(isOpen ? null : index)
+                      }
+                      aria-expanded={isOpen}
+                    >
+                      <span className="home-semester-title">
+                        {semester.semester}
+                      </span>
+                    </button>
+
+                    <div className="home-semester-content">
+                      {semester.subjects.map((subject, subjectIndex) => (
+                        <div
+                          key={subject}
+                          className="home-semester-subject"
+                        >
+                          <span className="home-semester-number">
+                            {subjectIndex + 1}.
+                          </span>
+                          <span className="home-semester-subject-name">
+                            {subject}
+                          </span>
+                        </div>
+                      ))}
+
+                      {semester.mandatoryModules.length > 0 && (
+                        <div className="home-semester-mandatory">
+                          <div className="home-semester-mandatory-title">
+                            Mandatory Module{semester.mandatoryModules.length > 1 ? 's' : ''}
+                          </div>
+
+                          {semester.mandatoryModules.map((module) => (
+                            <div
+                              key={module}
+                              className="home-semester-mandatory-item"
+                            >
+                              <span>•</span>
+                              <span>{module}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-                </Reveal>
-              ))}
+                )
+              })}
+            </div>
             </div>
           </div>
         </div>
@@ -792,6 +1052,8 @@ export default function Home({ navigate }: Props) {
                   <img
                       src={d.img}
   alt={d.name}
+                      loading="lazy"
+                      decoding="async"
                   />
                   <div className="dept-content">
                     <div className="dept-tag-pill">{d.tag}</div>
@@ -820,17 +1082,11 @@ export default function Home({ navigate }: Props) {
               </Reveal>
               <Reveal delay={2}>
                 <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>
-                  Our faculty and research scholars pursue impactful research funded by DST, ICMR, and international bodies — driving meaningful improvements in patient care and healthcare policy.
-                </p>
+Our faculty are empowered to undertake research activities by utilizing the facilities provided by the college, including reference books, collections of rare books, encyclopaedias, magazines, periodicals, research journals, e-journals, e-books, and free internet access. Research and innovation in education support students’ professional growth and development.                </p>
               </Reveal>
               <Reveal delay={3}>
                 <div style={{ display: 'flex', gap: 40 }}>
-                  {[{ val: '48+', label: 'Research Papers' }, { val: '₹1.2Cr', label: 'Grant Funding' }, { val: '6', label: 'Active Projects' }].map(s => (
-                    <div key={s.label}>
-                      <div className="font-sans text-gold-g" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, letterSpacing: '-.02em' }}>{s.val}</div>
-                      <div style={{ color: '#475569', fontSize: 17, fontWeight: 500, marginTop: 4 }}>{s.label}</div>
-                    </div>
-                  ))}
+                  
                 </div>
               </Reveal>
             </div>
@@ -846,9 +1102,23 @@ export default function Home({ navigate }: Props) {
                     onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(24,198,200,.35)'; el.style.boxShadow = '0 20px 40px rgba(11,37,69,.1)'; el.style.transform = 'translateY(-6px)' }}
                     onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.06)'; el.style.boxShadow = 'none'; el.style.transform = 'none' }}
                   >
-                    <div style={{ fontSize: 28, marginBottom: 14 }}>{r.icon}</div>
-                    <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 8, lineHeight: 1.3 }}>{r.title}</div>
-                    <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.stat}</div>
+<div style={{
+  display: 'flex',
+  alignItems: 'center',
+  gap: 12,
+  marginBottom: 14,
+}}>
+  <span style={{ fontSize: 28 }}>{r.icon}</span>
+  <div className="font-sans" style={{
+    fontWeight: 700,
+    fontSize: 20,
+    color: '#0B2545',
+    lineHeight: 1.3,
+  }}>
+    {r.title}
+  </div>
+</div>
+                    <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.desc}</div>
                     <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{r.desc}</div>
                   </div>
                 </Reveal>
@@ -879,6 +1149,8 @@ export default function Home({ navigate }: Props) {
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, display: 'block' }}
                 />
               </div>

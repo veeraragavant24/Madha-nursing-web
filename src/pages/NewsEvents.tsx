@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import Reveal from '../components/Reveal'
 import Stagger from '../components/Stagger'
-import { getSupabase, supabaseConfigured } from '../lib/supabase'
-import { localDateStr } from '../lib/dates'
+
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal' | 'news-events'
@@ -11,9 +10,22 @@ interface Props { navigate: (p: Page) => void }
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
 function dateBlock(dateStr: string) {
-  const [y, m, d] = dateStr.split('-')
-  return { day: String(Number(d)), month: MONTHS[Number(m) - 1], year: y }
-}
+  if (!dateStr) {
+    return { day: '--', month: '---', year: '----' }
+  }
+
+  const date = new Date(dateStr)
+
+  if (Number.isNaN(date.getTime())) {
+    return { day: '--', month: '---', year: '----' }
+  }
+
+  const day = String(date.getDate())
+  const month = MONTHS[date.getMonth()]
+  const year = String(date.getFullYear())
+
+  return { day, month, year }
+} 
 
 function displayDate(dateStr: string) {
   const { day, month, year } = dateBlock(dateStr)
@@ -29,32 +41,76 @@ export default function NewsEvents({ navigate }: Props) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    let cancelled = false
-    async function load() {
-      setLoading(true)
-      setError(null)
-      try {
-        if (!supabaseConfigured) throw new Error('not configured')
-        const today = localDateStr()
-        const { data, error } = await getSupabase()
-          .from('news_events')
-          .select('*')
-          .eq('published', true)
-          .gte('event_date', today)
-          .order('event_date', { ascending: true })
-        if (cancelled) return
-        if (error) throw error
-        setItems(data ?? [])
-      } catch {
-        if (!cancelled) setError('Unable to load upcoming events. Please try again later.')
-      } finally {
-        if (!cancelled) setLoading(false)
+ useEffect(() => {
+  let cancelled = false
+
+  async function load() {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('http://localhost:5021/api/news-events')
+
+      if (!response.ok) {
+        throw new Error('Failed to load events')
+      }
+
+      const data = await response.json()
+
+      if (cancelled) return
+
+      const today = new Date().toISOString().split('T')[0]
+
+      const upcomingEvents: NewsEventRow[] = data
+        .filter((event: any) => {
+          if (!event.published) return false
+
+          const eventDate = event.eventDate.split('T')[0]
+
+          return eventDate >= today
+        })
+        .sort((a: any, b: any) => {
+          return (
+            new Date(a.eventDate).getTime() -
+            new Date(b.eventDate).getTime()
+          )
+        })
+        .map((event: any) => ({
+          id: event.id,
+          title: event.title,
+          description: event.description,
+          category: event.category,
+          event_date: event.eventDate,
+          location: event.location,
+          image_url: event.imageUrl,
+          published: event.published,
+          featured: event.featured,
+          created_at: event.createdAt,
+          updated_at: event.updatedAt,
+        }))
+
+      setItems(upcomingEvents)
+    } catch (err) {
+      console.error('News & Events API error:', err)
+
+      if (!cancelled) {
+        setError(
+          'Unable to load upcoming events. Please try again later.'
+        )
+      }
+    } finally {
+      if (!cancelled) {
+        setLoading(false)
       }
     }
-    load()
-    return () => { cancelled = true }
-  }, [])
+  }
+
+  load()
+
+  return () => {
+    cancelled = true
+  }
+}, [])
 
   // Events returned are already published, future-or-today, sorted ascending.
   const upcoming = items

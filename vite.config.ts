@@ -29,11 +29,25 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    server: {
+        server: {
       host: '0.0.0.0',
       port: parseInt(process.env.PORT || '8443'),
       strictPort: true,
-      watch: { ignored: ['**/.figma/**'] },
+
+      proxy: {
+        '/api': {
+          target: 'http://localhost:5021',
+          secure: false,
+          changeOrigin: true,
+        },
+      },
+
+      watch: {
+        ignored: [
+          '**/.figma/**',
+          '**/src/backend/**',
+        ],
+      },
     },
     preview: {
       host: '0.0.0.0',
