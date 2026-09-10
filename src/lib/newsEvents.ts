@@ -1,4 +1,4 @@
-export const EVENT_IMAGE_FALLBACK = '/campus/madaha-nursing-college-9.jpg'
+export const EVENT_IMAGE_FALLBACK = '/campus/madaha-nursing-college-9.webp'
 
 export interface NewsEventRow {
   id: string
@@ -11,5 +11,5 @@ export interface NewsEventRow {
   published: boolean
   featured: boolean
   created_at: string
-  updated_at: string
+  updated_at: string | null
 }

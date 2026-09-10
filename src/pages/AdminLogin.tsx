@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { getSupabase, supabaseConfigured } from '../lib/supabase'
 
 interface Props {
   goToDashboard: () => void
@@ -13,43 +12,71 @@ export default function AdminLogin({ goToDashboard, goHome }: Props) {
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-    let cancelled = false
-    if (!supabaseConfigured) return
-    getSupabase().auth.getSession().then(({ data }) => {
-      if (!cancelled && data.session) goToDashboard()
-    }).catch(() => {})
-    return () => { cancelled = true }
-  }, [goToDashboard])
+  const token = localStorage.getItem('adminToken')
+
+  if (token) {
+    goToDashboard()
+  }
+}, [goToDashboard])
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setError(null)
+  e.preventDefault()
+  setError(null)
 
-    if (!supabaseConfigured) {
-      return
-    }
-
-    if (!email || !password) {
-      setError('Please enter your email and password.')
-      return
-    }
-
-    setSubmitting(true)
-    try {
-      const { error: authError } = await getSupabase().auth.signInWithPassword({ email, password })
-      if (authError) {
-        setError(authError.message === 'Invalid login credentials'
-          ? 'Invalid email or password. Please try again.'
-          : authError.message)
-        return
-      }
-      goToDashboard()
-    } catch {
-      setError('Unable to sign in. Please check your connection and try again.')
-    } finally {
-      setSubmitting(false)
-    }
+  if (!email || !password) {
+    setError('Please enter your email and password.')
+    return
   }
+
+  setSubmitting(true)
+
+  try {
+    const response = await fetch(
+      'http://localhost:5021/api/admin/login',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    )
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      setError(
+        data?.message || 'Invalid email or password.'
+      )
+      return
+    }
+
+    // Save authentication information
+    localStorage.setItem('adminToken', data.token)
+
+    if (data.admin) {
+      localStorage.setItem(
+        'adminUser',
+        JSON.stringify(data.admin)
+      )
+    }
+
+    // Go to admin dashboard
+    goToDashboard()
+
+  } catch (error) {
+    console.error('Admin login error:', error)
+
+    setError(
+      'Unable to connect to the server. Please try again.'
+    )
+  } finally {
+    setSubmitting(false)
+  }
+}
 
   return (
     <div className="admin-login-page">
@@ -254,15 +281,7 @@ export default function AdminLogin({ goToDashboard, goHome }: Props) {
         <h1 className="admin-login-title">Admin Login</h1>
         <p className="admin-login-sub">Sign in to manage News &amp; Events</p>
 
-        {!supabaseConfigured && (
-          <div className="admin-login-error" role="alert">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 8v4M12 16h.01" />
-            </svg>
-            Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.
-          </div>
-        )}
+       
 
         {error && (
           <div className="admin-login-error" role="alert">

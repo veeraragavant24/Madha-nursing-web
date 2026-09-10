@@ -271,7 +271,7 @@ export default function Principal({ navigate }: Props) {
               
             </h1>
             <div style={{ color: '#F1F5F9', fontSize: 18, marginBottom: 8 }}>Principal, Madha College of Nursing</div>
-            <div style={{ color: '#CBD5E1', fontSize: 16 }}>M.Sc. Nursing, PhD , M.Phil</div>
+            <div style={{ color: '#CBD5E1', fontSize: 16 }}>M.Sc. Nursing,M.phil, Ph.D</div>
            <div className="principal-achievements">
               {ACHIEVEMENTS.map(a => (
   <div
@@ -296,8 +296,10 @@ export default function Principal({ navigate }: Props) {
               position: 'relative', overflow: 'hidden',
             }}>
               <img
-                src="/principal/Tamilarasi-principal11.jpg"
+                src="/principal/Tamilarasi-principal11.webp"
                 alt="Principal Dr. B. Tamilarasi"
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,54,.3) 0%, transparent 50%)' }} />
@@ -322,26 +324,7 @@ export default function Principal({ navigate }: Props) {
                 </h2>
               </Reveal>
               {/* Sidebar qualifications */}
-              <Reveal delay={2}>
-                <div
-  className="principal-info-card"
-  style={{
-    background: '#F3F7FB',
-    borderRadius: 20,
-    padding: '28px',
-    border: '1px solid rgba(11,37,69,.06)',
-    marginBottom: 28
-  }}
->
-                  <div className="font-sans" style={{ fontSize: 11, fontWeight: 600, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Qualifications</div>
-                  {['M.Sc. Nursing (Medical Surgical Nursing)', 'Ph.D in Nursing Science — TNMGRMU', 'Master of Business Administration — Anna University', 'PG Diploma in Hospital Management'].map(q => (
-                    <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
-                      <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#18C6C8', marginTop: 6, flexShrink: 0 }} />
-                      <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.5 }}>{q}</span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+             
               <Reveal delay={3}>
                 <div
   className="principal-info-card"
@@ -354,10 +337,17 @@ export default function Principal({ navigate }: Props) {
 >
                   <div className="font-sans" style={{ fontSize: 11, fontWeight: 600, color: '#18C6C8', letterSpacing: '.14em', textTransform: 'uppercase', marginBottom: 16 }}>Awards & Recognition</div>
                   {[
-                    'Best Principal Award — Tamil Nadu Nursing Council, 2022',
-                    'Excellence in Nursing Research — INC, 2020',
-                    'Outstanding Educator Award — TNAI National Conference, 2019',
-                    'Distinguished Alumna — TNMGRMU, 2017',
+                    'Best Educator Award by Education Today Magazine',
+  '100+ research publications in national and international forums',
+  'Senate Member of The Tamil Nadu Dr. M.G.R. Medical University',
+  'Research Guide at The Tamil Nadu Dr. M.G.R. Medical University',
+  'Board of Studies Member in Deemed Universities',
+  'Executive Editor on the Editorial Board of the Tamil Nadu Nurses and Midwives Council',
+  'Over 100 scholarly contributions through CNE in various colleges across Tamil Nadu',
+  'Contributed to CNE modules for the Tamil Nadu Nurses and Midwives Council',
+  'Member of Research Advisory Committees in various universities',
+  'Subject Matter Expert in the ECHO Programme',
+  
                   ].map(a => (
                     <div key={a} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginBottom: 12 }}>
                       <span style={{ color: '#F59E0B', fontSize: 14 }}>★</span>

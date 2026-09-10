@@ -25,7 +25,7 @@ const SLIDES: Slide[] = [
   // 01 — CAMPUS BUILDING
   {
     id: 'campus',
-    img: '/hero/slide-1.jpg',
+    img: '/hero/slide-1.webp',
     imgPos: 'center 45%',
     badge: 'Welcome to Madha College of Nursing',
     headline: ['Building Futures.', 'Inspiring Care.'],
@@ -39,7 +39,7 @@ const SLIDES: Slide[] = [
   // 02 — STUDENTS PRACTICAL
   {
     id: 'practical',
-    img: '/hero/slide-2.jpg',
+    img: '/hero/slide-2.webp',
     imgPos: 'center 45%',
     badge: 'Hands-On Nursing Education',
     headline: ['Where Learning', 'Becomes Practice.'],
@@ -53,7 +53,7 @@ const SLIDES: Slide[] = [
   // 03 — STUDENT EVENT
   {
     id: 'student-event',
-    img: '/hero/slide-3.jpg',
+    img: '/hero/slide-3.webp',
     imgPos: 'center 45%',
     badge: 'Life Beyond the Classroom',
     headline: ['Learn. Connect.', 'Grow Together.'],
@@ -67,7 +67,7 @@ const SLIDES: Slide[] = [
   // 04 — STUDENT EVENT / CELEBRATION
   {
     id: 'celebration',
-    img: '/hero/slide-4.jpg',
+    img: '/hero/slide-4.webp',
     imgPos: 'center 45%',
     badge: 'Celebrating Life at Madha',
     headline: ['Moments That Become', 'Memories for Life.'],
@@ -81,7 +81,7 @@ const SLIDES: Slide[] = [
   // 05 — GRADUATION
   {
     id: 'graduation',
-    img: '/hero/slide-5.jpg',
+    img: '/hero/slide-5.webp',
     imgPos: 'center 40%',
     badge: 'Your Journey · Your Future',
     headline: ['From Madha to a', 'World of Possibilities.'],

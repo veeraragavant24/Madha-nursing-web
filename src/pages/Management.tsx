@@ -7,9 +7,9 @@ const TEAM = [
   {
     name: 'Dr.Ln.S.Peter,',
     title: 'Chairman',
-    img: '/management/chairman.jpg',
+    img: '/management/chairman.webp',
     imgFocus: 'center 15%',
-    bio: "Dr. Ln. S. Peter is one of the pioneering visionaries in the field of education in Tamil Nadu, hailing from Thirumaiyam in Pudukkottai District. Driven by a passion for transforming lives through quality education, he founded the Soosaiya Peter Educational Trust and established the first engineering college in 1995. Under his visionary leadership, the Madha Educational Institutions have grown into a renowned educational group offering excellence across Medicine, Dentistry, Physiotherapy, Nursing, Management, Arts & Science, as well as several CBSE and Matriculation Schools across Chennai. As the Chairman of Madha College of Nursing, his unwavering commitment to academic excellence, innovation, and holistic development continues to inspire generations of students and strengthen the institution's reputation as a center of quality education and professional excellence.",
+    bio: "Dr. Ln. S. Peter is one of the pioneering visionaries in the field of education in Tamil Nadu, hailing from Thirumaiyam in Pudukkottai District. Driven by a passion for transforming lives through quality education, he founded the Soosaiya Peter Educational Trust and established the first engineering college in 1998. Under his visionary leadership, the Madha Educational Institutions have grown into a renowned educational group offering excellence across Medicine, Dentistry, Physiotherapy, Nursing, Management, Arts & Science, as well as several CBSE and Matriculation Schools across Chennai. As the Chairman of Madha College of Nursing, his unwavering commitment to academic excellence, innovation, and holistic development continues to inspire generations of students and strengthen the institution's reputation as a center of quality education and professional excellence.",
     quals: [],
     accent: '#081f3b',
     tag: 'Founder & Visionary',
@@ -17,7 +17,7 @@ const TEAM = [
   {
     name: 'Ms. Mercy Florence Peter.',
     title: 'Vice Chairperson',
-    img: '/management/mercy.jpg',
+    img: '/management/mercy.webp',
     imgFocus: 'center 12%',
     bio: "Ms. Mercy Florence Peter is an accomplished professional with a strong academic foundation in Electronics and Communication Engineering and a Master of Science (M.S.) in Management Information Systems from the New Jersey Institute of Technology, USA. With expertise that combines technology, innovation, and strategic management, she brings a global perspective to academic administration. As the Chairperson of Madha College of Nursing, she is committed to fostering excellence in education, promoting innovation, and creating an environment that empowers students to become skilled, compassionate, and future-ready healthcare professionals. Her visionary leadership continues to strengthen the institution's commitment to quality education and holistic development.",
     quals: [],
@@ -27,7 +27,7 @@ const TEAM = [
   {
     name: 'Mr. Ajay Ravindra Kumar',
     title: 'Managing Director',
-    img: '/management/ajay.jpg',
+    img: '/management/ajay.webp',
     imgFocus: 'center 10%',
     bio: "Mr. Ajay Ravindra Kumar, was one of the early employees of Tesla, Inc., in California, USA and had worked with the Company in its start-up days. He has an Under graduate degree in Electronics and Communication Engineering and a Post Graduate Degree (MS) in Information Technology Management from the University of Texas at Dallas, USA. He brings with him corporate experience from Tesla, Inc, where he worked with the Engineering Team in development of Tesla’s revolutionary vehicle Programs Roadster, Model S and Model X. He has also completed his Bachelor’s Degree in Law (LLB) from The Tamil Nadu Dr.Ambedkar Law University.",
     quals: [],
@@ -37,9 +37,9 @@ const TEAM = [
   {
     name: 'Dr. B. Tamilarasi',
     title: 'Principal',
-    img: '/principal/Tamilarasi-principal.jpg',
+    img: '/principal/Tamilarasi-principal.webp',
     imgFocus: 'center 12%',
-    bio: 'Dr. B. Tamilarasi is an accomplished nursing academician with a Ph.D. and M.Phil. from Mother Teresa Women’s University and an M.Sc. (Nursing) from The Tamil Nadu Dr. M.G.R. Medical University. Beginning her career as an Assistant Lecturer, she has risen through dedication and academic excellence to become the Principal of Madha College of Nursing. She serves as a Board of Studies and Senate Member at The Tamil Nadu Dr. M.G.R. Medical University and contributes to the Academic Councils of several deemed universities in Tamil Nadu. A Research Guide for Ph.D. scholars and Executive Editorial Board Member of the Journal of Medical Surgical Nursing, she has authored numerous research publications in prestigious national and international journals, making significant contributions to nursing education and research.',
+    bio: 'Dr. B. Tamilarasi is an accomplished nursing academician with a MSC Nursing,M.phil,Ph.D. from Mother Teresa Women’s University and an M.Sc. (Nursing) from The Tamil Nadu Dr. M.G.R. Medical University. Beginning her career as an Assistant Lecturer, she has risen through dedication and academic excellence to become the Principal of Madha College of Nursing. She serves as a Board of Studies and Senate Member at The Tamil Nadu Dr. M.G.R. Medical University and contributes to the Academic Councils of several deemed universities in Tamil Nadu. A Research Guide for Ph.D. scholars and Executive Editorial Board Member of the Journal of Medical Surgical Nursing, she has authored numerous research publications in prestigious national and international journals, making significant contributions to nursing education and research.',
     quals: [],
     accent: '#081f3b',
     tag: 'Academic Leadership',
@@ -94,6 +94,8 @@ return (
         <img
           src={person.img}
           alt={person.name}
+          loading="lazy"
+          decoding="async"
           style={{
             width: '100%', height: '100%', objectFit: 'cover',
             objectPosition: person.imgFocus,

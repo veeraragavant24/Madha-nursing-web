@@ -8,3 +8,11 @@ dist/
 Thumbs.db
 .vscode/
 .idea/
+
+# .NET build files
+**/bin/
+**/obj/
+
+# Application configuration with secrets
+**/appsettings.json
+**/appsettings.Development.json

@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 import Management from './pages/Management'
 import Principal from './pages/Principal'
+import AdmissionPopup from './components/AdmissionPopup'
 import NewsEvents from './pages/NewsEvents'
 import AdminLogin from './pages/AdminLogin'
 import AdminNewsEvents from './pages/AdminNewsEvents'
@@ -26,6 +27,7 @@ function readAdminRoute(): AdminRoute | null {
 export default function App() {
   const [page, setPage] = useState<Page>('home')
   const [adminRoute, setAdminRoute] = useState<AdminRoute | null>(() => readAdminRoute())
+  const [showAdmissionPopup, setShowAdmissionPopup] = useState(true) 
 
 const navigate = (p: Page) => {
   // Change page
@@ -100,8 +102,14 @@ const navigate = (p: Page) => {
     principal: <Principal navigate={navigate} />,
     'news-events': <NewsEvents navigate={navigate} />,
   }
+return (
+  <>
+    {showAdmissionPopup && (
+      <AdmissionPopup
+        onClose={() => setShowAdmissionPopup(false)}
+      />
+    )}
 
-  return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Nav currentPage={page} navigate={navigate} />
       <main style={{ flex: 1 }} key={page} className="page-enter">
@@ -109,5 +117,6 @@ const navigate = (p: Page) => {
       </main>
       <Footer navigate={navigate} />
     </div>
-  )
+  </>
+)
 }
