@@ -1333,7 +1333,6 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
 }
 
-
 }
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
@@ -1457,7 +1456,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   left: 50% !important;
   right: auto !important;
 
-  top: 25px !important;
+  top: 35px !important;
 
   width: calc(100% - 20px) !important;
   max-width: none !important;
@@ -1476,7 +1475,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 .nav-root.transparent {
   left: 0 !important;
   right: 0 !important;
-  top: 10px !important;
+  top: 20px !important;
 
   width: 100% !important;
   max-width: 100% !important;
@@ -1918,28 +1917,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
 }
 
-/* =========================================================
-   FINAL MOBILE HEADER POSITION OVERRIDE
-   Moves the main header slightly lower.
 
-   Top contact bar = 38px
-   Transparent header = 20px
-   White scrolled header = 35px
-
-   Put this at the very end so it wins over earlier rules.
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-  .nav-root.transparent {
-    top: 20px !important;
-  }
-
-  .nav-root.solid {
-    top: 35px !important;
-  }
-
-}
 
  
 
