@@ -2422,7 +2422,7 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
   }
 
   .top-contact-item {
-    font-size: 7.5px !important;
+    font-size: 6.5px !important;
   }
 
   .top-contact-inner .top-address {
