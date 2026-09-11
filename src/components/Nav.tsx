@@ -1025,34 +1025,26 @@ font-weight: 700;
    Existing animations / transitions / positioning are untouched.
    ========================================================= */
 
+/* =========================================================
+   LAPTOP RESPONSIVE ONLY
+   769px → 1400px
+
+   BRAND  |  MENU  |  APPLY NOW
+   Desktop above 1400px = unchanged
+   Mobile below 769px = unchanged
+   ========================================================= */
+
 @media (min-width: 769px) and (max-width: 1400px) {
 
   /* =====================================================
      MAIN HEADER
      ===================================================== */
 
-  /* =====================================================
-     LAPTOP HEADER POSITION
-     ===================================================== */
-
-  /* WHITE SCROLL HEADER */
+  .nav-root.transparent,
   .nav-root.solid {
-    left: 50% !important;
-    right: auto !important;
-
-    width: 90% !important;
-    max-width: 1600px !important;
-
-    transform: translateX(-50%) !important;
-  }
-
-  /* NORMAL TRANSPARENT HEADER */
-  .nav-root.transparent {
     left: 0 !important;
     right: 0 !important;
-
     width: 100% !important;
-
     transform: none !important;
   }
 
@@ -1077,21 +1069,23 @@ font-weight: 700;
      ===================================================== */
 
   .nav-brand {
-    flex: 0 1 clamp(420px, 42vw, 620px) !important;
+    flex: 0 1 clamp(235px, 23vw, 315px) !important;
 
     width: auto !important;
     min-width: 0 !important;
 
-    max-width: clamp(420px, 42vw, 620px) !important;
+    max-width: clamp(235px, 23vw, 315px) !important;
 
     display: flex !important;
     align-items: center !important;
 
-    gap: clamp(8px, .8vw, 12px) !important;
+    gap: clamp(7px, .7vw, 11px) !important;
 
-    padding-right: clamp(8px, 1vw, 16px) !important;
+    padding-right: clamp(10px, 1vw, 18px) !important;
 
     margin-right: clamp(8px, 1vw, 18px) !important;
+
+    /* No vertical separator line */
 
     border-right: none !important;
 
@@ -1104,15 +1098,15 @@ font-weight: 700;
      ===================================================== */
 
   .nav-logo-ring {
-    width: clamp(48px, 4vw, 62px) !important;
-    height: clamp(48px, 4vw, 62px) !important;
+    width: clamp(54px, 4.8vw, 72px) !important;
+    height: clamp(54px, 4.8vw, 72px) !important;
 
     flex-shrink: 0 !important;
   }
 
   .nav-logo-img {
-    width: clamp(48px, 4vw, 62px) !important;
-    height: clamp(48px, 4vw, 62px) !important;
+    width: clamp(54px, 4.8vw, 72px) !important;
+    height: clamp(54px, 4.8vw, 72px) !important;
   }
 
 
@@ -1123,16 +1117,12 @@ font-weight: 700;
   .nav-brand-text {
     min-width: 0 !important;
 
-    flex: 1 1 auto !important;
+    flex: 0 0 auto !important;
 
+    width: max-content !important;
     max-width: 100% !important;
 
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
 
@@ -1150,66 +1140,33 @@ font-weight: 700;
 
     max-width: 100% !important;
 
-    font-family: 'Cinzel', serif !important;
+    font-size: clamp(15px, 1.5vw, 21px) !important;
 
-    font-size: clamp(17px, 1.45vw, 22px) !important;
+    line-height: 1.05 !important;
 
-    font-weight: 700 !important;
-
-    line-height: 1 !important;
-
-    letter-spacing: clamp(.035em, .08vw, .08em) !important;
+    letter-spacing: clamp(.005em, .15vw, .035em) !important;
 
     white-space: nowrap !important;
 
     overflow: visible !important;
 
     text-overflow: clip !important;
-
-    text-align: center !important;
   }
 
 
   /* =====================================================
-     GOLD RIBBON
-     WIDTH IS BASED DIRECTLY ON TITLE FONT SIZE
-
-     Title size:
-       17px → ribbon ≈ 179px
-       22px → ribbon ≈ 231px
-
-     This keeps the ribbon proportional to the title
-     without changing any ribbon/shine animation.
+     GOLD LINE
      ===================================================== */
 
   .premium-divider {
-    position: relative !important;
 
-    width: calc(clamp(17px, 1.45vw, 22px) * 10.5) !important;
-    height: 4px !important;
+    width: 100% !important;
 
-    margin: 7px auto 3px !important;
+    max-width: 100% !important;
 
-    align-self: center !important;
+    height: clamp(2px, .2vw, 3px) !important;
 
-    border-radius: 3px !important;
-
-    background: linear-gradient(
-      90deg,
-      #8a6200 0%,
-      #f0b00e 18%,
-      #f6d76a 42%,
-      #fff0a6 50%,
-      #f6d76a 58%,
-      #d39e17 82%,
-      #705206 100%
-    ) !important;
-
-    box-shadow:
-      0 1px 4px rgba(184, 134, 11, 0.45),
-      0 0 8px rgba(212, 175, 55, 0.25) !important;
-
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
 
@@ -1264,7 +1221,7 @@ font-weight: 700;
 
     margin-right: clamp(1px, .08vw, 2px) !important;
 
-    font-size: clamp(12px, .68vw, 15px) !important;
+    font-size: clamp(12px, .8vw, 16px) !important;
 
     line-height: 1 !important;
 
@@ -1297,84 +1254,77 @@ font-weight: 700;
 
 
   /* =====================================================
-     3. APPLY NOW AREA
-     ===================================================== */
+   3. APPLY NOW AREA
+   ===================================================== */
 
-  .nav-right {
+.nav-right {
 
-    flex: 0 0 auto !important;
+  flex: 0 0 auto !important;
 
-    width: auto !important;
+  width: auto !important;
 
-    min-width: 0 !important;
+  min-width: 0 !important;
 
-    display: flex !important;
+  display: flex !important;
 
-    align-items: center !important;
+  align-items: center !important;
 
-    justify-content: flex-end !important;
+  justify-content: flex-end !important;
 
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 
-    margin-right: 0 !important;
+  margin-right: 0 !important;
 
-    padding-left: clamp(10px, 1vw, 18px) !important;
+padding-left: clamp(10px, 1vw, 18px) !important;
 
-    gap: clamp(4px, .4vw, 8px) !important;
-  }
-
-
-  /* =====================================================
-     APPLY BUTTON — NORMAL HEADER
-     ===================================================== */
-
-  .nav-root.transparent .btn-apply {
-
-    width: clamp(100px, 7vw, 122px) !important;
-
-    height: clamp(38px, 2.8vw, 44px) !important;
-
-    padding: clamp(6px, .45vw, 9px) !important;
-
-    font-size: clamp(9px, .68vw, 12px) !important;
-
-    gap: 4px !important;
-
-    transform: none !important;
-
-    position: relative !important;
-
-    left: -20px !important;
-
-    white-space: nowrap !important;
-  }
+  gap: clamp(4px, .4vw, 8px) !important;
+}
 
 
-  /* =====================================================
-     APPLY BUTTON — SCROLLED HEADER
-     ===================================================== */
+/* =====================================================
+   APPLY BUTTON — NORMAL HEADER
+   Desktop-like position
+   ===================================================== */
 
-  .nav-root.solid .btn-apply {
+.nav-root.transparent .btn-apply {
 
-    width: clamp(94px, 6.5vw, 112px) !important;
+  width: clamp(88px, 6.5vw, 108px) !important;
 
-    height: clamp(36px, 2.6vw, 41px) !important;
+  height: clamp(34px, 2.5vw, 40px) !important;
 
-    padding: clamp(6px, .45vw, 9px) !important;
+  padding: clamp(5px, .4vw, 8px) !important;
 
-    font-size: clamp(9px, .65vw, 11px) !important;
+  font-size: clamp(9px, .78vw, 13px) !important;
 
-    gap: 4px !important;
+  gap: 3px !important;
 
-    transform: none !important;
+  transform: none !important;
 
-    position: relative !important;
+  white-space: nowrap !important;
+}
 
-    left: -5px !important;
 
-    white-space: nowrap !important;
-  }
+/* =====================================================
+   APPLY BUTTON — SCROLLED HEADER
+   Desktop-like position
+   ===================================================== */
 
+.nav-root.solid .btn-apply {
+
+  width: clamp(82px, 6vw, 98px) !important;
+
+  height: clamp(33px, 2.4vw, 38px) !important;
+
+  padding: clamp(5px, .4vw, 8px) !important;
+
+  font-size: clamp(9px, .72vw, 12px) !important;
+
+  gap: 3px !important;
+
+  transform: none !important;
+
+  white-space: nowrap !important;
+}
 
   /* =====================================================
      HAMBURGER
@@ -1385,7 +1335,6 @@ font-weight: 700;
   }
 
 }
-
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
 @media (max-width: 480px) {
