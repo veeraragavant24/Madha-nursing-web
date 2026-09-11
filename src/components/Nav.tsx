@@ -1473,6 +1473,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 .nav-root.transparent {
   left: 0 !important;
   right: 0 !important;
+  top: 10px !important;
 
   width: 100% !important;
   max-width: 100% !important;
