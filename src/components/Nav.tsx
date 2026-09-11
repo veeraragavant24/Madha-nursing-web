@@ -1459,7 +1459,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
   height: 64px !important;
 
-  top:0px !important;
+  top:-10px !important;
 
   transform: translateX(-50%) !important;
 
