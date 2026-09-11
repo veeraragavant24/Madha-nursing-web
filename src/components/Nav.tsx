@@ -1604,7 +1604,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
     font-family: 'Cinzel', serif !important;
 
-   font-size: clamp(10px, 3.8vw, 15px) !important;
+   font-size: clamp(12px, 3.8vw, 15px) !important;
 
     font-weight: 700 !important;
 
