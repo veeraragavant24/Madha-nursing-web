@@ -67,7 +67,7 @@ public class AdminSetupController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(new
-        {
+        {   
             message = "Admin created successfully.",
             id = admin.Id,
             email = admin.Email,
