@@ -250,61 +250,7 @@ a.top-contact-item:hover {
     font-size: 15px;
   }
 }
-@media (max-width: 768px) {
 
-  .home-stats-grid {
-    display: grid !important;
-
-    grid-template-columns: repeat(6, 1fr) !important;
-
-    gap: 32px 8px !important;
-
-    align-items: center !important;
-    justify-items: center !important;
-  }
-
-  /* Hide all divider elements */
-  .home-stats-grid > div:nth-child(even) {
-    display: none !important;
-  }
-
-  /* FIRST ROW */
-  .home-stats-grid > div:nth-child(1) {
-    grid-column: 1 / 3 !important;
-    grid-row: 1 !important;
-  }
-
-  .home-stats-grid > div:nth-child(3) {
-    grid-column: 3 / 5 !important;
-    grid-row: 1 !important;
-  }
-
-  .home-stats-grid > div:nth-child(5) {
-    grid-column: 5 / 7 !important;
-    grid-row: 1 !important;
-  }
-
-  /* SECOND ROW — CENTERED */
-  .home-stats-grid > div:nth-child(7) {
-    grid-column: 2 / 4 !important;
-    grid-row: 2 !important;
-  }
-
-  .home-stats-grid > div:nth-child(9) {
-    grid-column: 4 / 6 !important;
-    grid-row: 2 !important;
-  }
-
-  .home-stats-grid > div {
-    width: 100% !important;
-    min-width: 0 !important;
-    text-align: center !important;
-  }
-
-}
-
-
-  
 }
 
 /* =========================================
@@ -1658,7 +1604,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
     font-family: 'Cinzel', serif !important;
 
-    font-size: clamp(15px, 4.8vw, 21px) !important;
+    font-size: clamp(12px, 4.8vw, 18px) !important;
 
     font-weight: 700 !important;
 
