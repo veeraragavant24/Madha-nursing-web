@@ -1454,7 +1454,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   left: 50% !important;
   right: auto !important;
 
-  top: 25px !important;
+  top: 42px !important;
 
   width: calc(100% - 20px) !important;
   max-width: none !important;
@@ -1473,7 +1473,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 .nav-root.transparent {
   left: 0 !important;
   right: 0 !important;
-  top: 10px !important;
+  top: 42px !important;
 
   width: 100% !important;
   max-width: 100% !important;
@@ -1915,7 +1915,63 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
 }
 
+/* =========================================================
+   MOBILE FLOATING APPLY NOW BUTTON
+   Right side of the screen, vertically centered.
+   ========================================================= */
 
+@media (max-width: 768px) {
+
+  .nav-root .nav-right .btn-apply {
+    display: inline-flex !important;
+
+    position: fixed !important;
+
+    right: 0 !important;
+    top: 50vh !important;
+
+    transform: translateY(-50%) !important;
+
+    width: clamp(78px, 20vw, 92px) !important;
+    min-width: 78px !important;
+
+    height: 34px !important;
+
+    margin: 0 !important;
+    padding: 5px 8px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    font-size: clamp(9px, 2.6vw, 11px) !important;
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    z-index: 99999 !important;
+
+    border-radius: 16px 0 0 16px !important;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .nav-root .nav-right .btn-apply {
+    width: 74px !important;
+    min-width: 74px !important;
+    height: 31px !important;
+
+    padding: 4px 6px !important;
+
+    font-size: 9px !important;
+
+    border-radius: 15px 0 0 15px !important;
+  }
+
+}
 
  
 
