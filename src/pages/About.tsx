@@ -52,7 +52,7 @@ const JOURNEY = [
   },
   {
     year: '2015',
-    title: 'Seat enhancement and Mental Health Nursing',
+    title: 'Seat enhancement ',
     description:
     'Enhanced B.Sc. (N) seats from 50 to 100 and M.Sc. (N) seats from 15 to 30, with Mental Health Nursing added as the fifth specialty.',
   },

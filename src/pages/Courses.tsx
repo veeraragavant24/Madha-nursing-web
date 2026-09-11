@@ -38,7 +38,7 @@ const COURSES = [
     intake: '30 Seats',
     level: 'Postgraduate',
     color: '#1E5AA8',
-    eligibility: ['B.Sc. Nursing from recognised university', 'P.B.B.Sc. Nursing with B.Sc. Nursing', 'Registered with State Nursing Council', 'Must have nursing practice experience (preferred)'],
+    eligibility: ['B.Sc. Nursing / P.B.B.Sc. Nursing from recognised university', 'Registered with State Nursing Council', 'Must have nursing practice experience (preferred)'],
 curriculum: [
   'Year I: Nursing Education, Advanced Nursing Practice, Nursing Research & Statistics, Clinical Specialty I',
   'Year II: Nursing Management, Clinical Specialty II, Dissertation Submission & Viva',

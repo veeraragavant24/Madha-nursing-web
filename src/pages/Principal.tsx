@@ -410,7 +410,7 @@ export default function Principal({ navigate }: Props) {
                     <div>
                       <div className="font-sans" style={{ fontWeight: 700, fontSize: 17, color: '#0B2545' }}>Dr. B. Tamilarasi</div>
                       <div style={{ color: '#475569', fontSize: 14, marginTop: 3 }}>Principal, Madha College of Nursing</div>
-                      <div style={{ color: '#18C6C8', fontSize: 12, marginTop: 2 }}>M.Sc., Ph.D., M.Phil</div>
+                      <div style={{ color: '#18C6C8', fontSize: 12, marginTop: 2 }}>M.Sc.,M.Phil, Ph.D. </div>
                     </div>
                   </div>
                 </div>
