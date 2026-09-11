@@ -37,10 +37,10 @@ function eventImage(row: NewsEventRow) {
 }
 
 export default function NewsEvents({ navigate }: Props) {
-  const [items, setItems] = useState<NewsEventRow[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
+ const [items, setItems] = useState<NewsEventRow[]>([])
+const [loading, setLoading] = useState(true)
+const [error, setError] = useState<string | null>(null)
+const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
  useEffect(() => {
   let cancelled = false
 
@@ -767,7 +767,7 @@ export default function NewsEvents({ navigate }: Props) {
                 <Reveal type="up" delay={6}>
                   <button
                     className="featured-btn"
-                    onClick={() => navigate('contact')}
+                    onClick={() => setSelectedEvent(featured)}
                     aria-label={`View details for ${featured.title}`}
                   >
                     View Event Details
@@ -781,6 +781,117 @@ export default function NewsEvents({ navigate }: Props) {
           </div>
         </section>
       )}
+      {/* =====================================================
+    EVENT DETAILS
+===================================================== */}
+{selectedEvent && (
+  <section className="featured-section">
+    <div className="featured-inner">
+
+      <button
+        className="more-card-btn"
+        onClick={() => setSelectedEvent(null)}
+        style={{
+          marginBottom: 24,
+          fontSize: 16,
+        }}
+      >
+        ← Back to Events
+      </button>
+
+      <div className="featured-card">
+
+        <div className="featured-media-cell">
+          <div className="featured-media">
+
+            <img
+              className="featured-img"
+              src={eventImage(selectedEvent)}
+              alt={selectedEvent.title}
+            />
+
+          </div>
+        </div>
+
+        <div className="featured-body">
+
+          <span className="featured-eyebrow">
+            <span className="featured-eyebrow-dot" />
+            Event Details
+          </span>
+
+          <div className="featured-date-block">
+
+            <svg
+              className="featured-date-icon"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+
+            <div className="featured-date-day">
+              {dateBlock(selectedEvent.event_date).day}
+            </div>
+
+            <div className="featured-date-month">
+              {dateBlock(selectedEvent.event_date).month}
+            </div>
+
+            <div className="featured-date-year">
+              {dateBlock(selectedEvent.event_date).year}
+            </div>
+
+          </div>
+
+          <h2 className="featured-title">
+            {selectedEvent.title}
+          </h2>
+
+          <div className="featured-meta">
+
+            <span className="featured-category">
+              {selectedEvent.category || 'Event'}
+            </span>
+
+            <span className="featured-meta-item">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+
+              {selectedEvent.location || ''}
+            </span>
+
+          </div>
+
+          <p className="featured-desc">
+            {selectedEvent.description || ''}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+)} 
 
       {/* More Upcoming Events */}
       {!loading && !error && moreEvents.length > 0 && (
@@ -828,7 +939,7 @@ export default function NewsEvents({ navigate }: Props) {
                       <p className="more-card-desc">{ev.description || ''}</p>
                       <button
                         className="more-card-btn"
-                        onClick={() => navigate('contact')}
+                        onClick={() => setSelectedEvent(ev)}
                         aria-label={`View details for ${ev.title}`}
                       >
                         View Details

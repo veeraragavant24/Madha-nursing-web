@@ -27,7 +27,12 @@ public class AdminAuthController : ControllerBase
         _passwordHasher = passwordHasher;
         _configuration = configuration;
     }
-   
+
+    // ============================================================
+    // ADMIN LOGIN
+    // POST: /api/admin/login
+    // ============================================================
+
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] AdminLoginRequest request)
     {
@@ -84,6 +89,10 @@ public class AdminAuthController : ControllerBase
         });
     }
 
+    // ============================================================
+    // GENERATE JWT TOKEN
+    // ============================================================
+
     private string GenerateToken(AdminUser admin)
     {
         var key = _configuration["Jwt:Key"];
@@ -138,7 +147,81 @@ public class AdminAuthController : ControllerBase
         return new JwtSecurityTokenHandler()
             .WriteToken(token);
     }
+
+    // ============================================================
+    // CREATE FRESH ADMIN
+    //
+    // TEMPORARY ENDPOINT
+    //
+    // POST: /api/admin/create-fresh-admin
+    //
+    // This deletes existing admin users and creates:
+    //
+    // Email:    Admin@mcon
+    // Password: MCON@2026
+    // ============================================================
+
+    [HttpPost("create-fresh-admin")]
+    public async Task<IActionResult> CreateFreshAdmin()
+    {
+        // --------------------------------------------------------
+        // DELETE ALL EXISTING ADMIN USERS
+        // --------------------------------------------------------
+
+        var existingAdmins = await _context.AdminUsers.ToListAsync();
+
+        if (existingAdmins.Any())
+        {
+            _context.AdminUsers.RemoveRange(existingAdmins);
+
+            await _context.SaveChangesAsync();
+        }
+
+        // --------------------------------------------------------
+        // CREATE NEW ADMIN
+        // --------------------------------------------------------
+
+        var admin = new AdminUser
+        {
+            Id = Guid.NewGuid(),
+            Email = "Admin@mcon",
+            Name = "MCON Administrator",
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        // --------------------------------------------------------
+        // GENERATE PASSWORD HASH USING THE SAME HASHER
+        // USED BY THE LOGIN SYSTEM
+        // --------------------------------------------------------
+
+        admin.PasswordHash = _passwordHasher.HashPassword(
+            admin,
+            "MCON@2026"
+        );
+
+        // --------------------------------------------------------
+        // SAVE NEW ADMIN
+        // --------------------------------------------------------
+
+        _context.AdminUsers.Add(admin);
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new
+        {
+            message = "Fresh admin created successfully.",
+            id = admin.Id,
+            email = admin.Email,
+            name = admin.Name
+        });
+    }
 }
+
+
+// ================================================================
+// ADMIN LOGIN REQUEST
+// ================================================================
 
 public class AdminLoginRequest
 {
