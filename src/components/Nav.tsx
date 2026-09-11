@@ -1987,7 +1987,9 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
     align-items: center !important;
     gap: 5px !important;
 
-    font-size: 8px !important;
+    /* CHANGED: 8px → 7.5px */
+    font-size: 7.5px !important;
+
     white-space: nowrap !important;
   }
 
@@ -2003,6 +2005,9 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
+
+    /* Slightly smaller */
+    font-size: 7.5px !important;
   }
 
 
@@ -2024,10 +2029,14 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
 
     overflow: visible !important;
   }
- /* MOVE NORMAL MOBILE HEADER UP */
+
+
+  /* MOVE NORMAL MOBILE HEADER UP */
+
   .nav-root.transparent {
     top: 25px !important;
   }
+
 
   /* =====================================================
      SCROLL HEADER PADDING
@@ -2173,6 +2182,7 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
      ===================================================== */
 
   @keyframes mobileCollegeTitleIn {
+
     from {
       opacity: 0;
       transform: translateY(7px);
@@ -2182,6 +2192,7 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
       opacity: 1;
       transform: translateY(0);
     }
+
   }
 
 
@@ -2422,12 +2433,16 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
   }
 
   .top-contact-item {
-    font-size: 6.5px !important;
+    /* CHANGED: 6.5px → 6px */
+    font-size: 6px !important;
   }
 
   .top-contact-inner .top-address {
     max-width: 52% !important;
+
+    font-size: 6px !important;
   }
+
 
   .nav-inner {
     padding-left: 8px !important;
@@ -2492,6 +2507,15 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
 
 @media (max-width: 380px) {
 
+  .top-contact-item {
+    /* NEW */
+    font-size: 5.5px !important;
+  }
+
+  .top-contact-inner .top-address {
+    font-size: 5.5px !important;
+  }
+
   .nav-inner {
     padding-left: 6px !important;
     padding-right: 6px !important;
@@ -2552,6 +2576,8 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
   }
 
 }
+
+
 /* =====================================================
    MOBILE BODY FLOATING APPLY NOW
    SHOW ONLY IN SCROLLED HEADER
@@ -2596,7 +2622,14 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
     border-radius: 16px 0 0 16px !important;
   }
 
-}@media (max-width: 768px) {
+}
+
+
+/* =====================================================
+   HOME STATS MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
 
   .home-stats-grid {
     display: grid !important;
@@ -2610,11 +2643,13 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
   }
 
   /* Hide all divider elements */
+
   .home-stats-grid > div:nth-child(even) {
     display: none !important;
   }
 
   /* FIRST ROW */
+
   .home-stats-grid > div:nth-child(1) {
     grid-column: 1 / 3 !important;
     grid-row: 1 !important;
@@ -2631,6 +2666,7 @@ font-size: clamp(20px, 1.8vw, 26px) !important;
   }
 
   /* SECOND ROW — CENTERED */
+
   .home-stats-grid > div:nth-child(7) {
     grid-column: 2 / 4 !important;
     grid-row: 2 !important;
