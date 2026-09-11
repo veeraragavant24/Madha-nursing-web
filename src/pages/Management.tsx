@@ -62,12 +62,16 @@ return (
   <div
     className="management-card"
     style={{
-        background: 'white', borderRadius: 28, overflow: 'hidden',
+        background: 'white',
+        borderRadius: 28,
+        overflow: 'hidden',
         border: '1px solid rgba(11,37,69,.07)',
         boxShadow: '0 4px 24px rgba(11,37,69,.06)',
         transition: 'all .45s cubic-bezier(.16,1,.3,1)',
         display: 'flex',
         flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+        height: '100%',
+        boxSizing: 'border-box',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLDivElement
@@ -206,6 +210,11 @@ export default function Management({ navigate }: Props) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 28px;
+    align-items: stretch;
+  }
+
+  .management-team-grid > * {
+    height: 100%;
   }
 
   .management-stats-section {

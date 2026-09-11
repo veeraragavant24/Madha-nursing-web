@@ -39,7 +39,7 @@ research: [
     overview: 'Dedicated to the care of neonates, infants, children, and adolescents, this department equips nurses with specialised skills in growth monitoring, immunisation, paediatric pharmacology, and NICU care.',
     facilities: ['Neonatal care simulation unit', 'Paediatric emergency simulation', 'Growth & development assessment ', 'Immunisation training station'],
 research: [
-  'Neonatal Hypothyroidism',
+  'Neonatal Hypothermia',
   'Pediatric Pain Scale',
   'Human Milk Donation',
   'Autism Awareness Programme',
@@ -63,7 +63,7 @@ research: [
   'Kayakalp Initiative Programme',
   'TeCHO+ Initiative Awareness Programme',
   'Biomedical Waste Management',
-],    labs: ['Community Public Health lab', 'Epidemiology & Statistics Room'],
+],    labs: ['Community  Health lab', 'Epidemiology & Statistics Room'],
   },
   {
     id: 'obg',

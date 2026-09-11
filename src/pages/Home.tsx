@@ -1095,9 +1095,16 @@ Our faculty are empowered to undertake research activities by utilizing the faci
               {RESEARCH_ITEMS.map((r, i) => (
                 <Reveal key={r.title} delay={(i + 1) as 1 | 2 | 3 | 4} type="scale">
                   <div style={{
-                    background: 'white', borderRadius: 20, padding: '28px 24px',
+                    background: 'white',
+                    borderRadius: 20,
+                    padding: '28px 24px',
                     border: '1px solid rgba(11,37,69,.06)',
                     transition: 'all .4s cubic-bezier(.16,1,.3,1)',
+                    height: '100%',
+                    minHeight: 250,
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}
                     onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(24,198,200,.35)'; el.style.boxShadow = '0 20px 40px rgba(11,37,69,.1)'; el.style.transform = 'translateY(-6px)' }}
                     onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.06)'; el.style.boxShadow = 'none'; el.style.transform = 'none' }}
@@ -1118,8 +1125,13 @@ Our faculty are empowered to undertake research activities by utilizing the faci
     {r.title}
   </div>
 </div>
-                    <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.desc}</div>
-                    <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{r.desc}</div>
+                    <div style={{
+                      color: '#18C6C8',
+                      fontSize: 'clamp(16px, 1.3vw, 18px)',
+                      lineHeight: 1.7
+                    }}>
+                      {r.desc}
+                    </div>
                   </div>
                 </Reveal>
               ))}
