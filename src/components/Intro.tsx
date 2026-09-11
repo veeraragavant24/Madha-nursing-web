@@ -8,12 +8,12 @@ export default function Intro({ onComplete }: IntroProps) {
   const [closing, setClosing] = useState(false)
 
   useEffect(() => {
-    // Keep logo visible for 2 seconds
+    // Logo stays visible for 2 seconds
     const showTimer = setTimeout(() => {
       setClosing(true)
     }, 2000)
 
-    // Finish intro after fade-out
+    // Intro completely disappears after fade-out
     const completeTimer = setTimeout(() => {
       onComplete()
     }, 3000)
@@ -29,10 +29,19 @@ export default function Intro({ onComplete }: IntroProps) {
       <div className="madha-intro-content">
 
         <img
-          src="public/logos/favico.png"
-          alt="Madha College of Nursing"
-          className="madha-intro-logo"
-        />
+  src="/logos/favico.png"
+  alt="Madha College of Nursing"
+  className="madha-intro-logo"
+  style={{
+    display: 'block',
+    width: '140px',
+    height: '140px',
+    objectFit: 'contain',
+    maxWidth: '80vw',
+    visibility: 'visible',
+    opacity: 1,
+  }}
+/>
 
         <h1>MADHA COLLEGE OF NURSING</h1>
 
