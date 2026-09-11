@@ -929,21 +929,42 @@ export default function Home({ navigate }: Props) {
               </Reveal>
 
               {/* Hospital list */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 48 }}>
-                {['Madha Medical College Hospital'].map(h => (
-                  <Reveal key={h} type="left">
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 12,
+                marginBottom: 48,
+              }}>
+                <Reveal type="left">
+                  <div>
                     <span style={{
-                      background: 'rgba(24,198,200,.10)', border: '1px solid rgba(24,198,200,.22)',
-                      color: '#F1F5F9', padding: '8px 16px', borderRadius: 100,
-                      fontSize: 15, fontWeight: 500, display: 'inline-block',
+                      background: 'rgba(24,198,200,.10)',
+                      border: '1px solid rgba(24,198,200,.22)',
+                      color: '#F1F5F9',
+                      padding: '8px 16px',
+                      borderRadius: 100,
+                      fontSize: 15,
+                      fontWeight: 500,
+                      display: 'inline-block',
                     }}>
-                      {h}
+                      Madha Medical College & Hospital
                     </span>
-                  </Reveal>
-                ))}
+
+                    <div style={{
+                      color: '#F1F5F9',
+                      fontSize: 15,
+                      fontWeight: 500,
+                      marginTop: 12,
+                      paddingLeft: 4,
+                      lineHeight: 1.6,
+                    }}>
+                      Affiliated with Accredited Health Care Organizations in Tamilnadu
+                    </div>
+                  </div>
+                </Reveal>
               </div>
 
-              <Reveal type="left" delay={3}>
+<Reveal type="left" delay={3}>
                 <button onClick={() => navigate('departments')} className="btn-teal">
                   Explore Departments
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
