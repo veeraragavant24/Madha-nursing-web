@@ -1454,7 +1454,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   left: 50% !important;
   right: auto !important;
 
-  top: 15px !important;
+  top: 18px !important;
 
   width: calc(100% - 20px) !important;
   max-width: none !important;
