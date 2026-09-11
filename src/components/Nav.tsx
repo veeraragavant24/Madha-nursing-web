@@ -1459,7 +1459,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
   height: 64px !important;
 
-  top: 10px !important;
+  top: 5px !important;
 
   transform: translateX(-50%) !important;
 
@@ -1604,7 +1604,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 
     font-family: 'Cinzel', serif !important;
 
-    font-size: clamp(11px, 4.5vw, 17px) !important;
+   font-size: clamp(10px, 3.8vw, 15px) !important;
 
     font-weight: 700 !important;
 
@@ -1892,7 +1892,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
 
-    font-size: clamp(14px, 4.7vw, 19px) !important;
+    font-size: clamp(11px, 3.8vw, 15px) !important;
 
     letter-spacing: 0.02em !important;
   }
