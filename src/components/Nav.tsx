@@ -1332,8 +1332,6 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   }
 
 }
-
-}
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
 @media (max-width: 480px) {
@@ -1456,7 +1454,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   left: 50% !important;
   right: auto !important;
 
-  top: 35px !important;
+  top: 25px !important;
 
   width: calc(100% - 20px) !important;
   max-width: none !important;
@@ -1475,7 +1473,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
 .nav-root.transparent {
   left: 0 !important;
   right: 0 !important;
-  top: 20px !important;
+  top: 10px !important;
 
   width: 100% !important;
   max-width: 100% !important;
