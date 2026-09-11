@@ -503,156 +503,6 @@ body {
 
 }
 /* =====================================================
-   MADHA COLLEGE INTRO SCREEN
-   ===================================================== */
-
-.madha-intro {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #061a36;
-
-  z-index: 99999;
-
-  animation: madhaIntroFadeIn 0.8s ease forwards;
-}
-
-.madha-intro-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  padding: 30px;
-}
-
-.madha-intro-logo {
-  width: 150px;
-  height: 150px;
-
-  object-fit: contain;
-
-  opacity: 0;
-
-  animation:
-    madhaLogoAppear 1.2s ease forwards,
-    madhaLogoFloat 2s ease-in-out 1.2s infinite;
-}
-
-.madha-intro h1 {
-  margin: 25px 0 8px;
-
-  color: #ffffff;
-
-  font-size: 32px;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  opacity: 0;
-
-  animation: madhaTextAppear 1s ease 0.5s forwards;
-}
-
-.madha-intro p {
-  margin: 0;
-
-  color: #c8d8ee;
-
-  font-size: 16px;
-  letter-spacing: 2px;
-
-  opacity: 0;
-
-  animation: madhaTextAppear 1s ease 0.9s forwards;
-}
-
-/* Fade in */
-
-@keyframes madhaIntroFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-/* Logo entrance */
-
-@keyframes madhaLogoAppear {
-  0% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-
-  70% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Gentle floating */
-
-@keyframes madhaLogoFloat {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* Text */
-
-@keyframes madhaTextAppear {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-  .madha-intro-logo {
-    width: 115px;
-    height: 115px;
-  }
-
-  .madha-intro h1 {
-    font-size: 23px;
-    line-height: 1.3;
-  }
-
-  .madha-intro p {
-    font-size: 12px;
-    letter-spacing: 1.2px;
-  }
-}
-/* =====================================================
    MADHA INTRO SCREEN
    ===================================================== */
 
@@ -660,8 +510,10 @@ body {
   position: fixed;
   inset: 0;
   width: 100%;
-  height: 100vh;
-  background: #061a36;
+  height: 100dvh;
+  min-height: 100vh;
+
+  background: #061b36;
 
   display: flex;
   align-items: center;
@@ -683,6 +535,9 @@ body {
 }
 
 .madha-intro-content {
+  width: 100%;
+  max-width: 900px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -690,97 +545,81 @@ body {
 
   text-align: center;
 
-  animation: madhaIntroAppear 1.2s ease forwards;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
+/* LOGO */
+
 .madha-intro-logo {
+  display: block;
+
   width: 180px;
   height: 180px;
 
   object-fit: contain;
 
-  display: block;
+  margin-bottom: 35px;
 
-  margin-bottom: 25px;
+  opacity: 1;
 
-  animation: madhaLogoAppear 1.5s ease forwards;
+  animation: madhaLogoAppear 1s ease-out forwards;
 }
 
-.madha-intro h1 {
+/* TITLE */
+
+.madha-intro-content h1 {
   margin: 0;
 
   color: #ffffff;
 
-  font-size: 28px;
+  font-size: 42px;
   font-weight: 700;
 
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 
-  animation: madhaTextAppear 1.5s ease 0.4s both;
+  animation: madhaTextAppear 1s ease-out forwards;
 }
 
-.madha-intro p {
-  margin: 12px 0 0;
+/* SUBTITLE */
 
-  color: rgba(255, 255, 255, 0.75);
+.madha-intro-content p {
+  margin: 18px 0 0;
 
-  font-size: 15px;
-  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
 
-  animation: madhaTextAppear 1.5s ease 0.7s both;
+  font-size: 20px;
+  letter-spacing: 2px;
+
+  animation: madhaTextAppear 1.2s ease-out forwards;
 }
 
 
 /* =====================================================
-   LOGO ANIMATION
+   ANIMATIONS
    ===================================================== */
 
 @keyframes madhaLogoAppear {
-  0% {
+  from {
     opacity: 0;
-    transform: scale(0.7);
+    transform: scale(0.8);
   }
 
-  60% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  100% {
+  to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-
-/* =====================================================
-   TEXT ANIMATION
-   ===================================================== */
-
 @keyframes madhaTextAppear {
-  0% {
+  from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-
-/* =====================================================
-   CONTENT APPEAR
-   ===================================================== */
-
-@keyframes madhaIntroAppear {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 
@@ -791,21 +630,142 @@ body {
 
 @media (max-width: 768px) {
 
+  .madha-intro-content {
+    padding: 20px;
+  }
+
   .madha-intro-logo {
     width: 130px;
     height: 130px;
-    margin-bottom: 20px;
+
+    margin-bottom: 28px;
   }
 
-  .madha-intro h1 {
-    font-size: 20px;
+  .madha-intro-content h1 {
+    font-size: 26px;
+    letter-spacing: 2px;
+    line-height: 1.3;
+  }
+
+  .madha-intro-content p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 14px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+   ===================================================== */
+
+@media (max-width: 400px) {
+
+  .madha-intro-logo {
+    width: 110px;
+    height: 110px;
+
+    margin-bottom: 24px;
+  }
+
+  .madha-intro-content h1 {
+    font-size: 23px;
     letter-spacing: 1.5px;
-    padding: 0 20px;
   }
 
-  .madha-intro p {
-    font-size: 13px;
-    padding: 0 20px;
+  .madha-intro-content p {
+    font-size: 14px;
+  }
+}
+/* =====================================================
+   MADHA INTRO - FINAL MOBILE FIX
+   ===================================================== */
+
+.madha-intro {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+
+  background: #061b36 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  z-index: 999999 !important;
+}
+
+.madha-intro-content {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.madha-intro-logo {
+  display: block !important;
+
+  width: 140px !important;
+  height: 140px !important;
+
+  max-width: 80vw !important;
+  max-height: 30vh !important;
+
+  object-fit: contain !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  margin: 0 auto 30px auto !important;
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+
+  .madha-intro-logo {
+    display: block !important;
+
+    width: 130px !important;
+    height: 130px !important;
+
+    max-width: 70vw !important;
+    max-height: 25vh !important;
+
+    object-fit: contain !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media screen and (max-width: 480px) {
+
+  .madha-intro-logo {
+    display: block !important;
+
+    width: 120px !important;
+    height: 120px !important;
+
+    max-width: 65vw !important;
+
+    object-fit: contain !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
 }
