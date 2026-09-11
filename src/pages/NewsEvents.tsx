@@ -114,8 +114,7 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
 
   // Events returned are already published, future-or-today, sorted ascending.
   const upcoming = items
-  const featured = upcoming[0]
-  const moreEvents = upcoming.slice(1)
+  const moreEvents = upcoming
 
   return (
     <div className="news-events-page">
@@ -701,199 +700,9 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
         </section>
       )}
 
-      {/* Featured Upcoming Event */}
-      {!loading && !error && featured && (
-        <section className="featured-section">
-          <div className="featured-inner">
-            <div className="featured-card">
-              <Reveal type="up" delay={0} className="featured-media-cell">
-                <div className="featured-media">
-                  <img
-                    className="featured-img"
-                    src={eventImage(featured)}
-                    alt={featured.title}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      const target = e.currentTarget
-                      target.onerror = null
-                      target.src = EVENT_IMAGE_FALLBACK
-                    }}
-                  />
-                </div>
-              </Reveal>
-
-              <div className="featured-body">
-                <Reveal type="up" delay={1}>
-                  <span className="featured-eyebrow">
-                    <span className="featured-eyebrow-dot" />
-                    Upcoming Event
-                  </span>
-                </Reveal>
-
-                <Reveal type="up" delay={2}>
-                  <div className="featured-date-block">
-                    <svg className="featured-date-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <rect x="3" y="4" width="18" height="18" rx="2" />
-                      <path d="M16 2v4M8 2v4M3 10h18" />
-                    </svg>
-                    <div className="featured-date-day">{dateBlock(featured.event_date).day}</div>
-                    <div className="featured-date-month">{dateBlock(featured.event_date).month}</div>
-                    <div className="featured-date-year">{dateBlock(featured.event_date).year}</div>
-                  </div>
-                </Reveal>
-
-                <Reveal type="up" delay={3}>
-                  <h2 className="featured-title">{featured.title}</h2>
-                </Reveal>
-
-                <Reveal type="up" delay={4}>
-                  <div className="featured-meta">
-                    <span className="featured-category">{featured.category || 'Event'}</span>
-                    <span className="featured-meta-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      {featured.location || ''}
-                    </span>
-                  </div>
-                </Reveal>
-
-                <Reveal type="up" delay={5}>
-                  <p className="featured-desc">{featured.description || ''}</p>
-                </Reveal>
-
-                <Reveal type="up" delay={6}>
-                  <button
-                    className="featured-btn"
-                    onClick={() => setSelectedEvent(featured)}
-                    aria-label={`View details for ${featured.title}`}
-                  >
-                    View Event Details
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
       {/* =====================================================
-    EVENT DETAILS
-===================================================== */}
-{selectedEvent && (
-  <section className="featured-section">
-    <div className="featured-inner">
-
-      <button
-        className="more-card-btn"
-        onClick={() => setSelectedEvent(null)}
-        style={{
-          marginBottom: 24,
-          fontSize: 16,
-        }}
-      >
-        ← Back to Events
-      </button>
-
-      <div className="featured-card">
-
-        <div className="featured-media-cell">
-          <div className="featured-media">
-
-            <img
-              className="featured-img"
-              src={eventImage(selectedEvent)}
-              alt={selectedEvent.title}
-            />
-
-          </div>
-        </div>
-
-        <div className="featured-body">
-
-          <span className="featured-eyebrow">
-            <span className="featured-eyebrow-dot" />
-            Event Details
-          </span>
-
-          <div className="featured-date-block">
-
-            <svg
-              className="featured-date-icon"
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="3" y="4" width="18" height="18" rx="2" />
-              <path d="M16 2v4M8 2v4M3 10h18" />
-            </svg>
-
-            <div className="featured-date-day">
-              {dateBlock(selectedEvent.event_date).day}
-            </div>
-
-            <div className="featured-date-month">
-              {dateBlock(selectedEvent.event_date).month}
-            </div>
-
-            <div className="featured-date-year">
-              {dateBlock(selectedEvent.event_date).year}
-            </div>
-
-          </div>
-
-          <h2 className="featured-title">
-            {selectedEvent.title}
-          </h2>
-
-          <div className="featured-meta">
-
-            <span className="featured-category">
-              {selectedEvent.category || 'Event'}
-            </span>
-
-            <span className="featured-meta-item">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-
-              {selectedEvent.location || ''}
-            </span>
-
-          </div>
-
-          <p className="featured-desc">
-            {selectedEvent.description || ''}
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-)} 
-
-      {/* More Upcoming Events */}
+          ALL UPCOMING EVENTS
+      ===================================================== */}
       {!loading && !error && moreEvents.length > 0 && (
         <section className="more-section">
           <div className="more-inner">
@@ -902,8 +711,18 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
                 <span className="section-tag">Up Next</span>
               </Reveal>
               <Reveal delay={1}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
-                  More Upcoming <span className="text-teal-g">Events</span>
+                <h2
+                  className="font-sans"
+                  style={{
+                    fontSize: 'clamp(34px, 4vw, 56px)',
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    letterSpacing: '-.02em',
+                    color: '#0B2545',
+                    marginTop: 20,
+                  }}
+                >
+                  All Upcoming <span className="text-teal-g">Events</span>
                 </h2>
               </Reveal>
             </div>
@@ -926,6 +745,7 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
                         }}
                       />
                     </div>
+
                     <div className="more-card-body">
                       <div className="more-card-date">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -934,9 +754,17 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
                         </svg>
                         {displayDate(ev.event_date)}
                       </div>
-                      <span className="more-card-category">{ev.category || 'Event'}</span>
+
+                      <span className="more-card-category">
+                        {ev.category || 'Event'}
+                      </span>
+
                       <h3 className="more-card-title">{ev.title}</h3>
-                      <p className="more-card-desc">{ev.description || ''}</p>
+
+                      <p className="more-card-desc">
+                        {ev.description || ''}
+                      </p>
+
                       <button
                         className="more-card-btn"
                         onClick={() => setSelectedEvent(ev)}
@@ -956,6 +784,173 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
         </section>
       )}
 
+
+      {/* =====================================================
+    EVENT DETAILS
+===================================================== */}
+
+{selectedEvent && (
+  <section className="featured-section">
+    <div className="featured-inner">
+
+      {/* BACK BUTTON */}
+      <button
+        className="more-card-btn"
+        onClick={() => setSelectedEvent(null)}
+        style={{
+          marginBottom: 24,
+          fontSize: 16,
+        }}
+      >
+        ← Back to Events
+      </button>
+
+      {/* EVENT DETAILS CARD */}
+      <div
+        style={{
+          background: '#ffffff',
+          border: '1px solid rgba(11, 37, 69, 0.08)',
+          borderRadius: 28,
+          boxShadow: '0 30px 70px rgba(11, 37, 69, 0.10)',
+          padding: '48px 56px',
+        }}
+      >
+
+        {/* DATE */}
+        <div
+          style={{
+            marginBottom: 28,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              color: '#0E8F91',
+              marginBottom: 8,
+            }}
+          >
+            Date
+          </div>
+
+          <div
+            style={{
+              fontSize: 22,
+              fontWeight: 700,
+              color: '#0B2545',
+            }}
+          >
+            {displayDate(selectedEvent.event_date)}
+          </div>
+        </div>
+
+
+        {/* LOCATION */}
+        <div
+          style={{
+            marginBottom: 28,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              color: '#0E8F91',
+              marginBottom: 8,
+            }}
+          >
+            Location
+          </div>
+
+          <div
+            style={{
+              fontSize: 18,
+              fontWeight: 600,
+              color: '#163B72',
+            }}
+          >
+            {selectedEvent.location || 'Location not specified'}
+          </div>
+        </div>
+
+
+        {/* STATUS */}
+        <div
+          style={{
+            marginBottom: 28,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              color: '#0E8F91',
+              marginBottom: 8,
+            }}
+          >
+            Status
+          </div>
+
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              padding: '7px 14px',
+              borderRadius: 100,
+              background: selectedEvent.published
+                ? 'rgba(24, 198, 200, 0.14)'
+                : 'rgba(239, 68, 68, 0.12)',
+              color: selectedEvent.published
+                ? '#0E8F91'
+                : '#DC2626',
+              fontSize: 13,
+              fontWeight: 700,
+            }}
+          >
+            {selectedEvent.published ? 'Published' : 'Not Published'}
+          </span>
+        </div>
+
+
+        {/* DESCRIPTION */}
+        <div>
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              color: '#0E8F91',
+              marginBottom: 10,
+            }}
+          >
+            Description
+          </div>
+
+          <p
+            style={{
+              margin: 0,
+              fontSize: 17,
+              lineHeight: 1.85,
+              color: '#1E293B',
+            }}
+          >
+            {selectedEvent.description || 'No description available.'}
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+)}
+
       {/* No upcoming events */}
       {!loading && !error && upcoming.length === 0 && (
         <section className="empty-section">
@@ -973,6 +968,6 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
           </Reveal>
         </section>
       )}
-        </div>
+    </div>
   )
 }
