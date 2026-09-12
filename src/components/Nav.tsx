@@ -1201,8 +1201,7 @@ font-weight: 700;
 
   border-radius: 4px !important;
 
-  overflow: hidden !important;
-
+overflow: visible !important;
   /*
      TWO BACKGROUND LAYERS
 
