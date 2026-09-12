@@ -1176,200 +1176,196 @@ font-weight: 700;
 
   /* ── LAPTOP PREMIUM GOLD RIBBON ── */
 
+
 .premium-divider {
   position: relative !important;
 
   align-self: center !important;
 
-  width: 190px !important;
+  width: 240px !important;
   height: 5px !important;
 
   margin: 7px auto 3px !important;
-  padding: 0 !important;
 
-  border: none !important;
+  border: 0 !important;
   border-radius: 4px !important;
 
   background: linear-gradient(
     90deg,
     #8a6200 0%,
-    #f0b00e 18%,
+    #c99408 12%,
+    #f0b00e 25%,
     #f6d76a 42%,
     #fff0a6 50%,
     #f6d76a 58%,
-    #d39e17 82%,
+    #d39e17 75%,
+    #a97905 88%,
     #705206 100%
   ) !important;
 
-  /* NO GOLD SHADOW */
   box-shadow: none !important;
 
   /*
-     IMPORTANT:
-     Keeps the shine inside the ribbon.
+     IMPORTANT
+     Shine stays inside the ribbon.
   */
   overflow: hidden !important;
 
   box-sizing: border-box !important;
+
+  z-index: 2 !important;
 }
 
 
-  /* ── WHITE SHINE MOVING LEFT → RIGHT ── */
+/* =========================================================
+   WHITE SHINE
+   LEFT → RIGHT
+   ========================================================= */
 
 .premium-divider::before {
   content: "" !important;
 
   position: absolute !important;
 
-  top: 0 !important;
-  left: -80px !important;
+  top: -2px !important;
 
-  width: 65px !important;
-  height: 100% !important;
+  left: -70px !important;
 
-  margin: 0 !important;
-  padding: 0 !important;
+  width: 55px !important;
+
+  height: 9px !important;
+
+  display: block !important;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
     rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0.80) 40%,
+    rgba(255, 255, 255, 0.65) 40%,
     #ffffff 50%,
-    rgba(255, 255, 255, 0.80) 60%,
+    rgba(255, 255, 255, 0.65) 60%,
     rgba(255, 255, 255, 0.15) 80%,
     transparent 100%
   ) !important;
 
-  transform: skewX(-18deg) !important;
+  border: none !important;
+
+  border-radius: 50% !important;
+
+  transform: skewX(-20deg) !important;
+
+  opacity: 0 !important;
+
+  /*
+     THIS IS THE ACTUAL ANIMATION
+  */
+  animation-name: laptopRibbonWhiteShine !important;
+  animation-duration: 2.8s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
 
   filter:
     drop-shadow(0 0 2px rgba(255, 255, 255, 1))
-    drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
-
-  border: none !important;
-
-  box-shadow: none !important;
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9)) !important;
 
   pointer-events: none !important;
 
   z-index: 5 !important;
 
-  animation:
-    laptopGoldRibbonShine
-    2.5s
-    linear
-    infinite !important;
+  will-change: left, opacity !important;
 }
 
 
- /* ── WHITE SHINE ANIMATION ── */
+/* =========================================================
+   WHITE SHINE ANIMATION
+   ========================================================= */
 
-@keyframes laptopGoldRibbonShine {
+@keyframes laptopRibbonWhiteShine {
 
   0% {
-    left: -80px;
-    opacity: 0;
+    left: -70px !important;
+    opacity: 0 !important;
   }
 
-  5% {
-    opacity: 1;
+  8% {
+    left: -40px !important;
+    opacity: 1 !important;
   }
 
   20% {
-    left: 0px;
-    opacity: 1;
+    left: 0px !important;
+    opacity: 1 !important;
   }
 
   40% {
-    left: 45px;
-    opacity: 1;
+    left: 65px !important;
+    opacity: 1 !important;
   }
 
   60% {
-    left: 90px;
-    opacity: 1;
+    left: 130px !important;
+    opacity: 1 !important;
   }
 
   80% {
-    left: 140px;
-    opacity: 1;
+    left: 195px !important;
+    opacity: 1 !important;
   }
 
-  95% {
-    left: 205px;
-    opacity: 0;
+  92% {
+    left: 245px !important;
+    opacity: 1 !important;
   }
 
   100% {
-    left: 230px;
-    opacity: 0;
+    left: 290px !important;
+    opacity: 0 !important;
   }
 }
 
-/* =======================================================
-   GOLD CENTER DIAMOND
-   ======================================================= */
+
+/* =========================================================
+   CENTER GOLD DIAMOND
+   ========================================================= */
 
 .premium-divider::after {
-
   content: "" !important;
 
   position: absolute !important;
 
   left: 50% !important;
-
   top: 50% !important;
 
   width: 11px !important;
-
   height: 11px !important;
 
   margin: 0 !important;
 
-  /*
-     GOLD DIAMOND
-  */
-  background:
-    linear-gradient(
-      135deg,
-      #fff2a3 0%,
-      #f0c936 35%,
-      #d29d0b 70%,
-      #8a6200 100%
-    ) !important;
+  background: linear-gradient(
+    135deg,
+    #fff2a3 0%,
+    #f0c936 35%,
+    #d29d0b 70%,
+    #8a6200 100%
+  ) !important;
 
-  border:
-    1px solid #f5d35a !important;
+  border: 1px solid #f5d35a !important;
 
   border-radius: 1px !important;
-
-  /*
-     CENTER THE DIAMOND
-  */
+ 
   transform:
     translate(-50%, -50%)
     rotate(45deg) !important;
-
-  /*
-     IMPORTANT:
-     KEEP DIAMOND ABOVE THE WHITE SHINE
-  */
-  z-index: 10 !important;
-
-  /*
-     NO SHADOW
-  */
+ 
   box-shadow: none !important;
 
-  pointer-events: none !important;
+   pointer-events: none !important;
 
-  display: block !important;
+     opacity: 1 !important;
 
-  opacity: 1 !important;
+  z-index: 10 !important;
 }
-  
-  
+        
 
   /* =======================================================
      SHINE KEYFRAMES
