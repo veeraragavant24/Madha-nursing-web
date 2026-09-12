@@ -1173,21 +1173,17 @@ font-weight: 700;
       ) !important;
   }
 /* =======================================================
-   LAPTOP GOLD RIBBON
-   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+   LAPTOP PREMIUM GOLD RIBBON
    ======================================================= */
 
 .premium-divider {
-
   position: relative !important;
 
+  /* ===== RIBBON SIZE ===== */
   width: 175px !important;
-  height: 6px !important;
+  height: 3px !important;
 
-  margin-top: 7px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 2px !important;
+  margin: 7px auto 2px !important;
 
   align-self: center !important;
 
@@ -1199,20 +1195,12 @@ font-weight: 700;
 
   border: none !important;
 
-  border-radius: 4px !important;
+  border-radius: 3px !important;
 
   overflow: hidden !important;
 
-  /*
-     TWO BACKGROUND LAYERS
-
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
+  /* ===== GOLD RIBBON ===== */
+  background:
     linear-gradient(
       90deg,
       #806000 0%,
@@ -1222,57 +1210,72 @@ font-weight: 700;
       #e0b52c 65%,
       #b98200 85%,
       #806000 100%
-    ),
-
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
     ) !important;
 
-  /*
-     GOLD = FULL WIDTH
-     SHINE = SMALL MOVING STRIP
-  */
+  background-repeat: no-repeat !important;
 
-  background-size:
-    100% 100%,
-    65px 100% !important;
+  background-size: 100% 100% !important;
 
-  /*
-     GOLD STAYS FIXED
-     SHINE STARTS OUTSIDE LEFT
-  */
-
-  background-position:
-    center center,
-    -65px center !important;
-
-  background-repeat:
-    no-repeat,
-    no-repeat !important;
+  background-position: center !important;
 
   box-shadow: none !important;
 
-  /*
-     FORCE ANIMATION
-  */
+  z-index: 2 !important;
+}
+
+
+/* =======================================================
+   WHITE SHINE
+   ======================================================= */
+
+.premium-divider::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: -3px !important;
+
+  left: -60px !important;
+
+  width: 45px !important;
+
+  height: 9px !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0) 15%,
+      rgba(255,255,255,0.55) 35%,
+      #ffffff 50%,
+      rgba(255,255,255,0.55) 65%,
+      rgba(255,255,255,0) 85%,
+      transparent 100%
+    ) !important;
+
+  border: none !important;
+
+  border-radius: 50% !important;
+
+  transform: skewX(-20deg) translateX(0) !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+
+  z-index: 5 !important;
+
+  filter:
+    drop-shadow(0 0 2px rgba(255,255,255,1))
+    drop-shadow(0 0 4px rgba(255,255,255,0.8)) !important;
 
   animation:
-    laptopGoldRibbonShine
+    laptopRibbonShine
     2.5s
     linear
     infinite !important;
-
-  animation-play-state: running !important;
-
-  z-index: 2 !important;
 }
 
 
@@ -1281,74 +1284,82 @@ font-weight: 700;
    LEFT → RIGHT
    ======================================================= */
 
-@keyframes laptopGoldRibbonShine {
+@keyframes laptopRibbonShine {
 
   0% {
+    transform:
+      skewX(-20deg)
+      translateX(0);
 
-    background-position:
-      center center,
-      -65px center !important;
+    opacity: 0;
   }
 
-  10% {
+  8% {
+    transform:
+      skewX(-20deg)
+      translateX(15px);
 
-    background-position:
-      center center,
-      -30px center !important;
+    opacity: 1;
   }
 
   25% {
+    transform:
+      skewX(-20deg)
+      translateX(60px);
 
-    background-position:
-      center center,
-      10px center !important;
+    opacity: 1;
   }
 
   50% {
+    transform:
+      skewX(-20deg)
+      translateX(125px);
 
-    background-position:
-      center center,
-      65px center !important;
+    opacity: 1;
   }
 
   75% {
+    transform:
+      skewX(-20deg)
+      translateX(190px);
 
-    background-position:
-      center center,
-      120px center !important;
+    opacity: 1;
   }
 
   90% {
+    transform:
+      skewX(-20deg)
+      translateX(230px);
 
-    background-position:
-      center center,
-      175px center !important;
+    opacity: 0.8;
   }
 
   100% {
+    transform:
+      skewX(-20deg)
+      translateX(270px);
 
-    background-position:
-      center center,
-      240px center !important;
+    opacity: 0;
   }
 }
 
+
 /* =======================================================
    CENTER GOLD DIAMOND
-   ALWAYS VISIBLE ABOVE THE RIBBON
    ======================================================= */
 
 .premium-divider::after {
-
   content: "" !important;
 
   position: absolute !important;
 
   left: 50% !important;
+
   top: 50% !important;
 
-  width: 13px !important;
-  height: 13px !important;
+  width: 10px !important;
+
+  height: 10px !important;
 
   margin: 0 !important;
 
@@ -1364,7 +1375,8 @@ font-weight: 700;
       #8a6200 100%
     ) !important;
 
-  border: 1px solid #ffe47a !important;
+  border:
+    1px solid #ffe47a !important;
 
   border-radius: 1px !important;
 
@@ -1372,22 +1384,17 @@ font-weight: 700;
     translate(-50%, -50%)
     rotate(45deg) !important;
 
-  /*
-     IMPORTANT
-     Put diamond above everything.
-  */
-  z-index: 999 !important;
+  box-shadow:
+    0 0 2px rgba(255,225,100,0.8) !important;
+
+  pointer-events: none !important;
 
   opacity: 1 !important;
 
   visibility: visible !important;
 
-  pointer-events: none !important;
-
-  box-shadow:
-    0 0 2px rgba(255, 225, 100, 0.8) !important;
+  z-index: 999 !important;
 }
-
 
   /* =======================================================
      MENU ITEMS
