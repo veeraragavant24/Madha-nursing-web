@@ -1333,9 +1333,9 @@ font-weight: 700;
   }
 }
 
-
 /* =======================================================
    CENTER GOLD DIAMOND
+   ALWAYS VISIBLE ABOVE THE RIBBON
    ======================================================= */
 
 .premium-divider::after {
@@ -1347,77 +1347,46 @@ font-weight: 700;
   left: 50% !important;
   top: 50% !important;
 
-  width: 12px !important;
-  height: 12px !important;
+  width: 13px !important;
+  height: 13px !important;
 
   margin: 0 !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7bd 0%,
+      #ffe76a 25%,
+      #f0c936 45%,
+      #d29d0b 70%,
+      #8a6200 100%
+    ) !important;
+
+  border: 1px solid #ffe47a !important;
+
+  border-radius: 1px !important;
 
   transform:
     translate(-50%, -50%)
     rotate(45deg) !important;
 
-  background:
-    linear-gradient(
-      135deg,
-      #fff2a3 0%,
-      #f0c936 35%,
-      #d29d0b 70%,
-      #8a6200 100%
-    ) !important;
+  /*
+     IMPORTANT
+     Put diamond above everything.
+  */
+  z-index: 999 !important;
 
-  border:
-    1px solid #f5d35a !important;
+  opacity: 1 !important;
 
-  border-radius: 1px !important;
-
-  box-shadow: none !important;
+  visibility: visible !important;
 
   pointer-events: none !important;
 
-  /*
-     DIAMOND ABOVE SHINE
-  */
-
-  z-index: 20 !important;
+  box-shadow:
+    0 0 2px rgba(255, 225, 100, 0.8) !important;
 }
- 
-
-  /* =======================================================
-     MENU
-     ======================================================= */
-
-  .nav-links {
-
-    flex: 1 1 auto !important;
-
-    min-width: 0 !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    flex-wrap: nowrap !important;
-
-    white-space: nowrap !important;
-
-    overflow: visible !important;
-
-    box-sizing: border-box !important;
-
-    gap: 5px !important;
-
-    padding-left: 6px !important;
-
-    padding-right: 6px !important;
-
-    margin: 0 !important;
-
-    position: relative !important;
-
-    z-index: 30 !important;
-  }
 
 
   /* =======================================================
