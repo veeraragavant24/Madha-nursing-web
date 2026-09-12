@@ -1006,14 +1006,11 @@ font-weight: 700;
    ========================================================= */
 
 /* =========================================================
-   FINAL LAPTOP HEADER FIX
+   FINAL LAPTOP HEADER
    769px → 1400px
 
-   IMPORTANT:
-   ::before = WHITE SHINE
-   ::after  = GOLD DIAMOND
-
-   DO NOT CHANGE THE HTML / JSX
+   ONLY RIBBON / SHINE FIXED
+   OTHER HEADER ELEMENTS PRESERVED
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
@@ -1080,6 +1077,7 @@ font-weight: 700;
 
     z-index: 55 !important;
   }
+
 
   .nav-logo-img {
     object-fit: contain !important;
@@ -1155,28 +1153,24 @@ font-weight: 700;
 
 
   /* =======================================================
-     LAPTOP TITLE SIZE
+     LAPTOP TITLE
      ======================================================= */
 
-  @media (min-width: 1351px) and (max-width: 1400px) {
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
 
-    .nav-root.transparent .nav-college-name,
-    .nav-root.solid .nav-college-name {
-      font-size: 19px !important;
-      letter-spacing: .035em !important;
-    }
+    font-size: clamp(
+      17px,
+      1.45vw,
+      22px
+    ) !important;
 
-  }
-
-
-  @media (min-width: 1201px) and (max-width: 1350px) {
-
-    .nav-root.transparent .nav-college-name,
-    .nav-root.solid .nav-college-name {
-      font-size: 17px !important;
-      letter-spacing: .025em !important;
-    }
-
+    letter-spacing:
+      clamp(
+        .025em,
+        .06vw,
+        .045em
+      ) !important;
   }
 
 
@@ -1188,17 +1182,27 @@ font-weight: 700;
 
     position: relative !important;
 
-    width: 175px !important;
+    /*
+       LAPTOP SIZE
+    */
 
-    height: 6px !important;
+    width: clamp(
+      165px,
+      15vw,
+      205px
+    ) !important;
 
-    margin-top: 7px !important;
+    height: 4px !important;
 
-    margin-left: auto !important;
+    /*
+       CENTER UNDER COLLEGE TITLE
+    */
 
-    margin-right: auto !important;
+    margin:
+      7px auto 3px
+      !important;
 
-    margin-bottom: 2px !important;
+    padding: 0 !important;
 
     align-self: center !important;
 
@@ -1206,32 +1210,44 @@ font-weight: 700;
 
     display: block !important;
 
-    overflow: hidden !important;
-
     box-sizing: border-box !important;
+
+    /*
+       IMPORTANT:
+       shine must stay INSIDE ribbon
+    */
+
+    overflow: hidden !important;
 
     border: none !important;
 
-    border-radius: 4px !important;
+    border-radius: 3px !important;
 
     /*
-       GOLD RIBBON
+       SAME GOLD STYLE
     */
 
     background:
       linear-gradient(
         90deg,
-        #806000 0%,
-        #b98200 15%,
-        #e0b52c 35%,
-        #f5d45b 50%,
-        #e0b52c 65%,
-        #b98200 85%,
-        #806000 100%
+
+        #8a6200 0%,
+
+        #f0b00e 18%,
+
+        #f6d76a 42%,
+
+        #fff0a6 50%,
+
+        #f6d76a 58%,
+
+        #d39e17 82%,
+
+        #705206 100%
       ) !important;
 
     /*
-       REMOVE RIBBON SHADOW
+       REMOVE UNWANTED SHADOW
     */
 
     box-shadow: none !important;
@@ -1242,12 +1258,7 @@ font-weight: 700;
 
   /* =======================================================
      WHITE SHINE
-     THIS IS THE IMPORTANT PART
-
-     Shine travels:
      LEFT → RIGHT
-
-     It stays INSIDE the ribbon.
      ======================================================= */
 
   .premium-divider::before {
@@ -1256,7 +1267,7 @@ font-weight: 700;
 
     position: absolute !important;
 
-    top: 50% !important;
+    top: 0 !important;
 
     left: -70px !important;
 
@@ -1268,117 +1279,66 @@ font-weight: 700;
 
     padding: 0 !important;
 
-    transform:
-      translateY(-50%)
-      skewX(-20deg) !important;
-
     background:
       linear-gradient(
         90deg,
+
         transparent 0%,
-        rgba(255,255,255,0.05) 10%,
-        rgba(255,255,255,0.40) 30%,
-        rgba(255,255,255,1) 50%,
-        rgba(255,255,255,0.40) 70%,
-        rgba(255,255,255,0.05) 90%,
+
+        rgba(255,255,255,0) 20%,
+
+        rgba(255,255,255,0.65) 40%,
+
+        #ffffff 50%,
+
+        rgba(255,255,255,0.65) 60%,
+
+        rgba(255,255,255,0) 80%,
+
         transparent 100%
       ) !important;
+
+    transform:
+      skewX(-20deg) !important;
 
     filter:
       drop-shadow(
         0 0 3px
-        rgba(255,255,255,0.9)
+        rgba(255,255,255,0.85)
       ) !important;
 
     border: none !important;
 
     box-shadow: none !important;
 
-    border-radius: 0 !important;
-
     pointer-events: none !important;
 
     z-index: 3 !important;
 
-    /*
-       NEW ANIMATION
-    */
-
     animation:
-      laptopGoldRibbonShine
-      2.6s
+      laptopRibbonWhiteShine
+      3.2s
       linear
       infinite !important;
 
-    animation-play-state: running !important;
+    animation-play-state:
+      running !important;
   }
 
 
   /* =======================================================
-     SHINE ANIMATION
+     WHITE SHINE ANIMATION
      ======================================================= */
 
-  @keyframes laptopGoldRibbonShine {
+  .premium-divider::before {
 
-    0% {
-
-      left: -70px;
-
-      opacity: 0;
-    }
-
-
-    8% {
-
-      opacity: 1;
-    }
-
-
-    25% {
-
-      opacity: 1;
-    }
-
-
-    50% {
-
-      left: 50%;
-
-      opacity: 1;
-    }
-
-
-    75% {
-
-      left: calc(100% - 10px);
-
-      opacity: 1;
-    }
-
-
-    90% {
-
-      left: calc(100% + 70px);
-
-      opacity: 0;
-    }
-
-
-    100% {
-
-      left: calc(100% + 70px);
-
-      opacity: 0;
-    }
-
+    animation-name:
+      laptopRibbonWhiteShine !important;
   }
 
 
   /* =======================================================
      GOLD CENTER DIAMOND
-
-     IMPORTANT:
-     ::after remains the diamond.
      ======================================================= */
 
   .premium-divider::after {
@@ -1391,22 +1351,22 @@ font-weight: 700;
 
     top: 50% !important;
 
-    width: 12px !important;
+    width: 11px !important;
 
-    height: 12px !important;
+    height: 11px !important;
 
     margin: 0 !important;
-
-    transform:
-      translate(-50%, -50%)
-      rotate(45deg) !important;
 
     background:
       linear-gradient(
         135deg,
+
         #fff2a3 0%,
+
         #f0c936 35%,
+
         #d29d0b 70%,
+
         #8a6200 100%
       ) !important;
 
@@ -1415,11 +1375,24 @@ font-weight: 700;
 
     border-radius: 1px !important;
 
+    transform:
+      translate(-50%, -50%)
+      rotate(45deg) !important;
+
     box-shadow: none !important;
 
     pointer-events: none !important;
 
     z-index: 4 !important;
+  }
+
+
+  /* =======================================================
+     SHINE KEYFRAMES
+     ======================================================= */
+
+  .premium-divider::before {
+    will-change: left, opacity !important;
   }
 
 
@@ -1489,44 +1462,18 @@ font-weight: 700;
 
 
   /* =======================================================
-     1351 → 1400 MENU
+     MENU SIZE
      ======================================================= */
 
-  @media (min-width: 1351px) and (max-width: 1400px) {
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
 
-    .nav-root.transparent .nav-item,
-    .nav-root.solid .nav-item {
-
-      font-size: 13px !important;
-
-      padding-left: 6px !important;
-
-      padding-right: 6px !important;
-    }
-
-  }
-
-
-  /* =======================================================
-     1201 → 1350 MENU
-     ======================================================= */
-
-  @media (min-width: 1201px) and (max-width: 1350px) {
-
-    .nav-links {
-      gap: 3px !important;
-    }
-
-    .nav-root.transparent .nav-item,
-    .nav-root.solid .nav-item {
-
-      font-size: 11px !important;
-
-      padding-left: 5px !important;
-
-      padding-right: 5px !important;
-    }
-
+    font-size:
+      clamp(
+        11px,
+        .68vw,
+        13px
+      ) !important;
   }
 
 
@@ -1592,6 +1539,11 @@ font-weight: 700;
   }
 
 
+  /* =======================================================
+     APPLY NOW
+     TRANSPARENT
+     ======================================================= */
+
   .nav-root.transparent .btn-apply {
 
     width: 112px !important;
@@ -1611,6 +1563,11 @@ font-weight: 700;
     box-sizing: border-box !important;
   }
 
+
+  /* =======================================================
+     APPLY NOW
+     SOLID
+     ======================================================= */
 
   .nav-root.solid .btn-apply {
 
@@ -1657,7 +1614,9 @@ font-weight: 700;
 
     margin-right: 8px !important;
 
-    width: calc(100% - 16px) !important;
+    width:
+      calc(100% - 16px)
+      !important;
 
     box-sizing: border-box !important;
   }
@@ -1679,24 +1638,29 @@ font-weight: 700;
 
   .nav-root.solid .premium-divider {
 
-    width: 175px !important;
+    width:
+      clamp(
+        165px,
+        15vw,
+        205px
+      ) !important;
 
-    height: 6px !important;
+    height: 4px !important;
 
-    margin-top: 7px !important;
-
-    margin-left: auto !important;
-
-    margin-right: auto !important;
+    margin:
+      7px auto 3px
+      !important;
 
     overflow: hidden !important;
 
     box-shadow: none !important;
+
+    border: none !important;
   }
 
 
   /* =======================================================
-     LAPTOP BRAND PROTECTION
+     BRAND PROTECTION
      ======================================================= */
 
   .nav-brand,
@@ -1707,12 +1671,86 @@ font-weight: 700;
 
 
   /* =======================================================
-     HAMBURGER OFF ON LAPTOP
+     HAMBURGER
      ======================================================= */
 
   .nav-hamburger {
 
     display: none !important;
+  }
+
+}
+
+
+/* =========================================================
+   WHITE SHINE KEYFRAMES
+   OUTSIDE MEDIA QUERY
+   IMPORTANT
+   ========================================================= */
+
+@keyframes laptopRibbonWhiteShine {
+
+  0% {
+
+    left: -70px;
+
+    opacity: 0;
+  }
+
+
+  8% {
+
+    left: -50px;
+
+    opacity: 1;
+  }
+
+
+  25% {
+
+    left: 0;
+
+    opacity: 1;
+  }
+
+
+  45% {
+
+    left: 55px;
+
+    opacity: 1;
+  }
+
+
+  65% {
+
+    left: 110px;
+
+    opacity: 1;
+  }
+
+
+  82% {
+
+    left: 155px;
+
+    opacity: 1;
+  }
+
+
+  92% {
+
+    left: 205px;
+
+    opacity: 0;
+  }
+
+
+  100% {
+
+    left: 225px;
+
+    opacity: 0;
   }
 
 }
