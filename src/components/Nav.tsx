@@ -2298,6 +2298,377 @@ font-weight: 700;
   }
 
 }
+  /* =========================================================
+   LAPTOP — GOLD RIBBON POSITION + WHITE SHINE
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   COLLEGE TITLE CONTAINER
+   Makes title and ribbon use the same center
+   --------------------------------------------------------- */
+
+.nav-brand-text {
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  width: max-content !important;
+
+  min-width: 0 !important;
+
+  max-width: none !important;
+
+  overflow: visible !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   COLLEGE TITLE
+   --------------------------------------------------------- */
+
+.nav-college-name,
+.nav-root.transparent .nav-college-name,
+.nav-root.solid .nav-college-name {
+
+  display: block !important;
+
+  width: max-content !important;
+
+  max-width: none !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  white-space: nowrap !important;
+
+  overflow: visible !important;
+
+  text-overflow: clip !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   GOLD RIBBON
+   CENTERED EXACTLY UNDER THE COLLEGE TITLE
+   --------------------------------------------------------- */
+
+.premium-divider {
+
+  position: relative !important;
+
+  /*
+     Ribbon width
+  */
+  width: clamp(
+    220px,
+    18vw,
+    275px
+  ) !important;
+
+  max-width: 275px !important;
+
+  height: 13px !important;
+
+  /*
+     Move ribbon slightly down from title
+  */
+  margin-top: 5px !important;
+
+  /*
+     EXACT CENTER
+  */
+  margin-left: auto !important;
+
+  margin-right: auto !important;
+
+  margin-bottom: 0 !important;
+
+  display: block !important;
+
+  /*
+     IMPORTANT:
+     Shine stays inside the ribbon
+  */
+  overflow: hidden !important;
+
+  /*
+     GOLD RIBBON
+  */
+  background:
+    linear-gradient(
+      90deg,
+
+      #806000 0%,
+
+      #a97900 10%,
+
+      #d3a51a 25%,
+
+      #f0cf52 50%,
+
+      #d3a51a 75%,
+
+      #a97900 90%,
+
+      #806000 100%
+    )
+
+    center center /
+
+    100% 3px
+
+    no-repeat !important;
+
+  /*
+     NO RIBBON SHADOW
+  */
+  box-shadow: none !important;
+
+  border-radius: 10px !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   CENTER GOLD DIAMOND
+   --------------------------------------------------------- */
+
+.premium-divider::before {
+
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+
+  top: 50% !important;
+
+  width: 14px !important;
+
+  height: 14px !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+
+      #fff1a3 0%,
+
+      #f0cc4c 30%,
+
+      #d2a00b 60%,
+
+      #8b6200 100%
+    ) !important;
+
+  border: 1px solid #f6d45a !important;
+
+  border-radius: 1px !important;
+
+  /*
+     Diamond glow only
+  */
+  box-shadow:
+    0 0 5px rgba(
+      255,
+      220,
+      75,
+      0.45
+    ) !important;
+
+  z-index: 3 !important;
+
+  animation:
+    madhaDiamondPulse
+    2.8s
+    ease-in-out
+    infinite !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   WHITE SHINE
+   ONLY MOVES OVER THE GOLD RIBBON
+   --------------------------------------------------------- */
+
+.premium-divider::after {
+
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 50% !important;
+
+  left: -35% !important;
+
+  width: 30% !important;
+
+  height: 3px !important;
+
+  transform:
+    translateY(-50%)
+    skewX(-20deg) !important;
+
+  /*
+     WHITE SHINE
+  */
+  background:
+    linear-gradient(
+      90deg,
+
+      transparent 0%,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.15
+      ) 15%,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.95
+      ) 50%,
+
+      rgba(
+        255,
+        255,
+        255,
+        0.15
+      ) 85%,
+
+      transparent 100%
+    ) !important;
+
+  /*
+     NO SHADOW
+  */
+  box-shadow: none !important;
+
+  border-radius: 10px !important;
+
+  pointer-events: none !important;
+
+  /*
+     Above gold ribbon,
+     below diamond
+  */
+  z-index: 2 !important;
+
+  /*
+     Continuous moving shine
+  */
+  animation:
+    madhaRibbonShine
+    3.2s
+    ease-in-out
+    infinite !important;
+
+}
+
+
+/* ---------------------------------------------------------
+   SHINE ANIMATION
+   LEFT → RIGHT
+   --------------------------------------------------------- */
+
+@keyframes madhaRibbonShine {
+
+  0% {
+
+    left: -35%;
+
+    opacity: 0;
+
+  }
+
+  10% {
+
+    opacity: 1;
+
+  }
+
+  50% {
+
+    left: 105%;
+
+    opacity: 1;
+
+  }
+
+  60% {
+
+    left: 105%;
+
+    opacity: 0;
+
+  }
+
+  100% {
+
+    left: 105%;
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   DIAMOND ANIMATION
+   --------------------------------------------------------- */
+
+@keyframes madhaDiamondPulse {
+
+  0%,
+  100% {
+
+    box-shadow:
+      0 0 4px rgba(
+        255,
+        215,
+        65,
+        0.40
+      );
+
+  }
+
+  50% {
+
+    box-shadow:
+      0 0 8px rgba(
+        255,
+        225,
+        90,
+        0.80
+      ),
+
+      0 0 12px rgba(
+        255,
+        195,
+        30,
+        0.30
+      );
+
+  }
+
+}
 
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
