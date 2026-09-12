@@ -49,7 +49,7 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
     setError(null)
 
     try {
-      const response = await fetch('http://localhost:5021/api/news-events')
+      const response = await fetch('/api/news-events')
 
       if (!response.ok) {
         throw new Error('Failed to load events')
