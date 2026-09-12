@@ -1315,7 +1315,7 @@ padding-left: clamp(10px, 1vw, 18px) !important;
   padding: clamp(5px, .4vw, 8px) !important;
 
   font-size: clamp(9px, .72vw, 12px) !important;
-
+    
   gap: 3px !important;
 
   transform: none !important;
