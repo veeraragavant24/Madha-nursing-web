@@ -1006,19 +1006,18 @@ font-weight: 700;
    ========================================================= */
 /* =========================================================
    MADHA COLLEGE OF NURSING
-   LAPTOP HEADER
+   LAPTOP HEADER ONLY
+   =========================================================
+
+   LAPTOP:
    769px → 1700px
 
-   Designed to match the reference screenshots.
+   MOBILE:
+   Below 769px = unchanged
 
-   IMPORTANT:
-   Your laptop screenshot is 1600px wide.
-   Therefore the old max-width: 1400px breakpoint
-   was NOT being applied.
+   LARGE DESKTOP:
+   Above 1700px = unchanged
 
-   MOBILE < 769px        = unchanged
-   LAPTOP 769px–1700px   = this CSS
-   LARGE DESKTOP >1700px = unchanged
    ========================================================= */
 
 
@@ -1026,7 +1025,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     HEADER ROOT
+     1. MAIN HEADER ROOT
      ======================================================= */
 
   .nav-root.transparent,
@@ -1043,27 +1042,29 @@ font-weight: 700;
   }
 
 
+
   /* =======================================================
-     HEADER INNER
+     2. HEADER INNER
      ======================================================= */
 
   .nav-inner {
 
     width: 100% !important;
+
     max-width: none !important;
 
     height: 100% !important;
 
     padding-left: clamp(
-      20px,
-      3.2vw,
-      62px
+      24px,
+      3vw,
+      55px
     ) !important;
 
     padding-right: clamp(
-      20px,
-      3.2vw,
-      62px
+      24px,
+      3vw,
+      55px
     ) !important;
 
     display: flex !important;
@@ -1078,32 +1079,38 @@ font-weight: 700;
 
 
   /* =======================================================
-     BRAND
-     LOGO + TITLE + RIBBON
+     3. BRAND AREA
+     LOGO + COLLEGE TITLE
      ======================================================= */
 
   .nav-brand {
 
     /*
-      Dedicated brand width.
+      Reserve enough horizontal space for:
 
-      This prevents the menu from ever sitting
-      over the college title.
+      LOGO
+      +
+      MADHA COLLEGE OF NURSING
+      +
+      RIBBON
+
+      This prevents the menu from covering
+      the college title.
     */
 
     flex: 0 1 clamp(
-      560px,
+      545px,
       34vw,
       650px
     ) !important;
 
     width: clamp(
-      560px,
+      545px,
       34vw,
       650px
     ) !important;
 
-    min-width: 520px !important;
+    min-width: 510px !important;
 
     max-width: 650px !important;
 
@@ -1127,31 +1134,32 @@ font-weight: 700;
 
     position: relative !important;
 
-    z-index: 20 !important;
+    z-index: 50 !important;
   }
 
 
 
   /* =======================================================
-     LOGO
+     4. LOGO RING
      ======================================================= */
 
   .nav-logo-ring {
 
     width: clamp(
-      66px,
-      4.8vw,
-      78px
+      64px,
+      4.7vw,
+      76px
     ) !important;
 
     height: clamp(
-      66px,
-      4.8vw,
-      78px
+      64px,
+      4.7vw,
+      76px
     ) !important;
 
-    min-width: 66px !important;
-    min-height: 66px !important;
+    min-width: 64px !important;
+
+    min-height: 64px !important;
 
     flex: 0 0 auto !important;
 
@@ -1163,9 +1171,14 @@ font-weight: 700;
 
     position: relative !important;
 
-    z-index: 25 !important;
+    z-index: 55 !important;
   }
 
+
+
+  /* =======================================================
+     5. LOGO IMAGE
+     ======================================================= */
 
   .nav-logo-img {
 
@@ -1181,7 +1194,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     BRAND TEXT
+     6. BRAND TEXT CONTAINER
      ======================================================= */
 
   .nav-brand-text {
@@ -1200,21 +1213,21 @@ font-weight: 700;
 
     flex-direction: column !important;
 
-    justify-content: center !important;
-
     align-items: flex-start !important;
+
+    justify-content: center !important;
 
     overflow: visible !important;
 
     position: relative !important;
 
-    z-index: 25 !important;
+    z-index: 55 !important;
   }
 
 
 
   /* =======================================================
-     COLLEGE TITLE
+     7. COLLEGE TITLE
      ======================================================= */
 
   .nav-college-name,
@@ -1236,14 +1249,14 @@ font-weight: 700;
     padding: 0 !important;
 
     font-size: clamp(
-      20px,
-      1.55vw,
-      26px
+      19px,
+      1.52vw,
+      25px
     ) !important;
 
     line-height: 1.08 !important;
 
-    letter-spacing: 0.025em !important;
+    letter-spacing: 0.022em !important;
 
     font-weight: 600 !important;
 
@@ -1259,7 +1272,13 @@ font-weight: 700;
 
 
   /* =======================================================
-     GOLD RIBBON
+     8. GOLD RIBBON
+     =======================================================
+
+     IMPORTANT:
+     No white shine.
+     No ribbon shadow.
+     Ribbon is directly below title.
      ======================================================= */
 
   .premium-divider {
@@ -1267,7 +1286,7 @@ font-weight: 700;
     position: relative !important;
 
     width: clamp(
-      220px,
+      225px,
       18vw,
       275px
     ) !important;
@@ -1276,7 +1295,7 @@ font-weight: 700;
 
     height: 13px !important;
 
-    margin-top: 5px !important;
+    margin-top: 4px !important;
 
     margin-bottom: 0 !important;
 
@@ -1285,35 +1304,43 @@ font-weight: 700;
     overflow: visible !important;
 
     background:
-
-      /*
-        GOLD LINE
-      */
-
       linear-gradient(
         90deg,
+
         #806000 0%,
-        #b17f00 10%,
-        #d9ad20 25%,
-        #f1d35a 48%,
-        #d9ad20 72%,
-        #b17f00 90%,
+
+        #ad7e00 10%,
+
+        #d5a91c 25%,
+
+        #f1d257 48%,
+
+        #d5a91c 72%,
+
+        #ad7e00 90%,
+
         #806000 100%
       )
-      center center / 100% 3px
+
+      center center /
+
+      100% 3px
+
       no-repeat !important;
 
     border-radius: 10px !important;
 
-    box-shadow:
-      0 1px 2px rgba(0,0,0,0.30),
-      0 0 5px rgba(255,210,50,0.30) !important;
+    /*
+      NO SHADOW
+    */
+
+    box-shadow: none !important;
   }
 
 
 
   /* =======================================================
-     CENTER GOLD DIAMOND
+     9. GOLD DIAMOND
      ======================================================= */
 
   .premium-divider::before {
@@ -1334,21 +1361,35 @@ font-weight: 700;
       translate(-50%, -50%)
       rotate(45deg) !important;
 
-    background: linear-gradient(
-      135deg,
-      #fff1a3 0%,
-      #f0cc4c 30%,
-      #d2a00b 60%,
-      #8b6200 100%
-    ) !important;
+    background:
+      linear-gradient(
+        135deg,
+
+        #fff1a3 0%,
+
+        #f0cc4c 30%,
+
+        #d2a00b 60%,
+
+        #8b6200 100%
+      ) !important;
 
     border: 1px solid #f6d45a !important;
 
     border-radius: 1px !important;
 
+    /*
+      Very subtle diamond glow only.
+      The ribbon itself has NO shadow.
+    */
+
     box-shadow:
-      0 0 5px rgba(255,220,75,0.70),
-      0 0 10px rgba(255,195,35,0.30) !important;
+      0 0 5px rgba(
+        255,
+        220,
+        75,
+        0.45
+      ) !important;
 
     z-index: 5 !important;
 
@@ -1362,88 +1403,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     MOVING GOLD / WHITE SHINE
-     ======================================================= */
-
-  .premium-divider::after {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    top: 50% !important;
-
-    left: -30% !important;
-
-    width: 28% !important;
-
-    height: 5px !important;
-
-    transform:
-      translateY(-50%)
-      skewX(-25deg) !important;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.10) 15%,
-      rgba(255,255,255,0.95) 50%,
-      rgba(255,255,255,0.10) 85%,
-      transparent 100%
-    ) !important;
-
-    filter: blur(1px) !important;
-
-    border-radius: 10px !important;
-
-    pointer-events: none !important;
-
-    z-index: 6 !important;
-
-    animation:
-      madhaRibbonShine
-      3.5s
-      ease-in-out
-      infinite !important;
-  }
-
-
-
-  /* =======================================================
-     RIBBON SHINE
-     ======================================================= */
-
-  @keyframes madhaRibbonShine {
-
-    0% {
-      left: -30%;
-      opacity: 0;
-    }
-
-    10% {
-      opacity: 1;
-    }
-
-    50% {
-      left: 105%;
-      opacity: 1;
-    }
-
-    60% {
-      left: 105%;
-      opacity: 0;
-    }
-
-    100% {
-      left: 105%;
-      opacity: 0;
-    }
-  }
-
-
-
-  /* =======================================================
-     DIAMOND PULSE
+     10. DIAMOND ANIMATION
      ======================================================= */
 
   @keyframes madhaDiamondPulse {
@@ -1452,23 +1412,56 @@ font-weight: 700;
     100% {
 
       box-shadow:
-        0 0 4px rgba(255,215,65,0.55),
-        0 0 7px rgba(255,190,25,0.20);
+        0 0 4px rgba(
+          255,
+          215,
+          65,
+          0.40
+        );
     }
 
     50% {
 
       box-shadow:
-        0 0 8px rgba(255,225,90,0.95),
-        0 0 14px rgba(255,195,30,0.55),
-        0 0 20px rgba(255,185,15,0.20);
+        0 0 8px rgba(
+          255,
+          225,
+          90,
+          0.80
+        ),
+
+        0 0 12px rgba(
+          255,
+          195,
+          30,
+          0.30
+        );
     }
   }
 
 
 
   /* =======================================================
-     MENU AREA
+     11. REMOVE WHITE SHINE COMPLETELY
+     ======================================================= */
+
+  .premium-divider::after {
+
+    content: none !important;
+
+    display: none !important;
+
+    animation: none !important;
+
+    background: none !important;
+
+    box-shadow: none !important;
+  }
+
+
+
+  /* =======================================================
+     12. MENU AREA
      ======================================================= */
 
   .nav-links {
@@ -1489,9 +1482,27 @@ font-weight: 700;
 
     justify-content: center !important;
 
-    gap: 0 !important;
+    /*
+      Even menu spacing
+    */
 
-    padding: 0 5px !important;
+    gap: clamp(
+      2px,
+      0.45vw,
+      9px
+    ) !important;
+
+    padding-left: clamp(
+      5px,
+      0.6vw,
+      12px
+    ) !important;
+
+    padding-right: clamp(
+      5px,
+      0.6vw,
+      12px
+    ) !important;
 
     margin: 0 !important;
 
@@ -1511,14 +1522,14 @@ font-weight: 700;
 
 
   /* =======================================================
-     MENU ITEMS
+     13. MENU ITEMS
      ======================================================= */
 
   .nav-root.transparent .nav-item,
 
   .nav-root.solid .nav-item {
 
-    flex: 0 1 auto !important;
+    flex: 0 0 auto !important;
 
     min-width: 0 !important;
 
@@ -1526,15 +1537,19 @@ font-weight: 700;
 
     padding-bottom: 7px !important;
 
+    /*
+      Equal left/right spacing
+    */
+
     padding-left: clamp(
       6px,
-      0.45vw,
+      0.40vw,
       10px
     ) !important;
 
     padding-right: clamp(
       6px,
-      0.45vw,
+      0.40vw,
       10px
     ) !important;
 
@@ -1542,7 +1557,7 @@ font-weight: 700;
 
     font-size: clamp(
       13px,
-      0.82vw,
+      0.80vw,
       16px
     ) !important;
 
@@ -1558,7 +1573,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     ABOUT US ARROW
+     14. ABOUT US ARROW
      ======================================================= */
 
   .nav-item-chevron {
@@ -1575,7 +1590,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     ACTIVE MENU UNDERLINE
+     15. ACTIVE MENU UNDERLINE
      ======================================================= */
 
   .nav-item::after {
@@ -1588,7 +1603,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     APPLY NOW AREA
+     16. APPLY NOW CONTAINER
      ======================================================= */
 
   .nav-right {
@@ -1607,13 +1622,19 @@ font-weight: 700;
 
     margin: 0 !important;
 
-    padding-left: 8px !important;
+    /*
+      Small separation from menu
+    */
+
+    padding-left: 10px !important;
+
+    padding-right: 0 !important;
 
     gap: 5px !important;
 
     position: relative !important;
 
-    z-index: 40 !important;
+    z-index: 60 !important;
 
     box-sizing: border-box !important;
   }
@@ -1621,7 +1642,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     APPLY NOW
+     17. APPLY NOW
      TRANSPARENT HEADER
      ======================================================= */
 
@@ -1662,8 +1683,8 @@ font-weight: 700;
 
 
   /* =======================================================
-     APPLY NOW
-     SOLID / SCROLLED HEADER
+     18. APPLY NOW
+     WHITE / SOLID HEADER
      ======================================================= */
 
   .nav-root.solid .btn-apply {
@@ -1703,7 +1724,7 @@ font-weight: 700;
 
 
   /* =======================================================
-     APPLY BUTTON ICON
+     19. APPLY BUTTON ICON
      ======================================================= */
 
   .btn-apply svg,
@@ -1720,18 +1741,120 @@ font-weight: 700;
 
 
   /* =======================================================
-     HAMBURGER
+     20. WHITE / SOLID HEADER MARGIN
+     =======================================================
+
+     This gives the white header the slightly
+     inward appearance from your reference image.
      ======================================================= */
 
-  .nav-hamburger {
+  .nav-root.solid {
 
-    display: none !important;
+    margin-left: clamp(
+      0px,
+      0.6vw,
+      10px
+    ) !important;
+
+    margin-right: clamp(
+      0px,
+      0.6vw,
+      10px
+    ) !important;
+
+    width: calc(
+      100% -
+      clamp(
+        0px,
+        1.2vw,
+        20px
+      )
+    ) !important;
+
+    box-sizing: border-box !important;
   }
 
 
 
   /* =======================================================
-     FINAL LAYOUT PROTECTION
+     21. SOLID HEADER INNER PADDING
+     ======================================================= */
+
+  .nav-root.solid .nav-inner {
+
+    padding-left: clamp(
+      28px,
+      3.3vw,
+      60px
+    ) !important;
+
+    padding-right: clamp(
+      28px,
+      3.3vw,
+      60px
+    ) !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+
+  /* =======================================================
+     22. SOLID HEADER BRAND
+     ======================================================= */
+
+  .nav-root.solid .nav-brand {
+
+    z-index: 50 !important;
+  }
+
+
+
+  /* =======================================================
+     23. SOLID HEADER TITLE
+     ======================================================= */
+
+  .nav-root.solid .nav-college-name {
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    max-width: 100% !important;
+  }
+
+
+
+  /* =======================================================
+     24. SOLID HEADER RIBBON
+     ======================================================= */
+
+  .nav-root.solid .premium-divider {
+
+    margin-top: 4px !important;
+
+    box-shadow: none !important;
+  }
+
+
+
+  /* =======================================================
+     25. SOLID HEADER MENU
+     ======================================================= */
+
+  .nav-root.solid .nav-links {
+
+    gap: clamp(
+      2px,
+      0.45vw,
+      9px
+    ) !important;
+  }
+
+
+
+  /* =======================================================
+     26. FINAL BRAND PROTECTION
      ======================================================= */
 
   .nav-brand,
@@ -1743,24 +1866,27 @@ font-weight: 700;
   }
 
 
-  /* =======================================================
-     PREVENT TITLE FROM BEING COVERED BY MENU
-     ======================================================= */
-
-  .nav-brand-text {
-
-    isolation: isolate !important;
-  }
-
 
   /* =======================================================
-     KEEP BRAND ABOVE MENU
+     27. BRAND ALWAYS ABOVE MENU
      ======================================================= */
 
   .nav-brand {
 
+    isolation: isolate !important;
+
     z-index: 50 !important;
   }
+
+
+
+  .nav-brand-text {
+
+    isolation: isolate !important;
+
+    z-index: 55 !important;
+  }
+
 
 
   .nav-links {
@@ -1769,13 +1895,39 @@ font-weight: 700;
   }
 
 
+
   .nav-right {
 
     z-index: 60 !important;
   }
 
+
+
+  /* =======================================================
+     28. HAMBURGER
+     ======================================================= */
+
+  .nav-hamburger {
+
+    display: none !important;
+  }
+
+
+
+  /* =======================================================
+     29. PREVENT HORIZONTAL OVERFLOW
+     ======================================================= */
+
+  .nav-root,
+  .nav-inner {
+
+    max-width: 100vw !important;
+
+    box-sizing: border-box !important;
+  }
+
 }
-  
+
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
 @media (max-width: 480px) {
