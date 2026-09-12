@@ -32,8 +32,28 @@ function displayDate(dateStr: string) {
   return `${day} ${month} ${year}`
 }
 
+const API_BASE_URL =
+  'https://september-collect-assumed-act.trycloudflare.com'
+
+function getEventImageUrl(imageUrl?: string | null) {
+  if (!imageUrl) return EVENT_IMAGE_FALLBACK
+
+  if (/^https?:\/\//i.test(imageUrl)) {
+    return imageUrl.replace(
+      /^http:\/\/localhost:5021/i,
+      API_BASE_URL,
+    )
+  }
+
+  if (imageUrl.startsWith('/uploads/') || imageUrl.startsWith('/images/events/')) {
+    return `${API_BASE_URL}${imageUrl}`
+  }
+
+  return imageUrl
+}
+
 function eventImage(row: NewsEventRow) {
-  return row.image_url || EVENT_IMAGE_FALLBACK
+  return getEventImageUrl(row.image_url)
 }
 
 export default function NewsEvents({ navigate }: Props) {
@@ -49,8 +69,9 @@ const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
     setError(null)
 
     try {
-      const response = await fetch('/api/news-events')
-
+const response = await fetch(
+        `${API_BASE_URL}/api/news-events`,
+      )
       if (!response.ok) {
         throw new Error('Failed to load events')
       }

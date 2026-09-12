@@ -17,7 +17,8 @@ builder.Services.AddCors(options =>
         policy
             .WithOrigins(
                 "http://localhost:8443",
-                "https://localhost:8443"
+                "https://localhost:8443",
+                "https://veeraragavant24-madha-nursing-web-8.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -61,7 +62,7 @@ var jwtKey = builder.Configuration["Jwt:Key"];
 if (string.IsNullOrWhiteSpace(jwtKey))
 {
     throw new InvalidOperationException(
-        "JWT Key is missing. Add Jwt:Key to appsettings.json."
+        "JWT Key is missing. Add Jwt:Key to environment variables."
     );
 }
 
@@ -110,16 +111,14 @@ if (app.Environment.IsDevelopment())
 }
 
 // =====================================================
-// HTTPS
+// STATIC FILES
 // =====================================================
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 // =====================================================
 // CORS
 // =====================================================
-
-app.UseStaticFiles();
 
 app.UseCors("AllowFrontend");
 
