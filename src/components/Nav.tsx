@@ -1172,10 +1172,9 @@ font-weight: 700;
         .045em
       ) !important;
   }
-
-
-  /* ── LAPTOP PREMIUM GOLD RIBBON ── */
-
+/* =========================================================
+   LAPTOP GOLD RIBBON
+   ========================================================= */
 
 .premium-divider {
   position: relative !important;
@@ -1187,28 +1186,24 @@ font-weight: 700;
 
   margin: 7px auto 3px !important;
 
-  border: 0 !important;
+  border: none !important;
   border-radius: 4px !important;
 
   background: linear-gradient(
     90deg,
     #8a6200 0%,
-    #c99408 12%,
-    #f0b00e 25%,
-    #f6d76a 42%,
+    #c99408 15%,
+    #f0b00e 30%,
+    #f6d76a 43%,
     #fff0a6 50%,
-    #f6d76a 58%,
-    #d39e17 75%,
-    #a97905 88%,
+    #f6d76a 57%,
+    #d39e17 70%,
+    #a97905 85%,
     #705206 100%
   ) !important;
 
   box-shadow: none !important;
 
-  /*
-     IMPORTANT
-     Shine stays inside the ribbon.
-  */
   overflow: hidden !important;
 
   box-sizing: border-box !important;
@@ -1219,7 +1214,6 @@ font-weight: 700;
 
 /* =========================================================
    WHITE SHINE
-   LEFT → RIGHT
    ========================================================= */
 
 .premium-divider::before {
@@ -1227,24 +1221,22 @@ font-weight: 700;
 
   position: absolute !important;
 
-  top: -2px !important;
-
+  top: -3px !important;
   left: -70px !important;
 
   width: 55px !important;
-
-  height: 9px !important;
+  height: 11px !important;
 
   display: block !important;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0.65) 40%,
+    rgba(255,255,255,0.05) 15%,
+    rgba(255,255,255,0.65) 38%,
     #ffffff 50%,
-    rgba(255, 255, 255, 0.65) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255,255,255,0.65) 62%,
+    rgba(255,255,255,0.05) 85%,
     transparent 100%
   ) !important;
 
@@ -1252,73 +1244,84 @@ font-weight: 700;
 
   border-radius: 50% !important;
 
-  transform: skewX(-20deg) !important;
+  opacity: 1 !important;
 
-  opacity: 0 !important;
-
-  /*
-     THIS IS THE ACTUAL ANIMATION
-  */
-  animation-name: laptopRibbonWhiteShine !important;
-  animation-duration: 2.8s !important;
-  animation-timing-function: linear !important;
-  animation-iteration-count: infinite !important;
+  transform: skewX(-20deg) translateX(0) !important;
 
   filter:
-    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
-    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9)) !important;
+    drop-shadow(0 0 2px #ffffff)
+    drop-shadow(0 0 5px rgba(255,255,255,0.9)) !important;
 
   pointer-events: none !important;
 
   z-index: 5 !important;
 
-  will-change: left, opacity !important;
+  animation:
+    laptopRibbonShine
+    2.4s
+    linear
+    infinite !important;
+
+  will-change: transform !important;
 }
 
 
 /* =========================================================
    WHITE SHINE ANIMATION
+   LEFT → RIGHT
    ========================================================= */
 
-@keyframes laptopRibbonWhiteShine {
+@keyframes laptopRibbonShine {
 
   0% {
-    left: -70px !important;
+    transform:
+      skewX(-20deg)
+      translateX(0) !important;
+
     opacity: 0 !important;
   }
 
   8% {
-    left: -40px !important;
     opacity: 1 !important;
   }
 
-  20% {
-    left: 0px !important;
+  25% {
+    transform:
+      skewX(-20deg)
+      translateX(100px) !important;
+
     opacity: 1 !important;
   }
 
-  40% {
-    left: 65px !important;
+  50% {
+    transform:
+      skewX(-20deg)
+      translateX(200px) !important;
+
     opacity: 1 !important;
   }
 
-  60% {
-    left: 130px !important;
-    opacity: 1 !important;
-  }
+  75% {
+    transform:
+      skewX(-20deg)
+      translateX(300px) !important;
 
-  80% {
-    left: 195px !important;
     opacity: 1 !important;
   }
 
   92% {
-    left: 245px !important;
-    opacity: 1 !important;
+    transform:
+      skewX(-20deg)
+      translateX(350px) !important;
+
+    opacity: 0 !important;
   }
 
   100% {
-    left: 290px !important;
+    transform:
+      skewX(-20deg)
+      translateX(380px) !important;
+
     opacity: 0 !important;
   }
 }
@@ -1352,16 +1355,16 @@ font-weight: 700;
   border: 1px solid #f5d35a !important;
 
   border-radius: 1px !important;
- 
+
   transform:
     translate(-50%, -50%)
     rotate(45deg) !important;
- 
+
   box-shadow: none !important;
 
-   pointer-events: none !important;
+  pointer-events: none !important;
 
-     opacity: 1 !important;
+  opacity: 1 !important;
 
   z-index: 10 !important;
 }
