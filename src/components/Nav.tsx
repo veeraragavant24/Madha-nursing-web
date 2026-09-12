@@ -1446,9 +1446,9 @@ font-weight: 700;
 
     font-size:
       clamp(
-        11px,
+        15px,
         .68vw,
-        13px
+        15px
       ) !important;
   }
 
