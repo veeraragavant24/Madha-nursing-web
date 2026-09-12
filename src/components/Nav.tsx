@@ -1005,53 +1005,54 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 /* =========================================================
-   LAPTOP RESPONSIVE ONLY
+   LAPTOP HEADER RESPONSIVE
    769px → 1400px
 
-   BRAND  |  MENU  |  APPLY NOW
-   Desktop above 1400px = unchanged
-   Mobile below 769px = unchanged
+   PURPOSE:
+   - Correct logo size
+   - Correct college title size
+   - Animated golden ribbon
+   - Correct menu font size
+   - Correct Apply Now button
+   - Better spacing and alignment
 
-   ONLY ADJUSTED:
-   - College title font size
-   - Logo size
-   - Menu item font size
-   - Apply Now font size
-   - Ribbon width is tied to the title font size
-
-   Existing animations / transitions / positioning are untouched.
+   MOBILE BELOW 769px = UNCHANGED
+   DESKTOP ABOVE 1400px = UNCHANGED
    ========================================================= */
 
-/* =========================================================
-   LAPTOP RESPONSIVE ONLY
-   769px → 1400px
-
-   BRAND  |  MENU  |  APPLY NOW
-   Desktop above 1400px = unchanged
-   Mobile below 769px = unchanged
-   ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
 
-  /* =====================================================
+
+  /* =======================================================
      MAIN HEADER
-     ===================================================== */
+     ======================================================= */
 
   .nav-root.transparent,
   .nav-root.solid {
+
     left: 0 !important;
     right: 0 !important;
+
     width: 100% !important;
+
     transform: none !important;
   }
 
+
+  /* =======================================================
+     HEADER INNER
+     ======================================================= */
+
   .nav-inner {
+
     width: 100% !important;
     max-width: 100% !important;
+
     height: 100% !important;
 
-    padding-left: clamp(10px, 1vw, 18px) !important;
-    padding-right: clamp(10px, 1vw, 18px) !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
 
     display: flex !important;
     align-items: center !important;
@@ -1060,29 +1061,31 @@ font-weight: 700;
   }
 
 
-  /* =====================================================
+
+  /* =======================================================
      1. BRAND AREA
      LOGO + COLLEGE TITLE
-     ===================================================== */
+     ======================================================= */
 
   .nav-brand {
-    flex: 0 1 clamp(235px, 23vw, 315px) !important;
+
+    flex: 0 1 auto !important;
 
     width: auto !important;
+
     min-width: 0 !important;
 
-    max-width: clamp(235px, 23vw, 315px) !important;
+    max-width: none !important;
 
     display: flex !important;
+
     align-items: center !important;
 
-    gap: clamp(7px, .7vw, 11px) !important;
+    gap: 11px !important;
 
-    padding-right: clamp(10px, 1vw, 18px) !important;
+    padding-right: 10px !important;
 
-    margin-right: clamp(8px, 1vw, 18px) !important;
-
-    /* No vertical separator line */
+    margin-right: 8px !important;
 
     border-right: none !important;
 
@@ -1090,58 +1093,95 @@ font-weight: 700;
   }
 
 
-  /* =====================================================
+
+  /* =======================================================
      LOGO
-     ===================================================== */
+     ======================================================= */
 
   .nav-logo-ring {
-    width: clamp(54px, 4.8vw, 72px) !important;
-    height: clamp(54px, 4.8vw, 72px) !important;
+
+    width: clamp(58px, 5vw, 74px) !important;
+
+    height: clamp(58px, 5vw, 74px) !important;
 
     flex-shrink: 0 !important;
   }
 
+
   .nav-logo-img {
-    width: clamp(54px, 4.8vw, 72px) !important;
-    height: clamp(54px, 4.8vw, 72px) !important;
+
+    width: clamp(58px, 5vw, 74px) !important;
+
+    height: clamp(58px, 5vw, 74px) !important;
+
+    object-fit: contain !important;
+
+    display: block !important;
   }
 
 
-  /* =====================================================
+
+  /* =======================================================
      COLLEGE TITLE CONTAINER
-     ===================================================== */
+     ======================================================= */
 
   .nav-brand-text {
+
     min-width: 0 !important;
 
     flex: 0 0 auto !important;
 
-    width: max-content !important;
-    max-width: 100% !important;
+    width: auto !important;
 
-    overflow: hidden !important;
+    max-width: none !important;
+
+    overflow: visible !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    justify-content: center !important;
   }
 
 
-  /* =====================================================
+
+  /* =======================================================
      COLLEGE TITLE
-     ===================================================== */
+     
+     IMPORTANT:
+     Increased size so it matches the reference image.
+     ======================================================= */
 
   .nav-college-name,
+
   .nav-root.transparent .nav-college-name,
+
   .nav-root.solid .nav-college-name {
 
     display: block !important;
 
     width: auto !important;
 
-    max-width: 100% !important;
+    max-width: none !important;
 
-    font-size: clamp(15px, 1.5vw, 21px) !important;
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    font-size: clamp(
+      20px,
+      1.7vw,
+      27px
+    ) !important;
 
     line-height: 1.05 !important;
 
-    letter-spacing: clamp(.005em, .15vw, .035em) !important;
+    letter-spacing: clamp(
+      0.01em,
+      0.12vw,
+      0.035em
+    ) !important;
 
     white-space: nowrap !important;
 
@@ -1151,25 +1191,288 @@ font-weight: 700;
   }
 
 
-  /* =====================================================
-     GOLD LINE
-     ===================================================== */
+
+  /* =======================================================
+     GOLDEN RIBBON
+     
+     Animated line with center diamond
+     ======================================================= */
 
   .premium-divider {
 
+    position: relative !important;
+
     width: 100% !important;
 
-    max-width: 100% !important;
+    max-width: 250px !important;
 
-    height: clamp(2px, .2vw, 3px) !important;
+    height: 13px !important;
 
-    overflow: hidden !important;
+    margin-top: 5px !important;
+
+    margin-bottom: 0 !important;
+
+    display: block !important;
+
+    overflow: visible !important;
+
+    /*
+      Main gold line
+      + center diamond
+    */
+
+    background:
+
+      /* CENTER DIAMOND */
+      linear-gradient(
+        45deg,
+        #8a6200 0%,
+        #d6a914 35%,
+        #ffe36a 50%,
+        #d6a914 65%,
+        #8a6200 100%
+      )
+      center center / 14px 14px
+      no-repeat,
+
+      /* GOLD RIBBON LINE */
+      linear-gradient(
+        90deg,
+        #806000 0%,
+        #a97800 8%,
+        #d2a30c 22%,
+        #f3cf43 45%,
+        #d2a30c 78%,
+        #a97800 92%,
+        #806000 100%
+      )
+      center center / 100% 3px
+      no-repeat !important;
+
+    border-radius: 10px !important;
+
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.35),
+      0 0 5px rgba(255, 210, 50, 0.35) !important;
   }
 
 
-  /* =====================================================
+
+  /* =======================================================
+     RIBBON CENTER DIAMOND
+     
+     Slight glow animation
+     ======================================================= */
+
+  .premium-divider {
+
+    animation: premiumRibbonGlow 2.8s ease-in-out infinite !important;
+  }
+
+
+
+  /* =======================================================
+     MOVING LIGHT / SHINE
+     
+     The white/golden light travels across the ribbon.
+     ======================================================= */
+
+  .premium-divider::after {
+
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 50% !important;
+
+    left: -35% !important;
+
+    width: 28% !important;
+
+    height: 5px !important;
+
+    transform:
+      translateY(-50%)
+      skewX(-25deg) !important;
+
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.15) 15%,
+      rgba(255, 255, 255, 0.95) 50%,
+      rgba(255, 255, 255, 0.15) 85%,
+      transparent 100%
+    ) !important;
+
+    filter: blur(1px) !important;
+
+    border-radius: 10px !important;
+
+    pointer-events: none !important;
+
+    z-index: 5 !important;
+
+    animation:
+      premiumRibbonShine
+      3.2s
+      ease-in-out
+      infinite !important;
+  }
+
+
+
+  /* =======================================================
+     EXTRA CENTER DIAMOND GLOW
+     ======================================================= */
+
+  .premium-divider::before {
+
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+
+    top: 50% !important;
+
+    width: 14px !important;
+
+    height: 14px !important;
+
+    transform:
+      translate(-50%, -50%)
+      rotate(45deg) !important;
+
+    background: linear-gradient(
+      135deg,
+      #fff0a0 0%,
+      #e3b62b 38%,
+      #b47e00 72%,
+      #7d5900 100%
+    ) !important;
+
+    border: 1px solid rgba(
+      255,
+      225,
+      100,
+      0.9
+    ) !important;
+
+    border-radius: 1px !important;
+
+    box-shadow:
+      0 0 4px rgba(255, 215, 65, 0.65),
+      0 0 9px rgba(255, 190, 25, 0.35) !important;
+
+    z-index: 4 !important;
+
+    animation:
+      premiumDiamondPulse
+      2.5s
+      ease-in-out
+      infinite !important;
+  }
+
+
+
+  /* =======================================================
+     GOLDEN RIBBON SHINE ANIMATION
+     ======================================================= */
+
+  @keyframes premiumRibbonShine {
+
+    0% {
+
+      left: -35%;
+
+      opacity: 0;
+    }
+
+    10% {
+
+      opacity: 1;
+    }
+
+    45% {
+
+      left: 105%;
+
+      opacity: 1;
+    }
+
+    55% {
+
+      left: 105%;
+
+      opacity: 0;
+    }
+
+    100% {
+
+      left: 105%;
+
+      opacity: 0;
+    }
+  }
+
+
+
+  /* =======================================================
+     DIAMOND PULSE ANIMATION
+     ======================================================= */
+
+  @keyframes premiumDiamondPulse {
+
+    0%,
+    100% {
+
+      box-shadow:
+        0 0 4px rgba(255, 215, 65, 0.55),
+        0 0 7px rgba(255, 190, 25, 0.25);
+    }
+
+    50% {
+
+      box-shadow:
+        0 0 7px rgba(255, 225, 90, 0.9),
+        0 0 14px rgba(255, 195, 30, 0.55),
+        0 0 20px rgba(255, 185, 15, 0.2);
+    }
+  }
+
+
+
+  /* =======================================================
+     RIBBON VERY SUBTLE GLOW
+     ======================================================= */
+
+  @keyframes premiumRibbonGlow {
+
+    0%,
+    100% {
+
+      filter:
+        brightness(1)
+        drop-shadow(
+          0 0 1px rgba(255, 210, 50, 0.15)
+        );
+    }
+
+    50% {
+
+      filter:
+        brightness(1.08)
+        drop-shadow(
+          0 0 3px rgba(255, 210, 50, 0.3)
+        );
+    }
+  }
+
+
+
+  /* =======================================================
      2. MENU AREA
-     ===================================================== */
+     ======================================================= */
 
   .nav-links {
 
@@ -1185,9 +1488,10 @@ font-weight: 700;
 
     justify-content: center !important;
 
-    gap: clamp(1px, .22vw, 4px) !important;
+    gap: 2px !important;
 
-    padding: 0 clamp(6px, 1vw, 14px) !important;
+    padding:
+      0 6px !important;
 
     flex-wrap: nowrap !important;
 
@@ -1197,28 +1501,36 @@ font-weight: 700;
   }
 
 
-  /* =====================================================
-     MENU BUTTONS
-     ===================================================== */
+
+  /* =======================================================
+     MENU ITEMS
+     ======================================================= */
 
   .nav-root.transparent .nav-item,
+
   .nav-root.solid .nav-item {
 
     flex: 0 0 auto !important;
 
-    padding-top: clamp(5px, .4vw, 8px) !important;
+    padding-top: 7px !important;
 
-    padding-bottom: clamp(5px, .4vw, 8px) !important;
+    padding-bottom: 7px !important;
 
-    padding-left: clamp(6px, .25vw, 12px) !important;
+    padding-left: 7px !important;
 
-    padding-right: clamp(6px, .25vw, 12px) !important;
+    padding-right: 7px !important;
 
-    margin-left: clamp(1px, .08vw, 2px) !important;
+    margin-left: 1px !important;
 
-    margin-right: clamp(1px, .08vw, 2px) !important;
+    margin-right: 1px !important;
 
-    font-size: clamp(12px, .8vw, 16px) !important;
+    font-size: clamp(
+      13px,
+      0.85vw,
+      15px
+    ) !important;
+
+    font-weight: 500 !important;
 
     line-height: 1 !important;
 
@@ -1226,110 +1538,204 @@ font-weight: 700;
   }
 
 
-  /* =====================================================
-     ABOUT ARROW
-     ===================================================== */
+
+  /* =======================================================
+     ABOUT US ARROW
+     ======================================================= */
 
   .nav-item-chevron {
 
-    width: clamp(6px, .5vw, 8px) !important;
+    width: 7px !important;
 
-    height: clamp(6px, .5vw, 8px) !important;
+    height: 7px !important;
 
-    margin-left: 2px !important;
+    margin-left: 3px !important;
+
+    flex-shrink: 0 !important;
   }
 
 
-  /* =====================================================
-     UNDERLINE
-     ===================================================== */
+
+  /* =======================================================
+     MENU UNDERLINE
+     ======================================================= */
 
   .nav-item::after {
-    left: 3px !important;
-    right: 3px !important;
+
+    left: 4px !important;
+
+    right: 4px !important;
   }
 
 
-  /* =====================================================
-   3. APPLY NOW AREA
-   ===================================================== */
 
-.nav-right {
+  /* =======================================================
+     3. RIGHT SIDE
+     APPLY NOW
+     ======================================================= */
 
-  flex: 0 0 auto !important;
+  .nav-right {
 
-  width: auto !important;
+    flex: 0 0 auto !important;
 
-  min-width: 0 !important;
+    width: auto !important;
 
-  display: flex !important;
+    min-width: 0 !important;
 
-  align-items: center !important;
+    display: flex !important;
 
-  justify-content: flex-end !important;
+    align-items: center !important;
 
-  margin-left: 0 !important;
+    justify-content: flex-end !important;
 
-  margin-right: 0 !important;
+    margin-left: 0 !important;
 
-padding-left: clamp(10px, 1vw, 18px) !important;
+    margin-right: 0 !important;
 
-  gap: clamp(4px, .4vw, 8px) !important;
-}
+    padding-left: 8px !important;
 
-
-/* =====================================================
-   APPLY BUTTON — NORMAL HEADER
-   Desktop-like position
-   ===================================================== */
-
-.nav-root.transparent .btn-apply {
-
-  width: clamp(88px, 6.5vw, 108px) !important;
-
-  height: clamp(34px, 2.5vw, 40px) !important;
-
-  padding: clamp(5px, .4vw, 8px) !important;
-
-  font-size: clamp(9px, .78vw, 13px) !important;
-
-  gap: 3px !important;
-
-  transform: none !important;
-
-  white-space: nowrap !important;
-}
+    gap: 5px !important;
+  }
 
 
-/* =====================================================
-   APPLY BUTTON — SCROLLED HEADER
-   Desktop-like position
-   ===================================================== */
 
-.nav-root.solid .btn-apply {
+  /* =======================================================
+     APPLY NOW
+     TRANSPARENT HEADER
+     ======================================================= */
 
-  width: clamp(82px, 6vw, 98px) !important;
+  .nav-root.transparent .btn-apply {
 
-  height: clamp(33px, 2.4vw, 38px) !important;
+    width: clamp(
+      100px,
+      7vw,
+      116px
+    ) !important;
 
-  padding: clamp(5px, .4vw, 8px) !important;
+    height: clamp(
+      38px,
+      2.8vw,
+      44px
+    ) !important;
 
-  font-size: clamp(9px, .72vw, 12px) !important;
-    
-  gap: 3px !important;
+    padding:
+      6px 10px !important;
 
-  transform: none !important;
+    font-size: clamp(
+      11px,
+      0.82vw,
+      14px
+    ) !important;
 
-  white-space: nowrap !important;
-}
+    font-weight: 600 !important;
 
-  /* =====================================================
+    gap: 4px !important;
+
+    transform: none !important;
+
+    white-space: nowrap !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+
+  /* =======================================================
+     APPLY NOW
+     SOLID / SCROLLED HEADER
+     ======================================================= */
+
+  .nav-root.solid .btn-apply {
+
+    width: clamp(
+      96px,
+      6.7vw,
+      110px
+    ) !important;
+
+    height: clamp(
+      37px,
+      2.7vw,
+      42px
+    ) !important;
+
+    padding:
+      6px 10px !important;
+
+    font-size: clamp(
+      10px,
+      0.78vw,
+      13px
+    ) !important;
+
+    font-weight: 600 !important;
+
+    gap: 4px !important;
+
+    transform: none !important;
+
+    white-space: nowrap !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+
+  /* =======================================================
+     APPLY NOW ARROW / ICON
+     ======================================================= */
+
+  .btn-apply svg,
+
+  .btn-apply i {
+
+    width: 13px !important;
+
+    height: 13px !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+
+  /* =======================================================
      HAMBURGER
-     ===================================================== */
+     HIDDEN ON LAPTOP
+     ======================================================= */
 
   .nav-hamburger {
+
     display: none !important;
   }
+
+
+
+  /* =======================================================
+     PREVENT BRAND FROM SHRINKING TOO MUCH
+     ======================================================= */
+
+  .nav-brand,
+  .nav-brand-text,
+  .nav-logo-ring {
+
+    flex-shrink: 0 !important;
+  }
+
+
+
+  /* =======================================================
+     PREVENT HEADER CONTENT FROM WRAPPING
+     ======================================================= */
+
+  .nav-inner,
+  .nav-brand,
+  .nav-links,
+  .nav-right {
+
+    white-space: nowrap !important;
+  }
+
+}
 
 }
 /* ---------- SMALL PHONE: 480px and below ---------- */
