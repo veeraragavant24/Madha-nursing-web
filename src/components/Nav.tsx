@@ -1174,218 +1174,202 @@ font-weight: 700;
   }
 
 
-  /* =======================================================
-     GOLD RIBBON
-     ======================================================= */
+  /* ── LAPTOP PREMIUM GOLD RIBBON ── */
 
-  .premium-divider {
+.premium-divider {
+  position: relative !important;
 
-    position: relative !important;
+  align-self: center !important;
 
-    /*
-       LAPTOP SIZE
-    */
+  width: 190px !important;
+  height: 5px !important;
 
-    width: clamp(
-      165px,
-      15vw,
-      205px
+  margin: 7px auto 3px !important;
+  padding: 0 !important;
+
+  border: none !important;
+  border-radius: 4px !important;
+
+  background: linear-gradient(
+    90deg,
+    #8a6200 0%,
+    #f0b00e 18%,
+    #f6d76a 42%,
+    #fff0a6 50%,
+    #f6d76a 58%,
+    #d39e17 82%,
+    #705206 100%
+  ) !important;
+
+  /* NO GOLD SHADOW */
+  box-shadow: none !important;
+
+  /*
+     IMPORTANT:
+     Keeps the shine inside the ribbon.
+  */
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+}
+
+
+  /* ── WHITE SHINE MOVING LEFT → RIGHT ── */
+
+.premium-divider::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 0 !important;
+  left: -80px !important;
+
+  width: 65px !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0.80) 40%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.80) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    transparent 100%
+  ) !important;
+
+  transform: skewX(-18deg) !important;
+
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 1))
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) !important;
+
+  border: none !important;
+
+  box-shadow: none !important;
+
+  pointer-events: none !important;
+
+  z-index: 5 !important;
+
+  animation:
+    laptopGoldRibbonShine
+    2.5s
+    linear
+    infinite !important;
+}
+
+
+ /* ── WHITE SHINE ANIMATION ── */
+
+@keyframes laptopGoldRibbonShine {
+
+  0% {
+    left: -80px;
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  20% {
+    left: 0px;
+    opacity: 1;
+  }
+
+  40% {
+    left: 45px;
+    opacity: 1;
+  }
+
+  60% {
+    left: 90px;
+    opacity: 1;
+  }
+
+  80% {
+    left: 140px;
+    opacity: 1;
+  }
+
+  95% {
+    left: 205px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 230px;
+    opacity: 0;
+  }
+}
+
+/* =======================================================
+   GOLD CENTER DIAMOND
+   ======================================================= */
+
+.premium-divider::after {
+
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+
+  top: 50% !important;
+
+  width: 11px !important;
+
+  height: 11px !important;
+
+  margin: 0 !important;
+
+  /*
+     GOLD DIAMOND
+  */
+  background:
+    linear-gradient(
+      135deg,
+      #fff2a3 0%,
+      #f0c936 35%,
+      #d29d0b 70%,
+      #8a6200 100%
     ) !important;
 
-    height: 4px !important;
-
-    /*
-       CENTER UNDER COLLEGE TITLE
-    */
-
-    margin:
-      7px auto 3px
-      !important;
-
-    padding: 0 !important;
-
-    align-self: center !important;
-
-    flex-shrink: 0 !important;
-
-    display: block !important;
-
-    box-sizing: border-box !important;
-
-    /*
-       IMPORTANT:
-       shine must stay INSIDE ribbon
-    */
-
-    overflow: hidden !important;
-
-    border: none !important;
-
-    border-radius: 3px !important;
-
-    /*
-       SAME GOLD STYLE
-    */
-
-    background:
-      linear-gradient(
-        90deg,
-
-        #8a6200 0%,
-
-        #f0b00e 18%,
-
-        #f6d76a 42%,
-
-        #fff0a6 50%,
-
-        #f6d76a 58%,
-
-        #d39e17 82%,
-
-        #705206 100%
-      ) !important;
-
-    /*
-       REMOVE UNWANTED SHADOW
-    */
-
-    box-shadow: none !important;
-
-    z-index: 2 !important;
-  }
-
-
-  /* =======================================================
-     WHITE SHINE
-     LEFT → RIGHT
-     ======================================================= */
-
-  .premium-divider::before {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    top: 0 !important;
-
-    left: -70px !important;
-
-    width: 70px !important;
-
-    height: 100% !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    background:
-      linear-gradient(
-        90deg,
-
-        transparent 0%,
-
-        rgba(255,255,255,0) 20%,
-
-        rgba(255,255,255,0.65) 40%,
-
-        #ffffff 50%,
-
-        rgba(255,255,255,0.65) 60%,
-
-        rgba(255,255,255,0) 80%,
-
-        transparent 100%
-      ) !important;
-
-    transform:
-      skewX(-20deg) !important;
-
-    filter:
-      drop-shadow(
-        0 0 3px
-        rgba(255,255,255,0.85)
-      ) !important;
-
-    border: none !important;
-
-    box-shadow: none !important;
-
-    pointer-events: none !important;
-
-    z-index: 3 !important;
-
-    animation:
-      laptopRibbonWhiteShine
-      3.2s
-      linear
-      infinite !important;
-
-    animation-play-state:
-      running !important;
-  }
-
-
-  /* =======================================================
-     WHITE SHINE ANIMATION
-     ======================================================= */
-
-  .premium-divider::before {
-
-    animation-name:
-      laptopRibbonWhiteShine !important;
-  }
-
-
-  /* =======================================================
-     GOLD CENTER DIAMOND
-     ======================================================= */
-
-  .premium-divider::after {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    left: 50% !important;
-
-    top: 50% !important;
-
-    width: 11px !important;
-
-    height: 11px !important;
-
-    margin: 0 !important;
-
-    background:
-      linear-gradient(
-        135deg,
-
-        #fff2a3 0%,
-
-        #f0c936 35%,
-
-        #d29d0b 70%,
-
-        #8a6200 100%
-      ) !important;
-
-    border:
-      1px solid #f5d35a !important;
-
-    border-radius: 1px !important;
-
-    transform:
-      translate(-50%, -50%)
-      rotate(45deg) !important;
-
-    box-shadow: none !important;
-
-    pointer-events: none !important;
-
-    z-index: 4 !important;
-  }
-
+  border:
+    1px solid #f5d35a !important;
+
+  border-radius: 1px !important;
+
+  /*
+     CENTER THE DIAMOND
+  */
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  /*
+     IMPORTANT:
+     KEEP DIAMOND ABOVE THE WHITE SHINE
+  */
+  z-index: 10 !important;
+
+  /*
+     NO SHADOW
+  */
+  box-shadow: none !important;
+
+  pointer-events: none !important;
+
+  display: block !important;
+
+  opacity: 1 !important;
+}
+  
+  
 
   /* =======================================================
      SHINE KEYFRAMES
