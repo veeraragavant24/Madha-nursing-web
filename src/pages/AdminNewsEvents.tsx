@@ -3,20 +3,20 @@ import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
 const API_BASE =
-
   'https://invisible-beverly-casting-teens.trycloudflare.com/api'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
 
+  const apiOrigin = API_BASE.replace(/\/api$/, '')
+
   if (/^https?:\/\//i.test(imageUrl)) {
-    return imageUrl.replace(
-      /^http:\/\/localhost:5021/i,
-      API_BASE.replace(/\/api$/, ''),
-    )
+    return imageUrl
+      .replace(/^http:\/\/localhost:5021/i, apiOrigin)
+      .replace(/^https?:\/\/[^/]+\.trycloudflare\.com/i, apiOrigin)
   }
 
-  return `${API_BASE.replace(/\/api$/, '')}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+  return `${apiOrigin}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
 }
 
 function getAdminToken() {

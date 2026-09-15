@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 
 const API_BASE =
-'https://invisible-beverly-casting-teens.trycloudflare.com'
-
+  'https://invisible-beverly-casting-teens.trycloudflare.com/api'
+  
 interface Props {
   goToDashboard: () => void
   goHome: () => void
