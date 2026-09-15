@@ -3,7 +3,9 @@ import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
 const API_BASE =
-  'https://bowl-gardens-tax-beings.trycloudflare.com/api'
+
+  'https://invisible-beverly-casting-teens.trycloudflare.com/api'
+
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
 
@@ -285,7 +287,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     formData.append('file', file)
 
     const response = await fetch(
-      'https://bowl-gardens-tax-beings.trycloudflare.com/api/news-events/upload',
+      'https://invisible-beverly-casting-teens.trycloudflare.com/api/news-events/upload',
       {
         method: 'POST',
         body: formData,
@@ -300,7 +302,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
       )
     }
 
-    const imageUrl = `https://bowl-gardens-tax-beings.trycloudflare.com${data.imageUrl}`
+    const imageUrl = `https://invisible-beverly-casting-teens.trycloudflare.com${data.imageUrl}`
 
     setPreviewUrl(imageUrl)
 
