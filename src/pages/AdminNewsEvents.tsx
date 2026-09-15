@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
-const API_BASE = 'https://bowl-gardens-tax-beings.trycloudflare.com/api'
-
+const API_BASE =
+  'https://bowl-gardens-tax-beings.trycloudflare.com/api'
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
 
