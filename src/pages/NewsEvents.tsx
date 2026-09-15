@@ -33,7 +33,7 @@ function displayDate(dateStr: string) {
 }
 
 const API_BASE_URL =
-  'https://september-collect-assumed-act.trycloudflare.com'
+  'https://bowl-gardens-tax-beings.trycloudflare.com'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
