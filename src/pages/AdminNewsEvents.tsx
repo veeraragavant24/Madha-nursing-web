@@ -2,7 +2,20 @@ import { useEffect, useMemo, useState } from 'react'
 import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
-const API_BASE = 'http://localhost:5021/api'
+const API_BASE = 'https://bowl-gardens-tax-beings.trycloudflare.com/api'
+
+function getEventImageUrl(imageUrl?: string | null) {
+  if (!imageUrl) return EVENT_IMAGE_FALLBACK
+
+  if (/^https?:\/\//i.test(imageUrl)) {
+    return imageUrl.replace(
+      /^http:\/\/localhost:5021/i,
+      API_BASE.replace(/\/api$/, ''),
+    )
+  }
+
+  return `${API_BASE.replace(/\/api$/, '')}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+}
 
 function getAdminToken() {
   return localStorage.getItem('adminToken')
@@ -240,7 +253,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
       published: e.published,
       featured: e.featured,
     })
-    setPreviewUrl(e.image_url ?? '')
+    setPreviewUrl(getEventImageUrl(e.image_url))
     setFormError(null)
     setFormOpen(true)
   }
@@ -272,7 +285,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     formData.append('file', file)
 
     const response = await fetch(
-      'http://localhost:5021/api/news-events/upload',
+      'https://bowl-gardens-tax-beings.trycloudflare.com/api/news-events/upload',
       {
         method: 'POST',
         body: formData,
@@ -287,7 +300,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
       )
     }
 
-    const imageUrl = `http://localhost:5021${data.imageUrl}`
+    const imageUrl = `https://bowl-gardens-tax-beings.trycloudflare.com${data.imageUrl}`
 
     setPreviewUrl(imageUrl)
 
@@ -1422,7 +1435,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
                   <div key={e.id} className="admin-row body">
                     <img
                       className="admin-thumb"
-                      src={e.image_url || EVENT_IMAGE_FALLBACK}
+                      src={getEventImageUrl(e.image_url)}
                       alt=""
                       loading="lazy"
                       onError={(ev) => {
@@ -1550,7 +1563,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
                   {(previewUrl || form.image_url) && (
                     <img
                       className="admin-upload-preview"
-                      src={previewUrl || form.image_url}
+                      src={getEventImageUrl(previewUrl || form.image_url)}
                       alt="Event preview"
                       loading="lazy"
                       decoding="async"
