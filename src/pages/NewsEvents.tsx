@@ -33,19 +33,21 @@ function displayDate(dateStr: string) {
 }
 
 const API_BASE_URL =
-  'https://bowl-gardens-tax-beings.trycloudflare.com'
+  'https://invisible-beverly-casting-teens.trycloudflare.com'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
 
   if (/^https?:\/\//i.test(imageUrl)) {
-    return imageUrl.replace(
-      /^http:\/\/localhost:5021/i,
-      API_BASE_URL,
-    )
+    return imageUrl
+      .replace(/^http:\/\/localhost:5021/i, API_BASE_URL)
+      .replace(/^https?:\/\/[^/]+\.trycloudflare\.com/i, API_BASE_URL)
   }
 
-  if (imageUrl.startsWith('/uploads/') || imageUrl.startsWith('/images/events/')) {
+  if (
+    imageUrl.startsWith('/uploads/') ||
+    imageUrl.startsWith('/images/events/')
+  ) {
     return `${API_BASE_URL}${imageUrl}`
   }
 
