@@ -34,6 +34,31 @@ public class NewsEventsController : ControllerBase
     }
 
     // =====================================================
+    // Helper: Ensure DateTime is UTC for PostgreSQL
+    // =====================================================
+
+    private static DateTime EnsureUtc(DateTime value)
+    {
+        if (value.Kind == DateTimeKind.Utc)
+        {
+            return value;
+        }
+
+        if (value.Kind == DateTimeKind.Local)
+        {
+            return value.ToUniversalTime();
+        }
+
+        // HTML date inputs such as "2026-09-16"
+        // are normally deserialized as DateTimeKind.Unspecified.
+        // Treat that date/time as UTC so Npgsql can save it.
+        return DateTime.SpecifyKind(
+            value,
+            DateTimeKind.Utc
+        );
+    }
+
+    // =====================================================
     // GET: api/news-events
     // =====================================================
 
@@ -105,7 +130,11 @@ public class NewsEventsController : ControllerBase
         }
 
         var uploadsFolder = Path.Combine(
-            _environment.WebRootPath ?? Path.Combine(_environment.ContentRootPath, "wwwroot"),
+            _environment.WebRootPath
+                ?? Path.Combine(
+                    _environment.ContentRootPath,
+                    "wwwroot"
+                ),
             "uploads",
             "events"
         );
@@ -113,17 +142,22 @@ public class NewsEventsController : ControllerBase
         Directory.CreateDirectory(uploadsFolder);
 
         var fileName = $"{Guid.NewGuid():N}.webp";
-        var filePath = Path.Combine(uploadsFolder, fileName);
+        var filePath = Path.Combine(
+            uploadsFolder,
+            fileName
+        );
 
         var converted = true;
+
         try
         {
-            using (var image = await Image.LoadAsync(file.OpenReadStream()))
+            using (var image = await Image.LoadAsync(
+                       file.OpenReadStream()))
             {
                 image.Mutate(x => x.AutoOrient());
 
-                // PNG may carry transparency -> lossless WebP preserves it.
-                // JPG/JPEG/WEBP photos -> lossy WebP at quality 82.
+                // PNG may carry transparency -> lossless WebP.
+                // JPG/JPEG/WEBP photos -> lossy WebP.
                 var isPng = extension == ".png";
 
                 var encoder = new WebpEncoder
@@ -134,15 +168,23 @@ public class NewsEventsController : ControllerBase
                         : WebpFileFormatType.Lossy
                 };
 
-                await image.SaveAsWebpAsync(filePath, encoder);
+                await image.SaveAsWebpAsync(
+                    filePath,
+                    encoder
+                );
             }
         }
         catch
         {
             // Fall back to storing the original file unchanged.
             converted = false;
+
             fileName = $"{Guid.NewGuid():N}{extension}";
-            filePath = Path.Combine(uploadsFolder, fileName);
+
+            filePath = Path.Combine(
+                uploadsFolder,
+                fileName
+            );
         }
 
         if (!converted)
@@ -166,6 +208,7 @@ public class NewsEventsController : ControllerBase
 
     // =====================================================
     // POST: api/news-events
+    // Create news event
     // =====================================================
 
     [HttpPost]
@@ -173,7 +216,17 @@ public class NewsEventsController : ControllerBase
         [FromBody] NewsEvent newsEvent)
     {
         newsEvent.Id = Guid.NewGuid();
+
+        // FIX:
+        // PostgreSQL "timestamp with time zone" requires UTC.
+        newsEvent.EventDate = EnsureUtc(
+            newsEvent.EventDate
+        );
+
         newsEvent.CreatedAt = DateTime.UtcNow;
+
+        // Keep CreatedAt as the creation timestamp.
+        // UpdatedAt remains null until the first update.
         newsEvent.UpdatedAt = null;
 
         _context.NewsEvents.Add(newsEvent);
@@ -189,6 +242,7 @@ public class NewsEventsController : ControllerBase
 
     // =====================================================
     // PUT: api/news-events/{id}
+    // Update news event
     // =====================================================
 
     [HttpPut("{id:guid}")]
@@ -207,15 +261,34 @@ public class NewsEventsController : ControllerBase
             });
         }
 
-        existingEvent.Title = updatedEvent.Title;
-        existingEvent.Description = updatedEvent.Description;
-        existingEvent.Category = updatedEvent.Category;
-        existingEvent.EventDate = updatedEvent.EventDate;
-        existingEvent.Location = updatedEvent.Location;
-        existingEvent.ImageUrl = updatedEvent.ImageUrl;
-        existingEvent.Published = updatedEvent.Published;
-        existingEvent.Featured = updatedEvent.Featured;
-        existingEvent.UpdatedAt = DateTime.UtcNow;
+        existingEvent.Title =
+            updatedEvent.Title;
+
+        existingEvent.Description =
+            updatedEvent.Description;
+
+        existingEvent.Category =
+            updatedEvent.Category;
+
+        // FIX:
+        // Always save EventDate as UTC.
+        existingEvent.EventDate =
+            EnsureUtc(updatedEvent.EventDate);
+
+        existingEvent.Location =
+            updatedEvent.Location;
+
+        existingEvent.ImageUrl =
+            updatedEvent.ImageUrl;
+
+        existingEvent.Published =
+            updatedEvent.Published;
+
+        existingEvent.Featured =
+            updatedEvent.Featured;
+
+        existingEvent.UpdatedAt =
+            DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
 
@@ -249,10 +322,12 @@ public class NewsEventsController : ControllerBase
 
     // =====================================================
     // PATCH: api/news-events/{id}/publish
+    // Toggle published status
     // =====================================================
 
     [HttpPatch("{id:guid}/publish")]
-    public async Task<ActionResult<NewsEvent>> TogglePublished(Guid id)
+    public async Task<ActionResult<NewsEvent>> TogglePublished(
+        Guid id)
     {
         var newsEvent = await _context.NewsEvents
             .FirstOrDefaultAsync(e => e.Id == id);
@@ -265,8 +340,11 @@ public class NewsEventsController : ControllerBase
             });
         }
 
-        newsEvent.Published = !newsEvent.Published;
-        newsEvent.UpdatedAt = DateTime.UtcNow;
+        newsEvent.Published =
+            !newsEvent.Published;
+
+        newsEvent.UpdatedAt =
+            DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
 
@@ -275,10 +353,12 @@ public class NewsEventsController : ControllerBase
 
     // =====================================================
     // PATCH: api/news-events/{id}/featured
+    // Toggle featured status
     // =====================================================
 
     [HttpPatch("{id:guid}/featured")]
-    public async Task<ActionResult<NewsEvent>> ToggleFeatured(Guid id)
+    public async Task<ActionResult<NewsEvent>> ToggleFeatured(
+        Guid id)
     {
         var newsEvent = await _context.NewsEvents
             .FirstOrDefaultAsync(e => e.Id == id);
@@ -291,8 +371,11 @@ public class NewsEventsController : ControllerBase
             });
         }
 
-        newsEvent.Featured = !newsEvent.Featured;
-        newsEvent.UpdatedAt = DateTime.UtcNow;
+        newsEvent.Featured =
+            !newsEvent.Featured;
+
+        newsEvent.UpdatedAt =
+            DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
 
