@@ -1082,7 +1082,7 @@ font-weight: 700;
    769px–1400px: laptop sizing adapts fluidly.
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
-/* =========================================================
+
    FINAL LAPTOP HEADER
    769px → 1400px
 
@@ -1259,7 +1259,7 @@ font-weight: 700;
   position: relative !important;
 
   width: 175px !important;
-  height: 3px !important;
+  height: 7px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1359,53 +1359,87 @@ overflow: visible !important;
 
 @keyframes laptopGoldRibbonShine {
 
+  /*
+     Shine travel:
+     START  = left edge of the college title / MADHA "M"
+     END    = right edge of the college title / NURSING "G"
+
+     The existing --shine-start and --shine-travel values
+     are used so the same movement works in both header states.
+  */
+
   0% {
-
     background-position:
       center center,
-      -65px center !important;
+      var(--shine-start, -65px) center !important;
+    opacity: 0;
   }
 
-  10% {
-
+  8% {
     background-position:
       center center,
-      -30px center !important;
+      var(--shine-start, -65px) center !important;
+    opacity: 1;
   }
 
-  25% {
-
+  20% {
     background-position:
       center center,
-      10px center !important;
+      calc(
+        var(--shine-start, -65px) +
+        (var(--shine-travel, 175px) * 0.20)
+      ) center !important;
+    opacity: 1;
   }
 
-  50% {
-
+  40% {
     background-position:
       center center,
-      55px center !important;
+      calc(
+        var(--shine-start, -65px) +
+        (var(--shine-travel, 175px) * 0.40)
+      ) center !important;
+    opacity: 1;
   }
 
-  75% {
-
+  60% {
     background-position:
       center center,
-      105px center !important;
+      calc(
+        var(--shine-start, -65px) +
+        (var(--shine-travel, 175px) * 0.60)
+      ) center !important;
+    opacity: 1;
   }
 
-  90% {
-
+  80% {
     background-position:
       center center,
-      155px center !important;
+      calc(
+        var(--shine-start, -65px) +
+        (var(--shine-travel, 175px) * 0.80)
+      ) center !important;
+    opacity: 1;
+  }
+
+  92% {
+    background-position:
+      center center,
+      calc(
+        var(--shine-start, -65px) +
+        var(--shine-travel, 175px)
+      ) center !important;
+    opacity: 1;
   }
 
   100% {
-
     background-position:
       center center,
-      220px center !important;
+      calc(
+        var(--shine-start, -65px) +
+        var(--shine-travel, 175px)
+      ) center !important;
+    opacity: 0;
   }
 }
 
