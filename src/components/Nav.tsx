@@ -339,10 +339,88 @@ a.top-contact-item:hover {
 
   z-index: 1900;
 }
-  @media (min-width: 1401px) {
-  .nav-inner {
-    transform: translateX(30px) !important;
+ /* =========================================================
+   COMPUTER DESKTOP — WHITE SCROLL HEADER SPACING ONLY
+   ========================================================= */
+
+@media (min-width: 1401px) {
+
+  /* WHITE HEADER OVERALL SPACING */
+  .nav-root.solid .nav-inner {
+    transform: none !important;
+
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+
+    gap: 10px !important;
+
+    box-sizing: border-box !important;
   }
+
+
+  /* LOGO + COLLEGE TITLE */
+  .nav-root.solid .nav-brand {
+    gap: 14px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+  /* MENU AREA */
+  .nav-root.solid .nav-links {
+    flex: 1 1 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    justify-content: space-evenly !important;
+
+    gap: 4px !important;
+
+    padding: 0 4px !important;
+
+    margin: 0 !important;
+
+    min-width: 0 !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+
+  /* MENU ITEMS */
+  .nav-root.solid .nav-item {
+    flex: 0 0 auto !important;
+
+    margin: 0 !important;
+
+    padding: 10px 8px !important;
+
+    white-space: nowrap !important;
+  }
+
+
+  /* APPLY NOW AREA */
+  .nav-root.solid .nav-right {
+    margin-left: 4px !important;
+    margin-right: 0 !important;
+
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+    flex: 0 0 auto !important;
+  }
+
+
+  /* APPLY BUTTON */
+  .nav-root.solid .btn-apply {
+    margin: 0 !important;
+  }
+
 }
 
 /* Premium floating header transition */
@@ -1182,7 +1260,7 @@ font-weight: 700;
   position: relative !important;
 
   width: 175px !important;
-  height: 6px !important;
+  height: 5px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1605,7 +1683,7 @@ overflow: visible !important;
       7px auto 3px
       !important;
 
-    overflow: hidden !important;
+    overflow:  !important;
 
     box-shadow: none !important;
 
