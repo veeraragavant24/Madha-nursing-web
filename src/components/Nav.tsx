@@ -1236,11 +1236,7 @@ font-weight: 700;
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
 
-    font-size: clamp(
-      17px,
-      1.45vw,
-      22px
-    ) !important;
+    font-size: clamp(15px, 1.20vw, 19px) !important;
 
     letter-spacing:
       clamp(
@@ -1259,7 +1255,7 @@ font-weight: 700;
   position: relative !important;
 
   width: 175px !important;
-  height: 7px !important;
+  height: 6px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1488,9 +1484,9 @@ overflow: visible !important;
 
     padding-bottom: 6px !important;
 
-    padding-left: 7px !important;
+    padding-left: 5px !important;
 
-    padding-right: 7px !important;
+    padding-right: 5px !important;
 
     line-height: 1 !important;
 
@@ -1507,12 +1503,7 @@ overflow: visible !important;
   .nav-root.transparent .nav-item,
   .nav-root.solid .nav-item {
 
-    font-size:
-      clamp(
-        12px,
-        .68vw,
-        15px
-      ) !important;
+    font-size: clamp(10px, .58vw, 13px) !important;
   }
 
 
@@ -1522,11 +1513,11 @@ overflow: visible !important;
 
   .nav-item-chevron {
 
-    width: 7px !important;
+    width: 6px !important;
 
     height: 7px !important;
 
-    margin-left: 3px !important;
+    margin-left: 2px !important;
 
     flex-shrink: 0 !important;
   }
@@ -1566,7 +1557,7 @@ overflow: visible !important;
 
     margin-right: 0 !important;
 
-    padding-left: 10px !important;
+    padding-left: 7px !important;
 
     padding-right: 0 !important;
 
@@ -1591,7 +1582,7 @@ overflow: visible !important;
 
     padding: 6px 10px !important;
 
-    font-size: 12px !important;
+    font-size: 10px !important;
 
     gap: 4px !important;
 
@@ -1616,7 +1607,7 @@ overflow: visible !important;
 
     padding: 6px 9px !important;
 
-    font-size: 11px !important;
+    font-size: 10px !important;
 
     gap: 4px !important;
 
@@ -1663,9 +1654,9 @@ overflow: visible !important;
 
   .nav-root.solid .nav-inner {
 
-    padding-left: 18px !important;
+    padding-left: 12px !important;
 
-    padding-right: 18px !important;
+    padding-right: 12px !important;
 
     box-sizing: border-box !important;
   }
