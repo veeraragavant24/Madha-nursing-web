@@ -1324,57 +1324,57 @@ z-index: 2 !important;
 WHITE SHINE ANIMATION
 LEFT → RIGHT
 ======================================================= */
-
 @keyframes laptopGoldRibbonShine {
+0% {
 
-  /* Start from MADHA - M side */
-  0% {
-    background-position:
-      center center,
-      -65px center;
-  }
+background-position:
+  center center,
+  -65px center !important;
 
-  /* Enter from the left */
-  10% {
-    background-position:
-      center center,
-      0px center;
-  }
-
-  /* Move horizontally across MADHA COLLEGE OF NURSING */
-  25% {
-    background-position:
-      center center,
-      25% center;
-  }
-
-  50% {
-    background-position:
-      center center,
-      50% center;
-  }
-
-  75% {
-    background-position:
-      center center,
-      75% center;
-  }
-
-  /* Reach NURSING - G side */
-  90% {
-    background-position:
-      center center,
-      calc(100% + 65px) center;
-  }
-
-  /* Finish outside the right side */
-  100% {
-    background-position:
-      center center,
-      calc(100% + 65px) center;
-  }
 }
+10% {
 
+background-position:
+  center center,
+  -30px center !important;
+
+}
+25% {
+
+background-position:
+  center center,
+  10px center !important;
+
+}
+50% {
+
+background-position:
+  center center,
+  55px center !important;
+
+}
+75% {
+
+background-position:
+  center center,
+  105px center !important;
+
+}
+90% {
+
+background-position:
+  center center,
+  155px center !important;
+
+}
+100% {
+
+background-position:
+  center center,
+  220px center !important;
+
+}
+}
 /* =======================================================
 CENTER GOLD DIAMOND
 ALWAYS VISIBLE ABOVE THE RIBBON
