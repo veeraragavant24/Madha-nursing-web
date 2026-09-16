@@ -43,6 +43,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     )
 );
 
+builder.Services.AddScoped<
+    Microsoft.AspNetCore.Identity.IPasswordHasher<MadhaNursing.Api.Models.AdminUser>,
+    Microsoft.AspNetCore.Identity.PasswordHasher<MadhaNursing.Api.Models.AdminUser>
+>();
+
 // =====================================================
 // PASSWORD HASHING
 // =====================================================
