@@ -404,7 +404,7 @@ a.top-contact-item:hover {
 
 
   /* APPLY NOW AREA */
-  .nav-root.solid .nav-right {
+  .nav-root.solid .nav-right {git push origin main
     margin-left: 4px !important;
     margin-right: 0 !important;
 
@@ -1082,7 +1082,6 @@ font-weight: 700;
    769px–1400px: laptop sizing adapts fluidly.
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
-
 /* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
@@ -1260,7 +1259,7 @@ font-weight: 700;
   position: relative !important;
 
   width: 175px !important;
-  height: 5px !important;
+  height: 3px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1385,28 +1384,28 @@ overflow: visible !important;
 
     background-position:
       center center,
-      65px center !important;
+      55px center !important;
   }
 
   75% {
 
     background-position:
       center center,
-      120px center !important;
+      105px center !important;
   }
 
   90% {
 
     background-position:
       center center,
-      175px center !important;
+      155px center !important;
   }
 
   100% {
 
     background-position:
       center center,
-      240px center !important;
+      220px center !important;
   }
 }
 
@@ -1422,7 +1421,7 @@ overflow: visible !important;
   position: absolute !important;
 
   left: 50% !important;
-  top: 50% !important;
+  top: 35% !important;
 
   width: 13px !important;
   height: 13px !important;
@@ -1834,6 +1833,7 @@ overflow: visible !important;
     width: 52px !important;
     height: 52px !important;
   }
+
 /* =========================================================
    MOBILE RESPONSIVE
    0px → 768px
