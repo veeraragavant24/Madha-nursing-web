@@ -3,7 +3,7 @@ import { localDateStr, isUpcomingDate } from '../lib/dates'
 import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
 
 const API_BASE =
-  'https://invisible-beverly-casting-teens.trycloudflare.com/api'
+  'https://madha-nursing-api.onrender.com/api'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
@@ -286,30 +286,34 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     const formData = new FormData()
     formData.append('file', file)
 
-    const response = await fetch(
-      'https://invisible-beverly-casting-teens.trycloudflare.com/api/news-events/upload',
-      {
-        method: 'POST',
-        body: formData,
-      }
-    )
+    const apiOrigin = API_BASE.replace(/\/api$/, '')
 
-    const data = await response.json()
+const response = await fetch(
+  `${API_BASE}/news-events/upload`,
+  {
+    method: 'POST',
+    body: formData,
+  }
+)
 
-    if (!response.ok) {
-      throw new Error(
-        data?.message || 'Image upload failed.'
-      )
-    }
+const data = await response.json()
 
-    const imageUrl = `https://invisible-beverly-casting-teens.trycloudflare.com${data.imageUrl}`
+if (!response.ok) {
+  throw new Error(
+    data?.message || 'Image upload failed.'
+  )
+}
 
-    setPreviewUrl(imageUrl)
+const imageUrl = `${apiOrigin}${data.imageUrl}`
 
-    setForm((current) => ({
-      ...current,
-      image_url: imageUrl,
-    }))
+setPreviewUrl(imageUrl)
+
+setForm((current) => ({
+  ...current,
+  image_url: imageUrl,
+}))
+
+    
   } catch (error) {
     console.error('Image upload error:', error)
 
