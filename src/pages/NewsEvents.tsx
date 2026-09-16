@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Reveal from '../components/Reveal'
 import Stagger from '../components/Stagger'
 
@@ -63,6 +63,21 @@ export default function NewsEvents({ navigate }: Props) {
 const [loading, setLoading] = useState(true)
 const [error, setError] = useState<string | null>(null)
 const [selectedEvent, setSelectedEvent] = useState<NewsEventRow | null>(null)
+const detailsSectionRef = useRef<HTMLElement | null>(null)
+
+useEffect(() => {
+  if (!selectedEvent) return
+
+  const timer = window.setTimeout(() => {
+    detailsSectionRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }, 50)
+
+  return () => window.clearTimeout(timer)
+}, [selectedEvent])
+
  useEffect(() => {
   let cancelled = false
 
@@ -813,7 +828,10 @@ const response = await fetch(
 ===================================================== */}
 
 {selectedEvent && (
-  <section className="featured-section">
+  <section
+    ref={detailsSectionRef}
+    className="featured-section"
+  >
     <div className="featured-inner">
 
       {/* BACK BUTTON */}
