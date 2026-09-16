@@ -1083,7 +1083,7 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
-   FINAL LAPTOP HEADER
+    FINAL LAPTOP HEADER
    769px → 1400px
 
    ONLY RIBBON / SHINE FIXED
@@ -1359,77 +1359,52 @@ overflow: visible !important;
 
 @keyframes laptopGoldRibbonShine {
 
-  /*
-     Shine travel:
-     START  = left edge of the college title / MADHA "M"
-     END    = right edge of the college title / NURSING "G"
-
-     The existing --shine-start and --shine-travel values
-     are used so the same movement works in both header states.
-  */
-
   0% {
     background-position:
       center center,
       var(--shine-start, -65px) center !important;
-    opacity: 0;
   }
 
-  8% {
+  10% {
     background-position:
       center center,
       var(--shine-start, -65px) center !important;
-    opacity: 1;
   }
 
-  20% {
+  25% {
     background-position:
       center center,
       calc(
         var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.20)
+        (var(--shine-travel, 175px) * 0.25)
       ) center !important;
-    opacity: 1;
   }
 
-  40% {
+  50% {
     background-position:
       center center,
       calc(
         var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.40)
+        (var(--shine-travel, 175px) * 0.50)
       ) center !important;
-    opacity: 1;
   }
 
-  60% {
+  75% {
     background-position:
       center center,
       calc(
         var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.60)
+        (var(--shine-travel, 175px) * 0.75)
       ) center !important;
-    opacity: 1;
   }
 
-  80% {
+  90% {
     background-position:
       center center,
       calc(
         var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.80)
+        (var(--shine-travel, 175px) * 0.90)
       ) center !important;
-    opacity: 1;
-  }
-
-  92% {
-    background-position:
-      center center,
-      calc(
-        var(--shine-start, -65px) +
-        var(--shine-travel, 175px)
-      ) center !important;
-    opacity: 1;
   }
 
   100% {
@@ -1439,7 +1414,6 @@ overflow: visible !important;
         var(--shine-start, -65px) +
         var(--shine-travel, 175px)
       ) center !important;
-    opacity: 0;
   }
 }
 
