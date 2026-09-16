@@ -1083,762 +1083,658 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
- FINAL LAPTOP HEADER
-   769px → 1400px
+FINAL LAPTOP HEADER
+769px → 1400px
+ONLY RIBBON / SHINE FIXED
+OTHER HEADER ELEMENTS PRESERVED
+========================================================= */
 
-   ONLY RIBBON / SHINE FIXED
-   OTHER HEADER ELEMENTS PRESERVED
-   ========================================================= */
 
+FINAL LAPTOP HEADER
+769px → 1400px
+ONLY RIBBON / SHINE FIXED
+OTHER HEADER ELEMENTS PRESERVED
+========================================================= */
 @media (min-width: 769px) and (max-width: 1400px) {
-
-  /* =======================================================
-     MAIN HEADER
-     ======================================================= */
-
-  .nav-root.transparent,
-  .nav-root.solid {
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    transform: none !important;
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     HEADER INNER
-     ======================================================= */
-
-  .nav-inner {
-    width: 100% !important;
-    max-width: 100% !important;
-
-    display: flex !important;
-    align-items: center !important;
-
-    box-sizing: border-box !important;
-
-    overflow: visible !important;
-  }
-
-
-  /* =======================================================
-     BRAND
-     ======================================================= */
-
-  .nav-brand {
-    flex-shrink: 0 !important;
-
-    min-width: 0 !important;
-
-    overflow: visible !important;
-
-    box-sizing: border-box !important;
-
-    position: relative !important;
-
-    z-index: 50 !important;
-  }
-
-
-  /* =======================================================
-     LOGO
-     ======================================================= */
-
-  .nav-logo-ring {
-    flex-shrink: 0 !important;
-
-    position: relative !important;
-
-    z-index: 55 !important;
-  }
-
-
-  .nav-logo-img {
-    object-fit: contain !important;
-
-    display: block !important;
-  }
-
-
-  /* =======================================================
-     TITLE CONTAINER
-     ======================================================= */
-
-  .nav-brand-text {
-    min-width: 0 !important;
-
-    flex-shrink: 0 !important;
-
-    width: max-content !important;
-
-    max-width: none !important;
-
-    overflow: visible !important;
-
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    gap: 0 !important;
-
-    white-space: nowrap !important;
-
-    position: relative !important;
-
-    z-index: 55 !important;
-  }
-
-
-  /* =======================================================
-     COLLEGE TITLE
-     ======================================================= */
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-
-    display: block !important;
-
-    width: max-content !important;
-
-    max-width: none !important;
-
-    overflow: visible !important;
-
-    text-overflow: clip !important;
-
-    white-space: nowrap !important;
-
-    text-align: center !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    line-height: 1.05 !important;
-
-    position: relative !important;
-
-    z-index: 5 !important;
-  }
-
-
-  /* =======================================================
-     LAPTOP TITLE
-     ======================================================= */
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-
-    font-size: clamp(
-      17px,
-      1.45vw,
-      22px
-    ) !important;
-
-    letter-spacing:
-      clamp(
-        .025em,
-        .06vw,
-        .045em
-      ) !important;
-  }
 /* =======================================================
-   LAPTOP GOLD RIBBON
-   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
-   ======================================================= */
+MAIN HEADER
+======================================================= */
+.nav-root.transparent,
+.nav-root.solid {
+left: 0 !important;
+right: 0 !important;
+width: 100% !important;
+max-width: 100% !important;
+transform: none !important;
+box-sizing: border-box !important;
+}
+/* =======================================================
+HEADER INNER
+======================================================= */
+.nav-inner {
+width: 100% !important;
+max-width: 100% !important;
 
-.premium-divider {
+display: flex !important;
+align-items: center !important;
 
-  position: relative !important;
-
-  width: 175px !important;
-  height: 7px !important;
-
-  margin-top: 7px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 2px !important;
-
-  align-self: center !important;
-
-  display: block !important;
-
-  flex-shrink: 0 !important;
-
-  box-sizing: border-box !important;
-
-  border: none !important;
-
-  border-radius: 4px !important;
+box-sizing: border-box !important;
 
 overflow: visible !important;
-  /*
-     TWO BACKGROUND LAYERS
 
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
-    linear-gradient(
-      90deg,
-      #806000 0%,
-      #b98200 15%,
-      #e0b52c 35%,
-      #f5d45b 50%,
-      #e0b52c 65%,
-      #b98200 85%,
-      #806000 100%
-    ),
-
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
-    ) !important;
-
-  /*
-     GOLD = FULL WIDTH
-     SHINE = SMALL MOVING STRIP
-  */
-
-  background-size:
-    100% 100%,
-    65px 100% !important;
-
-  /*
-     GOLD STAYS FIXED
-     SHINE STARTS OUTSIDE LEFT
-  */
-
-  background-position:
-    center center,
-    -65px center !important;
-
-  background-repeat:
-    no-repeat,
-    no-repeat !important;
-
-  box-shadow: none !important;
-
-  /*
-     FORCE ANIMATION
-  */
-
-  animation:
-    laptopGoldRibbonShine
-    2.5s
-    linear
-    infinite !important;
-
-  animation-play-state: running !important;
-
-  z-index: 2 !important;
 }
-
-
 /* =======================================================
-   WHITE SHINE ANIMATION
-   LEFT → RIGHT
-   ======================================================= */
+BRAND
+======================================================= */
+.nav-brand {
+flex-shrink: 0 !important;
+
+min-width: 0 !important;
+
+overflow: visible !important;
+
+box-sizing: border-box !important;
+
+position: relative !important;
+
+z-index: 50 !important;
+
+}
+/* =======================================================
+LOGO
+======================================================= */
+.nav-logo-ring {
+flex-shrink: 0 !important;
+
+position: relative !important;
+
+z-index: 55 !important;
+
+}
+.nav-logo-img {
+object-fit: contain !important;
+
+display: block !important;
+
+}
+/* =======================================================
+TITLE CONTAINER
+======================================================= */
+.nav-brand-text {
+min-width: 0 !important;
+
+flex-shrink: 0 !important;
+
+width: max-content !important;
+
+max-width: none !important;
+
+overflow: visible !important;
+
+display: flex !important;
+
+flex-direction: column !important;
+
+align-items: center !important;
+
+justify-content: center !important;
+
+gap: 0 !important;
+
+white-space: nowrap !important;
+
+position: relative !important;
+
+z-index: 55 !important;
+
+}
+/* =======================================================
+COLLEGE TITLE
+======================================================= */
+.nav-root.transparent .nav-college-name,
+.nav-root.solid .nav-college-name {
+
+display: block !important;
+
+width: max-content !important;
+
+max-width: none !important;
+
+overflow: visible !important;
+
+text-overflow: clip !important;
+
+white-space: nowrap !important;
+
+text-align: center !important;
+
+margin: 0 !important;
+
+padding: 0 !important;
+
+line-height: 1.05 !important;
+
+position: relative !important;
+
+z-index: 5 !important;
+
+}
+/* =======================================================
+LAPTOP TITLE
+======================================================= */
+.nav-root.transparent .nav-college-name,
+.nav-root.solid .nav-college-name {
+
+font-size: clamp(
+  17px,
+  1.45vw,
+  22px
+) !important;
+
+letter-spacing:
+  clamp(
+    .025em,
+    .06vw,
+    .045em
+  ) !important;
+
+}
+/* =======================================================
+LAPTOP GOLD RIBBON
+GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+======================================================= */
+.premium-divider {
+position: relative !important;
+width: 175px !important;
+height: 7px !important;
+margin-top: 7px !important;
+margin-left: auto !important;
+margin-right: auto !important;
+margin-bottom: 2px !important;
+align-self: center !important;
+display: block !important;
+flex-shrink: 0 !important;
+box-sizing: border-box !important;
+border: none !important;
+border-radius: 4px !important;
+overflow: visible !important;
+/*
+TWO BACKGROUND LAYERS
+
+ 1 = GOLD RIBBON
+ 2 = WHITE MOVING SHINE
+
+*/
+background-image:
+
+/* GOLD RIBBON */
+linear-gradient(
+  90deg,
+  #806000 0%,
+  #b98200 15%,
+  #e0b52c 35%,
+  #f5d45b 50%,
+  #e0b52c 65%,
+  #b98200 85%,
+  #806000 100%
+),
+
+/* WHITE SHINE */
+linear-gradient(
+  90deg,
+  transparent 0%,
+  rgba(255,255,255,0.05) 15%,
+  rgba(255,255,255,0.55) 35%,
+  #ffffff 50%,
+  rgba(255,255,255,0.55) 65%,
+  rgba(255,255,255,0.05) 85%,
+  transparent 100%
+) !important;
+
+/*
+GOLD = FULL WIDTH
+SHINE = SMALL MOVING STRIP
+*/
+background-size:
+100% 100%,
+65px 100% !important;
+/*
+GOLD STAYS FIXED
+SHINE STARTS OUTSIDE LEFT
+*/
+background-position:
+center center,
+-65px center !important;
+background-repeat:
+no-repeat,
+no-repeat !important;
+box-shadow: none !important;
+/*
+FORCE ANIMATION
+*/
+animation:
+laptopGoldRibbonShine
+2.5s
+linear
+infinite !important;
+animation-play-state: running !important;
+z-index: 2 !important;
+}
+/* =======================================================
+WHITE SHINE ANIMATION
+LEFT → RIGHT
+======================================================= */
 
 @keyframes laptopGoldRibbonShine {
 
+  /* Start from MADHA - M side */
   0% {
     background-position:
       center center,
-      var(--shine-start, -65px) center;
+      -65px center;
   }
 
+  /* Enter from the left */
   10% {
     background-position:
       center center,
-      var(--shine-start, -65px) center;
+      0px center;
   }
 
+  /* Move horizontally across MADHA COLLEGE OF NURSING */
   25% {
     background-position:
       center center,
-      calc(
-        var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.25)
-      ) center;
+      25% center;
   }
 
   50% {
     background-position:
       center center,
-      calc(
-        var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.50)
-      ) center;
+      50% center;
   }
 
   75% {
     background-position:
       center center,
-      calc(
-        var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.75)
-      ) center;
+      75% center;
   }
 
+  /* Reach NURSING - G side */
   90% {
     background-position:
       center center,
-      calc(
-        var(--shine-start, -65px) +
-        (var(--shine-travel, 175px) * 0.90)
-      ) center;
+      calc(100% + 65px) center;
   }
 
+  /* Finish outside the right side */
   100% {
     background-position:
       center center,
-      calc(
-        var(--shine-start, -65px) +
-        var(--shine-travel, 175px)
-      ) center;
+      calc(100% + 65px) center;
   }
 }
 
 /* =======================================================
-   CENTER GOLD DIAMOND
-   ALWAYS VISIBLE ABOVE THE RIBBON
-   ======================================================= */
-
+CENTER GOLD DIAMOND
+ALWAYS VISIBLE ABOVE THE RIBBON
+======================================================= */
 .premium-divider::after {
-
-  content: "" !important;
-
-  position: absolute !important;
-
-  left: 50% !important;
-  top: 35% !important;
-
-  width: 13px !important;
-  height: 13px !important;
-
-  margin: 0 !important;
-
-  display: block !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff7bd 0%,
-      #ffe76a 25%,
-      #f0c936 45%,
-      #d29d0b 70%,
-      #8a6200 100%
-    ) !important;
-
-  border: 1px solid #ffe47a !important;
-
-  border-radius: 1px !important;
-
-  transform:
-    translate(-50%, -50%)
-    rotate(45deg) !important;
-
-  /*
-     IMPORTANT
-     Put diamond above everything.
-  */
-  z-index: 999 !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  pointer-events: none !important;
-
-  box-shadow:
-    0 0 2px rgba(255, 225, 100, 0.8) !important;
+content: "" !important;
+position: absolute !important;
+left: 50% !important;
+top: 35% !important;
+width: 13px !important;
+height: 13px !important;
+margin: 0 !important;
+display: block !important;
+background:
+linear-gradient(
+135deg,
+#fff7bd 0%,
+#ffe76a 25%,
+#f0c936 45%,
+#d29d0b 70%,
+#8a6200 100%
+) !important;
+border: 1px solid #ffe47a !important;
+border-radius: 1px !important;
+transform:
+translate(-50%, -50%)
+rotate(45deg) !important;
+/*
+IMPORTANT
+Put diamond above everything.
+*/
+z-index: 999 !important;
+opacity: 1 !important;
+visibility: visible !important;
+pointer-events: none !important;
+box-shadow:
+0 0 2px rgba(255, 225, 100, 0.8) !important;
 }
+/* =======================================================
+MENU ITEMS
+======================================================= */
+.nav-root.transparent .nav-item,
+.nav-root.solid .nav-item {
 
+flex: 0 0 auto !important;
 
-  /* =======================================================
-     MENU ITEMS
-     ======================================================= */
+margin: 0 !important;
 
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
+padding-top: 6px !important;
 
-    flex: 0 0 auto !important;
+padding-bottom: 6px !important;
 
-    margin: 0 !important;
+padding-left: 7px !important;
 
-    padding-top: 6px !important;
+padding-right: 7px !important;
 
-    padding-bottom: 6px !important;
+line-height: 1 !important;
 
-    padding-left: 7px !important;
+white-space: nowrap !important;
 
-    padding-right: 7px !important;
-
-    line-height: 1 !important;
-
-    white-space: nowrap !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     MENU SIZE
-     ======================================================= */
-
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
-
-    font-size:
-      clamp(
-        12px,
-        .68vw,
-        15px
-      ) !important;
-  }
-
-
-  /* =======================================================
-     ABOUT ARROW
-     ======================================================= */
-
-  .nav-item-chevron {
-
-    width: 7px !important;
-
-    height: 7px !important;
-
-    margin-left: 3px !important;
-
-    flex-shrink: 0 !important;
-  }
-
-
-  /* =======================================================
-     MENU UNDERLINE
-     ======================================================= */
-
-  .nav-item::after {
-
-    left: 3px !important;
-
-    right: 3px !important;
-  }
-
-
-  /* =======================================================
-     APPLY NOW
-     ======================================================= */
-
-  .nav-right {
-
-    flex: 0 0 auto !important;
-
-    min-width: 0 !important;
-
-    width: auto !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    justify-content: flex-end !important;
-
-    margin-left: 0 !important;
-
-    margin-right: 0 !important;
-
-    padding-left: 10px !important;
-
-    padding-right: 0 !important;
-
-    position: relative !important;
-
-    z-index: 60 !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     APPLY NOW
-     TRANSPARENT
-     ======================================================= */
-
-  .nav-root.transparent .btn-apply {
-
-    width: 112px !important;
-
-    height: 38px !important;
-
-    padding: 6px 10px !important;
-
-    font-size: 12px !important;
-
-    gap: 4px !important;
-
-    transform: none !important;
-
-    white-space: nowrap !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     APPLY NOW
-     SOLID
-     ======================================================= */
-
-  .nav-root.solid .btn-apply {
-
-    width: 102px !important;
-
-    height: 36px !important;
-
-    padding: 6px 9px !important;
-
-    font-size: 11px !important;
-
-    gap: 4px !important;
-
-    transform: none !important;
-
-    white-space: nowrap !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     APPLY ICON
-     ======================================================= */
-
-  .nav-root.transparent .btn-apply svg,
-  .nav-root.solid .btn-apply svg {
-
-    width: 11px !important;
-
-    height: 11px !important;
-
-    flex-shrink: 0 !important;
-  }
-
-
-  /* =======================================================
-     SOLID / WHITE HEADER
-     ======================================================= */
-
-  .nav-root.solid {
-
-    margin-left: 8px !important;
-
-    margin-right: 8px !important;
-
-    width:
-      calc(100% - 16px)
-      !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  .nav-root.solid .nav-inner {
-
-    padding-left: 18px !important;
-
-    padding-right: 18px !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     SOLID RIBBON
-     ======================================================= */
-
-  .nav-root.solid .premium-divider {
-
-    width:
-      clamp(
-        165px,
-        15vw,
-        205px
-      ) !important;
-
-    height: 4px !important;
-
-    margin:
-      7px auto 3px
-      !important;
-
-    box-shadow: none !important;
-
-    border: none !important;
-  }
-
-
-  /* =======================================================
-     BRAND PROTECTION
-     ======================================================= */
-
-  .nav-brand,
-  .nav-brand-text {
-
-    overflow: visible !important;
-  }
-
-
-  /* =======================================================
-     HAMBURGER
-     ======================================================= */
-
-  .nav-hamburger {
-
-    display: none !important;
-  }
+box-sizing: border-box !important;
 
 }
+/* =======================================================
+MENU SIZE
+======================================================= */
+.nav-root.transparent .nav-item,
+.nav-root.solid .nav-item {
 
+font-size:
+  clamp(
+    12px,
+    .68vw,
+    15px
+  ) !important;
 
+}
+/* =======================================================
+ABOUT ARROW
+======================================================= */
+.nav-item-chevron {
+
+width: 7px !important;
+
+height: 7px !important;
+
+margin-left: 3px !important;
+
+flex-shrink: 0 !important;
+
+}
+/* =======================================================
+MENU UNDERLINE
+======================================================= */
+.nav-item::after {
+
+left: 3px !important;
+
+right: 3px !important;
+
+}
+/* =======================================================
+APPLY NOW
+======================================================= */
+.nav-right {
+
+flex: 0 0 auto !important;
+
+min-width: 0 !important;
+
+width: auto !important;
+
+display: flex !important;
+
+align-items: center !important;
+
+justify-content: flex-end !important;
+
+margin-left: 0 !important;
+
+margin-right: 0 !important;
+
+padding-left: 10px !important;
+
+padding-right: 0 !important;
+
+position: relative !important;
+
+z-index: 60 !important;
+
+box-sizing: border-box !important;
+
+}
+/* =======================================================
+APPLY NOW
+TRANSPARENT
+======================================================= */
+.nav-root.transparent .btn-apply {
+
+width: 112px !important;
+
+height: 38px !important;
+
+padding: 6px 10px !important;
+
+font-size: 12px !important;
+
+gap: 4px !important;
+
+transform: none !important;
+
+white-space: nowrap !important;
+
+box-sizing: border-box !important;
+
+}
+/* =======================================================
+APPLY NOW
+SOLID
+======================================================= */
+.nav-root.solid .btn-apply {
+
+width: 102px !important;
+
+height: 36px !important;
+
+padding: 6px 9px !important;
+
+font-size: 11px !important;
+
+gap: 4px !important;
+
+transform: none !important;
+
+white-space: nowrap !important;
+
+box-sizing: border-box !important;
+
+}
+/* =======================================================
+APPLY ICON
+======================================================= */
+.nav-root.transparent .btn-apply svg,
+.nav-root.solid .btn-apply svg {
+
+width: 11px !important;
+
+height: 11px !important;
+
+flex-shrink: 0 !important;
+
+}
+/* =======================================================
+SOLID / WHITE HEADER
+======================================================= */
+.nav-root.solid {
+
+margin-left: 8px !important;
+
+margin-right: 8px !important;
+
+width:
+  calc(100% - 16px)
+  !important;
+
+box-sizing: border-box !important;
+
+}
+.nav-root.solid .nav-inner {
+
+padding-left: 18px !important;
+
+padding-right: 18px !important;
+
+box-sizing: border-box !important;
+
+}
+/* =======================================================
+SOLID RIBBON
+======================================================= */
+.nav-root.solid .premium-divider {
+
+width:
+  clamp(
+    165px,
+    15vw,
+    205px
+  ) !important;
+
+height: 4px !important;
+
+margin:
+  7px auto 3px
+  !important;
+
+overflow:  !important;
+
+box-shadow: none !important;
+
+border: none !important;
+
+}
+/* =======================================================
+BRAND PROTECTION
+======================================================= */
+.nav-brand,
+.nav-brand-text {
+
+overflow: visible !important;
+
+}
+/* =======================================================
+HAMBURGER
+======================================================= */
+.nav-hamburger {
+
+display: none !important;
+
+}
+}
 /* =========================================================
-   WHITE SHINE KEYFRAMES
-   OUTSIDE MEDIA QUERY
-   IMPORTANT
-   ========================================================= */
-
+WHITE SHINE KEYFRAMES
+OUTSIDE MEDIA QUERY
+IMPORTANT
+========================================================= */
 @keyframes laptopRibbonWhiteShine {
+0% {
 
-  0% {
+left: -70px;
 
-    left: -70px;
-
-    opacity: 0;
-  }
-
-
-  8% {
-
-    left: -50px;
-
-    opacity: 1;
-  }
-
-
-  25% {
-
-    left: 0;
-
-    opacity: 1;
-  }
-
-
-  45% {
-
-    left: 55px;
-
-    opacity: 1;
-  }
-
-
-  65% {
-
-    left: 110px;
-
-    opacity: 1;
-  }
-
-
-  82% {
-
-    left: 155px;
-
-    opacity: 1;
-  }
-
-
-  92% {
-
-    left: 205px;
-
-    opacity: 0;
-  }
-
-
-  100% {
-
-    left: 225px;
-
-    opacity: 0;
-  }
+opacity: 0;
 
 }
+8% {
 
-   /* ---------- SMALL PHONE: 480px and below ---------- */
+left: -50px;
 
+opacity: 1;
+
+}
+25% {
+
+left: 0;
+
+opacity: 1;
+
+}
+45% {
+
+left: 55px;
+
+opacity: 1;
+
+}
+65% {
+
+left: 110px;
+
+opacity: 1;
+
+}
+82% {
+
+left: 155px;
+
+opacity: 1;
+
+}
+92% {
+
+left: 205px;
+
+opacity: 0;
+
+}
+100% {
+
+left: 225px;
+
+opacity: 0;
+
+}
+}
+/* ---------- SMALL PHONE: 480px and below ---------- */
 @media (max-width: 480px) {
-
-  .top-contact-bar {
-    height: 38px !important;
-  }
-
-  .top-contact-inner {
-    height: 38px !important;
-    padding: 0 10px !important;
-    gap: 8px !important;
-  }
-
-  .top-contact-item {
-    font-size: 7.5px !important;
-  }
-
-  .top-contact-inner .top-contact-item:nth-child(2) {
-    display: none !important;
-  }
-
-  .top-contact-inner .top-address {
-    margin-left: auto !important;
-    max-width: 58% !important;
-    min-width: 0 !important;
-  }
-
-  .nav-inner {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-
-  .nav-brand {
-    max-width: calc(100% - 44px) !important;
-    gap: 6px !important;
-  }
-
-  .nav-logo-ring {
-    width: 48px !important;
-    height: 52px !important;
-  }
-
-  .nav-logo-img {
-    width: 52px !important;
-    height: 52px !important;
-  }
+.top-contact-bar {
+height: 38px !important;
+}
+.top-contact-inner {
+height: 38px !important;
+padding: 0 10px !important;
+gap: 8px !important;
+}
+.top-contact-item {
+font-size: 7.5px !important;
+}
+.top-contact-inner .top-contact-item(2) {
+display: none !important;
+}
+.top-contact-inner .top-address {
+margin-left: auto !important;
+max-width: 58% !important;
+min-width: 0 !important;
+}
+.nav-inner {
+padding-left: 8px !important;
+padding-right: 8px !important;
+}
+.nav-brand {
+max-width: calc(100% - 44px) !important;
+gap: 6px !important;
+}
+.nav-logo-ring {
+width: 48px !important;
+height: 52px !important;
+}
+.nav-logo-img {
+width: 52px !important;
+height: 52px !important;
+}
    
 
 /* =========================================================
