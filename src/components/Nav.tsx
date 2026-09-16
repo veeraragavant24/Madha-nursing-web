@@ -1083,7 +1083,7 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
-    FINAL LAPTOP HEADER
+ FINAL LAPTOP HEADER
    769px → 1400px
 
    ONLY RIBBON / SHINE FIXED
@@ -1236,7 +1236,11 @@ font-weight: 700;
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
 
-    font-size: clamp(15px, 1.20vw, 19px) !important;
+    font-size: clamp(
+      17px,
+      1.45vw,
+      22px
+    ) !important;
 
     letter-spacing:
       clamp(
@@ -1255,7 +1259,7 @@ font-weight: 700;
   position: relative !important;
 
   width: 175px !important;
-  height: 6px !important;
+  height: 7px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1358,13 +1362,13 @@ overflow: visible !important;
   0% {
     background-position:
       center center,
-      var(--shine-start, -65px) center !important;
+      var(--shine-start, -65px) center;
   }
 
   10% {
     background-position:
       center center,
-      var(--shine-start, -65px) center !important;
+      var(--shine-start, -65px) center;
   }
 
   25% {
@@ -1373,7 +1377,7 @@ overflow: visible !important;
       calc(
         var(--shine-start, -65px) +
         (var(--shine-travel, 175px) * 0.25)
-      ) center !important;
+      ) center;
   }
 
   50% {
@@ -1382,7 +1386,7 @@ overflow: visible !important;
       calc(
         var(--shine-start, -65px) +
         (var(--shine-travel, 175px) * 0.50)
-      ) center !important;
+      ) center;
   }
 
   75% {
@@ -1391,7 +1395,7 @@ overflow: visible !important;
       calc(
         var(--shine-start, -65px) +
         (var(--shine-travel, 175px) * 0.75)
-      ) center !important;
+      ) center;
   }
 
   90% {
@@ -1400,7 +1404,7 @@ overflow: visible !important;
       calc(
         var(--shine-start, -65px) +
         (var(--shine-travel, 175px) * 0.90)
-      ) center !important;
+      ) center;
   }
 
   100% {
@@ -1409,7 +1413,7 @@ overflow: visible !important;
       calc(
         var(--shine-start, -65px) +
         var(--shine-travel, 175px)
-      ) center !important;
+      ) center;
   }
 }
 
@@ -1484,9 +1488,9 @@ overflow: visible !important;
 
     padding-bottom: 6px !important;
 
-    padding-left: 5px !important;
+    padding-left: 7px !important;
 
-    padding-right: 5px !important;
+    padding-right: 7px !important;
 
     line-height: 1 !important;
 
@@ -1503,7 +1507,12 @@ overflow: visible !important;
   .nav-root.transparent .nav-item,
   .nav-root.solid .nav-item {
 
-    font-size: clamp(10px, .58vw, 13px) !important;
+    font-size:
+      clamp(
+        12px,
+        .68vw,
+        15px
+      ) !important;
   }
 
 
@@ -1513,11 +1522,11 @@ overflow: visible !important;
 
   .nav-item-chevron {
 
-    width: 6px !important;
+    width: 7px !important;
 
     height: 7px !important;
 
-    margin-left: 2px !important;
+    margin-left: 3px !important;
 
     flex-shrink: 0 !important;
   }
@@ -1557,7 +1566,7 @@ overflow: visible !important;
 
     margin-right: 0 !important;
 
-    padding-left: 7px !important;
+    padding-left: 10px !important;
 
     padding-right: 0 !important;
 
@@ -1582,7 +1591,7 @@ overflow: visible !important;
 
     padding: 6px 10px !important;
 
-    font-size: 10px !important;
+    font-size: 12px !important;
 
     gap: 4px !important;
 
@@ -1607,7 +1616,7 @@ overflow: visible !important;
 
     padding: 6px 9px !important;
 
-    font-size: 10px !important;
+    font-size: 11px !important;
 
     gap: 4px !important;
 
@@ -1654,9 +1663,9 @@ overflow: visible !important;
 
   .nav-root.solid .nav-inner {
 
-    padding-left: 12px !important;
+    padding-left: 18px !important;
 
-    padding-right: 12px !important;
+    padding-right: 18px !important;
 
     box-sizing: border-box !important;
   }
@@ -1680,8 +1689,6 @@ overflow: visible !important;
     margin:
       7px auto 3px
       !important;
-
-    overflow:  !important;
 
     box-shadow: none !important;
 
@@ -1832,6 +1839,7 @@ overflow: visible !important;
     width: 52px !important;
     height: 52px !important;
   }
+   
 
 /* =========================================================
    MOBILE RESPONSIVE
