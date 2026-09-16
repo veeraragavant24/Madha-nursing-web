@@ -33,7 +33,7 @@ function displayDate(dateStr: string) {
 }
 
 const API_BASE_URL =
-  'https://invisible-beverly-casting-teens.trycloudflare.com'
+  'https://madha-nursing-api.onrender.com'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK

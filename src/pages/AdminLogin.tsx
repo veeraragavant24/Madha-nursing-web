@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const API_BASE =
-  'https://invisible-beverly-casting-teens.trycloudflare.com/api'
+  'https://madha-nursing-api.onrender.com/api'
   
 interface Props {
   goToDashboard: () => void
