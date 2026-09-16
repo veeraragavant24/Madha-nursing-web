@@ -9,16 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 // =====================================================
 // CORS
 // =====================================================
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins(
-                "http://localhost:8443",
-                "https://localhost:8443",
-                "https://veeraragavant24-madha-nursing-web-8.vercel.app"
+            .SetIsOriginAllowed(origin =>
+                origin == "http://localhost:8443" ||
+                origin == "https://localhost:8443" ||
+                origin == "https://veeraragavant24-madha-nursing-web-8.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -37,9 +36,8 @@ builder.Services.AddSwaggerGen();
 // =====================================================
 // DATABASE - SQL SERVER
 // =====================================================
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(
+    options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
@@ -48,10 +46,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // PASSWORD HASHING
 // =====================================================
 
-builder.Services.AddScoped<
-    Microsoft.AspNetCore.Identity.IPasswordHasher<MadhaNursing.Api.Models.AdminUser>,
-    Microsoft.AspNetCore.Identity.PasswordHasher<MadhaNursing.Api.Models.AdminUser>
->();
 
 // =====================================================
 // JWT AUTHENTICATION
