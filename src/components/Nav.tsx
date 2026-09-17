@@ -519,7 +519,7 @@ a.top-contact-item:hover {
   align-self: center;
 
   width: 250px;
-  height: 4px;
+  height: 5px;
 
   margin: 7px 0 3px;
 
@@ -1259,8 +1259,7 @@ font-weight: 700;
 
   position: relative !important;
 
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 140px !important;
   height: 3px !important;
 
   margin-top: 7px !important;
@@ -1336,7 +1335,7 @@ overflow: visible !important;
 
   background-position:
     center center,
-    200% center !important;
+    170% center !important;
 
   background-repeat:
     no-repeat,
@@ -1372,14 +1371,14 @@ overflow: visible !important;
 
     background-position:
       center center,
-      200% center !important;
+      170% center !important;
   }
 
   100% {
 
     background-position:
       center center,
-      -100% center !important;
+      -70% center !important;
   }
 }
 
@@ -1643,9 +1642,12 @@ overflow: visible !important;
 
   .nav-root.solid .premium-divider {
 
-    width: 100% !important;
-
-    max-width: 100% !important;
+    width:
+      clamp(
+        130px,
+        12vw,
+        165px
+      ) !important;
 
     height: 4px !important;
 
@@ -1756,7 +1758,6 @@ overflow: visible !important;
   }
 
 }
-
 
 
 
