@@ -1258,9 +1258,7 @@ font-weight: 700;
 .premium-divider {
 
   position: relative !important;
-
-  width: 140px !important;
-  height: 3px !important;
+width: 100% !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1644,8 +1642,7 @@ overflow: visible !important;
 
     width: 100% !important;
 
-    height: 4px !important;
-
+   
     margin:
       7px auto 3px
       !important;
