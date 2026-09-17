@@ -1089,7 +1089,6 @@ ONLY RIBBON / SHINE FIXED
 OTHER HEADER ELEMENTS PRESERVED
 ========================================================= */
 
-
 /* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
@@ -1392,28 +1391,28 @@ overflow: visible !important;
 
     background-position:
       center center,
-      55px center !important;
+      65px center !important;
   }
 
   75% {
 
     background-position:
       center center,
-      105px center !important;
+      120px center !important;
   }
 
   90% {
 
     background-position:
       center center,
-      155px center !important;
+      175px center !important;
   }
 
   100% {
 
     background-position:
       center center,
-      220px center !important;
+      240px center !important;
   }
 }
 
@@ -1429,7 +1428,7 @@ overflow: visible !important;
   position: absolute !important;
 
   left: 50% !important;
-  top: 35% !important;
+  top: 50% !important;
 
   width: 13px !important;
   height: 13px !important;
@@ -1840,7 +1839,7 @@ overflow: visible !important;
   .nav-logo-img {
     width: 52px !important;
     height: 52px !important;
-  }
+
    
 
 /* =========================================================
