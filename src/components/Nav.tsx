@@ -1720,78 +1720,7 @@ overflow: visible !important;
 }
 
 
-/* =========================================================
-   WHITE SHINE KEYFRAMES
-   OUTSIDE MEDIA QUERY
-   IMPORTANT
-   ========================================================= */
 
-@keyframes laptopRibbonWhiteShine {
-
-  0% {
-
-    left: -70px;
-
-    opacity: 0;
-  }
-
-
-  8% {
-
-    left: -50px;
-
-    opacity: 1;
-  }
-
-
-  25% {
-
-    left: 0;
-
-    opacity: 1;
-  }
-
-
-  45% {
-
-    left: 55px;
-
-    opacity: 1;
-  }
-
-
-  65% {
-
-    left: 110px;
-
-    opacity: 1;
-  }
-
-
-  82% {
-
-    left: 155px;
-
-    opacity: 1;
-  }
-
-
-  92% {
-
-    left: 205px;
-
-    opacity: 0;
-  }
-
-
-  100% {
-
-    left: 225px;
-
-    opacity: 0;
-  }
-
-}
 
    /* ---------- SMALL PHONE: 480px and below ---------- */
 
