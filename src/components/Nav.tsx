@@ -1255,6 +1255,7 @@ font-weight: 700;
    GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
    ======================================================= */
 
+
 .premium-divider {
 
   position: relative !important;
@@ -1279,29 +1280,19 @@ font-weight: 700;
 
   border-radius: 4px !important;
 
-overflow: visible !important;
-  /*
-     TWO BACKGROUND LAYERS
+  overflow: visible !important;
 
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
-    linear-gradient(
-      90deg,
-      #806000 0%,
-      #b98200 15%,
-      #e0b52c 35%,
-      #f5d45b 50%,
-      #e0b52c 65%,
-      #b98200 85%,
-      #806000 100%
-    ),
-
-
+  /* GOLD RIBBON ONLY */
+  background: linear-gradient(
+    90deg,
+    #806000 0%,
+    #b98200 15%,
+    #e0b52c 35%,
+    #f5d45b 50%,
+    #e0b52c 65%,
+    #b98200 85%,
+    #806000 100%
+  ) !important;
 
   box-shadow: none !important;
 
@@ -1317,47 +1308,111 @@ overflow: visible !important;
 
 .premium-divider::before {
   content: "" !important;
+
   position: absolute !important;
+
   top: 0 !important;
-  left: -55px !important;
-  width: 55px !important;
+  left: -60px !important;
+
+  width: 60px !important;
   height: 100% !important;
+
+  display: block !important;
+
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255,255,255,0) 10%,
-    rgba(255,255,255,.35) 30%,
+    rgba(255,255,255,0.08) 15%,
+    rgba(255,255,255,0.55) 35%,
     #ffffff 50%,
-    rgba(255,255,255,.35) 70%,
-    rgba(255,255,255,0) 90%,
+    rgba(255,255,255,0.55) 65%,
+    rgba(255,255,255,0.08) 85%,
     transparent 100%
   ) !important;
-  transform: skewX(-18deg) translateX(0) !important;
+
+  transform: skewX(-18deg) !important;
+
   opacity: 0 !important;
+
+  visibility: visible !important;
+
   pointer-events: none !important;
-  filter: drop-shadow(0 0 3px rgba(255,255,255,.95)) !important;
+
   z-index: 30 !important;
-  animation: madhaToNursingShine 3.2s linear infinite !important;
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,0.95)) !important;
+
+  animation:
+    madhaToNursingShine
+    2.8s
+    linear
+    infinite !important;
+
   animation-play-state: running !important;
-  will-change: transform, opacity !important;
+
+  will-change: left, opacity !important;
 }
 
+
 /* =======================================================
-   MADHA "M" → NURSING "G"
-   CONTINUOUS LEFT → RIGHT SHINE
+   WHITE SHINE ANIMATION
+   LEFT SIDE OF MADHA "M"
+   →
+   RIGHT SIDE OF NURSING "G"
    ======================================================= */
 
 @keyframes madhaToNursingShine {
-  0%   { transform: skewX(-18deg) translateX(0); opacity: 0; }
-  8%   { transform: skewX(-18deg) translateX(20px); opacity: 1; }
-  18%  { transform: skewX(-18deg) translateX(55px); opacity: 1; }
-  35%  { transform: skewX(-18deg) translateX(105px); opacity: 1; }
-  50%  { transform: skewX(-18deg) translateX(140px); opacity: 1; }
-  68%  { transform: skewX(-18deg) translateX(180px); opacity: 1; }
-  82%  { transform: skewX(-18deg) translateX(215px); opacity: 1; }
-  92%  { transform: skewX(-18deg) translateX(230px); opacity: .8; }
-  100% { transform: skewX(-18deg) translateX(285px); opacity: 0; }
+
+  0% {
+    left: -60px !important;
+    opacity: 0 !important;
+  }
+
+  7% {
+    left: -30px !important;
+    opacity: 1 !important;
+  }
+
+  /* MADHA "M" / LEFT SIDE */
+  18% {
+    left: 0px !important;
+    opacity: 1 !important;
+  }
+
+  35% {
+    left: 35px !important;
+    opacity: 1 !important;
+  }
+
+  /* CENTER */
+  50% {
+    left: 70px !important;
+    opacity: 1 !important;
+  }
+
+  65% {
+    left: 105px !important;
+    opacity: 1 !important;
+  }
+
+  80% {
+    left: 140px !important;
+    opacity: 1 !important;
+  }
+
+  /* NURSING "G" / RIGHT SIDE */
+  92% {
+    left: 175px !important;
+    opacity: 1 !important;
+  }
+
+  100% {
+    left: 235px !important;
+    opacity: 0 !important;
+  }
 }
+
 
 /* =======================================================
    CENTER GOLD DIAMOND
@@ -1398,10 +1453,6 @@ overflow: visible !important;
     translate(-50%, -50%)
     rotate(45deg) !important;
 
-  /*
-     IMPORTANT
-     Put diamond above everything.
-  */
   z-index: 999 !important;
 
   opacity: 1 !important;
@@ -1413,6 +1464,10 @@ overflow: visible !important;
   box-shadow:
     0 0 2px rgba(255, 225, 100, 0.8) !important;
 }
+
+
+/* =======================================================
+   MENU ITEMS
 
 
   /* =======================================================
@@ -1646,11 +1701,18 @@ overflow: visible !important;
      ======================================================= */
 
   .nav-root.solid .premium-divider::before {
-    left: -55px !important;
-    width: 55px !important;
-    animation: madhaToNursingShine 3.2s linear infinite !important;
+    left: -60px !important;
+    width: 60px !important;
+
+    animation:
+      madhaToNursingShine
+      2.8s
+      linear
+      infinite !important;
+
     animation-play-state: running !important;
-    will-change: transform, opacity !important;
+
+    will-change: left, opacity !important;
   }
 
 
@@ -1675,7 +1737,62 @@ overflow: visible !important;
   }
 
 }
+8% {
 
+    left: -50px;
+
+    opacity: 1;
+  }
+
+
+  25% {
+
+    left: 0;
+
+    opacity: 1;
+  }
+
+
+  45% {
+
+    left: 55px;
+
+    opacity: 1;
+  }
+
+
+  65% {
+
+    left: 110px;
+
+    opacity: 1;
+  }
+
+
+  82% {
+
+    left: 155px;
+
+    opacity: 1;
+  }
+
+
+  92% {
+
+    left: 205px;
+
+    opacity: 0;
+  }
+
+
+  100% {
+
+    left: 225px;
+
+    opacity: 0;
+  }
+
+}
 
 
 
