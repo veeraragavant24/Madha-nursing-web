@@ -1255,7 +1255,6 @@ font-weight: 700;
    GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
    ======================================================= */
 
-
 .premium-divider {
 
   position: relative !important;
@@ -1280,139 +1279,106 @@ font-weight: 700;
 
   border-radius: 4px !important;
 
-  overflow: visible !important;
+overflow: visible !important;
+  /*
+     TWO BACKGROUND LAYERS
 
-  /* GOLD RIBBON ONLY */
-  background: linear-gradient(
-    90deg,
-    #806000 0%,
-    #b98200 15%,
-    #e0b52c 35%,
-    #f5d45b 50%,
-    #e0b52c 65%,
-    #b98200 85%,
-    #806000 100%
-  ) !important;
+     1 = GOLD RIBBON
+     2 = WHITE MOVING SHINE
+  */
+
+  background-image:
+
+    /* GOLD RIBBON */
+    linear-gradient(
+      90deg,
+      #806000 0%,
+      #b98200 15%,
+      #e0b52c 35%,
+      #f5d45b 50%,
+      #e0b52c 65%,
+      #b98200 85%,
+      #806000 100%
+    ),
+
+    /* WHITE SHINE */
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 15%,
+      rgba(255,255,255,0.55) 35%,
+      #ffffff 50%,
+      rgba(255,255,255,0.55) 65%,
+      rgba(255,255,255,0.05) 85%,
+      transparent 100%
+    ) !important;
+
+  /*
+     GOLD = FULL WIDTH
+     SHINE = FULL RIBBON WIDTH STRIP
+     (200% background-size means one "shine" pass
+     equals the full width of the ribbon, so it
+     travels edge-to-edge, from under "M" of MADHA
+     to under "G" of NURSING)
+  */
+
+  background-size:
+    100% 100%,
+    200% 100% !important;
+
+  /*
+     GOLD STAYS FIXED
+     SHINE STARTS FULLY OFF THE LEFT EDGE
+  */
+
+  background-position:
+    center center,
+    -100% center !important;
+
+  background-repeat:
+    no-repeat,
+    no-repeat !important;
 
   box-shadow: none !important;
+
+  /*
+     FORCE ANIMATION
+  */
+
+  animation:
+    laptopGoldRibbonShine
+    2.5s
+    linear
+    infinite !important;
+
+  animation-play-state: running !important;
 
   z-index: 2 !important;
 }
 
 
 /* =======================================================
-   WHITE SHINE
-   MADHA "M" → NURSING "G"
-   BOTH NORMAL + WHITE HEADER
-   ======================================================= */
-
-.premium-divider::before {
-  content: "" !important;
-
-  position: absolute !important;
-
-  top: 0 !important;
-  left: -60px !important;
-
-  width: 60px !important;
-  height: 100% !important;
-
-  display: block !important;
-
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,0.08) 15%,
-    rgba(255,255,255,0.55) 35%,
-    #ffffff 50%,
-    rgba(255,255,255,0.55) 65%,
-    rgba(255,255,255,0.08) 85%,
-    transparent 100%
-  ) !important;
-
-  transform: skewX(-18deg) !important;
-
-  opacity: 0 !important;
-
-  visibility: visible !important;
-
-  pointer-events: none !important;
-
-  z-index: 30 !important;
-
-  filter:
-    drop-shadow(0 0 3px rgba(255,255,255,0.95)) !important;
-
-  animation:
-    madhaToNursingShine
-    2.8s
-    linear
-    infinite !important;
-
-  animation-play-state: running !important;
-
-  will-change: left, opacity !important;
-}
-
-
-/* =======================================================
    WHITE SHINE ANIMATION
-   LEFT SIDE OF MADHA "M"
-   →
-   RIGHT SIDE OF NURSING "G"
+   LEFT → RIGHT
+   FULL RIBBON WIDTH SWEEP
    ======================================================= */
 
-@keyframes madhaToNursingShine {
+@keyframes laptopGoldRibbonShine {
 
   0% {
-    left: -60px !important;
-    opacity: 0 !important;
-  }
 
-  7% {
-    left: -30px !important;
-    opacity: 1 !important;
-  }
-
-  /* MADHA "M" / LEFT SIDE */
-  18% {
-    left: 0px !important;
-    opacity: 1 !important;
-  }
-
-  35% {
-    left: 35px !important;
-    opacity: 1 !important;
-  }
-
-  /* CENTER */
-  50% {
-    left: 70px !important;
-    opacity: 1 !important;
-  }
-
-  65% {
-    left: 105px !important;
-    opacity: 1 !important;
-  }
-
-  80% {
-    left: 140px !important;
-    opacity: 1 !important;
-  }
-
-  /* NURSING "G" / RIGHT SIDE */
-  92% {
-    left: 175px !important;
-    opacity: 1 !important;
+    background-position:
+      center center,
+      -100% center !important;
   }
 
   100% {
-    left: 235px !important;
-    opacity: 0 !important;
+
+    background-position:
+      center center,
+      200% center !important;
   }
 }
-
 
 /* =======================================================
    CENTER GOLD DIAMOND
@@ -1453,6 +1419,10 @@ font-weight: 700;
     translate(-50%, -50%)
     rotate(45deg) !important;
 
+  /*
+     IMPORTANT
+     Put diamond above everything.
+  */
   z-index: 999 !important;
 
   opacity: 1 !important;
@@ -1464,10 +1434,6 @@ font-weight: 700;
   box-shadow:
     0 0 2px rgba(255, 225, 100, 0.8) !important;
 }
-
-
-/* =======================================================
-   MENU ITEMS
 
 
   /* =======================================================
@@ -1696,27 +1662,6 @@ font-weight: 700;
 
 
   /* =======================================================
-     WHITE / SOLID HEADER
-     SAME MADHA "M" → NURSING "G" SHINE
-     ======================================================= */
-
-  .nav-root.solid .premium-divider::before {
-    left: -60px !important;
-    width: 60px !important;
-
-    animation:
-      madhaToNursingShine
-      2.8s
-      linear
-      infinite !important;
-
-    animation-play-state: running !important;
-
-    will-change: left, opacity !important;
-  }
-
-
-  /* =======================================================
      BRAND PROTECTION
      ======================================================= */
 
@@ -1737,7 +1682,25 @@ font-weight: 700;
   }
 
 }
-8% {
+
+
+/* =========================================================
+   WHITE SHINE KEYFRAMES
+   OUTSIDE MEDIA QUERY
+   IMPORTANT
+   ========================================================= */
+
+@keyframes laptopRibbonWhiteShine {
+
+  0% {
+
+    left: -70px;
+
+    opacity: 0;
+  }
+
+
+  8% {
 
     left: -50px;
 
