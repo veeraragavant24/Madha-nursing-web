@@ -1093,8 +1093,8 @@ OTHER HEADER ELEMENTS PRESERVED
    FINAL LAPTOP HEADER
    769px → 1400px
 
-   ONLY RIBBON / SHINE FIXED
-   OTHER HEADER ELEMENTS PRESERVED
+   COMPLETE LAPTOP HEADER REBUILD
+   Mobile and large desktop are NOT affected.
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
@@ -1122,8 +1122,16 @@ OTHER HEADER ELEMENTS PRESERVED
     width: 100% !important;
     max-width: 100% !important;
 
+    height: 100% !important;
+
     display: flex !important;
     align-items: center !important;
+    justify-content: space-between !important;
+
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+
+    gap: 18px !important;
 
     box-sizing: border-box !important;
 
@@ -1136,15 +1144,27 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-brand {
+    display: flex !important;
+    align-items: center !important;
+
+    flex: 0 1 auto !important;
     flex-shrink: 0 !important;
 
     min-width: 0 !important;
 
+    gap: 12px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    background: none !important;
+    border: none !important;
+
+    position: relative !important;
+
     overflow: visible !important;
 
     box-sizing: border-box !important;
-
-    position: relative !important;
 
     z-index: 50 !important;
   }
@@ -1155,374 +1175,526 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-logo-ring {
+    width: 72px !important;
+    height: 72px !important;
+
+    flex: 0 0 72px !important;
     flex-shrink: 0 !important;
 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
     position: relative !important;
+
+    background: transparent !important;
+
+    box-sizing: border-box !important;
 
     z-index: 55 !important;
   }
 
 
   .nav-logo-img {
+    width: 72px !important;
+    height: 72px !important;
+
+    display: block !important;
+
     object-fit: contain !important;
 
-    display: block !important;
-  }
-
-
-  /* =======================================================
-     TITLE CONTAINER
-     ======================================================= */
-
-  .nav-brand-text {
-    min-width: 0 !important;
-
-    flex-shrink: 0 !important;
-
-    width: max-content !important;
-
-    max-width: none !important;
-
-    overflow: visible !important;
-
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    align-items: center !important;
-
-    justify-content: center !important;
-
-    gap: 0 !important;
-
-    white-space: nowrap !important;
-
-    position: relative !important;
-
-    z-index: 55 !important;
-  }
-
-
-  /* =======================================================
-     COLLEGE TITLE
-     ======================================================= */
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-
-    display: block !important;
-
-    width: max-content !important;
-
-    max-width: none !important;
-
-    overflow: visible !important;
-
-    text-overflow: clip !important;
-
-    white-space: nowrap !important;
-
-    text-align: center !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    line-height: 1.05 !important;
-
-    position: relative !important;
-
-    z-index: 5 !important;
-  }
-
-
-  /* =======================================================
-     LAPTOP TITLE
-     ======================================================= */
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-
-    font-size: clamp(
-      17px,
-      1.45vw,
-      22px
-    ) !important;
-
-    letter-spacing:
-      clamp(
-        .025em,
-        .06vw,
-        .045em
-      ) !important;
-  }
-/* =======================================================
-   LAPTOP GOLD RIBBON
-   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
-   ======================================================= */
-
-.premium-divider {
-
-  position: relative !important;
-
-  width: 175px !important;
-  height: 5px !important;
-
-  margin-top: 7px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 2px !important;
-
-  align-self: center !important;
-
-  display: block !important;
-
-  flex-shrink: 0 !important;
-
-  box-sizing: border-box !important;
-
-  border: none !important;
-
-  border-radius: 4px !important;
-
-overflow: visible !important;
-  /*
-     TWO BACKGROUND LAYERS
-
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
-    linear-gradient(
-      90deg,
-      #806000 0%,
-      #b98200 15%,
-      #e0b52c 35%,
-      #f5d45b 50%,
-      #e0b52c 65%,
-      #b98200 85%,
-      #806000 100%
-    ),
-
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
-    ) !important;
-
-  /*
-     GOLD = FULL WIDTH
-     SHINE = SMALL MOVING STRIP
-  */
-
-  background-size:
-    100% 100%,
-    65px 100% !important;
-
-  /*
-     GOLD STAYS FIXED
-     SHINE STARTS OUTSIDE LEFT
-  */
-
-  background-position:
-    center center,
-    -65px center !important;
-
-  background-repeat:
-    no-repeat,
-    no-repeat !important;
-
-  box-shadow: none !important;
-
-  /*
-     FORCE ANIMATION
-  */
-
-  animation:
-    laptopGoldRibbonShine
-    2.5s
-    linear
-    infinite !important;
-
-  animation-play-state: running !important;
-
-  z-index: 2 !important;
-}
-
-
-/* =======================================================
-   WHITE SHINE ANIMATION
-   LEFT → RIGHT
-   ======================================================= */
-
-@keyframes laptopGoldRibbonShine {
-
-  0% {
-
-    background-position:
-      center center,
-      -65px center !important;
-  }
-
-  10% {
-
-    background-position:
-      center center,
-      -30px center !important;
-  }
-
-  25% {
-
-    background-position:
-      center center,
-      10px center !important;
-  }
-
-  50% {
-
-    background-position:
-      center center,
-      65px center !important;
-  }
-
-  75% {
-
-    background-position:
-      center center,
-      120px center !important;
-  }
-
-  90% {
-
-    background-position:
-      center center,
-      175px center !important;
-  }
-
-  100% {
-
-    background-position:
-      center center,
-      240px center !important;
-  }
-}
-
-/* =======================================================
-   CENTER GOLD DIAMOND
-   ALWAYS VISIBLE ABOVE THE RIBBON
-   ======================================================= */
-
-.premium-divider::after {
-
-  content: "" !important;
-
-  position: absolute !important;
-
-  left: 50% !important;
-  top: 50% !important;
-
-  width: 13px !important;
-  height: 13px !important;
-
-  margin: 0 !important;
-
-  display: block !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff7bd 0%,
-      #ffe76a 25%,
-      #f0c936 45%,
-      #d29d0b 70%,
-      #8a6200 100%
-    ) !important;
-
-  border: 1px solid #ffe47a !important;
-
-  border-radius: 1px !important;
-
-  transform:
-    translate(-50%, -50%)
-    rotate(45deg) !important;
-
-  /*
-     IMPORTANT
-     Put diamond above everything.
-  */
-  z-index: 999 !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  pointer-events: none !important;
-
-  box-shadow:
-    0 0 2px rgba(255, 225, 100, 0.8) !important;
-}
-
-
-  /* =======================================================
-     MENU ITEMS
-     ======================================================= */
-
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
-
-    flex: 0 0 auto !important;
-
-    margin: 0 !important;
-
-    padding-top: 6px !important;
-
-    padding-bottom: 6px !important;
-
-    padding-left: 7px !important;
-
-    padding-right: 7px !important;
-
-    line-height: 1 !important;
-
-    white-space: nowrap !important;
+    border-radius: 50% !important;
 
     box-sizing: border-box !important;
   }
 
 
   /* =======================================================
-     MENU SIZE
+     SCROLLED / WHITE HEADER LOGO
      ======================================================= */
 
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
+  .nav-root.solid .nav-logo-ring {
+    width: 58px !important;
+    height: 58px !important;
 
-    font-size:
-      clamp(
-        12px,
-        .68vw,
-        15px
-      ) !important;
+    flex-basis: 58px !important;
+  }
+
+  .nav-root.solid .nav-logo-img {
+    width: 58px !important;
+    height: 58px !important;
   }
 
 
   /* =======================================================
-     ABOUT ARROW
+     BRAND TEXT
      ======================================================= */
 
+  .nav-brand-text {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+
+    width: max-content !important;
+    max-width: none !important;
+
+    min-width: 0 !important;
+
+    gap: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    position: relative !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 55 !important;
+  }
+
+
+  /* =======================================================
+     COLLEGE NAME
+     ======================================================= */
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    display: block !important;
+
+    width: max-content !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    white-space: nowrap !important;
+
+    text-align: center !important;
+
+    overflow: visible !important;
+
+    text-overflow: clip !important;
+
+    line-height: 1.05 !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     NORMAL HEADER TITLE
+     ======================================================= */
+
+  .nav-root.transparent .nav-college-name {
+    font-size: clamp(17px, 1.25vw, 21px) !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: .045em !important;
+
+    color: #ffffff !important;
+
+    text-shadow: 0 3px 15px rgba(0,0,0,.45) !important;
+  }
+
+
+  /* =======================================================
+     WHITE / SCROLL HEADER TITLE
+     ======================================================= */
+
+  .nav-root.solid .nav-college-name {
+    font-size: clamp(16px, 1.15vw, 19px) !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: .045em !important;
+
+    color: #163B72 !important;
+
+    text-shadow: none !important;
+  }
+
+
+  /* =======================================================
+     COLLEGE SUBTITLE
+     ======================================================= */
+
+  .nav-root.transparent .nav-college-sub,
+  .nav-root.solid .nav-college-sub {
+    display: block !important;
+
+    margin-top: 4px !important;
+
+    white-space: nowrap !important;
+
+    text-align: center !important;
+
+    line-height: 1 !important;
+
+    text-transform: uppercase !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  .nav-root.transparent .nav-college-sub {
+    font-size: 8px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: .28em !important;
+
+    color: #ffffff !important;
+  }
+
+
+  .nav-root.solid .nav-college-sub {
+    font-size: 7px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: .25em !important;
+
+    color: #6B7280 !important;
+  }
+
+
+  /* =======================================================
+     GOLD RIBBON
+     ======================================================= */
+
+  .premium-divider {
+    position: relative !important;
+
+    display: block !important;
+
+    align-self: center !important;
+
+    flex: 0 0 auto !important;
+    flex-shrink: 0 !important;
+
+    width: 190px !important;
+    height: 7px !important;
+
+    margin: 7px auto 2px !important;
+    padding: 0 !important;
+
+    border: none !important;
+
+    border-radius: 4px !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        #806000 0%,
+        #b98200 14%,
+        #dcae22 30%,
+        #f4d45c 50%,
+        #dcae22 70%,
+        #b98200 86%,
+        #806000 100%
+      ) !important;
+
+    box-shadow:
+      0 1px 4px rgba(184,134,11,.35) !important;
+
+    overflow: visible !important;
+
+    box-sizing: border-box !important;
+
+    z-index: 20 !important;
+  }
+
+
+  /* =======================================================
+     MOVING WHITE SHINE
+     M → G
+     ======================================================= */
+
+  .premium-divider::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+
+    left: var(--shine-start, -100px) !important;
+
+    width: 65px !important;
+    height: 100% !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0) 15%,
+        rgba(255,255,255,.35) 35%,
+        #ffffff 50%,
+        rgba(255,255,255,.35) 65%,
+        rgba(255,255,255,0) 85%,
+        transparent 100%
+      ) !important;
+
+    transform: skewX(-18deg) translateX(0) !important;
+
+    opacity: 0 !important;
+
+    pointer-events: none !important;
+
+    filter:
+      drop-shadow(0 0 3px rgba(255,255,255,.9)) !important;
+
+    z-index: 30 !important;
+
+    animation:
+      laptopRibbonShine
+      3.2s
+      linear
+      infinite !important;
+  }
+
+
+  /* =======================================================
+     SHINE ANIMATION
+     ======================================================= */
+
+  @keyframes laptopRibbonShine {
+
+    0% {
+      transform:
+        skewX(-18deg)
+        translateX(0);
+
+      opacity: 0;
+    }
+
+    8% {
+      opacity: 1;
+    }
+
+    45% {
+      opacity: 1;
+    }
+
+    90% {
+      transform:
+        skewX(-18deg)
+        translateX(
+          calc(var(--shine-travel, 250px) - 65px)
+        );
+
+      opacity: 1;
+    }
+
+    100% {
+      transform:
+        skewX(-18deg)
+        translateX(
+          calc(var(--shine-travel, 250px) - 65px)
+        );
+
+      opacity: 0;
+    }
+  }
+
+
+  /* =======================================================
+     CENTER DIAMOND
+     ======================================================= */
+
+  .premium-divider::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 50% !important;
+
+    width: 13px !important;
+    height: 13px !important;
+
+    margin: 0 !important;
+
+    display: block !important;
+
+    background:
+      linear-gradient(
+        135deg,
+        #fff7bd 0%,
+        #ffe76a 25%,
+        #f0c936 45%,
+        #d29d0b 70%,
+        #8a6200 100%
+      ) !important;
+
+    border:
+      1px solid #ffe47a !important;
+
+    border-radius: 1px !important;
+
+    transform:
+      translate(-50%, -50%)
+      rotate(45deg) !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: none !important;
+
+    box-shadow:
+      0 0 3px rgba(255,225,100,.8) !important;
+
+    z-index: 100 !important;
+  }
+
+
+  /* =======================================================
+     NAVIGATION AREA
+     ======================================================= */
+
+  .nav-links {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex: 1 1 auto !important;
+
+    min-width: 0 !important;
+
+    width: auto !important;
+
+    gap: clamp(4px, .55vw, 10px) !important;
+
+    flex-wrap: nowrap !important;
+
+    white-space: nowrap !important;
+
+    overflow: visible !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     NAVIGATION ITEMS
+     ======================================================= */
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 0 auto !important;
+
+    margin: 0 !important;
+
+    padding:
+      7px
+      clamp(5px, .45vw, 8px) !important;
+
+    border-radius: 7px !important;
+
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    box-sizing: border-box !important;
+
+    font-size:
+      clamp(11px, .62vw, 14px) !important;
+
+    font-weight: 500 !important;
+
+    letter-spacing: 0 !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+  /* =======================================================
+     NORMAL MENU
+     ======================================================= */
+
+  .nav-root.transparent .nav-item {
+    color: rgba(255,255,255,.88) !important;
+  }
+
+  .nav-root.transparent .nav-item:hover {
+    color: #ffffff !important;
+
+    background:
+      rgba(255,255,255,.08) !important;
+  }
+
+  .nav-root.transparent .nav-item.active {
+    color: #ffffff !important;
+  }
+
+
+  /* =======================================================
+     WHITE MENU
+     ======================================================= */
+
+  .nav-root.solid .nav-item {
+    color: #163B72 !important;
+  }
+
+  .nav-root.solid .nav-item:hover {
+    color: #0B2545 !important;
+
+    background:
+      rgba(11,37,69,.05) !important;
+  }
+
+  .nav-root.solid .nav-item.active {
+    color: #0B2545 !important;
+  }
+
+
+  /* =======================================================
+     ACTIVE UNDERLINE
+     ======================================================= */
+
+  .nav-item::after {
+    left: 3px !important;
+    right: 3px !important;
+
+    bottom: 1px !important;
+
+    height: 2px !important;
+
+    border-radius: 2px !important;
+
+    background: #D4AF37 !important;
+  }
+
+
+  /* =======================================================
+     ABOUT DROPDOWN
+     ======================================================= */
+
+  .nav-dropdown-trigger {
+    display: flex !important;
+
+    align-items: center !important;
+
+    flex: 0 0 auto !important;
+
+    min-width: 0 !important;
+  }
+
+
   .nav-item-chevron {
-
     width: 7px !important;
-
     height: 7px !important;
 
     margin-left: 3px !important;
@@ -1532,42 +1704,25 @@ overflow: visible !important;
 
 
   /* =======================================================
-     MENU UNDERLINE
-     ======================================================= */
-
-  .nav-item::after {
-
-    left: 3px !important;
-
-    right: 3px !important;
-  }
-
-
-  /* =======================================================
-     APPLY NOW
+     RIGHT SIDE
      ======================================================= */
 
   .nav-right {
-
-    flex: 0 0 auto !important;
-
-    min-width: 0 !important;
-
-    width: auto !important;
-
     display: flex !important;
 
     align-items: center !important;
-
     justify-content: flex-end !important;
 
-    margin-left: 0 !important;
+    flex: 0 0 auto !important;
 
-    margin-right: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
 
-    padding-left: 10px !important;
+    margin: 0 !important;
 
-    padding-right: 0 !important;
+    padding: 0 !important;
+
+    gap: 8px !important;
 
     position: relative !important;
 
@@ -1578,23 +1733,31 @@ overflow: visible !important;
 
 
   /* =======================================================
-     APPLY NOW
-     TRANSPARENT
+     APPLY NOW — NORMAL
      ======================================================= */
 
   .nav-root.transparent .btn-apply {
+    width: 105px !important;
+    height: 36px !important;
 
-    width: 112px !important;
+    padding: 6px 9px !important;
 
-    height: 38px !important;
+    display: inline-flex !important;
 
-    padding: 6px 10px !important;
-
-    font-size: 12px !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     gap: 4px !important;
 
+    margin: 0 !important;
+
     transform: none !important;
+
+    border-radius: 999px !important;
+
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
 
     white-space: nowrap !important;
 
@@ -1603,23 +1766,31 @@ overflow: visible !important;
 
 
   /* =======================================================
-     APPLY NOW
-     SOLID
+     APPLY NOW — SCROLL
      ======================================================= */
 
   .nav-root.solid .btn-apply {
+    width: 96px !important;
+    height: 34px !important;
 
-    width: 102px !important;
+    padding: 6px 8px !important;
 
-    height: 36px !important;
+    display: inline-flex !important;
 
-    padding: 6px 9px !important;
-
-    font-size: 11px !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     gap: 4px !important;
 
+    margin: 0 !important;
+
     transform: none !important;
+
+    border-radius: 999px !important;
+
+    font-size: 10px !important;
+
+    font-weight: 700 !important;
 
     white-space: nowrap !important;
 
@@ -1633,67 +1804,53 @@ overflow: visible !important;
 
   .nav-root.transparent .btn-apply svg,
   .nav-root.solid .btn-apply svg {
-
-    width: 11px !important;
-
-    height: 11px !important;
+    width: 10px !important;
+    height: 10px !important;
 
     flex-shrink: 0 !important;
   }
 
 
   /* =======================================================
-     SOLID / WHITE HEADER
+     WHITE / SCROLL HEADER
      ======================================================= */
 
   .nav-root.solid {
-
     margin-left: 8px !important;
-
     margin-right: 8px !important;
 
     width:
-      calc(100% - 16px)
-      !important;
+      calc(100% - 16px) !important;
 
     box-sizing: border-box !important;
   }
 
 
   .nav-root.solid .nav-inner {
-
     padding-left: 18px !important;
-
     padding-right: 18px !important;
+
+    gap: 14px !important;
 
     box-sizing: border-box !important;
   }
 
 
   /* =======================================================
-     SOLID RIBBON
+     SCROLL RIBBON
      ======================================================= */
 
   .nav-root.solid .premium-divider {
-
-    width:
-      clamp(
-        165px,
-        15vw,
-        205px
-      ) !important;
-
-    height: 4px !important;
+    width: 165px !important;
+    height: 6px !important;
 
     margin:
-      7px auto 3px
-      !important;
+      6px auto 2px !important;
 
-    overflow:  !important;
+    overflow: visible !important;
 
-    box-shadow: none !important;
-
-    border: none !important;
+    box-shadow:
+      0 1px 3px rgba(184,134,11,.28) !important;
   }
 
 
@@ -1702,8 +1859,10 @@ overflow: visible !important;
      ======================================================= */
 
   .nav-brand,
-  .nav-brand-text {
-
+  .nav-brand-text,
+  .nav-logo-ring,
+  .nav-links,
+  .nav-right {
     overflow: visible !important;
   }
 
@@ -1713,16 +1872,12 @@ overflow: visible !important;
      ======================================================= */
 
   .nav-hamburger {
-
     display: none !important;
   }
 
 }
 
-
-
-
-   /* ---------- SMALL PHONE: 480px and below ---------- */
+/* ---------- SMALL PHONE: 480px and below ---------- */
 
 @media (max-width: 480px) {
 
@@ -1768,7 +1923,7 @@ overflow: visible !important;
   .nav-logo-img {
     width: 52px !important;
     height: 52px !important;
-
+  }
    
 
 /* =========================================================
