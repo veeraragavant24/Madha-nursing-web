@@ -1329,11 +1329,13 @@ overflow: visible !important;
   /*
      GOLD STAYS FIXED
      SHINE STARTS FULLY OFF THE LEFT EDGE
+     (200% here is correct: with a 200%-wide layer,
+     position 200% pushes it fully past the left edge)
   */
 
   background-position:
     center center,
-    -100% center !important;
+    200% center !important;
 
   background-repeat:
     no-repeat,
@@ -1369,14 +1371,14 @@ overflow: visible !important;
 
     background-position:
       center center,
-      -100% center !important;
+      200% center !important;
   }
 
   100% {
 
     background-position:
       center center,
-      200% center !important;
+      -100% center !important;
   }
 }
 
