@@ -1227,9 +1227,6 @@ font-weight: 700;
     position: relative !important;
 
     z-index: 5 !important;
-
-    /* ALIGNMENT REFERENCE FOR SHINE ONLY */
-    anchor-name: --college-title !important;
   }
 
 
@@ -1253,237 +1250,202 @@ font-weight: 700;
         .045em
       ) !important;
   }
+/* =======================================================
+   LAPTOP GOLD RIBBON
+   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+   ======================================================= */
 
+.premium-divider {
 
-  /* =======================================================
-     LAPTOP GOLD RIBBON
-     GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
-     ======================================================= */
+  position: relative !important;
 
-  .premium-divider {
+  width: 140px !important;
+  height: 3px !important;
 
-    position: relative !important;
+  margin-top: 7px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 2px !important;
 
-    width: 140px !important;
-    height: 3px !important;
+  align-self: center !important;
 
-    margin-top: 7px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-bottom: 2px !important;
+  display: block !important;
 
-    align-self: center !important;
+  flex-shrink: 0 !important;
 
-    display: block !important;
+  box-sizing: border-box !important;
 
-    flex-shrink: 0 !important;
+  border: none !important;
 
-    box-sizing: border-box !important;
+  border-radius: 4px !important;
 
-    border: none !important;
+overflow: visible !important;
+  /*
+     TWO BACKGROUND LAYERS
 
-    border-radius: 4px !important;
+     1 = GOLD RIBBON
+     2 = WHITE MOVING SHINE
+  */
 
-    overflow: visible !important;
+  background-image:
 
     /* GOLD RIBBON */
-    background:
-      linear-gradient(
-        90deg,
-        #806000 0%,
-        #b98200 15%,
-        #e0b52c 35%,
-        #f5d45b 50%,
-        #e0b52c 65%,
-        #b98200 85%,
-        #806000 100%
-      ) !important;
+    linear-gradient(
+      90deg,
+      #806000 0%,
+      #b98200 15%,
+      #e0b52c 35%,
+      #f5d45b 50%,
+      #e0b52c 65%,
+      #b98200 85%,
+      #806000 100%
+    ),
 
-    box-shadow: none !important;
-
-    z-index: 2 !important;
-  }
-
-
-  /* =======================================================
-     WHITE SHINE
-     EXACT TITLE WIDTH
-     M OF MADHA → G OF NURSING
-     ======================================================= */
-
-  .premium-divider::before {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    top: 0 !important;
-
-    /*
-      Anchor the shine to the actual college title.
-      This means the shine begins at the title's
-      LEFT edge — M of MADHA.
-    */
-    left: anchor(
-      left
-      of
-      --college-title
-    ) !important;
-
-    width: 90px !important;
-
-    height: 100% !important;
-
-    background: linear-gradient(
+    /* WHITE SHINE */
+    linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.75) 42%,
+      rgba(255,255,255,0.05) 15%,
+      rgba(255,255,255,0.55) 35%,
       #ffffff 50%,
-      rgba(255, 255, 255, 0.75) 58%,
-      rgba(255, 255, 255, 0) 80%,
+      rgba(255,255,255,0.55) 65%,
+      rgba(255,255,255,0.05) 85%,
       transparent 100%
     ) !important;
 
-    filter:
-      drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-      drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
+  /*
+     GOLD = FULL WIDTH
+     SHINE = FULL RIBBON WIDTH STRIP
+     (200% background-size means one "shine" pass
+     equals the full width of the ribbon, so it
+     travels edge-to-edge, from under "M" of MADHA
+     to under "G" of NURSING)
+  */
 
-    pointer-events: none !important;
+  background-size:
+    100% 100%,
+    200% 100% !important;
 
-    animation:
-      laptopRibbonDesktopShine
-      3.8s
-      ease-in-out
-      infinite !important;
+  /*
+     GOLD STAYS FIXED
+     SHINE STARTS FULLY OFF THE LEFT EDGE
+     (200% here is correct: with a 200%-wide layer,
+     position 200% pushes it fully past the left edge)
+  */
 
-    z-index: 10 !important;
+  background-position:
+    center center,
+    170% center !important;
+
+  background-repeat:
+    no-repeat,
+    no-repeat !important;
+
+  box-shadow: none !important;
+
+  /*
+     FORCE ANIMATION
+  */
+
+  animation:
+    laptopGoldRibbonShine
+    2.5s
+    linear
+    infinite !important;
+
+  animation-play-state: running !important;
+
+  z-index: 2 !important;
+}
+
+
+/* =======================================================
+   WHITE SHINE ANIMATION
+   LEFT → RIGHT
+   FULL RIBBON WIDTH SWEEP
+   ======================================================= */
+
+@keyframes laptopGoldRibbonShine {
+
+  /* START — LEFT EDGE / M OF MADHA */
+  0% {
+
+    background-position:
+      center center,
+      170% center !important;
   }
 
+  /* WHITE SHINE TRAVELS FROM M → G */
+  50% {
 
-  /* =======================================================
-     M → G WHITE SHINE
-     ======================================================= */
-
-  @keyframes laptopRibbonDesktopShine {
-
-    /* M OF MADHA */
-    0% {
-      left: anchor(
-        left
-        of
-        --college-title
-      );
-
-      opacity: 0;
-
-      transform: skewX(-20deg);
-    }
-
-
-    /* SHINE APPEARS AT M */
-    10% {
-      left: anchor(
-        left
-        of
-        --college-title
-      );
-
-      opacity: 1;
-
-      transform: skewX(-20deg);
-    }
-
-
-    /* G OF NURSING */
-    90% {
-      left:
-        calc(
-          anchor(
-            right
-            of
-            --college-title
-          ) - 90px
-        );
-
-      opacity: 1;
-
-      transform: skewX(-20deg);
-    }
-
-
-    /* SHINE DISAPPEARS AT G */
-    100% {
-      left:
-        calc(
-          anchor(
-            right
-            of
-            --college-title
-          ) - 90px
-        );
-
-      opacity: 0;
-
-      transform: skewX(-20deg);
-    }
+    background-position:
+      center center,
+      50% center !important;
   }
 
+  /* END — RIGHT EDGE / G OF NURSING */
+  100% {
 
-  /* =======================================================
-     CENTER GOLD DIAMOND
-     ALWAYS VISIBLE ABOVE THE RIBBON
-     ======================================================= */
-
-  .premium-divider::after {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    left: 50% !important;
-    top: 35% !important;
-
-    width: 13px !important;
-    height: 13px !important;
-
-    margin: 0 !important;
-
-    display: block !important;
-
-    background:
-      linear-gradient(
-        135deg,
-        #fff7bd 0%,
-        #ffe76a 25%,
-        #f0c936 45%,
-        #d29d0b 70%,
-        #8a6200 100%
-      ) !important;
-
-    border: 1px solid #ffe47a !important;
-
-    border-radius: 1px !important;
-
-    transform:
-      translate(-50%, -50%)
-      rotate(45deg) !important;
-
-    /*
-       IMPORTANT
-       Put diamond above everything.
-    */
-    z-index: 999 !important;
-
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    pointer-events: none !important;
-
-    box-shadow:
-      0 0 2px rgba(255, 225, 100, 0.8) !important;
+    background-position:
+      center center,
+      -70% center !important;
   }
+}
+
+/* =======================================================
+   CENTER GOLD DIAMOND
+   ALWAYS VISIBLE ABOVE THE RIBBON
+   ======================================================= */
+
+.premium-divider::after {
+
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 35% !important;
+
+  width: 13px !important;
+  height: 13px !important;
+
+  margin: 0 !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7bd 0%,
+      #ffe76a 25%,
+      #f0c936 45%,
+      #d29d0b 70%,
+      #8a6200 100%
+    ) !important;
+
+  border: 1px solid #ffe47a !important;
+
+  border-radius: 1px !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  /*
+     IMPORTANT
+     Put diamond above everything.
+  */
+  z-index: 999 !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  pointer-events: none !important;
+
+  box-shadow:
+    0 0 2px rgba(255, 225, 100, 0.8) !important;
+}
 
 
   /* =======================================================
@@ -1735,8 +1697,9 @@ font-weight: 700;
 
 
 /* =========================================================
-   OLD WHITE SHINE KEYFRAMES
-   KEPT UNTOUCHED AS REQUESTED
+   WHITE SHINE KEYFRAMES
+   OUTSIDE MEDIA QUERY
+   IMPORTANT
    ========================================================= */
 
 @keyframes laptopRibbonWhiteShine {
@@ -1805,6 +1768,7 @@ font-weight: 700;
   }
 
 }
+
 
 
 
