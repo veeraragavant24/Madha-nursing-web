@@ -1087,12 +1087,11 @@ font-weight: 700;
    FINAL LAPTOP HEADER
    769px → 1400px
 
-   ONLY RIBBON / SHINE UPDATED
+   ONLY RIBBON / SHINE FIXED
    OTHER HEADER ELEMENTS PRESERVED
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
-
 
   /* =======================================================
      MAIN HEADER
@@ -1106,7 +1105,6 @@ font-weight: 700;
     max-width: 100% !important;
     transform: none !important;
     box-sizing: border-box !important;
-    overflow: visible !important;
   }
 
 
@@ -1120,12 +1118,6 @@ font-weight: 700;
 
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
-
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-
-    gap: 16px !important;
 
     box-sizing: border-box !important;
 
@@ -1245,12 +1237,11 @@ font-weight: 700;
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
 
-    font-size:
-      clamp(
-        14px,
-        1.45vw,
-        18px
-      ) !important;
+    font-size: clamp(
+      17px,
+      1.45vw,
+      22px
+    ) !important;
 
     letter-spacing:
       clamp(
@@ -1259,324 +1250,220 @@ font-weight: 700;
         .045em
       ) !important;
   }
+/* =======================================================
+   LAPTOP GOLD RIBBON
+   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+   ======================================================= */
+
+.premium-divider {
+
+  position: relative !important;
+
+  width: 175px !important;
+  height: 3px !important;
+
+  margin-top: 7px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 2px !important;
+
+  align-self: center !important;
+
+  display: block !important;
+
+  flex-shrink: 0 !important;
+
+  box-sizing: border-box !important;
+
+  border: none !important;
+
+  border-radius: 4px !important;
+
+overflow: visible !important;
+  /*
+     TWO BACKGROUND LAYERS
+
+     1 = GOLD RIBBON
+     2 = WHITE MOVING SHINE
+  */
+
+  background-image:
+
+    /* GOLD RIBBON */
+    linear-gradient(
+      90deg,
+      #806000 0%,
+      #b98200 15%,
+      #e0b52c 35%,
+      #f5d45b 50%,
+      #e0b52c 65%,
+      #b98200 85%,
+      #806000 100%
+    ),
+
+    /* WHITE SHINE */
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 15%,
+      rgba(255,255,255,0.55) 35%,
+      #ffffff 50%,
+      rgba(255,255,255,0.55) 65%,
+      rgba(255,255,255,0.05) 85%,
+      transparent 100%
+    ) !important;
+
+  /*
+     GOLD = FULL WIDTH
+     SHINE = SMALL MOVING STRIP
+  */
+
+  background-size:
+    100% 100%,
+    65px 100% !important;
+
+  /*
+     GOLD STAYS FIXED
+     SHINE STARTS OUTSIDE LEFT
+  */
+
+  background-position:
+    center center,
+    -65px center !important;
+
+  background-repeat:
+    no-repeat,
+    no-repeat !important;
+
+  box-shadow: none !important;
+
+  /*
+     FORCE ANIMATION
+  */
+
+  animation:
+    laptopGoldRibbonShine
+    2.5s
+    linear
+    infinite !important;
+
+  animation-play-state: running !important;
+
+  z-index: 2 !important;
+}
 
 
-  /* =======================================================
-     LAPTOP COLLEGE SUBTITLE
-     ======================================================= */
+/* =======================================================
+   WHITE SHINE ANIMATION
+   LEFT → RIGHT
+   ======================================================= */
 
-  .nav-root.transparent .nav-college-sub,
-  .nav-root.solid .nav-college-sub {
+@keyframes laptopGoldRibbonShine {
 
-    white-space: nowrap !important;
+  0% {
 
-    text-align: center !important;
-
-    margin-top: 3px !important;
-
-    line-height: 1 !important;
+    background-position:
+      center center,
+      -65px center !important;
   }
 
+  10% {
 
-  /* =======================================================
-     LAPTOP GOLD RIBBON
-     
-     NORMAL HEADER
-     
-     HEIGHT INCREASED
-     3px → 5px
-     ======================================================= */
-
-  .premium-divider {
-
-    position: relative !important;
-
-    width: 230px !important;
-
-    /* Increased ribbon height */
-    height: 5px !important;
-
-    margin-top: 7px !important;
-
-    margin-left: auto !important;
-
-    margin-right: auto !important;
-
-    margin-bottom: 2px !important;
-
-    align-self: center !important;
-
-    display: block !important;
-
-    flex-shrink: 0 !important;
-
-    box-sizing: border-box !important;
-
-    border: none !important;
-
-    border-radius: 4px !important;
-
-    overflow: visible !important;
-
-    background:
-      linear-gradient(
-        90deg,
-        #806000 0%,
-        #b98200 15%,
-        #e0b52c 35%,
-        #f5d45b 50%,
-        #e0b52c 65%,
-        #b98200 85%,
-        #806000 100%
-      ) !important;
-
-    box-shadow:
-      0 1px 4px rgba(184,134,11,.35) !important;
-
-    z-index: 2 !important;
+    background-position:
+      center center,
+      -30px center !important;
   }
 
+  25% {
 
-  /* =======================================================
-     WHITE SHINE
-     
-     STARTS FROM LEFT SIDE
-     ENDS AT RIGHT SIDE
-     ======================================================= */
-
-  .premium-divider::before {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    top: 0 !important;
-
-    /*
-       Shine starts outside the ribbon.
-       This creates the effect of entering
-       from the MADHA "M" side.
-    */
-    left: -55px !important;
-
-    width: 55px !important;
-
-    height: 100% !important;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,0) 10%,
-        rgba(255,255,255,.35) 30%,
-        #ffffff 50%,
-        rgba(255,255,255,.35) 70%,
-        rgba(255,255,255,0) 90%,
-        transparent 100%
-      ) !important;
-
-    transform: skewX(-18deg) !important;
-
-    opacity: 0 !important;
-
-    pointer-events: none !important;
-
-    filter:
-      drop-shadow(
-        0 0 3px rgba(255,255,255,.95)
-      ) !important;
-
-    z-index: 30 !important;
-
-    animation:
-      laptopGoldRibbonShine
-      3.2s
-      linear
-      infinite !important;
-
-    animation-play-state: running !important;
+    background-position:
+      center center,
+      10px center !important;
   }
 
+  50% {
 
-  /* =======================================================
-     WHITE SHINE ANIMATION
-     
-     LEFT → RIGHT
-     
-     START:
-     MADHA "M" SIDE
-
-     END:
-     NURSING "G" SIDE
-     ======================================================= */
-
-  @keyframes laptopGoldRibbonShine {
-
-    /* ---------------------------------------------------
-       START
-       Shine is outside left side
-       --------------------------------------------------- */
-
-    0% {
-
-      left: -55px !important;
-
-      opacity: 0 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Shine begins entering
-       --------------------------------------------------- */
-
-    8% {
-
-      left: -35px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Shine reaches left edge
-       MADHA "M" side
-       --------------------------------------------------- */
-
-    20% {
-
-      left: 0px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Moving across MADHA
-       --------------------------------------------------- */
-
-    35% {
-
-      left: 45px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Center area
-       --------------------------------------------------- */
-
-    50% {
-
-      left: 90px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Moving toward NURSING
-       --------------------------------------------------- */
-
-    65% {
-
-      left: 135px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Near NURSING "G"
-       --------------------------------------------------- */
-
-    80% {
-
-      left: 180px !important;
-
-      opacity: 1 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       END
-       NURSING "G" side
-       --------------------------------------------------- */
-
-    92% {
-
-      left: 230px !important;
-
-      opacity: .7 !important;
-    }
-
-
-    /* ---------------------------------------------------
-       Completely exits
-       --------------------------------------------------- */
-
-    100% {
-
-      left: 285px !important;
-
-      opacity: 0 !important;
-    }
+    background-position:
+      center center,
+      55px center !important;
   }
 
+  75% {
 
-  /* =======================================================
-     CENTER GOLD DIAMOND
-     ALWAYS VISIBLE ABOVE THE RIBBON
-     ======================================================= */
-
-  .premium-divider::after {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    left: 50% !important;
-
-    top: 50% !important;
-
-    width: 13px !important;
-
-    height: 13px !important;
-
-    margin: 0 !important;
-
-    display: block !important;
-
-    background:
-      linear-gradient(
-        135deg,
-        #fff7bd 0%,
-        #ffe76a 25%,
-        #f0c936 45%,
-        #d29d0b 70%,
-        #8a6200 100%
-      ) !important;
-
-    border:
-      1px solid #ffe47a !important;
-
-    border-radius: 1px !important;
-
-    transform:
-      translate(-50%, -50%)
-      rotate(45deg) !important;
-
-    z-index: 999 !important;
-
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    pointer-events: none !important;
-
-    box-shadow:
-      0 0 2px rgba(255,225,100,.8) !important;
+    background-position:
+      center center,
+      105px center !important;
   }
+
+  90% {
+
+    background-position:
+      center center,
+      155px center !important;
+  }
+
+  100% {
+
+    background-position:
+      center center,
+      220px center !important;
+  }
+}
+
+/* =======================================================
+   CENTER GOLD DIAMOND
+   ALWAYS VISIBLE ABOVE THE RIBBON
+   ======================================================= */
+
+.premium-divider::after {
+
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 35% !important;
+
+  width: 13px !important;
+  height: 13px !important;
+
+  margin: 0 !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff7bd 0%,
+      #ffe76a 25%,
+      #f0c936 45%,
+      #d29d0b 70%,
+      #8a6200 100%
+    ) !important;
+
+  border: 1px solid #ffe47a !important;
+
+  border-radius: 1px !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  /*
+     IMPORTANT
+     Put diamond above everything.
+  */
+  z-index: 999 !important;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  pointer-events: none !important;
+
+  box-shadow:
+    0 0 2px rgba(255, 225, 100, 0.8) !important;
+}
 
 
   /* =======================================================
@@ -1615,9 +1502,9 @@ font-weight: 700;
 
     font-size:
       clamp(
-        10px,
+        12px,
         .68vw,
-        12px
+        15px
       ) !important;
   }
 
@@ -1686,7 +1573,7 @@ font-weight: 700;
 
   /* =======================================================
      APPLY NOW
-     TRANSPARENT HEADER
+     TRANSPARENT
      ======================================================= */
 
   .nav-root.transparent .btn-apply {
@@ -1711,7 +1598,7 @@ font-weight: 700;
 
   /* =======================================================
      APPLY NOW
-     SOLID / WHITE HEADER
+     SOLID
      ======================================================= */
 
   .nav-root.solid .btn-apply {
@@ -1764,8 +1651,6 @@ font-weight: 700;
       !important;
 
     box-sizing: border-box !important;
-
-    overflow: visible !important;
   }
 
 
@@ -1780,14 +1665,17 @@ font-weight: 700;
 
 
   /* =======================================================
-     SOLID / WHITE HEADER RIBBON
-     
-     SAME START → END SHINE
+     SOLID RIBBON
      ======================================================= */
 
   .nav-root.solid .premium-divider {
 
-    width: 230px !important;
+    width:
+      clamp(
+        165px,
+        15vw,
+        205px
+      ) !important;
 
     height: 4px !important;
 
@@ -1795,29 +1683,11 @@ font-weight: 700;
       7px auto 3px
       !important;
 
-    overflow: visible !important;
+    overflow:  !important;
 
     box-shadow: none !important;
 
     border: none !important;
-  }
-
-
-  /* =======================================================
-     SOLID / WHITE HEADER SHINE
-     ======================================================= */
-
-  .nav-root.solid .premium-divider::before {
-
-    width: 55px !important;
-
-    left: -55px !important;
-
-    animation:
-      laptopGoldRibbonShine
-      3.2s
-      linear
-      infinite !important;
   }
 
 
@@ -1845,21 +1715,77 @@ font-weight: 700;
 
 
 /* =========================================================
+   WHITE SHINE KEYFRAMES
+   OUTSIDE MEDIA QUERY
    IMPORTANT
-   =========================================================
-
-   DO NOT KEEP THE OLD:
-
-   @keyframes laptopRibbonWhiteShine
-
-   Remove the old duplicate animation if it still exists.
-
-   The single animation used for BOTH headers is:
-
-   laptopGoldRibbonShine
-
    ========================================================= */
 
+@keyframes laptopRibbonWhiteShine {
+
+  0% {
+
+    left: -70px;
+
+    opacity: 0;
+  }
+
+
+  8% {
+
+    left: -50px;
+
+    opacity: 1;
+  }
+
+
+  25% {
+
+    left: 0;
+
+    opacity: 1;
+  }
+
+
+  45% {
+
+    left: 55px;
+
+    opacity: 1;
+  }
+
+
+  65% {
+
+    left: 110px;
+
+    opacity: 1;
+  }
+
+
+  82% {
+
+    left: 155px;
+
+    opacity: 1;
+  }
+
+
+  92% {
+
+    left: 205px;
+
+    opacity: 0;
+  }
+
+
+  100% {
+
+    left: 225px;
+
+    opacity: 0;
+  }
+
+}
 
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
