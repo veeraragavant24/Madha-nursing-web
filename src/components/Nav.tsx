@@ -1257,13 +1257,14 @@ font-weight: 700;
 
   /* =======================================================
      LAPTOP GOLD RIBBON
-     
-     NORMAL / TRANSPARENT HEADER ONLY
-     
+
+     NORMAL / TRANSPARENT HEADER
+
+     SIZE IS PRESERVED:
      WIDTH  = 150px
      HEIGHT = 5px
-     
-     GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+
+     ONLY THE SHINE ANIMATION IS CHANGED.
      ======================================================= */
 
   .premium-divider {
@@ -1292,18 +1293,8 @@ font-weight: 700;
 
     overflow: visible !important;
 
-
-    /*
-       TWO BACKGROUND LAYERS
-
-       1 = GOLD RIBBON
-       2 = WHITE MOVING SHINE
-    */
-
-    background-image:
-
-      /* GOLD RIBBON */
-
+    /* GOLD RIBBON — FIXED */
+    background:
       linear-gradient(
         90deg,
         #806000 0%,
@@ -1313,101 +1304,122 @@ font-weight: 700;
         #e0b52c 65%,
         #b98200 85%,
         #806000 100%
-      ),
-
-      /* WHITE SHINE */
-
-      linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,0.05) 15%,
-        rgba(255,255,255,0.55) 35%,
-        #ffffff 50%,
-        rgba(255,255,255,0.55) 65%,
-        rgba(255,255,255,0.05) 85%,
-        transparent 100%
       ) !important;
 
-
-    /*
-       GOLD = FULL WIDTH
-       SHINE = FULL RIBBON WIDTH STRIP
-    */
-
-    background-size:
-      100% 100%,
-      200% 100% !important;
-
-
-    /*
-       GOLD STAYS FIXED
-       SHINE STARTS FROM THE LEFT SIDE
-    */
-
-    background-position:
-      center center,
-      170% center !important;
-
-
-    background-repeat:
-      no-repeat,
-      no-repeat !important;
-
-
     box-shadow: none !important;
-
-
-    /*
-       FORCE ANIMATION
-    */
-
-    animation:
-      laptopGoldRibbonShine
-      2.5s
-      linear
-      infinite !important;
-
-    animation-play-state: running !important;
 
     z-index: 2 !important;
   }
 
 
   /* =======================================================
-     WHITE SHINE ANIMATION
-     LEFT → RIGHT
-     FULL RIBBON WIDTH SWEEP
+     TITLE-BOUND WHITE SHINE
+
+     The shine is measured against the COMPLETE college title:
+
+     M of MADHA  →  G of NURSING
+
+     --shine-start:
+       title's left edge relative to ribbon
+
+     --shine-travel:
+       complete title width
+
+     Nav.tsx supplies these two values.
      ======================================================= */
 
-  @keyframes laptopGoldRibbonShine {
+  .premium-divider::before {
 
-    /* START — LEFT SIDE */
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+
+    left: var(--shine-start, -150px) !important;
+
+    width: 90px !important;
+
+    height: 100% !important;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0) 20%,
+        rgba(255,255,255,0.75) 42%,
+        #ffffff 50%,
+        rgba(255,255,255,0.75) 58%,
+        rgba(255,255,255,0) 80%,
+        transparent 100%
+      ) !important;
+
+    filter:
+      drop-shadow(0 0 3px rgba(255,255,255,0.9))
+      drop-shadow(0 0 7px rgba(255,255,255,0.55));
+
+    pointer-events: none !important;
+
+    animation:
+      laptopTitleBoundShine
+      3.8s
+      ease-in-out
+      infinite !important;
+
+    z-index: 3 !important;
+  }
+
+
+  /* =======================================================
+     TITLE-BOUND ANIMATION
+
+     START  = M OF MADHA
+     END    = G OF NURSING
+
+     The shine does not use a fixed ribbon width to
+     determine its travel distance.
+     ======================================================= */
+
+  @keyframes laptopTitleBoundShine {
 
     0% {
 
-      background-position:
-        center center,
-        170% center !important;
+      transform:
+        translateX(0)
+        skewX(-20deg);
+
+      opacity: 0;
     }
 
+    10% {
 
-    /* SHINE MOVES ACROSS THE RIBBON */
+      transform:
+        translateX(0)
+        skewX(-20deg);
 
-    50% {
-
-      background-position:
-        center center,
-        50% center !important;
+      opacity: 1;
     }
 
+    90% {
 
-    /* END — RIGHT SIDE */
+      transform:
+        translateX(
+          calc(var(--shine-travel, 500px) - 90px)
+        )
+        skewX(-20deg);
+
+      opacity: 1;
+    }
 
     100% {
 
-      background-position:
-        center center,
-        -70% center !important;
+      transform:
+        translateX(
+          calc(var(--shine-travel, 500px) - 90px)
+        )
+        skewX(-20deg);
+
+      opacity: 0;
     }
   }
 
