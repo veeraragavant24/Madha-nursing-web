@@ -1083,8 +1083,7 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
-
-   /* =========================================================
+/* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
 
@@ -1228,6 +1227,9 @@ font-weight: 700;
     position: relative !important;
 
     z-index: 5 !important;
+
+    /* ALIGNMENT REFERENCE FOR SHINE ONLY */
+    anchor-name: --college-title !important;
   }
 
 
@@ -1285,16 +1287,17 @@ font-weight: 700;
     overflow: visible !important;
 
     /* GOLD RIBBON */
-    background: linear-gradient(
-      90deg,
-      #806000 0%,
-      #b98200 15%,
-      #e0b52c 35%,
-      #f5d45b 50%,
-      #e0b52c 65%,
-      #b98200 85%,
-      #806000 100%
-    ) !important;
+    background:
+      linear-gradient(
+        90deg,
+        #806000 0%,
+        #b98200 15%,
+        #e0b52c 35%,
+        #f5d45b 50%,
+        #e0b52c 65%,
+        #b98200 85%,
+        #806000 100%
+      ) !important;
 
     box-shadow: none !important;
 
@@ -1303,21 +1306,33 @@ font-weight: 700;
 
 
   /* =======================================================
-     LAPTOP WHITE SHINE
-     LEFT EDGE → RIGHT EDGE
+     WHITE SHINE
+     EXACT TITLE WIDTH
+     M OF MADHA → G OF NURSING
      ======================================================= */
 
   .premium-divider::before {
 
-    content: "";
+    content: "" !important;
 
-    position: absolute;
+    position: absolute !important;
 
-    top: 0;
-    left: -45px;
+    top: 0 !important;
 
-    width: 90px;
-    height: 100%;
+    /*
+      Anchor the shine to the actual college title.
+      This means the shine begins at the title's
+      LEFT edge — M of MADHA.
+    */
+    left: anchor(
+      left
+      of
+      --college-title
+    ) !important;
+
+    width: 90px !important;
+
+    height: 100% !important;
 
     background: linear-gradient(
       90deg,
@@ -1328,52 +1343,88 @@ font-weight: 700;
       rgba(255, 255, 255, 0.75) 58%,
       rgba(255, 255, 255, 0) 80%,
       transparent 100%
-    );
+    ) !important;
 
     filter:
       drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
       drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
-    pointer-events: none;
+    pointer-events: none !important;
 
     animation:
       laptopRibbonDesktopShine
       3.8s
       ease-in-out
-      infinite;
+      infinite !important;
 
-    z-index: 10;
+    z-index: 10 !important;
   }
 
 
   /* =======================================================
-     LAPTOP WHITE SHINE ANIMATION
-     LEFT EDGE → RIGHT EDGE
+     M → G WHITE SHINE
      ======================================================= */
 
   @keyframes laptopRibbonDesktopShine {
 
+    /* M OF MADHA */
     0% {
-      left: -45px;
+      left: anchor(
+        left
+        of
+        --college-title
+      );
+
       opacity: 0;
+
       transform: skewX(-20deg);
     }
 
+
+    /* SHINE APPEARS AT M */
     10% {
-      left: -45px;
+      left: anchor(
+        left
+        of
+        --college-title
+      );
+
       opacity: 1;
+
       transform: skewX(-20deg);
     }
 
+
+    /* G OF NURSING */
     90% {
-      left: calc(100% - 45px);
+      left:
+        calc(
+          anchor(
+            right
+            of
+            --college-title
+          ) - 90px
+        );
+
       opacity: 1;
+
       transform: skewX(-20deg);
     }
 
+
+    /* SHINE DISAPPEARS AT G */
     100% {
-      left: calc(100% - 45px);
+      left:
+        calc(
+          anchor(
+            right
+            of
+            --college-title
+          ) - 90px
+        );
+
       opacity: 0;
+
       transform: skewX(-20deg);
     }
   }
@@ -1684,9 +1735,8 @@ font-weight: 700;
 
 
 /* =========================================================
-   WHITE SHINE KEYFRAMES
-   OUTSIDE MEDIA QUERY
-   IMPORTANT
+   OLD WHITE SHINE KEYFRAMES
+   KEPT UNTOUCHED AS REQUESTED
    ========================================================= */
 
 @keyframes laptopRibbonWhiteShine {
