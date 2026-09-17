@@ -1250,17 +1250,19 @@ font-weight: 700;
         .045em
       ) !important;
   }
+
+
 /* =======================================================
-   LAPTOP GOLD RIBBON
-   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+   GOLD RIBBON
+   FULL WIDTH OF MADHA COLLEGE OF NURSING
    ======================================================= */
 
 .premium-divider {
-
   position: relative !important;
 
   width: 100% !important;
   max-width: 100% !important;
+
   height: 5px !important;
 
   margin-top: 7px !important;
@@ -1271,26 +1273,14 @@ font-weight: 700;
   align-self: center !important;
 
   display: block !important;
-
   flex-shrink: 0 !important;
 
   box-sizing: border-box !important;
 
   border: none !important;
-
   border-radius: 4px !important;
 
-overflow: visible !important;
-  /*
-     TWO BACKGROUND LAYERS
-
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
+  background:
     linear-gradient(
       90deg,
       #806000 0%,
@@ -1300,90 +1290,161 @@ overflow: visible !important;
       #e0b52c 65%,
       #b98200 85%,
       #806000 100%
-    ),
-
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
     ) !important;
 
-  /*
-     GOLD = FULL WIDTH
-     SHINE = FULL RIBBON WIDTH STRIP
-     (200% background-size means one "shine" pass
-     equals the full width of the ribbon, so it
-     travels edge-to-edge, from under "M" of MADHA
-     to under "G" of NURSING)
-  */
-
-  background-size:
-    100% 100%,
-    200% 100% !important;
-
-  /*
-     GOLD STAYS FIXED
-     SHINE STARTS FULLY OFF THE LEFT EDGE
-     (200% here is correct: with a 200%-wide layer,
-     position 200% pushes it fully past the left edge)
-  */
-
-  background-position:
-    center center,
-    200% center !important;
-
-  background-repeat:
-    no-repeat,
-    no-repeat !important;
+  overflow: visible !important;
 
   box-shadow: none !important;
 
-  /*
-     FORCE ANIMATION
-  */
-
-  animation:
-    laptopGoldRibbonShine
-    2.5s
-    linear
-    infinite !important;
-
-  animation-play-state: running !important;
-
-  z-index: 2 !important;
+  z-index: 20 !important;
 }
 
 
 /* =======================================================
-   WHITE SHINE ANIMATION
-   LEFT → RIGHT
-   FULL RIBBON WIDTH SWEEP
+   WHITE SHINE
+   START = M OF MADHA
+   END   = G OF NURSING
    ======================================================= */
 
-@keyframes laptopGoldRibbonShine {
+.premium-divider::before {
+  content: "" !important;
 
+  position: absolute !important;
+
+  top: 50% !important;
+  left: 0 !important;
+
+  width: 42px !important;
+  height: 180% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  display: block !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.10) 15%,
+      rgba(255,255,255,0.55) 35%,
+      #ffffff 50%,
+      rgba(255,255,255,0.55) 65%,
+      rgba(255,255,255,0.10) 85%,
+      transparent 100%
+    ) !important;
+
+  transform:
+    translate3d(-50px, -50%, 0)
+    skewX(-18deg) !important;
+
+  opacity: 0 !important;
+
+  visibility: visible !important;
+
+  pointer-events: none !important;
+
+  z-index: 100 !important;
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,1))
+    drop-shadow(0 0 6px rgba(255,255,255,0.7)) !important;
+
+  animation-name: madhaTitleWhiteShine !important;
+  animation-duration: 2.2s !important;
+  animation-timing-function: linear !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: infinite !important;
+  animation-direction: normal !important;
+  animation-fill-mode: both !important;
+  animation-play-state: running !important;
+
+  will-change: transform, opacity !important;
+}
+
+
+/* =======================================================
+   M → G ANIMATION
+   ======================================================= */
+
+@keyframes madhaTitleWhiteShine {
+
+  /* Start before M */
   0% {
+    transform:
+      translate3d(-50px, -50%, 0)
+      skewX(-18deg) !important;
 
-    background-position:
-      center center,
-      200% center !important;
+    opacity: 0 !important;
   }
 
-  100% {
+  /* Enter at M */
+  8% {
+    transform:
+      translate3d(-15px, -50%, 0)
+      skewX(-18deg) !important;
 
-    background-position:
-      center center,
-      -100% center !important;
+    opacity: 1 !important;
+  }
+
+  /* Move across MADHA */
+  25% {
+    transform:
+      translate3d(25%, -50%, 0)
+      skewX(-18deg) !important;
+
+    opacity: 1 !important;
+  }
+
+  /* Move across COLLEGE */
+  50% {
+    transform:
+      translate3d(50%, -50%, 0)
+      skewX(-18deg) !important;
+
+    opacity: 1 !important;
+  }
+
+  /* Move across NURSING */
+  75% {
+    transform:
+      translate3d(75%, -50%, 0)
+      skewX(-18deg) !important;
+
+    opacity: 1 !important;
+  }
+
+  /* Reach G */
+  92% {
+    transform:
+      translate3d(calc(100% - 5px), -50%, 0)
+      skewX(-18deg) !important;
+
+    opacity: 1 !important;
+  }
+
+  /* Leave after G */
+  100% {
+    transform:
+      translate3d(calc(100% + 50px), -50%, 0)
+      skewX(-18deg) !important;
+
+    opacity: 0 !important;
   }
 }
 
+
 /* =======================================================
+   CENTER DIAMOND
+   KEEP EXISTING ::AFTER
+   ======================================================= */
+
+.premium-divider::after {
+  z-index: 999 !important;
+}
+
+
+  /* =======================================================
    CENTER GOLD DIAMOND
    ALWAYS VISIBLE ABOVE THE RIBBON
    ======================================================= */
