@@ -1083,21 +1083,16 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
-FINAL LAPTOP HEADER
-769px → 1400px
-ONLY RIBBON / SHINE FIXED
-OTHER HEADER ELEMENTS PRESERVED
-========================================================= */
-
 /* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
 
-   COMPLETE LAPTOP HEADER REBUILD
-   Mobile and large desktop are NOT affected.
+   ONLY RIBBON / SHINE UPDATED
+   OTHER HEADER ELEMENTS PRESERVED
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
+
 
   /* =======================================================
      MAIN HEADER
@@ -1111,6 +1106,7 @@ OTHER HEADER ELEMENTS PRESERVED
     max-width: 100% !important;
     transform: none !important;
     box-sizing: border-box !important;
+    overflow: visible !important;
   }
 
 
@@ -1122,16 +1118,14 @@ OTHER HEADER ELEMENTS PRESERVED
     width: 100% !important;
     max-width: 100% !important;
 
-    height: 100% !important;
-
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
 
-    padding-left: 22px !important;
-    padding-right: 22px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 
-    gap: 18px !important;
+    gap: 16px !important;
 
     box-sizing: border-box !important;
 
@@ -1144,27 +1138,15 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-brand {
-    display: flex !important;
-    align-items: center !important;
-
-    flex: 0 1 auto !important;
     flex-shrink: 0 !important;
 
     min-width: 0 !important;
 
-    gap: 12px !important;
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    background: none !important;
-    border: none !important;
-
-    position: relative !important;
-
     overflow: visible !important;
 
     box-sizing: border-box !important;
+
+    position: relative !important;
 
     z-index: 50 !important;
   }
@@ -1175,352 +1157,390 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-logo-ring {
-    width: 72px !important;
-    height: 72px !important;
-
-    flex: 0 0 72px !important;
     flex-shrink: 0 !important;
 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
     position: relative !important;
-
-    background: transparent !important;
-
-    box-sizing: border-box !important;
 
     z-index: 55 !important;
   }
 
 
   .nav-logo-img {
-    width: 72px !important;
-    height: 72px !important;
-
-    display: block !important;
-
     object-fit: contain !important;
 
-    border-radius: 50% !important;
-
-    box-sizing: border-box !important;
+    display: block !important;
   }
 
 
   /* =======================================================
-     SCROLLED / WHITE HEADER LOGO
-     ======================================================= */
-
-  .nav-root.solid .nav-logo-ring {
-    width: 58px !important;
-    height: 58px !important;
-
-    flex-basis: 58px !important;
-  }
-
-  .nav-root.solid .nav-logo-img {
-    width: 58px !important;
-    height: 58px !important;
-  }
-
-
-  /* =======================================================
-     BRAND TEXT
+     TITLE CONTAINER
      ======================================================= */
 
   .nav-brand-text {
+    min-width: 0 !important;
+
+    flex-shrink: 0 !important;
+
+    width: max-content !important;
+
+    max-width: none !important;
+
+    overflow: visible !important;
+
     display: flex !important;
 
     flex-direction: column !important;
 
     align-items: center !important;
+
     justify-content: center !important;
-
-    flex: 0 0 auto !important;
-    flex-shrink: 0 !important;
-
-    width: max-content !important;
-    max-width: none !important;
-
-    min-width: 0 !important;
 
     gap: 0 !important;
 
-    margin: 0 !important;
-    padding: 0 !important;
-
     white-space: nowrap !important;
 
-    overflow: visible !important;
-
     position: relative !important;
-
-    box-sizing: border-box !important;
 
     z-index: 55 !important;
   }
 
 
   /* =======================================================
-     COLLEGE NAME
+     COLLEGE TITLE
      ======================================================= */
 
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
+
     display: block !important;
 
     width: max-content !important;
+
     max-width: none !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    white-space: nowrap !important;
-
-    text-align: center !important;
 
     overflow: visible !important;
 
     text-overflow: clip !important;
 
+    white-space: nowrap !important;
+
+    text-align: center !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
     line-height: 1.05 !important;
 
-    box-sizing: border-box !important;
+    position: relative !important;
+
+    z-index: 5 !important;
   }
 
 
   /* =======================================================
-     NORMAL HEADER TITLE
+     LAPTOP TITLE
      ======================================================= */
 
-  .nav-root.transparent .nav-college-name {
-    font-size: clamp(17px, 1.25vw, 21px) !important;
-
-    font-weight: 700 !important;
-
-    letter-spacing: .045em !important;
-
-    color: #ffffff !important;
-
-    text-shadow: 0 3px 15px rgba(0,0,0,.45) !important;
-  }
-
-
-  /* =======================================================
-     WHITE / SCROLL HEADER TITLE
-     ======================================================= */
-
+  .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: clamp(16px, 1.15vw, 19px) !important;
 
-    font-weight: 700 !important;
+    font-size:
+      clamp(
+        14px,
+        1.45vw,
+        18px
+      ) !important;
 
-    letter-spacing: .045em !important;
-
-    color: #163B72 !important;
-
-    text-shadow: none !important;
+    letter-spacing:
+      clamp(
+        .025em,
+        .06vw,
+        .045em
+      ) !important;
   }
 
 
   /* =======================================================
-     COLLEGE SUBTITLE
+     LAPTOP COLLEGE SUBTITLE
      ======================================================= */
 
   .nav-root.transparent .nav-college-sub,
   .nav-root.solid .nav-college-sub {
-    display: block !important;
-
-    margin-top: 4px !important;
 
     white-space: nowrap !important;
 
     text-align: center !important;
 
+    margin-top: 3px !important;
+
     line-height: 1 !important;
-
-    text-transform: uppercase !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  .nav-root.transparent .nav-college-sub {
-    font-size: 8px !important;
-
-    font-weight: 800 !important;
-
-    letter-spacing: .28em !important;
-
-    color: #ffffff !important;
-  }
-
-
-  .nav-root.solid .nav-college-sub {
-    font-size: 7px !important;
-
-    font-weight: 800 !important;
-
-    letter-spacing: .25em !important;
-
-    color: #6B7280 !important;
   }
 
 
   /* =======================================================
-     GOLD RIBBON
+     LAPTOP GOLD RIBBON
+     
+     NORMAL HEADER
+     
+     HEIGHT INCREASED
+     3px → 5px
      ======================================================= */
 
   .premium-divider {
+
     position: relative !important;
 
-    display: block !important;
+    width: 230px !important;
+
+    /* Increased ribbon height */
+    height: 5px !important;
+
+    margin-top: 7px !important;
+
+    margin-left: auto !important;
+
+    margin-right: auto !important;
+
+    margin-bottom: 2px !important;
 
     align-self: center !important;
 
-    flex: 0 0 auto !important;
+    display: block !important;
+
     flex-shrink: 0 !important;
 
-    width: 190px !important;
-    height: 7px !important;
-
-    margin: 7px auto 2px !important;
-    padding: 0 !important;
+    box-sizing: border-box !important;
 
     border: none !important;
 
     border-radius: 4px !important;
 
+    overflow: visible !important;
+
     background:
       linear-gradient(
         90deg,
         #806000 0%,
-        #b98200 14%,
-        #dcae22 30%,
-        #f4d45c 50%,
-        #dcae22 70%,
-        #b98200 86%,
+        #b98200 15%,
+        #e0b52c 35%,
+        #f5d45b 50%,
+        #e0b52c 65%,
+        #b98200 85%,
         #806000 100%
       ) !important;
 
     box-shadow:
       0 1px 4px rgba(184,134,11,.35) !important;
 
-    overflow: visible !important;
-
-    box-sizing: border-box !important;
-
-    z-index: 20 !important;
+    z-index: 2 !important;
   }
 
 
   /* =======================================================
-     MOVING WHITE SHINE
-     M → G
+     WHITE SHINE
+     
+     STARTS FROM LEFT SIDE
+     ENDS AT RIGHT SIDE
      ======================================================= */
 
   .premium-divider::before {
+
     content: "" !important;
 
     position: absolute !important;
 
     top: 0 !important;
 
-    left: var(--shine-start, -100px) !important;
+    /*
+       Shine starts outside the ribbon.
+       This creates the effect of entering
+       from the MADHA "M" side.
+    */
+    left: -55px !important;
 
-    width: 65px !important;
+    width: 55px !important;
+
     height: 100% !important;
 
     background:
       linear-gradient(
         90deg,
         transparent 0%,
-        rgba(255,255,255,0) 15%,
-        rgba(255,255,255,.35) 35%,
+        rgba(255,255,255,0) 10%,
+        rgba(255,255,255,.35) 30%,
         #ffffff 50%,
-        rgba(255,255,255,.35) 65%,
-        rgba(255,255,255,0) 85%,
+        rgba(255,255,255,.35) 70%,
+        rgba(255,255,255,0) 90%,
         transparent 100%
       ) !important;
 
-    transform: skewX(-18deg) translateX(0) !important;
+    transform: skewX(-18deg) !important;
 
     opacity: 0 !important;
 
     pointer-events: none !important;
 
     filter:
-      drop-shadow(0 0 3px rgba(255,255,255,.9)) !important;
+      drop-shadow(
+        0 0 3px rgba(255,255,255,.95)
+      ) !important;
 
     z-index: 30 !important;
 
     animation:
-      laptopRibbonShine
+      laptopGoldRibbonShine
       3.2s
       linear
       infinite !important;
+
+    animation-play-state: running !important;
   }
 
 
   /* =======================================================
-     SHINE ANIMATION
+     WHITE SHINE ANIMATION
+     
+     LEFT → RIGHT
+     
+     START:
+     MADHA "M" SIDE
+
+     END:
+     NURSING "G" SIDE
      ======================================================= */
 
-  @keyframes laptopRibbonShine {
+  @keyframes laptopGoldRibbonShine {
+
+    /* ---------------------------------------------------
+       START
+       Shine is outside left side
+       --------------------------------------------------- */
 
     0% {
-      transform:
-        skewX(-18deg)
-        translateX(0);
 
-      opacity: 0;
+      left: -55px !important;
+
+      opacity: 0 !important;
     }
+
+
+    /* ---------------------------------------------------
+       Shine begins entering
+       --------------------------------------------------- */
 
     8% {
-      opacity: 1;
+
+      left: -35px !important;
+
+      opacity: 1 !important;
     }
 
-    45% {
-      opacity: 1;
+
+    /* ---------------------------------------------------
+       Shine reaches left edge
+       MADHA "M" side
+       --------------------------------------------------- */
+
+    20% {
+
+      left: 0px !important;
+
+      opacity: 1 !important;
     }
 
-    90% {
-      transform:
-        skewX(-18deg)
-        translateX(
-          calc(var(--shine-travel, 250px) - 65px)
-        );
 
-      opacity: 1;
+    /* ---------------------------------------------------
+       Moving across MADHA
+       --------------------------------------------------- */
+
+    35% {
+
+      left: 45px !important;
+
+      opacity: 1 !important;
     }
+
+
+    /* ---------------------------------------------------
+       Center area
+       --------------------------------------------------- */
+
+    50% {
+
+      left: 90px !important;
+
+      opacity: 1 !important;
+    }
+
+
+    /* ---------------------------------------------------
+       Moving toward NURSING
+       --------------------------------------------------- */
+
+    65% {
+
+      left: 135px !important;
+
+      opacity: 1 !important;
+    }
+
+
+    /* ---------------------------------------------------
+       Near NURSING "G"
+       --------------------------------------------------- */
+
+    80% {
+
+      left: 180px !important;
+
+      opacity: 1 !important;
+    }
+
+
+    /* ---------------------------------------------------
+       END
+       NURSING "G" side
+       --------------------------------------------------- */
+
+    92% {
+
+      left: 230px !important;
+
+      opacity: .7 !important;
+    }
+
+
+    /* ---------------------------------------------------
+       Completely exits
+       --------------------------------------------------- */
 
     100% {
-      transform:
-        skewX(-18deg)
-        translateX(
-          calc(var(--shine-travel, 250px) - 65px)
-        );
 
-      opacity: 0;
+      left: 285px !important;
+
+      opacity: 0 !important;
     }
   }
 
 
   /* =======================================================
-     CENTER DIAMOND
+     CENTER GOLD DIAMOND
+     ALWAYS VISIBLE ABOVE THE RIBBON
      ======================================================= */
 
   .premium-divider::after {
+
     content: "" !important;
 
     position: absolute !important;
 
     left: 50% !important;
+
     top: 50% !important;
 
     width: 13px !important;
+
     height: 13px !important;
 
     margin: 0 !important;
@@ -1546,6 +1566,8 @@ OTHER HEADER ELEMENTS PRESERVED
       translate(-50%, -50%)
       rotate(45deg) !important;
 
+    z-index: 999 !important;
+
     opacity: 1 !important;
 
     visibility: visible !important;
@@ -1553,148 +1575,61 @@ OTHER HEADER ELEMENTS PRESERVED
     pointer-events: none !important;
 
     box-shadow:
-      0 0 3px rgba(255,225,100,.8) !important;
-
-    z-index: 100 !important;
+      0 0 2px rgba(255,225,100,.8) !important;
   }
 
 
   /* =======================================================
-     NAVIGATION AREA
-     ======================================================= */
-
-  .nav-links {
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    flex: 1 1 auto !important;
-
-    min-width: 0 !important;
-
-    width: auto !important;
-
-    gap: clamp(4px, .55vw, 10px) !important;
-
-    flex-wrap: nowrap !important;
-
-    white-space: nowrap !important;
-
-    overflow: visible !important;
-
-    box-sizing: border-box !important;
-  }
-
-
-  /* =======================================================
-     NAVIGATION ITEMS
+     MENU ITEMS
      ======================================================= */
 
   .nav-root.transparent .nav-item,
   .nav-root.solid .nav-item {
+
     flex: 0 0 auto !important;
 
     margin: 0 !important;
 
-    padding:
-      7px
-      clamp(5px, .45vw, 8px) !important;
+    padding-top: 6px !important;
 
-    border-radius: 7px !important;
+    padding-bottom: 6px !important;
+
+    padding-left: 7px !important;
+
+    padding-right: 7px !important;
 
     line-height: 1 !important;
 
     white-space: nowrap !important;
 
     box-sizing: border-box !important;
+  }
+
+
+  /* =======================================================
+     MENU SIZE
+     ======================================================= */
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
 
     font-size:
-      clamp(11px, .62vw, 14px) !important;
-
-    font-weight: 500 !important;
-
-    letter-spacing: 0 !important;
-
-    flex-shrink: 0 !important;
+      clamp(
+        10px,
+        .68vw,
+        12px
+      ) !important;
   }
 
 
   /* =======================================================
-     NORMAL MENU
+     ABOUT ARROW
      ======================================================= */
-
-  .nav-root.transparent .nav-item {
-    color: rgba(255,255,255,.88) !important;
-  }
-
-  .nav-root.transparent .nav-item:hover {
-    color: #ffffff !important;
-
-    background:
-      rgba(255,255,255,.08) !important;
-  }
-
-  .nav-root.transparent .nav-item.active {
-    color: #ffffff !important;
-  }
-
-
-  /* =======================================================
-     WHITE MENU
-     ======================================================= */
-
-  .nav-root.solid .nav-item {
-    color: #163B72 !important;
-  }
-
-  .nav-root.solid .nav-item:hover {
-    color: #0B2545 !important;
-
-    background:
-      rgba(11,37,69,.05) !important;
-  }
-
-  .nav-root.solid .nav-item.active {
-    color: #0B2545 !important;
-  }
-
-
-  /* =======================================================
-     ACTIVE UNDERLINE
-     ======================================================= */
-
-  .nav-item::after {
-    left: 3px !important;
-    right: 3px !important;
-
-    bottom: 1px !important;
-
-    height: 2px !important;
-
-    border-radius: 2px !important;
-
-    background: #D4AF37 !important;
-  }
-
-
-  /* =======================================================
-     ABOUT DROPDOWN
-     ======================================================= */
-
-  .nav-dropdown-trigger {
-    display: flex !important;
-
-    align-items: center !important;
-
-    flex: 0 0 auto !important;
-
-    min-width: 0 !important;
-  }
-
 
   .nav-item-chevron {
+
     width: 7px !important;
+
     height: 7px !important;
 
     margin-left: 3px !important;
@@ -1704,25 +1639,42 @@ OTHER HEADER ELEMENTS PRESERVED
 
 
   /* =======================================================
-     RIGHT SIDE
+     MENU UNDERLINE
+     ======================================================= */
+
+  .nav-item::after {
+
+    left: 3px !important;
+
+    right: 3px !important;
+  }
+
+
+  /* =======================================================
+     APPLY NOW
      ======================================================= */
 
   .nav-right {
-    display: flex !important;
-
-    align-items: center !important;
-    justify-content: flex-end !important;
 
     flex: 0 0 auto !important;
 
-    width: auto !important;
     min-width: 0 !important;
 
-    margin: 0 !important;
+    width: auto !important;
 
-    padding: 0 !important;
+    display: flex !important;
 
-    gap: 8px !important;
+    align-items: center !important;
+
+    justify-content: flex-end !important;
+
+    margin-left: 0 !important;
+
+    margin-right: 0 !important;
+
+    padding-left: 10px !important;
+
+    padding-right: 0 !important;
 
     position: relative !important;
 
@@ -1733,31 +1685,23 @@ OTHER HEADER ELEMENTS PRESERVED
 
 
   /* =======================================================
-     APPLY NOW — NORMAL
+     APPLY NOW
+     TRANSPARENT HEADER
      ======================================================= */
 
   .nav-root.transparent .btn-apply {
-    width: 105px !important;
-    height: 36px !important;
 
-    padding: 6px 9px !important;
+    width: 112px !important;
 
-    display: inline-flex !important;
+    height: 38px !important;
 
-    align-items: center !important;
-    justify-content: center !important;
+    padding: 6px 10px !important;
+
+    font-size: 12px !important;
 
     gap: 4px !important;
 
-    margin: 0 !important;
-
     transform: none !important;
-
-    border-radius: 999px !important;
-
-    font-size: 11px !important;
-
-    font-weight: 700 !important;
 
     white-space: nowrap !important;
 
@@ -1766,31 +1710,23 @@ OTHER HEADER ELEMENTS PRESERVED
 
 
   /* =======================================================
-     APPLY NOW — SCROLL
+     APPLY NOW
+     SOLID / WHITE HEADER
      ======================================================= */
 
   .nav-root.solid .btn-apply {
-    width: 96px !important;
-    height: 34px !important;
 
-    padding: 6px 8px !important;
+    width: 102px !important;
 
-    display: inline-flex !important;
+    height: 36px !important;
 
-    align-items: center !important;
-    justify-content: center !important;
+    padding: 6px 9px !important;
+
+    font-size: 11px !important;
 
     gap: 4px !important;
 
-    margin: 0 !important;
-
     transform: none !important;
-
-    border-radius: 999px !important;
-
-    font-size: 10px !important;
-
-    font-weight: 700 !important;
 
     white-space: nowrap !important;
 
@@ -1804,53 +1740,84 @@ OTHER HEADER ELEMENTS PRESERVED
 
   .nav-root.transparent .btn-apply svg,
   .nav-root.solid .btn-apply svg {
-    width: 10px !important;
-    height: 10px !important;
+
+    width: 11px !important;
+
+    height: 11px !important;
 
     flex-shrink: 0 !important;
   }
 
 
   /* =======================================================
-     WHITE / SCROLL HEADER
+     SOLID / WHITE HEADER
      ======================================================= */
 
   .nav-root.solid {
+
     margin-left: 8px !important;
+
     margin-right: 8px !important;
 
     width:
-      calc(100% - 16px) !important;
+      calc(100% - 16px)
+      !important;
 
     box-sizing: border-box !important;
+
+    overflow: visible !important;
   }
 
 
   .nav-root.solid .nav-inner {
-    padding-left: 18px !important;
-    padding-right: 18px !important;
 
-    gap: 14px !important;
+    padding-left: 18px !important;
+
+    padding-right: 18px !important;
 
     box-sizing: border-box !important;
   }
 
 
   /* =======================================================
-     SCROLL RIBBON
+     SOLID / WHITE HEADER RIBBON
+     
+     SAME START → END SHINE
      ======================================================= */
 
   .nav-root.solid .premium-divider {
-    width: 165px !important;
-    height: 6px !important;
+
+    width: 230px !important;
+
+    height: 4px !important;
 
     margin:
-      6px auto 2px !important;
+      7px auto 3px
+      !important;
 
     overflow: visible !important;
 
-    box-shadow:
-      0 1px 3px rgba(184,134,11,.28) !important;
+    box-shadow: none !important;
+
+    border: none !important;
+  }
+
+
+  /* =======================================================
+     SOLID / WHITE HEADER SHINE
+     ======================================================= */
+
+  .nav-root.solid .premium-divider::before {
+
+    width: 55px !important;
+
+    left: -55px !important;
+
+    animation:
+      laptopGoldRibbonShine
+      3.2s
+      linear
+      infinite !important;
   }
 
 
@@ -1859,10 +1826,8 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-brand,
-  .nav-brand-text,
-  .nav-logo-ring,
-  .nav-links,
-  .nav-right {
+  .nav-brand-text {
+
     overflow: visible !important;
   }
 
@@ -1872,10 +1837,29 @@ OTHER HEADER ELEMENTS PRESERVED
      ======================================================= */
 
   .nav-hamburger {
+
     display: none !important;
   }
 
 }
+
+
+/* =========================================================
+   IMPORTANT
+   =========================================================
+
+   DO NOT KEEP THE OLD:
+
+   @keyframes laptopRibbonWhiteShine
+
+   Remove the old duplicate animation if it still exists.
+
+   The single animation used for BOTH headers is:
+
+   laptopGoldRibbonShine
+
+   ========================================================= */
+
 
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
