@@ -518,7 +518,7 @@ a.top-contact-item:hover {
   position: relative;
   align-self: center;
 
-  width: 250px;
+ width: 100% !important;
   height: 5px;
 
   margin: 7px 0 3px;
@@ -1642,12 +1642,7 @@ overflow: visible !important;
 
   .nav-root.solid .premium-divider {
 
-    width:
-      clamp(
-        130px,
-        12vw,
-        165px
-      ) !important;
+    width: 100% !important;
 
     height: 4px !important;
 
