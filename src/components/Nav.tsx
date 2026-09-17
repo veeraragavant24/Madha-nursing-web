@@ -1336,7 +1336,7 @@ font-weight: 700;
   top: 0;
   height: 100%;
   left: var(--shine-start, -150px);
-  width: 90px;
+width: 45px;  
 
   background: linear-gradient(
     90deg,
