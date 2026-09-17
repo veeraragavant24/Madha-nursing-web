@@ -1083,11 +1083,14 @@ font-weight: 700;
    <=768px: mobile/tablet uses the existing hamburger drawer.
    ========================================================= */
 
-/* =========================================================
+
+   /* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
 
-   ONLY RIBBON / SHINE FIXED
+   NORMAL HEADER RIBBON:
+   150px × 5px
+
    OTHER HEADER ELEMENTS PRESERVED
    ========================================================= */
 
@@ -1250,202 +1253,221 @@ font-weight: 700;
         .045em
       ) !important;
   }
-/* =======================================================
-   LAPTOP GOLD RIBBON
-   GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
-   ======================================================= */
-
-.premium-divider {
-
-  position: relative !important;
-
-  width: 140px !important;
-  height: 3px !important;
-
-  margin-top: 7px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-bottom: 2px !important;
-
-  align-self: center !important;
-
-  display: block !important;
-
-  flex-shrink: 0 !important;
-
-  box-sizing: border-box !important;
-
-  border: none !important;
-
-  border-radius: 4px !important;
-
-overflow: visible !important;
-  /*
-     TWO BACKGROUND LAYERS
-
-     1 = GOLD RIBBON
-     2 = WHITE MOVING SHINE
-  */
-
-  background-image:
-
-    /* GOLD RIBBON */
-    linear-gradient(
-      90deg,
-      #806000 0%,
-      #b98200 15%,
-      #e0b52c 35%,
-      #f5d45b 50%,
-      #e0b52c 65%,
-      #b98200 85%,
-      #806000 100%
-    ),
-
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
-    ) !important;
-
-  /*
-     GOLD = FULL WIDTH
-     SHINE = FULL RIBBON WIDTH STRIP
-     (200% background-size means one "shine" pass
-     equals the full width of the ribbon, so it
-     travels edge-to-edge, from under "M" of MADHA
-     to under "G" of NURSING)
-  */
-
-  background-size:
-    100% 100%,
-    200% 100% !important;
-
-  /*
-     GOLD STAYS FIXED
-     SHINE STARTS FULLY OFF THE LEFT EDGE
-     (200% here is correct: with a 200%-wide layer,
-     position 200% pushes it fully past the left edge)
-  */
-
-  background-position:
-    center center,
-    170% center !important;
-
-  background-repeat:
-    no-repeat,
-    no-repeat !important;
-
-  box-shadow: none !important;
-
-  /*
-     FORCE ANIMATION
-  */
-
-  animation:
-    laptopGoldRibbonShine
-    2.5s
-    linear
-    infinite !important;
-
-  animation-play-state: running !important;
-
-  z-index: 2 !important;
-}
 
 
-/* =======================================================
-   WHITE SHINE ANIMATION
-   LEFT → RIGHT
-   FULL RIBBON WIDTH SWEEP
-   ======================================================= */
+  /* =======================================================
+     LAPTOP GOLD RIBBON
+     
+     NORMAL / TRANSPARENT HEADER ONLY
+     
+     WIDTH  = 150px
+     HEIGHT = 5px
+     
+     GOLD RIBBON + MOVING WHITE SHINE + CENTER DIAMOND
+     ======================================================= */
 
-@keyframes laptopGoldRibbonShine {
+  .premium-divider {
 
-  /* START — LEFT EDGE / M OF MADHA */
-  0% {
+    position: relative !important;
+
+    width: 150px !important;
+    height: 5px !important;
+
+    margin-top: 7px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 2px !important;
+
+    align-self: center !important;
+
+    display: block !important;
+
+    flex-shrink: 0 !important;
+
+    box-sizing: border-box !important;
+
+    border: none !important;
+
+    border-radius: 4px !important;
+
+    overflow: visible !important;
+
+
+    /*
+       TWO BACKGROUND LAYERS
+
+       1 = GOLD RIBBON
+       2 = WHITE MOVING SHINE
+    */
+
+    background-image:
+
+      /* GOLD RIBBON */
+
+      linear-gradient(
+        90deg,
+        #806000 0%,
+        #b98200 15%,
+        #e0b52c 35%,
+        #f5d45b 50%,
+        #e0b52c 65%,
+        #b98200 85%,
+        #806000 100%
+      ),
+
+      /* WHITE SHINE */
+
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.05) 15%,
+        rgba(255,255,255,0.55) 35%,
+        #ffffff 50%,
+        rgba(255,255,255,0.55) 65%,
+        rgba(255,255,255,0.05) 85%,
+        transparent 100%
+      ) !important;
+
+
+    /*
+       GOLD = FULL WIDTH
+       SHINE = FULL RIBBON WIDTH STRIP
+    */
+
+    background-size:
+      100% 100%,
+      200% 100% !important;
+
+
+    /*
+       GOLD STAYS FIXED
+       SHINE STARTS FROM THE LEFT SIDE
+    */
 
     background-position:
       center center,
       170% center !important;
+
+
+    background-repeat:
+      no-repeat,
+      no-repeat !important;
+
+
+    box-shadow: none !important;
+
+
+    /*
+       FORCE ANIMATION
+    */
+
+    animation:
+      laptopGoldRibbonShine
+      2.5s
+      linear
+      infinite !important;
+
+    animation-play-state: running !important;
+
+    z-index: 2 !important;
   }
 
-  /* WHITE SHINE TRAVELS FROM M → G */
-  50% {
 
-    background-position:
-      center center,
-      50% center !important;
+  /* =======================================================
+     WHITE SHINE ANIMATION
+     LEFT → RIGHT
+     FULL RIBBON WIDTH SWEEP
+     ======================================================= */
+
+  @keyframes laptopGoldRibbonShine {
+
+    /* START — LEFT SIDE */
+
+    0% {
+
+      background-position:
+        center center,
+        170% center !important;
+    }
+
+
+    /* SHINE MOVES ACROSS THE RIBBON */
+
+    50% {
+
+      background-position:
+        center center,
+        50% center !important;
+    }
+
+
+    /* END — RIGHT SIDE */
+
+    100% {
+
+      background-position:
+        center center,
+        -70% center !important;
+    }
   }
 
-  /* END — RIGHT EDGE / G OF NURSING */
-  100% {
 
-    background-position:
-      center center,
-      -70% center !important;
+  /* =======================================================
+     CENTER GOLD DIAMOND
+     ALWAYS VISIBLE ABOVE THE RIBBON
+     ======================================================= */
+
+  .premium-divider::after {
+
+    content: "" !important;
+
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 35% !important;
+
+    width: 13px !important;
+    height: 13px !important;
+
+    margin: 0 !important;
+
+    display: block !important;
+
+    background:
+      linear-gradient(
+        135deg,
+        #fff7bd 0%,
+        #ffe76a 25%,
+        #f0c936 45%,
+        #d29d0b 70%,
+        #8a6200 100%
+      ) !important;
+
+    border: 1px solid #ffe47a !important;
+
+    border-radius: 1px !important;
+
+    transform:
+      translate(-50%, -50%)
+      rotate(45deg) !important;
+
+
+    /*
+       IMPORTANT
+       Put diamond above everything.
+    */
+
+    z-index: 999 !important;
+
+    opacity: 1 !important;
+
+    visibility: visible !important;
+
+    pointer-events: none !important;
+
+    box-shadow:
+      0 0 2px rgba(255, 225, 100, 0.8) !important;
   }
-}
-
-/* =======================================================
-   CENTER GOLD DIAMOND
-   ALWAYS VISIBLE ABOVE THE RIBBON
-   ======================================================= */
-
-.premium-divider::after {
-
-  content: "" !important;
-
-  position: absolute !important;
-
-  left: 50% !important;
-  top: 35% !important;
-
-  width: 13px !important;
-  height: 13px !important;
-
-  margin: 0 !important;
-
-  display: block !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff7bd 0%,
-      #ffe76a 25%,
-      #f0c936 45%,
-      #d29d0b 70%,
-      #8a6200 100%
-    ) !important;
-
-  border: 1px solid #ffe47a !important;
-
-  border-radius: 1px !important;
-
-  transform:
-    translate(-50%, -50%)
-    rotate(45deg) !important;
-
-  /*
-     IMPORTANT
-     Put diamond above everything.
-  */
-  z-index: 999 !important;
-
-  opacity: 1 !important;
-
-  visibility: visible !important;
-
-  pointer-events: none !important;
-
-  box-shadow:
-    0 0 2px rgba(255, 225, 100, 0.8) !important;
-}
 
 
   /* =======================================================
@@ -1648,6 +1670,8 @@ overflow: visible !important;
 
   /* =======================================================
      SOLID RIBBON
+     
+     UNCHANGED
      ======================================================= */
 
   .nav-root.solid .premium-divider {
