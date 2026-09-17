@@ -1328,101 +1328,61 @@ font-weight: 700;
      Nav.tsx supplies these two values.
      ======================================================= */
 
+  
+
   .premium-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: var(--shine-start, -150px);
+  width: 90px;
 
-    content: "" !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.75) 42%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.75) 58%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent 100%
+  );
 
-    position: absolute !important;
+  filter:
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
-    top: 0 !important;
+  pointer-events: none;
 
-    left: var(--shine-start, -150px) !important;
+  animation: extendedRibbonShine 3.8s ease-in-out infinite;
+}
 
-    width: 90px !important;
-
-    height: 100% !important;
-
-    background:
-      linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255,255,255,0) 20%,
-        rgba(255,255,255,0.75) 42%,
-        #ffffff 50%,
-        rgba(255,255,255,0.75) 58%,
-        rgba(255,255,255,0) 80%,
-        transparent 100%
-      ) !important;
-
-    filter:
-      drop-shadow(0 0 3px rgba(255,255,255,0.9))
-      drop-shadow(0 0 7px rgba(255,255,255,0.55));
-
-    pointer-events: none !important;
-
-    animation:
-      laptopTitleBoundShine
-      3.8s
-      ease-in-out
-      infinite !important;
-
-    z-index: 3 !important;
+@keyframes extendedRibbonShine {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
   }
 
-
-  /* =======================================================
-     TITLE-BOUND ANIMATION
-
-     START  = M OF MADHA
-     END    = G OF NURSING
-
-     The shine does not use a fixed ribbon width to
-     determine its travel distance.
-     ======================================================= */
-
-  @keyframes laptopTitleBoundShine {
-
-    0% {
-
-      transform:
-        translateX(0)
-        skewX(-20deg);
-
-      opacity: 0;
-    }
-
-    10% {
-
-      transform:
-        translateX(0)
-        skewX(-20deg);
-
-      opacity: 1;
-    }
-
-    90% {
-
-      transform:
-        translateX(
-          calc(var(--shine-travel, 500px) - 90px)
-        )
-        skewX(-20deg);
-
-      opacity: 1;
-    }
-
-    100% {
-
-      transform:
-        translateX(
-          calc(var(--shine-travel, 500px) - 90px)
-        )
-        skewX(-20deg);
-
-      opacity: 0;
-    }
+  10% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 1;
   }
 
+  90% {
+    transform:
+      translateX(calc(var(--shine-travel, 500px) - 90px))
+      skewX(-20deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateX(calc(var(--shine-travel, 500px) - 90px))
+      skewX(-20deg);
+    opacity: 0;
+  }
+}
 
   /* =======================================================
      CENTER GOLD DIAMOND
