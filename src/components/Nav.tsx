@@ -1259,8 +1259,9 @@ font-weight: 700;
 
   position: relative !important;
 
-  width: 175px !important;
-  height: 3px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 5px !important;
 
   margin-top: 7px !important;
   margin-left: auto !important;
@@ -1642,12 +1643,9 @@ overflow: visible !important;
 
   .nav-root.solid .premium-divider {
 
-    width:
-      clamp(
-        165px,
-        15vw,
-        205px
-      ) !important;
+    width: 100% !important;
+
+    max-width: 100% !important;
 
     height: 4px !important;
 
