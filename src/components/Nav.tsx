@@ -1301,16 +1301,6 @@ overflow: visible !important;
       #806000 100%
     ),
 
-    /* WHITE SHINE */
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255,255,255,0.05) 15%,
-      rgba(255,255,255,0.55) 35%,
-      #ffffff 50%,
-      rgba(255,255,255,0.55) 65%,
-      rgba(255,255,255,0.05) 85%,
-      transparent 100%
     ) !important;
 
   /*
@@ -1354,9 +1344,122 @@ overflow: visible !important;
 
 
 /* =======================================================
-   WHITE SHINE ANIMATION
-   LEFT → RIGHT
+   WHITE SHINE
+   MADHA "M" → NURSING "G"
+   BOTH NORMAL + WHITE HEADER
    ======================================================= */
+
+.premium-divider::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 0 !important;
+
+  /*
+     Start just outside the LEFT edge.
+     This is the MADHA "M" side.
+  */
+  left: -55px !important;
+
+  width: 55px !important;
+
+  height: 100% !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0) 10%,
+    rgba(255,255,255,.35) 30%,
+    #ffffff 50%,
+    rgba(255,255,255,.35) 70%,
+    rgba(255,255,255,0) 90%,
+    transparent 100%
+  ) !important;
+
+  transform: skewX(-18deg) !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.95)) !important;
+
+  z-index: 30 !important;
+
+  animation:
+    madhaToNursingShine
+    3.2s
+    linear
+    infinite !important;
+
+  animation-play-state: running !important;
+}
+
+
+/* =======================================================
+   WHITE SHINE ANIMATION
+   LEFT SIDE OF MADHA "M"
+   →
+   RIGHT SIDE OF NURSING "G"
+   ======================================================= */
+
+@keyframes madhaToNursingShine {
+
+  /* Start outside the MADHA "M" side */
+  0% {
+    left: -55px !important;
+    opacity: 0 !important;
+  }
+
+  /* Enter from the MADHA "M" side */
+  8% {
+    left: -35px !important;
+    opacity: 1 !important;
+  }
+
+  /* MADHA "M" / LEFT EDGE */
+  18% {
+    left: 0px !important;
+    opacity: 1 !important;
+  }
+
+  /* Move across MADHA */
+  32% {
+    left: 25% !important;
+    opacity: 1 !important;
+  }
+
+  /* CENTER */
+  50% {
+    left: 50% !important;
+    opacity: 1 !important;
+  }
+
+  /* Move toward NURSING */
+  68% {
+    left: 70% !important;
+    opacity: 1 !important;
+  }
+
+  82% {
+    left: 88% !important;
+    opacity: 1 !important;
+  }
+
+  /* NURSING "G" / RIGHT EDGE */
+  92% {
+    left: 100% !important;
+    opacity: .8 !important;
+  }
+
+  /* Completely exits */
+  100% {
+    left: calc(100% + 55px) !important;
+    opacity: 0 !important;
+  }
+}
 
 @keyframes laptopGoldRibbonShine {
 
@@ -1714,78 +1817,7 @@ overflow: visible !important;
 }
 
 
-/* =========================================================
-   WHITE SHINE KEYFRAMES
-   OUTSIDE MEDIA QUERY
-   IMPORTANT
-   ========================================================= */
 
-@keyframes laptopRibbonWhiteShine {
-
-  0% {
-
-    left: -70px;
-
-    opacity: 0;
-  }
-
-
-  8% {
-
-    left: -50px;
-
-    opacity: 1;
-  }
-
-
-  25% {
-
-    left: 0;
-
-    opacity: 1;
-  }
-
-
-  45% {
-
-    left: 55px;
-
-    opacity: 1;
-  }
-
-
-  65% {
-
-    left: 110px;
-
-    opacity: 1;
-  }
-
-
-  82% {
-
-    left: 155px;
-
-    opacity: 1;
-  }
-
-
-  92% {
-
-    left: 205px;
-
-    opacity: 0;
-  }
-
-
-  100% {
-
-    left: 225px;
-
-    opacity: 0;
-  }
-
-}
 
 /* ---------- SMALL PHONE: 480px and below ---------- */
 
