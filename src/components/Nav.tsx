@@ -1340,15 +1340,19 @@ font-weight: 700;
   width: 14px !important;
   height: 14px !important;
 
-  background: #e6b71d !important;
-  border: 1px solid #e0be41 !important;
+  background: #fff4b0 !important;
+  border: 2px solid #ffffff !important;
 
   transform:
     translate(-50%, -50%)
     rotate(45deg) !important;
 
   box-shadow:
-    0 1px 4px rgba(184, 134, 11, 0.45) !important;
+    0 0 4px rgba(255, 255, 255, 0.95),
+    0 0 9px rgba(255, 255, 255, 0.75),
+    0 1px 5px rgba(184, 134, 11, 0.55) !important;
+
+  z-index: 10 !important;
 }
 
 
