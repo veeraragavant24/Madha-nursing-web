@@ -599,22 +599,22 @@ background: linear-gradient(
 
 @keyframes ribbonShineInside {
   0% {
-    background-position: -90px center;
+    transform: translateX(0);
     opacity: 0;
   }
 
   10% {
-    background-position: -45px center;
+    transform: translateX(0);
     opacity: 1;
   }
 
   90% {
-    background-position: calc(100% + 90px) center;
+    transform: translateX(calc(100% + 90px));
     opacity: 1;
   }
 
   100% {
-    background-position: calc(100% + 90px) center;
+    transform: translateX(calc(100% + 90px));
     opacity: 0;
   }
 }
@@ -1315,7 +1315,8 @@ font-weight: 700;
     0 1px 4px rgba(184, 134, 11, 0.45),
     0 0 8px rgba(212, 175, 55, 0.25) !important;
 
-  overflow: visible !important;
+  /* Clips the moving shine strictly to the gold ribbon. */
+  overflow: hidden !important;
 }
 
 
@@ -1356,13 +1357,12 @@ font-weight: 700;
   position: absolute !important;
 
   top: 0 !important;
-  left: 0 !important;
+  left: -90px !important;
 
-  width: 100% !important;
+  width: 90px !important;
   height: 100% !important;
 
-  /* 90px WHITE SHINE — NEVER EXTENDS OUTSIDE RIBBON */
-  background-image: linear-gradient(
+  background: linear-gradient(
     90deg,
     transparent 0%,
     rgba(255, 255, 255, 0) 20%,
@@ -1373,12 +1373,8 @@ font-weight: 700;
     transparent 100%
   ) !important;
 
-  background-size: 90px 100% !important;
-  background-position: -90px center !important;
-  background-repeat: no-repeat !important;
-
-  /* Prevent glow from bleeding outside the ribbon. */
-  filter: none !important;
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) !important;
 
   pointer-events: none !important;
 
@@ -1981,7 +1977,7 @@ font-weight: 700;
 
     align-self: center !important;
 
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
 
@@ -1990,15 +1986,14 @@ font-weight: 700;
      ===================================================== */
 
   .premium-divider::before {
-    left: 0 !important;
-    width: 100% !important;
+    left: -90px !important;
+    width: 90px !important;
     height: 100% !important;
 
-    background-size: min(90px, 100%) 100% !important;
-    background-position: -90px center !important;
     background-repeat: no-repeat !important;
 
-    filter: none !important;
+    filter:
+      drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) !important;
 
     animation:
       ribbonShineInside
