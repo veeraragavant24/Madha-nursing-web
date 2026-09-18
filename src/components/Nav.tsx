@@ -73,6 +73,11 @@ useEffect(() => {
       '--shine-travel',
       `${travel}px`
     )
+
+    ribbon.style.setProperty(
+      '--shine-distance',
+      `${ribbonW + 90}px`
+    )
   }
 
   measureNormalHeader()
@@ -115,6 +120,11 @@ useEffect(() => {
     ribbon.style.setProperty(
       '--shine-travel',
       `${travel}px`
+    )
+
+    ribbon.style.setProperty(
+      '--shine-distance',
+      `${ribbonW + 90}px`
     )
   }
 
@@ -593,32 +603,6 @@ background: linear-gradient(
   animation: extendedRibbonShine 3.8s ease-in-out infinite;
 }
 
-/* =======================================================
-   RIBBON SHINE — STRICTLY INSIDE THE RIBBON
-   ======================================================= */
-
-@keyframes ribbonShineInside {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-
-  10% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  90% {
-    transform: translateX(calc(100% + 90px));
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(calc(100% + 90px));
-    opacity: 0;
-  }
-}
-
 @keyframes extendedRibbonShine {
   0% {
     transform: translateX(0) skewX(-20deg);
@@ -637,6 +621,38 @@ background: linear-gradient(
 
   100% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ribbonShineInside {
+  0% {
+    left: var(--shine-start, -150px);
+    transform: skewX(-20deg);
+    opacity: 0;
+  }
+
+  10% {
+    left: var(--shine-start, -150px);
+    transform: skewX(-20deg);
+    opacity: 1;
+  }
+
+  90% {
+    left: calc(
+      var(--shine-start, -150px) +
+      var(--shine-travel, 500px) - 90px
+    );
+    transform: skewX(-20deg);
+    opacity: 1;
+  }
+
+  100% {
+    left: calc(
+      var(--shine-start, -150px) +
+      var(--shine-travel, 500px) - 90px
+    );
+    transform: skewX(-20deg);
     opacity: 0;
   }
 }
@@ -1315,8 +1331,7 @@ font-weight: 700;
     0 1px 4px rgba(184, 134, 11, 0.45),
     0 0 8px rgba(212, 175, 55, 0.25) !important;
 
-  /* Clips the moving shine strictly to the gold ribbon. */
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 
@@ -1348,7 +1363,8 @@ font-weight: 700;
 
 
 /* =======================================================
-   LAPTOP — SHINE STRICTLY INSIDE GOLD RIBBON
+   LAPTOP — EXACT SYSTEM SHINE
+   START → TRAVEL → END
    ======================================================= */
 
 .premium-divider::before {
@@ -1357,10 +1373,13 @@ font-weight: 700;
   position: absolute !important;
 
   top: 0 !important;
-  left: -90px !important;
-
-  width: 90px !important;
   height: 100% !important;
+
+  /* START EXACTLY AT THE M OF MADHA */
+  left: var(--shine-start, -150px) !important;
+
+  /* SAME 90px SHINE AS SYSTEM DESKTOP */
+  width: 90px !important;
 
   background: linear-gradient(
     90deg,
@@ -1374,19 +1393,22 @@ font-weight: 700;
   ) !important;
 
   filter:
-    drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) !important;
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
   pointer-events: none !important;
 
+  /* EXACT SYSTEM ANIMATION */
   animation:
     ribbonShineInside
     3.8s
-    linear
+    ease-in-out
     infinite !important;
+
+  will-change: left, opacity !important;
 
   z-index: 3 !important;
 }
-
 
 
 
@@ -1977,33 +1999,57 @@ font-weight: 700;
 
     align-self: center !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
 
+  
+
   /* =====================================================
-     MOBILE — SHINE STRICTLY INSIDE GOLD RIBBON
+     MOBILE — RIBBON SHINE
+     KEEP THE WHITE SHINE INSIDE THE RIBBON
      ===================================================== */
 
   .premium-divider::before {
-    left: -90px !important;
+
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    left: var(--shine-start, -150px) !important;
+
     width: 90px !important;
     height: 100% !important;
 
-    background-repeat: no-repeat !important;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.75) 42%,
+      #FFFFFF 50%,
+      rgba(255, 255, 255, 0.75) 58%,
+      rgba(255, 255, 255, 0) 80%,
+      transparent 100%
+    ) !important;
 
     filter:
-      drop-shadow(0 0 2px rgba(255, 255, 255, 0.85)) !important;
+      drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
+
+    pointer-events: none !important;
 
     animation:
       ribbonShineInside
       3.8s
-      linear
+      ease-in-out
       infinite !important;
+
+    will-change: left, opacity !important;
+
+    z-index: 3 !important;
   }
-
-
-  /* =====================================================
+/* =====================================================
      HIDE DESKTOP NAVIGATION
      ===================================================== */
 
