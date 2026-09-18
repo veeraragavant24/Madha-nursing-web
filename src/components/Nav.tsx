@@ -627,22 +627,32 @@ background: linear-gradient(
 
 @keyframes ribbonShineInside {
   0% {
-    left: var(--shine-start, -150px) !important;
+    left: var(--shine-start, -150px);
+    transform: skewX(-20deg);
     opacity: 0;
   }
 
-  8% {
-    left: var(--shine-start, -150px) !important;
+  10% {
+    left: var(--shine-start, -150px);
+    transform: skewX(-20deg);
     opacity: 1;
   }
 
-  92% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px) !important;
+  90% {
+    left: calc(
+      var(--shine-start, -150px) +
+      var(--shine-travel, 500px) - 90px
+    );
+    transform: skewX(-20deg);
     opacity: 1;
   }
 
   100% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px) !important;
+    left: calc(
+      var(--shine-start, -150px) +
+      var(--shine-travel, 500px) - 90px
+    );
+    transform: skewX(-20deg);
     opacity: 0;
   }
 }
@@ -1321,7 +1331,7 @@ font-weight: 700;
     0 1px 4px rgba(184, 134, 11, 0.45),
     0 0 8px rgba(212, 175, 55, 0.25) !important;
 
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 
@@ -1989,7 +1999,7 @@ font-weight: 700;
 
     align-self: center !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
 
