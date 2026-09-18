@@ -1322,7 +1322,7 @@ font-weight: 700;
 
 /* =======================================================
    LAPTOP — EXACT SYSTEM SHINE
-   NO ANIMATION CHANGES
+   START → TRAVEL → END
    ======================================================= */
 
 .premium-divider::before {
@@ -1333,9 +1333,10 @@ font-weight: 700;
   top: 0 !important;
   height: 100% !important;
 
+  /* SYSTEM STARTING CRITERIA */
   left: var(--shine-start, -150px) !important;
 
-  /* SAME AS SYSTEM DESKTOP */
+  /* SAME 90px SHINE AS SYSTEM DESKTOP */
   width: 90px !important;
 
   background: linear-gradient(
@@ -1365,6 +1366,32 @@ font-weight: 700;
   z-index: 3 !important;
 }
 
+
+@keyframes extendedRibbonShine {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateX(
+      calc(var(--shine-travel, 500px) - 90px)
+    ) skewX(-20deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(
+      calc(var(--shine-travel, 500px) - 90px)
+    ) skewX(-20deg);
+    opacity: 0;
+  }
+}
 
 
 
@@ -1615,80 +1642,6 @@ font-weight: 700;
   .nav-hamburger {
 
     display: none !important;
-  }
-
-}
-
-
-/* =========================================================
-   WHITE SHINE KEYFRAMES
-   OUTSIDE MEDIA QUERY
-   IMPORTANT
-   ========================================================= */
-
-@keyframes laptopRibbonWhiteShine {
-
-  0% {
-
-    left: -70px;
-
-    opacity: 0;
-  }
-
-
-  8% {
-
-    left: -50px;
-
-    opacity: 1;
-  }
-
-
-  25% {
-
-    left: 0;
-
-    opacity: 1;
-  }
-
-
-  45% {
-
-    left: 55px;
-
-    opacity: 1;
-  }
-
-
-  65% {
-
-    left: 110px;
-
-    opacity: 1;
-  }
-
-
-  82% {
-
-    left: 155px;
-
-    opacity: 1;
-  }
-
-
-  92% {
-
-    left: 205px;
-
-    opacity: 0;
-  }
-
-
-  100% {
-
-    left: 225px;
-
-    opacity: 0;
   }
 
 }
