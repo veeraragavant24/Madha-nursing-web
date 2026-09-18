@@ -1337,7 +1337,7 @@ font-weight: 700;
   left: var(--shine-start, -150px) !important;
 
   /* SAME 90px SHINE AS SYSTEM DESKTOP */
-  width: 45px !important;
+  width: 90px !important;
 
   background: linear-gradient(
     90deg,
@@ -1367,31 +1367,7 @@ font-weight: 700;
 }
 
 
-@keyframes extendedRibbonShine {
-  0% {
-    transform: translateX(0) skewX(-20deg);
-    opacity: 0;
-  }
 
-  10% {
-    transform: translateX(0) skewX(-20deg);
-    opacity: 1;
-  }
-
-  90% {
-    transform: translateX(
-      calc(var(--shine-travel, 500px) - 45px)
-    ) skewX(-20deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(
-      calc(var(--shine-travel, 500px) - 45px)
-    ) skewX(-20deg);
-    opacity: 0;
-  }
-}
 
 
 
@@ -1616,7 +1592,7 @@ font-weight: 700;
       7px auto 3px
       !important;
 
-    overflow:  !important;
+    overflow: visible !important;
 
     box-shadow: none !important;
 
@@ -1918,9 +1894,9 @@ font-weight: 700;
 
     display: block !important;
 
-    width: 100% !important;
+    width: max-content !important;
 
-    max-width: 100% !important;
+    max-width: none !important;
 
     font-family: 'Cinzel', serif !important;
 
