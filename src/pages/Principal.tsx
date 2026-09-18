@@ -416,7 +416,7 @@ export default function Principal({ navigate }: Props) {
               />
             </div>
           </div>
-
+        </div>
       </section>
 
       {/* Letter from Principal */}
