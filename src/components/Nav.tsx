@@ -593,6 +593,32 @@ background: linear-gradient(
   animation: extendedRibbonShine 3.8s ease-in-out infinite;
 }
 
+/* =======================================================
+   RIBBON SHINE — STRICTLY INSIDE THE RIBBON
+   ======================================================= */
+
+@keyframes ribbonShineInside {
+  0% {
+    background-position: -90px center;
+    opacity: 0;
+  }
+
+  10% {
+    background-position: -45px center;
+    opacity: 1;
+  }
+
+  90% {
+    background-position: calc(100% + 90px) center;
+    opacity: 1;
+  }
+
+  100% {
+    background-position: calc(100% + 90px) center;
+    opacity: 0;
+  }
+}
+
 @keyframes extendedRibbonShine {
   0% {
     transform: translateX(0) skewX(-20deg);
@@ -1321,8 +1347,7 @@ font-weight: 700;
 
 
 /* =======================================================
-   LAPTOP — EXACT SYSTEM SHINE
-   START → TRAVEL → END
+   LAPTOP — SHINE STRICTLY INSIDE GOLD RIBBON
    ======================================================= */
 
 .premium-divider::before {
@@ -1331,15 +1356,13 @@ font-weight: 700;
   position: absolute !important;
 
   top: 0 !important;
+  left: 0 !important;
+
+  width: 100% !important;
   height: 100% !important;
 
-  /* SYSTEM STARTING CRITERIA */
-  left: var(--shine-start, -150px) !important;
-
-  /* SAME 90px SHINE AS SYSTEM DESKTOP */
-  width: 90px !important;
-
-  background: linear-gradient(
+  /* 90px WHITE SHINE — NEVER EXTENDS OUTSIDE RIBBON */
+  background-image: linear-gradient(
     90deg,
     transparent 0%,
     rgba(255, 255, 255, 0) 20%,
@@ -1350,21 +1373,24 @@ font-weight: 700;
     transparent 100%
   ) !important;
 
-  filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
+  background-size: 90px 100% !important;
+  background-position: -90px center !important;
+  background-repeat: no-repeat !important;
+
+  /* Prevent glow from bleeding outside the ribbon. */
+  filter: none !important;
 
   pointer-events: none !important;
 
-  /* EXACT SYSTEM ANIMATION */
   animation:
-    extendedRibbonShine
+    ribbonShineInside
     3.8s
-    ease-in-out
+    linear
     infinite !important;
 
   z-index: 3 !important;
 }
+
 
 
 
@@ -1956,6 +1982,29 @@ font-weight: 700;
     align-self: center !important;
 
     overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     MOBILE — SHINE STRICTLY INSIDE GOLD RIBBON
+     ===================================================== */
+
+  .premium-divider::before {
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    background-size: min(90px, 100%) 100% !important;
+    background-position: -90px center !important;
+    background-repeat: no-repeat !important;
+
+    filter: none !important;
+
+    animation:
+      ribbonShineInside
+      3.8s
+      linear
+      infinite !important;
   }
 
 
