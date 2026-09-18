@@ -1255,207 +1255,119 @@ font-weight: 700;
   }
 
 
-  /* =======================================================
-     LAPTOP GOLD RIBBON
+/* =======================================================
+   LAPTOP RIBBON
+   SYSTEM DESKTOP RIBBON — REDUCED SIZE ONLY
+   ======================================================= */
 
-     NORMAL / TRANSPARENT HEADER
+.premium-divider {
+  position: relative !important;
+  align-self: center !important;
 
-     SIZE IS PRESERVED:
-     WIDTH  = 150px
-     HEIGHT = 5px
+  /* REDUCED FROM DESKTOP 250px */
+  width: 150px !important;
 
-     ONLY THE SHINE ANIMATION IS CHANGED.
-     ======================================================= */
+  /* SAME HEIGHT AS SYSTEM DESKTOP */
+  height: 4px !important;
 
-  .premium-divider {
+  margin: 7px 0 3px !important;
 
-    position: relative !important;
+  border-radius: 3px !important;
 
-    width: 150px !important;
-    height: 5px !important;
+  background: linear-gradient(
+    90deg,
+    #8a6200 0%,
+    #f0b00e 18%,
+    #f6d76a 42%,
+    #fff0a6 50%,
+    #f6d76a 58%,
+    #d39e17 82%,
+    #705206 100%
+  ) !important;
 
-    margin-top: 7px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-bottom: 2px !important;
+  box-shadow:
+    0 1px 4px rgba(184, 134, 11, 0.45),
+    0 0 8px rgba(212, 175, 55, 0.25) !important;
 
-    align-self: center !important;
-
-    display: block !important;
-
-    flex-shrink: 0 !important;
-
-    box-sizing: border-box !important;
-
-    border: none !important;
-
-    border-radius: 4px !important;
-
-    overflow: visible !important;
-
-    /* GOLD RIBBON — FIXED */
-    background:
-      linear-gradient(
-        90deg,
-        #806000 0%,
-        #b98200 15%,
-        #e0b52c 35%,
-        #f5d45b 50%,
-        #e0b52c 65%,
-        #b98200 85%,
-        #806000 100%
-      ) !important;
-
-    box-shadow: none !important;
-
-    z-index: 2 !important;
-  }
+  overflow: visible !important;
+}
 
 
-  /* =======================================================
-     TITLE-BOUND WHITE SHINE
+/* =======================================================
+   LAPTOP — SYSTEM CENTER DIAMOND
+   ======================================================= */
 
-     The shine is measured against the COMPLETE college title:
+.premium-divider::after {
+  content: '' !important;
 
-     M of MADHA  →  G of NURSING
+  position: absolute !important;
 
-     --shine-start:
-       title's left edge relative to ribbon
+  left: 50% !important;
+  top: 50% !important;
 
-     --shine-travel:
-       complete title width
+  width: 14px !important;
+  height: 14px !important;
 
-     Nav.tsx supplies these two values.
-     ======================================================= */
+  background: #e6b71d !important;
+  border: 1px solid #e0be41 !important;
 
-  /* =========================================================
-   LAPTOP — COLLEGE TITLE SHINE
-   M of MADHA  →  G of NURSING
-   ========================================================= */
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  box-shadow:
+    0 1px 4px rgba(184, 134, 11, 0.45) !important;
+}
+
+
+/* =======================================================
+   LAPTOP — EXACT SYSTEM SHINE
+   NO ANIMATION CHANGES
+   ======================================================= */
 
 .premium-divider::before {
-  content: "";
-  position: absolute;
+  content: "" !important;
 
-  top: 0;
-  height: 100%;
+  position: absolute !important;
 
-  /* Dynamically calculated from the complete title width */
-  left: var(--shine-start, -150px);
+  top: 0 !important;
+  height: 100% !important;
 
-  /* Narrow shine — does NOT extend toward menu */
-  width: 45px;
+  left: var(--shine-start, -150px) !important;
+
+  /* SAME AS SYSTEM DESKTOP */
+  width: 90px !important;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0) 15%,
-    rgba(255, 255, 255, 0.45) 35%,
-    rgba(255, 255, 255, 0.95) 50%,
-    rgba(255, 255, 255, 0.45) 65%,
-    rgba(255, 255, 255, 0) 85%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.75) 42%,
+    #FFFFFF 50%,
+    rgba(255, 255, 255, 0.75) 58%,
+    rgba(255, 255, 255, 0) 80%,
     transparent 100%
-  );
+  ) !important;
 
   filter:
     drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
-  pointer-events: none;
+  pointer-events: none !important;
 
-  animation: laptopTitleShine 3.8s ease-in-out infinite;
+  /* EXACT SYSTEM ANIMATION */
+  animation:
+    extendedRibbonShine
+    3.8s
+    ease-in-out
+    infinite !important;
+
+  z-index: 3 !important;
 }
 
 
-/* =========================================================
-   SHINE MOVEMENT
-   ========================================================= */
-
-@keyframes laptopTitleShine {
-
-  0% {
-    transform: translateX(0) skewX(-20deg);
-    opacity: 0;
-  }
-
-  10% {
-    transform: translateX(0) skewX(-20deg);
-    opacity: 1;
-  }
-
-  90% {
-    transform:
-      translateX(calc(var(--shine-travel, 500px) - 45px))
-      skewX(-20deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translateX(calc(var(--shine-travel, 500px) - 45px))
-      skewX(-20deg);
-    opacity: 0;
-  }
-}
-
-  
-
-  /* =======================================================
-     CENTER GOLD DIAMOND
-     ALWAYS VISIBLE ABOVE THE RIBBON
-     ======================================================= */
-
-  .premium-divider::after {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    left: 50% !important;
-    top: 35% !important;
-
-    width: 13px !important;
-    height: 13px !important;
-
-    margin: 0 !important;
-
-    display: block !important;
-
-    background:
-      linear-gradient(
-        135deg,
-        #fff7bd 0%,
-        #ffe76a 25%,
-        #f0c936 45%,
-        #d29d0b 70%,
-        #8a6200 100%
-      ) !important;
-
-    border: 1px solid #ffe47a !important;
-
-    border-radius: 1px !important;
-
-    transform:
-      translate(-50%, -50%)
-      rotate(45deg) !important;
 
 
-    /*
-       IMPORTANT
-       Put diamond above everything.
-    */
-
-    z-index: 999 !important;
-
-    opacity: 1 !important;
-
-    visibility: visible !important;
-
-    pointer-events: none !important;
-
-    box-shadow:
-      0 0 2px rgba(255, 225, 100, 0.8) !important;
-  }
 
 
   /* =======================================================
