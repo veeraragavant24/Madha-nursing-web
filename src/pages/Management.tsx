@@ -18,44 +18,71 @@ const TEAM = [
   {
     name: 'Dr.Ln.S.Peter,',
     title: 'Chairman',
-    img: '/management/chairman.webp',
+
+    // 1st uploaded photo
+    img: '/management/chairman-new.png',
+
     imgFocus: 'center 15%',
+
     bio: "Dr. Ln. S. Peter is one of the pioneering visionaries in the field of education in Tamil Nadu, hailing from Thirumaiyam in Pudukkottai District. Driven by a passion for transforming lives through quality education, he founded the Soosaiya Peter Educational Trust and established the first engineering college in 1998. Under his visionary leadership, the Madha Educational Institutions have grown into a renowned educational group offering excellence across Medicine, Dentistry, Physiotherapy, Nursing, Management, Arts & Science, as well as several CBSE and Matriculation Schools across Chennai. As the Chairman of Madha College of Nursing, his unwavering commitment to academic excellence, innovation, and holistic development continues to inspire generations of students and strengthen the institution's reputation as a center of quality education and professional excellence.",
+
     quals: [],
     accent: '#081f3b',
     tag: 'Founder & Visionary',
   },
+
   {
     name: 'Ms. Mercy Florence Peter.',
     title: 'Vice Chairperson',
-    img: '/management/mercy.webp',
+
+    // 2nd uploaded photo
+    img: '/management/mercy-new.png',
+
     imgFocus: 'center 12%',
+
     bio: "Ms. Mercy Florence Peter is an accomplished professional with a strong academic foundation in Electronics and Communication Engineering and a Master of Science (M.S.) in Management Information Systems from the New Jersey Institute of Technology, USA. With expertise that combines technology, innovation, and strategic management, she brings a global perspective to academic administration. As the Chairperson of Madha College of Nursing, she is committed to fostering excellence in education, promoting innovation, and creating an environment that empowers students to become skilled, compassionate, and future-ready healthcare professionals. Her visionary leadership continues to strengthen the institution's commitment to quality education and holistic development.",
+
     quals: [],
     accent: '#081f3b',
     tag: 'Strategy & Policy',
   },
+
   {
     name: 'Mr. Ajay Ravindra Kumar',
     title: 'Managing Director',
-    img: '/management/ajay.webp',
+
+    // 3rd uploaded photo
+    img: '/management/ajay-new.png',
+
     imgFocus: 'center 10%',
+
     bio: "Mr. Ajay Ravindra Kumar, was one of the early employees of Tesla, Inc., in California, USA and had worked with the Company in its start-up days. He has an Under graduate degree in Electronics and Communication Engineering and a Post Graduate Degree (MS) in Information Technology Management from the University of Texas at Dallas, USA. He brings with him corporate experience from Tesla, Inc, where he worked with the Engineering Team in development of Tesla’s revolutionary vehicle Programs Roadster, Model S and Model X. He has also completed his Bachelor’s Degree in Law (LLB) from The Tamil Nadu Dr.Ambedkar Law University.",
+
     quals: [],
     accent: '#081f3b',
     tag: 'Operations & Growth',
   },
+
   {
     name: 'Dr. B. Tamilarasi',
     title: 'Principal',
-    img: '/principal/Tamilarasi-principal.webp',
+
+    // 4th uploaded photo
+    img: '/principal/Tamilarasi-principal-new.png',
+
     imgFocus: 'center 12%',
+
     bio: 'Dr. B. Tamilarasi is an accomplished nursing academician with a MSC Nursing,M.phil,Ph.D. from Mother Teresa Women’s University and an M.Sc. (Nursing) from The Tamil Nadu Dr. M.G.R. Medical University. Beginning her career as an Assistant Lecturer, she has risen through dedication and academic excellence to become the Principal of Madha College of Nursing. She serves as a Board of Studies and Senate Member at The Tamil Nadu Dr. M.G.R. Medical University and contributes to the Academic Councils of several deemed universities in Tamil Nadu. A Research Guide for Ph.D. scholars and Executive Editorial Board Member of the Journal of Medical Surgical Nursing, she has authored numerous research publications in prestigious national and international journals, making significant contributions to nursing education and research.',
+
     quals: [],
     accent: '#081f3b',
     tag: 'Academic Leadership',
   },
 ]
+
+/* ─────────────────────────────────────────────
+   Executive Card
+   ───────────────────────────────────────────── */
 
 interface CardPerson {
   name: string
@@ -70,7 +97,6 @@ interface CardPerson {
 
 function ExecutiveCard({
   person,
-  index,
 }: {
   person: CardPerson
   index: number
@@ -79,44 +105,50 @@ function ExecutiveCard({
     <div
       className="management-card"
       style={{
-        background: '#ffffff',
+        background: 'white',
         borderRadius: 28,
         overflow: 'hidden',
         border: '1px solid rgba(11,37,69,.07)',
         boxShadow: '0 4px 24px rgba(11,37,69,.06)',
         transition: 'all .45s cubic-bezier(.16,1,.3,1)',
         display: 'flex',
-        flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+        flexDirection: 'row',
         width: '100%',
-        minHeight: 430,
+        height: 560,
+        minHeight: 560,
+        maxHeight: 560,
         boxSizing: 'border-box',
       }}
-      onMouseEnter={(e) => {
-        const card = e.currentTarget as HTMLDivElement
-        card.style.boxShadow =
-          `0 28px 60px rgba(11,37,69,.14), 0 0 0 1px ${person.accent}22`
-        card.style.transform = 'translateY(-6px)'
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLDivElement
+
+        el.style.boxShadow = `0 28px 60px rgba(11,37,69,.14), 0 0 0 1px ${person.accent}22`
+
+        el.style.transform = 'translateY(-6px)'
       }}
-      onMouseLeave={(e) => {
-        const card = e.currentTarget as HTMLDivElement
-        card.style.boxShadow = '0 4px 24px rgba(11,37,69,.06)'
-        card.style.transform = 'none'
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLDivElement
+
+        el.style.boxShadow = '0 4px 24px rgba(11,37,69,.06)'
+
+        el.style.transform = 'none'
       }}
     >
-      {/* =====================================================
+      {/* ─────────────────────────────
           PHOTO
-          ===================================================== */}
+          ───────────────────────────── */}
 
       <div
         className="management-card-image"
         style={{
-          width: '42%',
-          minWidth: 270,
-          minHeight: 430,
+          width: '38%',
+          minWidth: 0,
+          height: 560,
+          minHeight: 560,
+          maxHeight: 560,
           flexShrink: 0,
           position: 'relative',
           overflow: 'hidden',
-          background: '#e9eef4',
         }}
       >
         <img
@@ -129,56 +161,59 @@ function ExecutiveCard({
             height: '100%',
             objectFit: 'cover',
             objectPosition: person.imgFocus,
-            transition: 'transform .65s cubic-bezier(.25,.46,.45,.94)',
+            transition:
+              'transform .65s cubic-bezier(.25,.46,.45,.94)',
             display: 'block',
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.04)'
+          onMouseEnter={e => {
+            ;(e.target as HTMLImageElement).style.transform =
+              'scale(1.05)'
           }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)'
+          onMouseLeave={e => {
+            ;(e.target as HTMLImageElement).style.transform =
+              'scale(1)'
           }}
         />
 
-        {/* Photo gradient */}
+        {/* Gradient overlay */}
+
         <div
           style={{
             position: 'absolute',
             bottom: 0,
             left: 0,
             right: 0,
-            height: '42%',
+            height: '45%',
             background: `linear-gradient(to top, ${person.accent}F0 0%, transparent 100%)`,
             pointerEvents: 'none',
           }}
         />
 
-        {/* Position label */}
+        {/* Title pill */}
+
         <div
           style={{
             position: 'absolute',
-            left: 16,
-            right: 16,
             bottom: 22,
+            left: 12,
+            right: 12,
             textAlign: 'center',
           }}
         >
           <div
             style={{
               display: 'inline-block',
-              background: 'rgba(255,255,255,.16)',
+              background: 'rgba(255,255,255,.14)',
               backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255,255,255,.28)',
+              border: '1px solid rgba(255,255,255,.25)',
               borderRadius: 100,
-              padding: '7px 18px',
+              padding: '7px 17px',
               fontFamily: 'var(--font-sans)',
               fontSize: 11,
               fontWeight: 600,
               letterSpacing: '.1em',
               textTransform: 'uppercase',
-              color: '#ffffff',
-              whiteSpace: 'nowrap',
+              color: 'white',
             }}
           >
             {person.title}
@@ -186,94 +221,100 @@ function ExecutiveCard({
         </div>
       </div>
 
-      {/* =====================================================
+      {/* ─────────────────────────────
           CONTENT
-          ===================================================== */}
+          ───────────────────────────── */}
 
       <div
         className="management-card-content"
         style={{
-          width: '58%',
-          flex: 1,
-          padding: '34px 34px',
+          width: '62%',
+          height: 560,
+          minHeight: 560,
+          maxHeight: 560,
+          padding: '40px 46px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           minWidth: 0,
           boxSizing: 'border-box',
+          overflow: 'hidden',
         }}
       >
-        {/* Category */}
-        <div
-          style={{
-            display: 'inline-block',
-            width: 'fit-content',
-            background: `${person.accent}12`,
-            border: `1px solid ${person.accent}28`,
-            borderRadius: 100,
-            padding: '4px 14px',
-            marginBottom: 13,
-            fontFamily: 'var(--font-sans)',
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: '.12em',
-            textTransform: 'uppercase',
-            color: person.accent,
-          }}
-        >
-          {person.tag}
-        </div>
+        <div>
+          {/* Category tag */}
 
-        {/* Name */}
-        <h3
-          className="font-sans"
-          style={{
-            fontSize: 22,
-            fontWeight: 600,
-            color: '#0B2545',
-            lineHeight: 1.2,
-            letterSpacing: '-.01em',
-            margin: '0 0 9px',
-          }}
-        >
-          {person.name}
-        </h3>
+          <div
+            style={{
+              display: 'inline-block',
+              background: `${person.accent}12`,
+              border: `1px solid ${person.accent}28`,
+              borderRadius: 100,
+              padding: '4px 14px',
+              marginBottom: 13,
+              fontFamily: 'var(--font-sans)',
+              fontSize: 10,
+              fontWeight: 600,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              color: person.accent,
+            }}
+          >
+            {person.tag}
+          </div>
 
-        {/* Accent */}
-        <div
-          style={{
-            width: 36,
-            height: 3,
-            background: `linear-gradient(90deg, ${person.accent}, #18C6C8)`,
-            borderRadius: 2,
-            marginBottom: 17,
-          }}
-        />
+          {/* Name */}
 
-        {/* Biography */}
-        <p
-          style={{
-            color: '#1E293B',
-            fontSize: 'clamp(14px, 1vw, 16px)',
-            lineHeight: 1.72,
-            fontWeight: 400,
-            margin: 0,
-          }}
-        >
-          {person.bio}
-        </p>
+          <h3
+            className="font-sans"
+            style={{
+              fontSize: 22,
+              fontWeight: 600,
+              color: '#0B2545',
+              lineHeight: 1.2,
+              letterSpacing: '-.01em',
+              marginBottom: 9,
+            }}
+          >
+            {person.name}
+          </h3>
 
-        {/* Qualifications */}
-        {person.quals.length > 0 && (
+          {/* Divider */}
+
+          <div
+            style={{
+              width: 36,
+              height: 3,
+              background: `linear-gradient(90deg, ${person.accent}, #18C6C8)`,
+              borderRadius: 2,
+              marginBottom: 17,
+            }}
+          />
+
+          {/* Biography */}
+
+          <p
+            style={{
+              color: '#1E293B',
+              fontSize: 'clamp(14px, 1.05vw, 16px)',
+              lineHeight: 1.75,
+              fontWeight: 400,
+              marginBottom: 20,
+            }}
+          >
+            {person.bio}
+          </p>
+
+          {/* Qualifications */}
+
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
               gap: 8,
-              marginTop: 18,
             }}
           >
-            {person.quals.map((q) => (
+            {person.quals.map(q => (
               <div
                 key={q}
                 style={{
@@ -305,11 +346,15 @@ function ExecutiveCard({
               </div>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
 }
+
+/* ─────────────────────────────────────────────
+   MANAGEMENT PAGE
+   ───────────────────────────────────────────── */
 
 export default function Management({ navigate }: Props) {
   return (
@@ -320,60 +365,91 @@ export default function Management({ navigate }: Props) {
       }}
     >
       <style>{`
-        /* =====================================================
-           MANAGEMENT PAGE
-           ===================================================== */
-
         .management-page {
           width: 100%;
           overflow-x: hidden;
         }
 
-        /* =====================================================
+        /* ==========================================
            HERO
-           ===================================================== */
+           ========================================== */
 
         .management-hero {
           padding: 190px 48px 96px;
         }
 
-        /* =====================================================
-           TEAM
-           ===================================================== */
+        /* ==========================================
+           TEAM SECTION
+           ========================================== */
 
         .management-team-section {
           padding: 96px 48px;
         }
 
         .management-team-grid {
-          max-width: 1320px;
+          width: 100%;
+          max-width: 1100px;
           margin: 0 auto;
+
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 28px;
+          grid-template-columns: 1fr;
+
+          gap: 32px;
           align-items: stretch;
         }
 
         .management-team-grid > * {
-          height: 100%;
-          min-width: 0;
+          width: 100%;
         }
 
-        /* =====================================================
-           DESKTOP CARD BALANCE
-           ===================================================== */
+        /* ==========================================
+           EQUAL DESKTOP CARDS
+           ========================================== */
+
+        .management-card {
+          width: 100% !important;
+
+          height: 560px !important;
+          min-height: 560px !important;
+          max-height: 560px !important;
+
+          display: flex !important;
+          flex-direction: row !important;
+
+          box-sizing: border-box;
+        }
 
         .management-card-image {
-          width: 42% !important;
+          width: 38% !important;
+
+          height: 560px !important;
+          min-height: 560px !important;
+          max-height: 560px !important;
+
+          min-width: 0 !important;
+
+          flex-shrink: 0;
         }
 
         .management-card-content {
-          width: 58%;
+          width: 62% !important;
+
+          height: 560px !important;
+          min-height: 560px !important;
+          max-height: 560px !important;
+
+          box-sizing: border-box;
+
+          overflow: hidden;
         }
 
-        /* =====================================================
+        .management-card-content p {
+          max-width: 100%;
+        }
+
+        /* ==========================================
            STATS
-           ===================================================== */
+           ========================================== */
 
         .management-stats-section {
           padding: 80px 48px;
@@ -382,14 +458,17 @@ export default function Management({ navigate }: Props) {
         .management-stats-grid {
           max-width: 1280px;
           margin: 0 auto;
+
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
           gap: 2px;
         }
 
-        /* =====================================================
+        /* ==========================================
            CTA
-           ===================================================== */
+           ========================================== */
 
         .management-cta {
           padding: 96px 48px;
@@ -402,23 +481,53 @@ export default function Management({ navigate }: Props) {
           flex-wrap: wrap;
         }
 
-        /* =====================================================
-           TABLET / LAPTOP
-           ===================================================== */
+        /* ==========================================
+           LAPTOP / TABLET
+           ========================================== */
 
         @media (max-width: 1100px) {
+
+          .management-team-section {
+            padding: 80px 32px;
+          }
+
           .management-team-grid {
-            grid-template-columns: 1fr;
             max-width: 900px;
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .management-card {
+            width: 100% !important;
+
+            height: 560px !important;
+            min-height: 560px !important;
+            max-height: 560px !important;
+
+            flex-direction: row !important;
           }
 
           .management-card-image {
-            width: 40% !important;
-            min-width: 260px !important;
+            width: 36% !important;
+
+            height: 560px !important;
+            min-height: 560px !important;
+            max-height: 560px !important;
           }
 
           .management-card-content {
-            width: 60%;
+            width: 64% !important;
+
+            height: 560px !important;
+            min-height: 560px !important;
+            max-height: 560px !important;
+
+            padding: 36px 38px !important;
+          }
+
+          .management-card-content p {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
           }
 
           .management-stats-grid {
@@ -426,11 +535,12 @@ export default function Management({ navigate }: Props) {
           }
         }
 
-        /* =====================================================
+        /* ==========================================
            MOBILE
-           ===================================================== */
+           ========================================== */
 
         @media (max-width: 768px) {
+
           .management-hero {
             padding: 160px 20px 64px !important;
           }
@@ -454,24 +564,52 @@ export default function Management({ navigate }: Props) {
             gap: 24px !important;
           }
 
-          /* Stack image and content */
+          /* ======================================
+             MOBILE CARD
+             Photo above content
+             ====================================== */
+
           .management-card {
-            flex-direction: column !important;
+            width: 100% !important;
+
+            height: auto !important;
             min-height: 0 !important;
+            max-height: none !important;
+
+            flex-direction: column !important;
+
             border-radius: 22px !important;
           }
 
           .management-card-image {
             width: 100% !important;
-            min-width: 0 !important;
-            height: 390px !important;
+
+            height: 400px !important;
             min-height: 0 !important;
+            max-height: none !important;
+
+            min-width: 0 !important;
+          }
+
+          .management-card-image img {
+            width: 100% !important;
+            height: 100% !important;
+
+            object-fit: cover !important;
           }
 
           .management-card-content {
             width: 100% !important;
+
+            height: auto !important;
             min-height: 0 !important;
+            max-height: none !important;
+
             padding: 30px 26px !important;
+
+            box-sizing: border-box;
+
+            overflow: visible !important;
           }
 
           .management-card-content h3 {
@@ -482,6 +620,10 @@ export default function Management({ navigate }: Props) {
             font-size: 14px !important;
             line-height: 1.75 !important;
           }
+
+          /* ======================================
+             STATS
+             ====================================== */
 
           .management-stats-section {
             padding: 56px 20px !important;
@@ -501,12 +643,17 @@ export default function Management({ navigate }: Props) {
           }
 
           .management-stat:nth-child(even) {
-            border-left: 1px solid rgba(255,255,255,.07) !important;
+            border-left:
+              1px solid rgba(255,255,255,.07) !important;
           }
 
           .management-stat .text-teal-g {
             font-size: 34px !important;
           }
+
+          /* ======================================
+             CTA
+             ====================================== */
 
           .management-cta {
             padding: 64px 20px !important;
@@ -521,11 +668,12 @@ export default function Management({ navigate }: Props) {
           }
         }
 
-        /* =====================================================
+        /* ==========================================
            SMALL MOBILE
-           ===================================================== */
+           ========================================== */
 
         @media (max-width: 480px) {
+
           .management-hero {
             padding: 155px 16px 52px !important;
           }
@@ -538,12 +686,30 @@ export default function Management({ navigate }: Props) {
             padding: 48px 16px !important;
           }
 
+          .management-card {
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+          }
+
           .management-card-image {
-            height: 350px !important;
+            width: 100% !important;
+
+            height: 360px !important;
+            min-height: 0 !important;
+            max-height: none !important;
           }
 
           .management-card-content {
+            width: 100% !important;
+
+            height: auto !important;
+            min-height: 0 !important;
+            max-height: none !important;
+
             padding: 26px 20px !important;
+
+            overflow: visible !important;
           }
 
           .management-card-content h3 {
@@ -554,6 +720,10 @@ export default function Management({ navigate }: Props) {
             font-size: 14px !important;
             line-height: 1.7 !important;
           }
+
+          /* ======================================
+             SMALL MOBILE STATS
+             ====================================== */
 
           .management-stats-section {
             padding: 48px 16px !important;
@@ -566,6 +736,10 @@ export default function Management({ navigate }: Props) {
           .management-stat .text-teal-g {
             font-size: 30px !important;
           }
+
+          /* ======================================
+             SMALL MOBILE CTA
+             ====================================== */
 
           .management-cta {
             padding: 56px 16px !important;
@@ -587,9 +761,9 @@ export default function Management({ navigate }: Props) {
         }
       `}</style>
 
-      {/* =====================================================
+      {/* ─────────────────────────────────────
           HERO BANNER
-          ===================================================== */}
+          ───────────────────────────────────── */}
 
       <section
         className="management-hero"
@@ -600,6 +774,8 @@ export default function Management({ navigate }: Props) {
             'linear-gradient(160deg, #071A36 0%, #0B2545 55%, #0E3060 100%)',
         }}
       >
+        {/* Background circle */}
+
         <div
           style={{
             position: 'absolute',
@@ -614,6 +790,8 @@ export default function Management({ navigate }: Props) {
           }}
         />
 
+        {/* Background circle */}
+
         <div
           style={{
             position: 'absolute',
@@ -627,6 +805,8 @@ export default function Management({ navigate }: Props) {
             pointerEvents: 'none',
           }}
         />
+
+        {/* Grid */}
 
         <div
           style={{
@@ -666,12 +846,14 @@ export default function Management({ navigate }: Props) {
               lineHeight: 1.06,
               letterSpacing: '-.03em',
               color: 'white',
-              margin: '0 0 24px',
+              marginBottom: 24,
             }}
           >
             The Minds Behind
             <br />
-            <span className="text-teal-g">Madha College</span>
+            <span className="text-teal-g">
+              Madha College
+            </span>
           </h1>
 
           <p
@@ -683,15 +865,16 @@ export default function Management({ navigate }: Props) {
               margin: '0 auto',
             }}
           >
-            A leadership team combining medicine, nursing science, hospital
-            administration, and global healthcare education expertise.
+            A leadership team combining medicine, nursing science,
+            hospital administration, and global healthcare education
+            expertise.
           </p>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* ─────────────────────────────────────
           EXECUTIVE CARDS
-          ===================================================== */}
+          ───────────────────────────────────── */}
 
       <section className="management-team-section">
         <div className="management-team-grid">
@@ -710,9 +893,9 @@ export default function Management({ navigate }: Props) {
         </div>
       </section>
 
-      {/* =====================================================
-          STATS
-          ===================================================== */}
+      {/* ─────────────────────────────────────
+          STATS STRIP
+          ───────────────────────────────────── */}
 
       <section
         className="management-stats-section"
@@ -794,9 +977,9 @@ export default function Management({ navigate }: Props) {
         </div>
       </section>
 
-      {/* =====================================================
+      {/* ─────────────────────────────────────
           CTA
-          ===================================================== */}
+          ───────────────────────────────────── */}
 
       <section
         className="management-cta"
@@ -826,12 +1009,15 @@ export default function Management({ navigate }: Props) {
               color: '#0B2545',
               lineHeight: 1.1,
               letterSpacing: '-.02em',
-              margin: '20px 0',
+              marginTop: 20,
+              marginBottom: 20,
             }}
           >
             Guided by Excellence,
             <br />
-            <span className="text-teal-g">Driven by Purpose</span>
+            <span className="text-teal-g">
+              Driven by Purpose
+            </span>
           </h2>
         </Reveal>
 
@@ -845,8 +1031,9 @@ export default function Management({ navigate }: Props) {
               margin: '0 auto 40px',
             }}
           >
-            Our leadership team is committed to your success. Reach out to
-            begin your journey at Madha College of Nursing.
+            Our leadership team is committed to your success.
+            Reach out to begin your journey at Madha College of
+            Nursing.
           </p>
 
           <div className="management-cta-buttons">
