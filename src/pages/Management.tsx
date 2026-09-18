@@ -1,7 +1,18 @@
 import Reveal from '../components/Reveal'
 
-type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
-interface Props { navigate: (p: Page) => void }
+type Page =
+  | 'home'
+  | 'about'
+  | 'courses'
+  | 'departments'
+  | 'gallery'
+  | 'contact'
+  | 'management'
+  | 'principal'
+
+interface Props {
+  navigate: (p: Page) => void
+}
 
 const TEAM = [
   {
@@ -46,11 +57,17 @@ const TEAM = [
   },
 ]
 
-/* ─── Executive Card ─── */
 interface CardPerson {
-  name: string; title: string; img: string; imgFocus: string;
-  bio: string; quals: string[]; accent: string; tag: string;
+  name: string
+  title: string
+  img: string
+  imgFocus: string
+  bio: string
+  quals: string[]
+  accent: string
+  tag: string
 }
+
 function ExecutiveCard({
   person,
   index,
@@ -58,11 +75,11 @@ function ExecutiveCard({
   person: CardPerson
   index: number
 }) {
-return (
-  <div
-    className="management-card"
-    style={{
-        background: 'white',
+  return (
+    <div
+      className="management-card"
+      style={{
+        background: '#ffffff',
         borderRadius: 28,
         overflow: 'hidden',
         border: '1px solid rgba(11,37,69,.07)',
@@ -70,115 +87,225 @@ return (
         transition: 'all .45s cubic-bezier(.16,1,.3,1)',
         display: 'flex',
         flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
-        height: '100%',
+        width: '100%',
+        minHeight: 430,
         boxSizing: 'border-box',
       }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLDivElement
-        el.style.boxShadow = `0 28px 60px rgba(11,37,69,.14), 0 0 0 1px ${person.accent}22`
-        el.style.transform = 'translateY(-6px)'
+      onMouseEnter={(e) => {
+        const card = e.currentTarget as HTMLDivElement
+        card.style.boxShadow =
+          `0 28px 60px rgba(11,37,69,.14), 0 0 0 1px ${person.accent}22`
+        card.style.transform = 'translateY(-6px)'
       }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLDivElement
-        el.style.boxShadow = '0 4px 24px rgba(11,37,69,.06)'
-        el.style.transform = 'none'
+      onMouseLeave={(e) => {
+        const card = e.currentTarget as HTMLDivElement
+        card.style.boxShadow = '0 4px 24px rgba(11,37,69,.06)'
+        card.style.transform = 'none'
       }}
     >
-      {/* Portrait — 4:5 ratio column */}
+      {/* =====================================================
+          PHOTO
+          ===================================================== */}
+
       <div
-  className="management-card-image"
-  style={{
-    width: 240,
-    minHeight: 360,
-    flexShrink: 0,
-    position: 'relative',
-    overflow: 'hidden'
-  }}
->
+        className="management-card-image"
+        style={{
+          width: '42%',
+          minWidth: 270,
+          minHeight: 430,
+          flexShrink: 0,
+          position: 'relative',
+          overflow: 'hidden',
+          background: '#e9eef4',
+        }}
+      >
         <img
           src={person.img}
           alt={person.name}
           loading="lazy"
           decoding="async"
           style={{
-            width: '100%', height: '100%', objectFit: 'cover',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
             objectPosition: person.imgFocus,
             transition: 'transform .65s cubic-bezier(.25,.46,.45,.94)',
             display: 'block',
           }}
-          onMouseEnter={e => ((e.target as HTMLImageElement).style.transform = 'scale(1.07)')}
-          onMouseLeave={e => ((e.target as HTMLImageElement).style.transform = 'scale(1)')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.04)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)'
+          }}
         />
-        {/* Gradient overlay */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: '48%',
-          background: `linear-gradient(to top, ${person.accent}F0 0%, transparent 100%)`,
-        }} />
-        {/* Title pill on image */}
-        <div style={{ position: 'absolute', bottom: 20, left: 0, right: 0, textAlign: 'center' }}>
-          <div style={{
-            display: 'inline-block',
-            background: 'rgba(255,255,255,.14)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,.25)',
-            borderRadius: 100, padding: '6px 16px',
-            fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600,
-            letterSpacing: '.1em', textTransform: 'uppercase', color: 'white',
-          }}>
+
+        {/* Photo gradient */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '42%',
+            background: `linear-gradient(to top, ${person.accent}F0 0%, transparent 100%)`,
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Position label */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 16,
+            right: 16,
+            bottom: 22,
+            textAlign: 'center',
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-block',
+              background: 'rgba(255,255,255,.16)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,.28)',
+              borderRadius: 100,
+              padding: '7px 18px',
+              fontFamily: 'var(--font-sans)',
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: '.1em',
+              textTransform: 'uppercase',
+              color: '#ffffff',
+              whiteSpace: 'nowrap',
+            }}
+          >
             {person.title}
           </div>
         </div>
       </div>
 
-      {/* Text content */}
+      {/* =====================================================
+          CONTENT
+          ===================================================== */}
+
       <div
-  className="management-card-content"
-  style={{
-    flex: 1,
-    padding: '40px 36px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    minHeight: 360
-  }}
->
-        <div>
-          {/* Category tag */}
-          <div style={{
+        className="management-card-content"
+        style={{
+          width: '58%',
+          flex: 1,
+          padding: '34px 34px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          minWidth: 0,
+          boxSizing: 'border-box',
+        }}
+      >
+        {/* Category */}
+        <div
+          style={{
             display: 'inline-block',
+            width: 'fit-content',
             background: `${person.accent}12`,
             border: `1px solid ${person.accent}28`,
-            borderRadius: 100, padding: '4px 14px', marginBottom: 14,
-            fontFamily: 'var(--font-sans)', fontSize: 10, fontWeight: 600,
-            letterSpacing: '.12em', textTransform: 'uppercase', color: person.accent,
-          }}>
-            {person.tag}
-          </div>
+            borderRadius: 100,
+            padding: '4px 14px',
+            marginBottom: 13,
+            fontFamily: 'var(--font-sans)',
+            fontSize: 10,
+            fontWeight: 600,
+            letterSpacing: '.12em',
+            textTransform: 'uppercase',
+            color: person.accent,
+          }}
+        >
+          {person.tag}
+        </div>
 
-          <h3 className="font-sans" style={{
-            fontSize: 22, fontWeight: 600, color: '#0B2545',
-            lineHeight: 1.2, letterSpacing: '-.01em', marginBottom: 8,
-          }}>
-            {person.name}
-          </h3>
+        {/* Name */}
+        <h3
+          className="font-sans"
+          style={{
+            fontSize: 22,
+            fontWeight: 600,
+            color: '#0B2545',
+            lineHeight: 1.2,
+            letterSpacing: '-.01em',
+            margin: '0 0 9px',
+          }}
+        >
+          {person.name}
+        </h3>
 
-          <div style={{ width: 36, height: 3, background: `linear-gradient(90deg, ${person.accent}, #18C6C8)`, borderRadius: 2, marginBottom: 18 }} />
+        {/* Accent */}
+        <div
+          style={{
+            width: 36,
+            height: 3,
+            background: `linear-gradient(90deg, ${person.accent}, #18C6C8)`,
+            borderRadius: 2,
+            marginBottom: 17,
+          }}
+        />
 
-          <p style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.35vw, 18px)', lineHeight: 1.9,fontWeight: 400, marginBottom: 22 }}>
-            {person.bio}
-          </p>
+        {/* Biography */}
+        <p
+          style={{
+            color: '#1E293B',
+            fontSize: 'clamp(14px, 1vw, 16px)',
+            lineHeight: 1.72,
+            fontWeight: 400,
+            margin: 0,
+          }}
+        >
+          {person.bio}
+        </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {person.quals.map(q => (
-              <div key={q} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: person.accent, marginTop: 6, flexShrink: 0 }} />
-                <span style={{ color: '#475569', fontSize: 14, lineHeight: 1.6 }}>{q}</span>
+        {/* Qualifications */}
+        {person.quals.length > 0 && (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 8,
+              marginTop: 18,
+            }}
+          >
+            {person.quals.map((q) => (
+              <div
+                key={q}
+                style={{
+                  display: 'flex',
+                  gap: 10,
+                  alignItems: 'flex-start',
+                }}
+              >
+                <div
+                  style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: '50%',
+                    background: person.accent,
+                    marginTop: 6,
+                    flexShrink: 0,
+                  }}
+                />
+
+                <span
+                  style={{
+                    color: '#475569',
+                    fontSize: 14,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {q}
+                </span>
               </div>
             ))}
           </div>
-        </div>
-
-       
+        )}
       </div>
     </div>
   )
@@ -186,323 +313,575 @@ return (
 
 export default function Management({ navigate }: Props) {
   return (
-  <div
-    className="management-page"
-    style={{ background: '#F3F7FB' }}
-  >
-    <style>{`
-  .management-page {
-    width: 100%;
-    overflow-x: hidden;
-  }
+    <div
+      className="management-page"
+      style={{
+        background: '#F3F7FB',
+      }}
+    >
+      <style>{`
+        /* =====================================================
+           MANAGEMENT PAGE
+           ===================================================== */
 
-  .management-hero {
-    padding: 190px 48px 96px;
-  }
+        .management-page {
+          width: 100%;
+          overflow-x: hidden;
+        }
 
-  .management-team-section {
-    padding: 96px 48px;
-  }
+        /* =====================================================
+           HERO
+           ===================================================== */
 
-  .management-team-grid {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-    align-items: stretch;
-  }
+        .management-hero {
+          padding: 190px 48px 96px;
+        }
 
-  .management-team-grid > * {
-    height: 100%;
-  }
+        /* =====================================================
+           TEAM
+           ===================================================== */
 
-  .management-stats-section {
-    padding: 80px 48px;
-  }
+        .management-team-section {
+          padding: 96px 48px;
+        }
 
-  .management-stats-grid {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 2px;
-  }
+        .management-team-grid {
+          max-width: 1320px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 28px;
+          align-items: stretch;
+        }
 
-  .management-cta {
-    padding: 96px 48px;
-  }
+        .management-team-grid > * {
+          height: 100%;
+          min-width: 0;
+        }
 
-  .management-cta-buttons {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+        /* =====================================================
+           DESKTOP CARD BALANCE
+           ===================================================== */
 
-  @media (max-width: 1100px) {
-    .management-team-grid {
-      grid-template-columns: 1fr;
-      max-width: 850px;
-    }
+        .management-card-image {
+          width: 42% !important;
+        }
 
-    .management-stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+        .management-card-content {
+          width: 58%;
+        }
 
-  @media (max-width: 768px) {
-    .management-hero {
-      padding: 160px 20px 64px !important;
-    }
+        /* =====================================================
+           STATS
+           ===================================================== */
 
-    .management-hero h1 {
-      font-size: 40px !important;
-      line-height: 1.08 !important;
-    }
+        .management-stats-section {
+          padding: 80px 48px;
+        }
 
-    .management-hero p {
-      font-size: 15px !important;
-      line-height: 1.7 !important;
-    }
+        .management-stats-grid {
+          max-width: 1280px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 2px;
+        }
 
-    .management-team-section {
-      padding: 56px 20px !important;
-    }
+        /* =====================================================
+           CTA
+           ===================================================== */
 
-    .management-team-grid {
-      grid-template-columns: 1fr !important;
-      gap: 24px !important;
-    }
+        .management-cta {
+          padding: 96px 48px;
+        }
 
-    .management-card {
-      flex-direction: column !important;
-      border-radius: 22px !important;
-    }
+        .management-cta-buttons {
+          display: flex;
+          gap: 14px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
 
-    .management-card-image {
-      width: 100% !important;
-      height: 430px !important;
-      min-height: 0 !important;
-    }
+        /* =====================================================
+           TABLET / LAPTOP
+           ===================================================== */
 
-    .management-card-image img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover !important;
-    }
+        @media (max-width: 1100px) {
+          .management-team-grid {
+            grid-template-columns: 1fr;
+            max-width: 900px;
+          }
 
-    .management-card-content {
-      width: 100% !important;
-      min-height: 0 !important;
-      padding: 30px 26px !important;
-      box-sizing: border-box;
-    }
+          .management-card-image {
+            width: 40% !important;
+            min-width: 260px !important;
+          }
 
-    .management-card-content h3 {
-      font-size: 22px !important;
-    }
+          .management-card-content {
+            width: 60%;
+          }
 
-    .management-card-content p {
-      font-size: 14px !important;
-      line-height: 1.8 !important;
-    }
+          .management-stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
 
-    .management-stats-section {
-      padding: 56px 20px !important;
-    }
+        /* =====================================================
+           MOBILE
+           ===================================================== */
 
-    .management-stats-grid {
-      grid-template-columns: 1fr 1fr !important;
-      gap: 0 !important;
-    }
+        @media (max-width: 768px) {
+          .management-hero {
+            padding: 160px 20px 64px !important;
+          }
 
-    .management-stat {
-      padding: 30px 12px !important;
-    }
+          .management-hero h1 {
+            font-size: 40px !important;
+            line-height: 1.08 !important;
+          }
 
-    .management-stat:nth-child(odd) {
-      border-left: none !important;
-    }
+          .management-hero p {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
+          }
 
-    .management-stat:nth-child(even) {
-      border-left: 1px solid rgba(255,255,255,.07) !important;
-    }
+          .management-team-section {
+            padding: 56px 20px !important;
+          }
 
-    .management-stat .text-teal-g {
-      font-size: 34px !important;
-    }
+          .management-team-grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
 
-    .management-cta {
-      padding: 64px 20px !important;
-    }
+          /* Stack image and content */
+          .management-card {
+            flex-direction: column !important;
+            min-height: 0 !important;
+            border-radius: 22px !important;
+          }
 
-    .management-cta h2 {
-      font-size: 34px !important;
-    }
+          .management-card-image {
+            width: 100% !important;
+            min-width: 0 !important;
+            height: 390px !important;
+            min-height: 0 !important;
+          }
 
-    .management-cta p {
-      font-size: 15px !important;
-    }
-  }
+          .management-card-content {
+            width: 100% !important;
+            min-height: 0 !important;
+            padding: 30px 26px !important;
+          }
 
-  @media (max-width: 480px) {
-    .management-hero {
-      padding: 155px 16px 52px !important;
-    }
+          .management-card-content h3 {
+            font-size: 22px !important;
+          }
 
-    .management-hero h1 {
-      font-size: 34px !important;
-    }
+          .management-card-content p {
+            font-size: 14px !important;
+            line-height: 1.75 !important;
+          }
 
-    .management-team-section {
-      padding: 48px 16px !important;
-    }
+          .management-stats-section {
+            padding: 56px 20px !important;
+          }
 
-    .management-card-image {
-      height: 390px !important;
-    }
+          .management-stats-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 0 !important;
+          }
 
-    .management-card-content {
-      padding: 26px 20px !important;
-    }
+          .management-stat {
+            padding: 30px 12px !important;
+          }
 
-    .management-card-content h3 {
-      font-size: 20px !important;
-    }
+          .management-stat:nth-child(odd) {
+            border-left: none !important;
+          }
 
-    .management-stats-section {
-      padding: 48px 16px !important;
-    }
+          .management-stat:nth-child(even) {
+            border-left: 1px solid rgba(255,255,255,.07) !important;
+          }
 
-    .management-stat {
-      padding: 26px 8px !important;
-    }
+          .management-stat .text-teal-g {
+            font-size: 34px !important;
+          }
 
-    .management-stat .text-teal-g {
-      font-size: 30px !important;
-    }
+          .management-cta {
+            padding: 64px 20px !important;
+          }
 
-    .management-cta {
-      padding: 56px 16px !important;
-    }
+          .management-cta h2 {
+            font-size: 34px !important;
+          }
 
-    .management-cta h2 {
-      font-size: 30px !important;
-    }
+          .management-cta p {
+            font-size: 15px !important;
+          }
+        }
 
-    .management-cta-buttons {
-      flex-direction: column;
-      width: 100%;
-    }
+        /* =====================================================
+           SMALL MOBILE
+           ===================================================== */
 
-    .management-cta-buttons button {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-`}</style>
-      {/* ── Hero Banner ── */}
-     <section
-  className="management-hero"
-  style={{
-    position: 'relative',
-    overflow: 'hidden',
-    background: 'linear-gradient(160deg, #071A36 0%, #0B2545 55%, #0E3060 100%)'
-  }}
->
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 560, height: 560, borderRadius: '50%', background: 'radial-gradient(circle, rgba(24,198,200,.07) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-20%', left: '-8%', width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(30,90,168,.12) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          backgroundImage: 'linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }} />
+        @media (max-width: 480px) {
+          .management-hero {
+            padding: 155px 16px 52px !important;
+          }
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
-          <span className="section-tag" style={{ marginBottom: 24, display: 'inline-flex' }}>Leadership</span>
-          <h1 className="font-sans" style={{
-            fontSize: 'clamp(40px, 5.5vw, 80px)',
-            fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
-            color: 'white', marginBottom: 24,
-          }}>
-            The Minds Behind<br/>
+          .management-hero h1 {
+            font-size: 34px !important;
+          }
+
+          .management-team-section {
+            padding: 48px 16px !important;
+          }
+
+          .management-card-image {
+            height: 350px !important;
+          }
+
+          .management-card-content {
+            padding: 26px 20px !important;
+          }
+
+          .management-card-content h3 {
+            font-size: 20px !important;
+          }
+
+          .management-card-content p {
+            font-size: 14px !important;
+            line-height: 1.7 !important;
+          }
+
+          .management-stats-section {
+            padding: 48px 16px !important;
+          }
+
+          .management-stat {
+            padding: 26px 8px !important;
+          }
+
+          .management-stat .text-teal-g {
+            font-size: 30px !important;
+          }
+
+          .management-cta {
+            padding: 56px 16px !important;
+          }
+
+          .management-cta h2 {
+            font-size: 30px !important;
+          }
+
+          .management-cta-buttons {
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .management-cta-buttons button {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
+
+      {/* =====================================================
+          HERO BANNER
+          ===================================================== */}
+
+      <section
+        className="management-hero"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          background:
+            'linear-gradient(160deg, #071A36 0%, #0B2545 55%, #0E3060 100%)',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: '-10%',
+            right: '-5%',
+            width: 560,
+            height: 560,
+            borderRadius: '50%',
+            background:
+              'radial-gradient(circle, rgba(24,198,200,.07) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-20%',
+            left: '-8%',
+            width: 480,
+            height: 480,
+            borderRadius: '50%',
+            background:
+              'radial-gradient(circle, rgba(30,90,168,.12) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
+
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            maxWidth: 720,
+            margin: '0 auto',
+            textAlign: 'center',
+          }}
+        >
+          <span
+            className="section-tag"
+            style={{
+              marginBottom: 24,
+              display: 'inline-flex',
+            }}
+          >
+            Leadership
+          </span>
+
+          <h1
+            className="font-sans"
+            style={{
+              fontSize: 'clamp(40px, 5.5vw, 80px)',
+              fontWeight: 700,
+              lineHeight: 1.06,
+              letterSpacing: '-.03em',
+              color: 'white',
+              margin: '0 0 24px',
+            }}
+          >
+            The Minds Behind
+            <br />
             <span className="text-teal-g">Madha College</span>
           </h1>
-          <p style={{ color: '#F1F5F9', fontSize: 20, lineHeight: 1.8, maxWidth: 540, margin: '0 auto' }}>
-            A leadership team combining medicine, nursing science, hospital administration, and global healthcare education expertise.
+
+          <p
+            style={{
+              color: '#F1F5F9',
+              fontSize: 20,
+              lineHeight: 1.8,
+              maxWidth: 540,
+              margin: '0 auto',
+            }}
+          >
+            A leadership team combining medicine, nursing science, hospital
+            administration, and global healthcare education expertise.
           </p>
         </div>
       </section>
 
-      {/* ── Executive Cards Grid ── */}
+      {/* =====================================================
+          EXECUTIVE CARDS
+          ===================================================== */}
+
       <section className="management-team-section">
-  <div className="management-team-grid">
+        <div className="management-team-grid">
           {TEAM.map((person, i) => (
-            <Reveal key={person.name} delay={(i % 2 + 1) as 1 | 2} type="scale">
-              <ExecutiveCard person={person} index={i} />
+            <Reveal
+              key={person.name}
+              delay={(i % 2 + 1) as 1 | 2}
+              type="scale"
+            >
+              <ExecutiveCard
+                person={person}
+                index={i}
+              />
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* ── Stats strip ── */}
+      {/* =====================================================
+          STATS
+          ===================================================== */}
+
       <section
-  className="management-stats-section"
-  style={{
-    background: 'linear-gradient(135deg, #071A36 0%, #0B2545 100%)'
-  }}
->
+        className="management-stats-section"
+        style={{
+          background:
+            'linear-gradient(135deg, #071A36 0%, #0B2545 100%)',
+        }}
+      >
         <div className="management-stats-grid">
           {[
-            { num: '25+', label: 'Years of Vision', sub: 'Since 1998' },
-            { num: '3,200+', label: 'Alumni Placed', sub: 'Across 35 Countries' },
-            { num: '120+', label: 'Faculty Members', sub: 'Doctorate Qualified' },
-            { num: '18', label: 'Hospital Partners', sub: 'Clinical Training' },
+            {
+              num: '25+',
+              label: 'Years of Vision',
+              sub: 'Since 1998',
+            },
+            {
+              num: '3,200+',
+              label: 'Alumni Placed',
+              sub: 'Across 35 Countries',
+            },
+            {
+              num: '120+',
+              label: 'Faculty Members',
+              sub: 'Doctorate Qualified',
+            },
+            {
+              num: '18',
+              label: 'Hospital Partners',
+              sub: 'Clinical Training',
+            },
           ].map((s, i) => (
-           <div key={s.label} className="management-stat" style={{
-              padding: '40px 32px', textAlign: 'center',
-              borderLeft: i > 0 ? '1px solid rgba(255,255,255,.07)' : 'none',
-            }}>
-              <div className="font-sans text-teal-g" style={{ fontSize: 44, fontWeight: 700, letterSpacing: '-.03em', lineHeight: 1, marginBottom: 10 }}>{s.num}</div>
-              <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 16, marginBottom: 6 }}>{s.label}</div>
-              <div style={{ color: 'rgba(255,255,255,.38)', fontSize: 13 }}>{s.sub}</div>
+            <div
+              key={s.label}
+              className="management-stat"
+              style={{
+                padding: '40px 32px',
+                textAlign: 'center',
+                borderLeft:
+                  i > 0
+                    ? '1px solid rgba(255,255,255,.07)'
+                    : 'none',
+              }}
+            >
+              <div
+                className="font-sans text-teal-g"
+                style={{
+                  fontSize: 44,
+                  fontWeight: 700,
+                  letterSpacing: '-.03em',
+                  lineHeight: 1,
+                  marginBottom: 10,
+                }}
+              >
+                {s.num}
+              </div>
+
+              <div
+                className="font-sans"
+                style={{
+                  color: 'white',
+                  fontWeight: 700,
+                  fontSize: 16,
+                  marginBottom: 6,
+                }}
+              >
+                {s.label}
+              </div>
+
+              <div
+                style={{
+                  color: 'rgba(255,255,255,.38)',
+                  fontSize: 13,
+                }}
+              >
+                {s.sub}
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* =====================================================
+          CTA
+          ===================================================== */}
+
       <section
-  className="management-cta"
-  style={{
-    background: '#FAFBFD',
-    textAlign: 'center'
-  }}
->
+        className="management-cta"
+        style={{
+          background: '#FAFBFD',
+          textAlign: 'center',
+        }}
+      >
         <Reveal>
-          <span className="section-tag" style={{ marginBottom: 20, display: 'inline-flex' }}>Join Our Community</span>
+          <span
+            className="section-tag"
+            style={{
+              marginBottom: 20,
+              display: 'inline-flex',
+            }}
+          >
+            Join Our Community
+          </span>
         </Reveal>
+
         <Reveal delay={1}>
-          <h2 className="font-sans" style={{
-            fontSize: 'clamp(28px, 4vw, 52px)', fontWeight: 700,
-            color: '#0B2545', lineHeight: 1.1, letterSpacing: '-.02em',
-            marginTop: 20, marginBottom: 20,
-          }}>
-            Guided by Excellence,<br/>
+          <h2
+            className="font-sans"
+            style={{
+              fontSize: 'clamp(28px, 4vw, 52px)',
+              fontWeight: 700,
+              color: '#0B2545',
+              lineHeight: 1.1,
+              letterSpacing: '-.02em',
+              margin: '20px 0',
+            }}
+          >
+            Guided by Excellence,
+            <br />
             <span className="text-teal-g">Driven by Purpose</span>
           </h2>
         </Reveal>
+
         <Reveal delay={2}>
-          <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.75, maxWidth: 520, margin: '0 auto 40px' }}>
-            Our leadership team is committed to your success. Reach out to begin your journey at Madha College of Nursing.
+          <p
+            style={{
+              color: '#1E293B',
+              fontSize: 18,
+              lineHeight: 1.75,
+              maxWidth: 520,
+              margin: '0 auto 40px',
+            }}
+          >
+            Our leadership team is committed to your success. Reach out to
+            begin your journey at Madha College of Nursing.
           </p>
+
           <div className="management-cta-buttons">
-            <button onClick={() => navigate('contact')} className="btn-teal" style={{ fontSize: 15, padding: '16px 40px' }}>
+            <button
+              onClick={() => navigate('contact')}
+              className="btn-teal"
+              style={{
+                fontSize: 15,
+                padding: '16px 40px',
+              }}
+            >
               Apply Now — Batch
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </button>
-            <button onClick={() => navigate('principal')} className="btn-outline-navy" style={{ fontSize: 15, padding: '15px 36px' }}>
+
+            <button
+              onClick={() => navigate('principal')}
+              className="btn-outline-navy"
+              style={{
+                fontSize: 15,
+                padding: '15px 36px',
+              }}
+            >
               Meet Our Principal
             </button>
           </div>
