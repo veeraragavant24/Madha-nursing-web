@@ -49,6 +49,11 @@ export default defineConfig(({ mode }) => {
     ],
   },
 },
+
+    preview: {
+      host: '0.0.0.0',
+      allowedHosts: ['madha-nursing-web.onrender.com'],
+    },
   }
 })
 
