@@ -20,7 +20,7 @@ const TEAM = [
     title: 'Chairman',
 
     // 1st uploaded photo
-    img: '/management/chairman-new.png',
+    img: '/management/image2.png',
 
     imgFocus: 'center 15%',
 
@@ -36,7 +36,7 @@ const TEAM = [
     title: 'Vice Chairperson',
 
     // 2nd uploaded photo
-    img: '/management/mercy-new.png',
+    img: '/management/image3.png',
 
     imgFocus: 'center 12%',
 
@@ -52,7 +52,7 @@ const TEAM = [
     title: 'Managing Director',
 
     // 3rd uploaded photo
-    img: '/management/ajay-new.png',
+    img: '/management/image 1.png',
 
     imgFocus: 'center 10%',
 
@@ -68,7 +68,7 @@ const TEAM = [
     title: 'Principal',
 
     // 4th uploaded photo
-    img: '/principal/Tamilarasi-principal-new.png',
+    img: '/management/image4.png',
 
     imgFocus: 'center 12%',
 
