@@ -1380,14 +1380,14 @@ font-weight: 700;
 
   90% {
     transform: translateX(
-      calc(var(--shine-travel, 500px) - 90px)
+      calc(var(--shine-travel, 500px) - 45px)
     ) skewX(-20deg);
     opacity: 1;
   }
 
   100% {
     transform: translateX(
-      calc(var(--shine-travel, 500px) - 90px)
+      calc(var(--shine-travel, 500px) - 45px)
     ) skewX(-20deg);
     opacity: 0;
   }
