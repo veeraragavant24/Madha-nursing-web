@@ -52,7 +52,7 @@ const TEAM = [
     title: 'Managing Director',
 
     // 3rd uploaded photo
-    img: '/management/image 1.png',
+    img: '/management/image1.png',
 
     imgFocus: 'center 10%',
 
@@ -268,7 +268,7 @@ function ExecutiveCard({
           <h3
             className="font-sans"
             style={{
-              fontSize: 22,
+              fontSize: 24,
               fontWeight: 600,
               color: '#0B2545',
               lineHeight: 1.2,
@@ -296,7 +296,7 @@ function ExecutiveCard({
           <p
             style={{
               color: '#1E293B',
-              fontSize: 'clamp(14px, 1.05vw, 16px)',
+              fontSize: 'clamp(15px, 1.1vw, 17px)',
               lineHeight: 1.75,
               fontWeight: 400,
               marginBottom: 20,
@@ -337,7 +337,7 @@ function ExecutiveCard({
                 <span
                   style={{
                     color: '#475569',
-                    fontSize: 14,
+                    fontSize: 15,
                     lineHeight: 1.6,
                   }}
                 >
