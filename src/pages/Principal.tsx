@@ -396,7 +396,7 @@ export default function Principal({ navigate }: Props) {
                   objectFit: 'cover',
 
                   /* ONLY THE PHOTO IS MOVED UP */
-                  objectPosition: 'center 65%',
+                  objectPosition: 'center 75%',
 
                   display: 'block',
                 }}
