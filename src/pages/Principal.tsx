@@ -61,17 +61,19 @@ export default function Principal({ navigate }: Props) {
           text-align: center;
         }
 
-        /* PRINCIPAL PORTRAIT */
         .principal-portrait-wrap {
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-        }
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
 
-        .principal-portrait {
-          width: 340px;
-          height: 400px;
-        }
+.principal-portrait {
+  width: 340px;
+  height: 400px;
+  aspect-ratio: 17 / 20;
+  border-radius: 28px !important;
+  overflow: hidden;
+}
 
         /* LETTER */
         .principal-letter-section {
@@ -367,53 +369,58 @@ export default function Principal({ navigate }: Props) {
           </div>
 
           {/* Portrait */}
-          <div className="principal-portrait-wrap">
-            <div
-              className="principal-portrait"
-              style={{
-                width: 340,
-                height: 400,
-                borderRadius: '28px 28px 0 0',
-                background:
-                  'linear-gradient(135deg, rgba(24,198,200,.15), rgba(30,90,168,.2))',
-                border: '1px solid rgba(24,198,200,.2)',
-                borderBottom: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              <img
-                src="/principal/Tamilarasi-principal11.webp"
-                alt="Principal Dr. B. Tamilarasi"
-                loading="lazy"
-                decoding="async"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
+         
+<div className="principal-portrait-wrap">
+  <div
+    className="principal-portrait"
+    style={{
+      width: 340,
+      height: 400,
+      aspectRatio: '17 / 20',
 
-                  /* ONLY THE PHOTO IS MOVED UP */
-                  objectPosition: 'center 75%',
+      borderRadius: '28px',
 
-                  display: 'block',
-                }}
-              />
+      border: '1px solid rgba(24, 198, 200, 0.75)',
 
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background:
-                    'linear-gradient(to top, rgba(7,26,54,.3) 0%, transparent 50%)',
-                  pointerEvents: 'none',
-                }}
-              />
-            </div>
-          </div>
-        </div>
+      boxShadow:
+        '0 0 8px rgba(24,198,200,.35), 0 0 18px rgba(24,198,200,.18)',
+
+      background: '#EAF8FA',
+
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+
+      position: 'relative',
+      overflow: 'hidden',
+    }}
+  >
+    <img
+      src="/principal/Tamilarasi-principal11.webp"
+      alt="Principal Dr. B. Tamilarasi"
+      loading="lazy"
+      decoding="async"
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'center center',
+        display: 'block',
+      }}
+    />
+
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        background:
+          'linear-gradient(to top, rgba(7,26,54,.18) 0%, transparent 50%)',
+        pointerEvents: 'none',
+      }}
+    />
+  </div>
+</div>
+
       </section>
 
       {/* Letter from Principal */}
