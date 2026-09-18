@@ -1337,7 +1337,7 @@ font-weight: 700;
   left: var(--shine-start, -150px) !important;
 
   /* SAME 90px SHINE AS SYSTEM DESKTOP */
-  width: 90px !important;
+  width: 45px !important;
 
   background: linear-gradient(
     90deg,
