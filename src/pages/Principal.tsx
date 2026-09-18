@@ -32,8 +32,8 @@ export default function Principal({ navigate }: Props) {
 
         /* HERO */
         .principal-hero {
-          padding: 190px 40px 0;
-        }
+  padding: 190px 40px 40px;
+}
 
         .principal-hero-grid {
           max-width: 1280px;
