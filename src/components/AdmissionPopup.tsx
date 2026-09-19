@@ -430,12 +430,7 @@ export default function AdmissionPopup({
           width: 390px;
           max-width: 100%;
 
-          background:
-            linear-gradient(
-              145deg,
-              rgba(232, 237, 252, 0.98) 0%,
-              rgba(218, 227, 247, 0.98) 100%
-            );
+          background: #ffffff;
 
           border: 1px solid rgba(151, 165, 210, 0.34);
 
@@ -469,9 +464,9 @@ export default function AdmissionPopup({
           background:
             radial-gradient(
               circle,
-              rgba(181, 77, 255, .85) 0%,
-              rgba(124, 67, 225, .45) 50%,
-              transparent 72%
+              rgba(198, 177, 255, .90) 0%,
+              rgba(165, 140, 235, .55) 48%,
+              rgba(165, 140, 235, 0) 74%
             );
 
           z-index: -1;
@@ -494,9 +489,9 @@ export default function AdmissionPopup({
           background:
             radial-gradient(
               ellipse,
-              rgba(210, 65, 194, .35) 0%,
-              rgba(111, 66, 226, .25) 50%,
-              transparent 75%
+              rgba(198, 177, 255, .52) 0%,
+              rgba(165, 140, 235, .34) 50%,
+              rgba(165, 140, 235, 0) 76%
             );
 
           z-index: -1;
@@ -587,59 +582,54 @@ export default function AdmissionPopup({
           background:
             linear-gradient(
               145deg,
-              #5031d2,
-              #7745e8
+              #071a36 0%,
+              #0b2545 100%
             );
 
           box-shadow:
-            0 7px 15px rgba(83, 49, 210, .22);
+            0 7px 15px rgba(7, 26, 54, .24);
         }
 
 
         .popup-title {
           margin: 0;
 
+          color: #032F70;
+
           font-family: var(--font-sans, Arial, sans-serif);
 
-          font-size: 22px;
+          font-size: 23px;
 
           line-height: 1.1;
 
-          font-weight: 750;
+          font-weight: 800;
 
-          letter-spacing: -.025em;
-
-          color: #152d5b;
+          letter-spacing: -0.025em;
         }
 
 
         .popup-title span {
-          background:
-            linear-gradient(
-              90deg,
-              #7136d6,
-              #d73fbd
-            );
+          color: #032F70;
 
-          -webkit-background-clip: text;
-          background-clip: text;
+          background: none;
 
-          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: initial;
+          background-clip: initial;
 
-          color: #7136d6;
+          -webkit-text-fill-color: initial;
         }
 
 
         .popup-description {
-          margin: 4px 0 0;
+          margin: 5px 0 0;
 
-          color: #53688c;
+          color: #36547D;
 
-          font-size: 10.5px;
+          font-size: 11px;
 
-          line-height: 1.4;
+          line-height: 1.45;
 
-          font-weight: 500;
+          font-weight: 600;
         }
 
 
@@ -649,43 +639,41 @@ export default function AdmissionPopup({
           position: relative;
 
           width: 100%;
-          height: 35px;
+          height: 38px;
 
-          margin-bottom: 7px;
+          margin-bottom: 8px;
 
           display: flex;
           align-items: center;
 
-          border-radius: 7px;
+          border: 1px solid rgba(3, 47, 112, 0.18);
 
-          border: 1px solid rgba(100, 75, 210, .05);
+          border-radius: 9px;
 
-          background:
-            linear-gradient(
-              90deg,
-              rgba(248, 249, 255, 0.92),
-              rgba(235, 239, 252, 0.94)
-            );
+          background: #f7f9fd;
 
           box-sizing: border-box;
 
-          transition: .2s ease;
+          transition:
+            background .2s ease,
+            border-color .2s ease,
+            box-shadow .2s ease;
         }
 
 
         .popup-field:focus-within {
           background: #ffffff;
 
-          border-color: rgba(103, 61, 216, .32);
+          border-color: #032F70;
 
           box-shadow:
-            0 0 0 2px rgba(103, 61, 216, .07);
+            0 0 0 2px rgba(3, 47, 112, 0.08);
         }
 
 
         .popup-field-icon {
-          width: 34px;
-          min-width: 34px;
+          width: 38px;
+          min-width: 38px;
 
           height: 100%;
 
@@ -693,7 +681,10 @@ export default function AdmissionPopup({
           align-items: center;
           justify-content: center;
 
-          color: #5e3bd1;
+          color: #032F70;
+
+          opacity: 1;
+          filter: none;
 
           pointer-events: none;
         }
@@ -711,23 +702,29 @@ export default function AdmissionPopup({
 
           background: transparent;
 
-          color: #29436f;
+          color: #032F70;
 
           font-family: inherit;
 
-          font-size: 10.5px;
+          font-size: 12px;
 
-          font-weight: 500;
+          font-weight: 700;
 
-          padding: 0 9px 0 0;
+          opacity: 1;
+          filter: none;
+
+          padding: 0 10px 0 0;
 
           box-sizing: border-box;
         }
 
 
         .popup-field input::placeholder {
-          color: #8292b1;
+          color: #032F70;
+
           opacity: 1;
+
+          font-weight: 700;
         }
 
 
@@ -737,27 +734,35 @@ export default function AdmissionPopup({
 
           cursor: pointer;
 
-          padding-right: 28px;
+          color: #032F70;
+
+          font-weight: 700;
+
+          padding-right: 30px;
         }
 
 
         .popup-field select option {
-          color: #29436f;
-          background: white;
+          color: #032F70;
+          background: #ffffff;
+          font-weight: 700;
         }
 
 
         .popup-select-arrow {
           position: absolute;
 
-          right: 9px;
+          right: 11px;
           top: 50%;
 
           transform: translateY(-50%);
 
-          color: #5e3bd1;
+          color: #032F70;
 
           display: flex;
+          align-items: center;
+
+          opacity: 1;
 
           pointer-events: none;
         }
@@ -769,54 +774,56 @@ export default function AdmissionPopup({
           width: 100%;
           height: 40px;
 
-          margin-top: 6px;
+          margin-top: 7px;
 
           border: none;
-          border-radius: 18px;
+          border-radius: 22px;
 
           display: flex;
           align-items: center;
           justify-content: center;
 
-          gap: 8px;
+          gap: 9px;
 
-          background:
-            linear-gradient(
-              90deg,
-              #5533d3 0%,
-              #793edb 48%,
-              #d83fbe 100%
-            );
+          background: #032F70;
 
-          color: white;
+          color: #ffffff;
 
           font-family: inherit;
 
-          font-size: 12px;
+          font-size: 13px;
 
-          font-weight: 700;
+          font-weight: 800;
 
           cursor: pointer;
 
           box-shadow:
-            0 7px 15px rgba(101, 56, 210, .18);
+            0 7px 16px rgba(3, 47, 112, 0.22);
 
-          transition: .2s ease;
+          transition:
+            background .2s ease,
+            transform .2s ease,
+            box-shadow .2s ease;
         }
 
 
         .popup-submit:hover:not(:disabled) {
+          background: #08245A;
+
           transform: translateY(-1px);
 
           box-shadow:
-            0 9px 20px rgba(101, 56, 210, .28);
+            0 10px 22px rgba(3, 47, 112, 0.30);
+        }
 
-          filter: brightness(1.04);
+
+        .popup-submit:active:not(:disabled) {
+          transform: translateY(0);
         }
 
 
         .popup-submit:disabled {
-          opacity: .7;
+          opacity: .72;
           cursor: not-allowed;
         }
 
@@ -827,20 +834,20 @@ export default function AdmissionPopup({
           display: flex;
           align-items: center;
 
-          gap: 5px;
+          gap: 6px;
 
-          margin-top: 8px;
+          margin-top: 9px;
 
-          color: #566a8d;
+          color: #032F70;
 
           font-size: 10px;
 
-          font-weight: 600;
+          font-weight: 700;
         }
 
 
         .popup-priority svg {
-          color: #633bd7;
+          color: #032F70;
         }
 
 
@@ -891,7 +898,7 @@ export default function AdmissionPopup({
         .popup-success h2 {
           margin: 0 0 7px;
 
-          color: #142b58;
+          color: #032F70;
 
           font-size: 22px;
         }
@@ -900,7 +907,7 @@ export default function AdmissionPopup({
         .popup-success p {
           margin: 0 0 20px;
 
-          color: #61718e;
+          color: #032F70;
 
           font-size: 13px;
         }
@@ -1029,7 +1036,8 @@ export default function AdmissionPopup({
 
 
           .popup-title {
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 800;
           }
 
 
