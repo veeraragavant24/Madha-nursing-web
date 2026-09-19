@@ -1255,120 +1255,92 @@ font-weight: 700;
   }
 
 
-/* ======   LAPTOP RIBBON 
-   SYSTEM DESKTOP RIBBON —
-    REDUCED SIZE ONLY    ======= */
-     .premium-divider {
-        position: relative !important;
-           align-self: center !important;
-           
-           /* REDUCED FROM DESKTOP 250px */
-              width: 150px !important; 
-                /* SAME HEIGHT AS SYSTEM DESKTOP */
-                   height: 4px !important;
-                      margin: 7px 0 3px !important;   
-                      border-radius: 3px !important;   
-                      background: linear-gradient(     90deg,     #8a6200 0%, 
-                          #f0b00e 18%,     #f6d76a 42%,     #fff0a6 50%,  
-                             #f6d76a 58%,     #d39e17 82%,     #705206 100%   )
-                              !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45),
-                                   0 0 8px rgba(212, 175, 55, 0.25) !important;   overflow: visible !important; }
-                                    /* =====    LAPTOP — SYSTEM CENTER DIAMOND  === */
-                                     .premium-divider::after {   content: '' !important;   position: absolute !important;   left: 50% !important;   top: 50% !important;   width: 14px !important;   height: 14px !important;   background: #e6b71d !important;   border: 1px solid #e0be41 !important;   transform:     translate(-50%, -50%)     rotate(45deg) !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45) !important; } 
-                                     /* =   LAPTOP — EXACT SYSTEM SHINE    START → TRAVEL → END    ==*/
-                                     
+/* Premium Luxury Gold Ribbon */
 
-
-
-                                     /* =======================================================
-   LAPTOP — TITLE-BOUND WHITE SHINE
-   M OF MADHA → G OF NURSING
-   NO MENU CROSSING
-   ======================================================= */
-
-.premium-divider::before {
-  content: "" !important;
-
-  position: absolute !important;
-  top: 0 !important;
-
-  /*
-   * The ribbon is centered below the college title.
-   * --shine-start places the beam at the M.
-   */
-  left: var(--shine-start, -150px) !important;
-
-  width: 28px !important;
-  height: 100% !important;
+.premium-divider {
+  position: relative;
+  width: 150px;
+  height: 5px;
+  border-radius: 999px;
 
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgba(255,255,255,0.20) 15%,
-    rgba(255,255,255,0.75) 35%,
-    #ffffff 50%,
-    rgba(255,255,255,0.75) 65%,
-    rgba(255,255,255,0.20) 85%,
-    transparent 100%
-  ) !important;
+    #6b4a00 0%,
+    #b8860b 10%,
+    #ffd54f 25%,
+    #fff3b0 50%,
+    #ffd54f 75%,
+    #b8860b 90%,
+    #6b4a00 100%
+  );
 
-  filter:
-    drop-shadow(0 0 3px rgba(255,255,255,0.95))
-    drop-shadow(0 0 6px rgba(255,255,255,0.60));
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 -1px 0 rgba(0,0,0,.25) inset,
+    0 0 10px rgba(255,215,0,.45),
+    0 0 20px rgba(255,215,0,.25);
 
-  pointer-events: none !important;
-
-  animation:
-    laptopMToG
-    3.8s
-    linear
-    infinite !important;
-
-  will-change: transform, opacity !important;
-
-  z-index: 3 !important;
+  overflow: visible;
 }
 
+/* Metallic shine animation */
 
-/* =======================================================
-   M OF MADHA → G OF NURSING
-   ======================================================= */
+.premium-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:45%;
+  height:100%;
 
-@keyframes laptopMToG {
+  background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
+  );
 
-  /* M */
-  0% {
-    transform: translateX(0) skewX(-15deg);
-    opacity: 0;
-  }
+  transform:skewX(-25deg);
 
-  7% {
-    transform: translateX(0) skewX(-15deg);
-    opacity: 1;
-  }
-
-  /* G */
-  93% {
-    transform:
-      translateX(
-        calc(var(--shine-travel, 500px) - 28px)
-      )
-      skewX(-15deg);
-    opacity: 1;
-  }
-
-  /* Fade at G — NEVER CONTINUE */
-  100% {
-    transform:
-      translateX(
-        calc(var(--shine-travel, 500px) - 28px)
-      )
-      skewX(-15deg);
-    opacity: 0;
-  }
+  animation:goldShine 3.5s infinite;
 }
 
+/* Center diamond */
 
+.premium-divider::after{
+  content:"";
+  position:absolute;
+
+  left:50%;
+  top:50%;
+
+  width:10px;
+  height:10px;
+
+  transform:translate(-50%,-50%) rotate(45deg);
+
+  background:linear-gradient(
+      135deg,
+      #fff9d6,
+      #ffd54f,
+      #b8860b
+  );
+
+  border:1px solid rgba(255,255,255,.7);
+
+  box-shadow:
+      0 0 8px rgba(255,215,0,.8),
+      0 0 16px rgba(255,215,0,.45);
+}
+
+@keyframes goldShine{
+  from{
+      left:-60%;
+  }
+  to{
+      left:130%;
+  }
+}
 
 
 
