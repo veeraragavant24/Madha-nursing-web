@@ -1360,26 +1360,34 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation */
+/* Metallic shine animation - TITLE BOUND: M OF MADHA -> G OF NURSING */
 
 .premium-divider::before{
   content:"";
   position:absolute;
   top:0;
-  left:-60%;
-  width:45%;
+  left:var(--shine-start, -150px);
+  width:90px;
   height:100%;
 
   background:linear-gradient(
       90deg,
-      transparent,
-      rgba(255,255,255,.9),
-      transparent
+      transparent 0%,
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,.75) 42%,
+      #ffffff 50%,
+      rgba(255,255,255,.75) 58%,
+      rgba(255,255,255,0) 80%,
+      transparent 100%
   );
 
-  transform:skewX(-25deg);
+  filter:
+      drop-shadow(0 0 3px rgba(255,255,255,.9))
+      drop-shadow(0 0 7px rgba(255,255,255,.55));
 
-  animation:goldShine 3.5s infinite;
+  pointer-events:none;
+
+  animation:titleBoundRibbonShine 3.8s ease-in-out infinite;
 }
 
 /* Center diamond */
@@ -1410,12 +1418,25 @@ font-weight: 700;
       0 0 16px rgba(255,215,0,.45);
 }
 
-@keyframes goldShine{
-  from{
-      left:-60%;
+@keyframes titleBoundRibbonShine{
+  0%{
+      transform:translateX(0) skewX(-25deg);
+      opacity:0;
   }
-  to{
-      left:130%;
+
+  10%{
+      transform:translateX(0) skewX(-25deg);
+      opacity:1;
+  }
+
+  90%{
+      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
+      opacity:1;
+  }
+
+  100%{
+      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
+      opacity:0;
   }
 }
 
@@ -1991,26 +2012,34 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation */
+/* Metallic shine animation - TITLE BOUND: M OF MADHA -> G OF NURSING */
 
 .premium-divider::before{
   content:"";
   position:absolute;
   top:0;
-  left:-60%;
-  width:45%;
+  left:var(--shine-start, -150px);
+  width:90px;
   height:100%;
 
   background:linear-gradient(
       90deg,
-      transparent,
-      rgba(255,255,255,.9),
-      transparent
+      transparent 0%,
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,.75) 42%,
+      #ffffff 50%,
+      rgba(255,255,255,.75) 58%,
+      rgba(255,255,255,0) 80%,
+      transparent 100%
   );
 
-  transform:skewX(-25deg);
+  filter:
+      drop-shadow(0 0 3px rgba(255,255,255,.9))
+      drop-shadow(0 0 7px rgba(255,255,255,.55));
 
-  animation:goldShine 3.5s infinite;
+  pointer-events:none;
+
+  animation:titleBoundRibbonShine 3.8s ease-in-out infinite;
 }
 
 /* Center diamond */
@@ -2041,12 +2070,25 @@ font-weight: 700;
       0 0 16px rgba(255,215,0,.45);
 }
 
-@keyframes goldShine{
-  from{
-      left:-60%;
+@keyframes titleBoundRibbonShine{
+  0%{
+      transform:translateX(0) skewX(-25deg);
+      opacity:0;
   }
-  to{
-      left:130%;
+
+  10%{
+      transform:translateX(0) skewX(-25deg);
+      opacity:1;
+  }
+
+  90%{
+      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
+      opacity:1;
+  }
+
+  100%{
+      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
+      opacity:0;
   }
 }
 
