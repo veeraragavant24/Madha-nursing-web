@@ -1545,34 +1545,6 @@ font-weight: 700;
   }
 
 
-  /* =======================================================
-     SOLID RIBBON
-     
-     UNCHANGED
-     ======================================================= */
-
-  .nav-root.solid .premium-divider {
-
-    width:
-      clamp(
-        130px,
-        12vw,
-        165px
-      ) !important;
-
-    height: 4px !important;
-
-    margin:
-      7px auto 3px
-      !important;
-
-    overflow: visible !important;
-
-    box-shadow: none !important;
-
-    border: none !important;
-  }
-
 
   /* =======================================================
      BRAND PROTECTION
