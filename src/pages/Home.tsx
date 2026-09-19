@@ -473,8 +473,30 @@ export default function Home({ navigate }: Props) {
 }
 
 .home-stats-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px 20px;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 42px 6px !important;
+  align-items: center !important;
+}
+
+.home-stats-grid > div:nth-child(1) {
+  grid-column: 1 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(3) {
+  grid-column: 3 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(5) {
+  grid-column: 5 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(7) {
+  grid-column: 2 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(9) {
+  grid-column: 4 / span 2 !important;
 }
 
 .home-stat-divider {
@@ -589,8 +611,30 @@ export default function Home({ navigate }: Props) {
 }
 
 .home-stats-grid {
-  grid-template-columns: 1fr 1fr;
-  gap: 32px 12px;
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 36px 4px !important;
+  align-items: center !important;
+}
+
+.home-stats-grid > div:nth-child(1) {
+  grid-column: 1 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(3) {
+  grid-column: 3 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(5) {
+  grid-column: 5 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(7) {
+  grid-column: 2 / span 2 !important;
+}
+
+.home-stats-grid > div:nth-child(9) {
+  grid-column: 4 / span 2 !important;
 }
 
     .home-mobile-section {
