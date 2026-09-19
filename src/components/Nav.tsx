@@ -235,6 +235,75 @@ useEffect(() => {
 a.top-contact-item:hover {
   color: #18C6C8;
 }
+
+
+/* =========================================
+   TOP CONTACT SOCIAL ICONS
+   Instagram + Facebook beside email
+========================================= */
+.top-contact-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: -14px;
+  flex-shrink: 0;
+}
+
+.top-social-link {
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: transform .25s ease, color .25s ease, filter .25s ease;
+}
+
+.top-social-link svg {
+  width: 19px;
+  height: 19px;
+  display: block;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.instagram-link:hover {
+  color: #E1306C;
+  transform: translateY(-2px) scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(225,48,108,.55));
+}
+
+.facebook-link:hover {
+  color: #1877F2;
+  transform: translateY(-2px) scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(24,119,242,.55));
+}
+
+.top-social-link:focus-visible {
+  outline: 2px solid #18C6C8;
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .top-contact-socials {
+    gap: 5px;
+    margin-left: -8px;
+  }
+
+  .top-social-link {
+    width: 22px;
+    height: 22px;
+  }
+
+  .top-social-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .top-contact-inner {
     padding: 0 12px;
@@ -2231,6 +2300,35 @@ font-weight: 700;
       <span>✉</span>
       <span>info@madhanursing.in</span>
     </a>
+
+    {/* SOCIAL MEDIA — BESIDE EMAIL */}
+    <div className="top-contact-socials" aria-label="Social media links">
+      <a
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="top-social-link instagram-link"
+        aria-label="Instagram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" className="social-dot" />
+        </svg>
+      </a>
+
+      <a
+        href="https://www.facebook.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="top-social-link facebook-link"
+        aria-label="Facebook"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.67.33-1 1-1Z" />
+        </svg>
+      </a>
+    </div>
 
     <div className="top-contact-item top-address">
       <span>📍</span>
