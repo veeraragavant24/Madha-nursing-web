@@ -408,10 +408,11 @@ export default function AdmissionPopup({
           z-index: 999999;
 
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
 
-          padding: 15px;
+          /* Move popup closer to the website header */
+          padding: 185px 15px 30px;
           box-sizing: border-box;
 
           background: rgba(5, 15, 38, 0.72);
@@ -426,18 +427,25 @@ export default function AdmissionPopup({
         .admission-popup {
           position: relative;
 
-          width: 350px;
+          width: 390px;
           max-width: 100%;
 
-          background: #ffffff;
+          background:
+            linear-gradient(
+              145deg,
+              rgba(232, 237, 252, 0.98) 0%,
+              rgba(218, 227, 247, 0.98) 100%
+            );
 
-          border-radius: 14px;
+          border: 1px solid rgba(151, 165, 210, 0.34);
+
+          border-radius: 16px;
 
           overflow: hidden;
 
           box-shadow:
-            0 25px 70px rgba(0, 0, 0, .35),
-            0 5px 20px rgba(70, 40, 180, .15);
+            0 28px 75px rgba(2, 16, 43, .42),
+            0 8px 28px rgba(48, 61, 125, .20);
 
           isolation: isolate;
 
@@ -503,8 +511,8 @@ export default function AdmissionPopup({
           top: 8px;
           right: 8px;
 
-          width: 25px;
-          height: 25px;
+          width: 28px;
+          height: 28px;
 
           border: none;
           border-radius: 50%;
@@ -542,7 +550,7 @@ export default function AdmissionPopup({
         .popup-form {
           position: relative;
 
-          padding: 20px 27px 17px;
+          padding: 24px 30px 20px;
 
           box-sizing: border-box;
         }
@@ -563,10 +571,10 @@ export default function AdmissionPopup({
 
 
         .popup-cap-icon {
-          width: 43px;
-          height: 43px;
+          width: 48px;
+          height: 48px;
 
-          min-width: 43px;
+          min-width: 48px;
 
           border-radius: 50%;
 
@@ -593,7 +601,7 @@ export default function AdmissionPopup({
 
           font-family: var(--font-sans, Arial, sans-serif);
 
-          font-size: 19px;
+          font-size: 22px;
 
           line-height: 1.1;
 
@@ -627,7 +635,7 @@ export default function AdmissionPopup({
 
           color: #53688c;
 
-          font-size: 9px;
+          font-size: 10.5px;
 
           line-height: 1.4;
 
@@ -641,9 +649,9 @@ export default function AdmissionPopup({
           position: relative;
 
           width: 100%;
-          height: 28px;
+          height: 35px;
 
-          margin-bottom: 5px;
+          margin-bottom: 7px;
 
           display: flex;
           align-items: center;
@@ -655,8 +663,8 @@ export default function AdmissionPopup({
           background:
             linear-gradient(
               90deg,
-              #f5f3fc,
-              #eeecf9
+              rgba(248, 249, 255, 0.92),
+              rgba(235, 239, 252, 0.94)
             );
 
           box-sizing: border-box;
@@ -707,7 +715,7 @@ export default function AdmissionPopup({
 
           font-family: inherit;
 
-          font-size: 9px;
+          font-size: 10.5px;
 
           font-weight: 500;
 
@@ -759,9 +767,9 @@ export default function AdmissionPopup({
 
         .popup-submit {
           width: 100%;
-          height: 31px;
+          height: 40px;
 
-          margin-top: 4px;
+          margin-top: 6px;
 
           border: none;
           border-radius: 18px;
@@ -784,7 +792,7 @@ export default function AdmissionPopup({
 
           font-family: inherit;
 
-          font-size: 10px;
+          font-size: 12px;
 
           font-weight: 700;
 
@@ -825,7 +833,7 @@ export default function AdmissionPopup({
 
           color: #566a8d;
 
-          font-size: 8px;
+          font-size: 10px;
 
           font-weight: 600;
         }
@@ -839,7 +847,7 @@ export default function AdmissionPopup({
         /* SUCCESS */
 
         .popup-success {
-          min-height: 270px;
+          min-height: 310px;
 
           padding: 35px 25px;
 
@@ -949,42 +957,60 @@ export default function AdmissionPopup({
 
         /* MOBILE */
 
+        @media (max-height: 700px) and (min-width: 601px) {
+
+          .admission-popup-overlay {
+            align-items: flex-start;
+            padding-top: 105px;
+            overflow-y: auto;
+          }
+
+        }
+
+
         @media (max-width: 600px) {
 
           .admission-popup-overlay {
-            padding: 12px;
+            align-items: center;
+            padding: 15px;
+            overflow-y: auto;
           }
 
 
           .admission-popup {
-            width: 350px;
+            width: 390px;
             max-width: 100%;
           }
 
 
           .popup-form {
-            padding: 19px 23px 16px;
+            padding: 22px 24px 18px;
           }
 
 
           .popup-title {
-            font-size: 18px;
+            font-size: 20px;
           }
 
 
           .popup-description {
-            font-size: 8.5px;
+            font-size: 10px;
           }
 
 
           .popup-field {
-            height: 29px;
+            height: 34px;
           }
 
 
           .popup-field input,
           .popup-field select {
-            font-size: 9px;
+            font-size: 10.5px;
+          }
+
+
+          .popup-submit {
+            height: 39px;
           }
 
         }
@@ -1003,7 +1029,7 @@ export default function AdmissionPopup({
 
 
           .popup-title {
-            font-size: 17px;
+            font-size: 18px;
           }
 
 
