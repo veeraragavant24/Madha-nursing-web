@@ -1276,46 +1276,50 @@ font-weight: 700;
                                     /* =====    LAPTOP — SYSTEM CENTER DIAMOND  === */
                                      .premium-divider::after {   content: '' !important;   position: absolute !important;   left: 50% !important;   top: 50% !important;   width: 14px !important;   height: 14px !important;   background: #e6b71d !important;   border: 1px solid #e0be41 !important;   transform:     translate(-50%, -50%)     rotate(45deg) !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45) !important; } 
                                      /* =   LAPTOP — EXACT SYSTEM SHINE    START → TRAVEL → END    ==*/
+                                     
+
+
+
                                      /* =======================================================
-   LAPTOP — COLLEGE TITLE WHITE SHINE
-   EXACT RANGE: M OF MADHA → G OF NURSING
-   WORKS FOR BOTH HEADER STATES
+   LAPTOP — TITLE-BOUND WHITE SHINE
+   M OF MADHA → G OF NURSING
+   NO MENU CROSSING
    ======================================================= */
 
 .premium-divider::before {
   content: "" !important;
 
   position: absolute !important;
-
   top: 0 !important;
 
-  /* EXACT START:
-     LEFT EDGE OF M IN MADHA */
+  /*
+   * The ribbon is centered below the college title.
+   * --shine-start places the beam at the M.
+   */
   left: var(--shine-start, -150px) !important;
 
-  /* Narrow beam for a precise M → G sweep */
   width: 28px !important;
   height: 100% !important;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.15) 15%,
-    rgba(255, 255, 255, 0.70) 35%,
+    rgba(255,255,255,0.20) 15%,
+    rgba(255,255,255,0.75) 35%,
     #ffffff 50%,
-    rgba(255, 255, 255, 0.70) 65%,
-    rgba(255, 255, 255, 0.15) 85%,
+    rgba(255,255,255,0.75) 65%,
+    rgba(255,255,255,0.20) 85%,
     transparent 100%
   ) !important;
 
   filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
-    drop-shadow(0 0 7px rgba(255, 255, 255, 0.60));
+    drop-shadow(0 0 3px rgba(255,255,255,0.95))
+    drop-shadow(0 0 6px rgba(255,255,255,0.60));
 
   pointer-events: none !important;
 
   animation:
-    laptopTitleShine
+    laptopMToG
     3.8s
     linear
     infinite !important;
@@ -1327,54 +1331,42 @@ font-weight: 700;
 
 
 /* =======================================================
-   LAPTOP — EXACT M OF MADHA → G OF NURSING
+   M OF MADHA → G OF NURSING
    ======================================================= */
 
-@keyframes laptopTitleShine {
+@keyframes laptopMToG {
 
-  /* -----------------------------------------------
-     START — M OF MADHA
-     ----------------------------------------------- */
+  /* M */
   0% {
-    transform: translate3d(0, 0, 0) skewX(-15deg);
+    transform: translateX(0) skewX(-15deg);
     opacity: 0;
   }
 
-  8% {
-    transform: translate3d(0, 0, 0) skewX(-15deg);
+  7% {
+    transform: translateX(0) skewX(-15deg);
     opacity: 1;
   }
 
-  /* -----------------------------------------------
-     TRAVEL — M → G
-     ----------------------------------------------- */
-  92% {
+  /* G */
+  93% {
     transform:
-      translate3d(
-        calc(var(--shine-travel, 500px) - 28px),
-        0,
-        0
+      translateX(
+        calc(var(--shine-travel, 500px) - 28px)
       )
       skewX(-15deg);
-
     opacity: 1;
   }
 
-  /* -----------------------------------------------
-     END — G OF NURSING
-     ----------------------------------------------- */
+  /* Fade at G — NEVER CONTINUE */
   100% {
     transform:
-      translate3d(
-        calc(var(--shine-travel, 500px) - 28px),
-        0,
-        0
+      translateX(
+        calc(var(--shine-travel, 500px) - 28px)
       )
       skewX(-15deg);
-
     opacity: 0;
   }
-} 
+}
 
 
 
