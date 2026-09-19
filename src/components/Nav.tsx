@@ -1357,13 +1357,48 @@ font-weight: 700;
   pointer-events: none !important;
 
   /* EXACT SYSTEM ANIMATION */
-  animation:
-    extendedRibbonShine
-    3.8s
-    ease-in-out
-    infinite !important;
+animation:
+  whiteHeaderTitleShine
+  3.8s
+  ease-in-out
+  infinite !important;
+}
 
-  z-index: 3 !important;
+/* =======================================================
+   WHITE HEADER — M OF MADHA → G OF NURSING
+   ======================================================= */
+
+@keyframes whiteHeaderTitleShine {
+
+  /* START — M OF MADHA */
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 1;
+  }
+
+  /* END — G OF NURSING */
+  90% {
+    transform:
+      translateX(
+        calc(var(--shine-travel, 500px) - 90px)
+      )
+      skewX(-20deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateX(
+        calc(var(--shine-travel, 500px) - 90px)
+      )
+      skewX(-20deg);
+    opacity: 0;
+  }
 }
 
 
