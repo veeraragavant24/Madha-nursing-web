@@ -1274,8 +1274,107 @@ font-weight: 700;
                               !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45),
                                    0 0 8px rgba(212, 175, 55, 0.25) !important;   overflow: visible !important; }
                                     /* =====    LAPTOP — SYSTEM CENTER DIAMOND  === */
-                                     .premium-divider::after 
-                                     {   content: '' !important;   position: absolute !important;   left: 50% !important;   top: 50% !important;   width: 14px !important;   height: 14px !important;   background: #e6b71d !important;   border: 1px solid #e0be41 !important;   transform:     translate(-50%, -50%)     rotate(45deg) !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45) !important; } /* =======================================================    LAPTOP — EXACT SYSTEM SHINE    START → TRAVEL → END    ======================================================= */ .premium-divider::before {   content: "" !important;   position: absolute !important;   top: 0 !important;   height: 100% !important;   /* SYSTEM STARTING CRITERIA */   left: var(--shine-start, -150px) !important;   /* SAME 90px SHINE AS SYSTEM DESKTOP */   width: 90px !important;   background: linear-gradient(     90deg,     transparent 0%,     rgba(255, 255, 255, 0) 20%,     rgba(255, 255, 255, 0.75) 42%,     #FFFFFF 50%,     rgba(255, 255, 255, 0.75) 58%,     rgba(255, 255, 255, 0) 80%,     transparent 100%   ) !important;   filter:     drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))     drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));   pointer-events: none !important;   /* EXACT SYSTEM ANIMATION */   animation:     extendedRibbonShine     3.8s     ease-in-out     infinite !important;   z-index: 3 !important; }
+                                     .premium-divider::after {   content: '' !important;   position: absolute !important;   left: 50% !important;   top: 50% !important;   width: 14px !important;   height: 14px !important;   background: #e6b71d !important;   border: 1px solid #e0be41 !important;   transform:     translate(-50%, -50%)     rotate(45deg) !important;   box-shadow:     0 1px 4px rgba(184, 134, 11, 0.45) !important; } 
+                                     /* =   LAPTOP — EXACT SYSTEM SHINE    START → TRAVEL → END    ==*/
+                                     /* =======================================================
+   LAPTOP — COLLEGE TITLE WHITE SHINE
+   EXACT RANGE: M OF MADHA → G OF NURSING
+   WORKS FOR BOTH HEADER STATES
+   ======================================================= */
+
+.premium-divider::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 0 !important;
+
+  /* EXACT START:
+     LEFT EDGE OF M IN MADHA */
+  left: var(--shine-start, -150px) !important;
+
+  /* Narrow beam for a precise M → G sweep */
+  width: 28px !important;
+  height: 100% !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 15%,
+    rgba(255, 255, 255, 0.70) 35%,
+    #ffffff 50%,
+    rgba(255, 255, 255, 0.70) 65%,
+    rgba(255, 255, 255, 0.15) 85%,
+    transparent 100%
+  ) !important;
+
+  filter:
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.60));
+
+  pointer-events: none !important;
+
+  animation:
+    laptopTitleShine
+    3.8s
+    linear
+    infinite !important;
+
+  will-change: transform, opacity !important;
+
+  z-index: 3 !important;
+}
+
+
+/* =======================================================
+   LAPTOP — EXACT M OF MADHA → G OF NURSING
+   ======================================================= */
+
+@keyframes laptopTitleShine {
+
+  /* -----------------------------------------------
+     START — M OF MADHA
+     ----------------------------------------------- */
+  0% {
+    transform: translate3d(0, 0, 0) skewX(-15deg);
+    opacity: 0;
+  }
+
+  8% {
+    transform: translate3d(0, 0, 0) skewX(-15deg);
+    opacity: 1;
+  }
+
+  /* -----------------------------------------------
+     TRAVEL — M → G
+     ----------------------------------------------- */
+  92% {
+    transform:
+      translate3d(
+        calc(var(--shine-travel, 500px) - 28px),
+        0,
+        0
+      )
+      skewX(-15deg);
+
+    opacity: 1;
+  }
+
+  /* -----------------------------------------------
+     END — G OF NURSING
+     ----------------------------------------------- */
+  100% {
+    transform:
+      translate3d(
+        calc(var(--shine-travel, 500px) - 28px),
+        0,
+        0
+      )
+      skewX(-15deg);
+
+    opacity: 0;
+  }
+} 
 
 
 
