@@ -25,7 +25,7 @@ export default function AdmissionPopup({
     setSending(true)
 
     try {
-      const response = await fetch('https://madha-nursing-api.onrender.com/api/admission-enquiry', {
+      const response = await fetch('/api/admission-enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -854,9 +854,11 @@ export default function AdmissionPopup({
         /* SUCCESS */
 
         .popup-success {
+          position: relative;
+
           min-height: 310px;
 
-          padding: 35px 25px;
+          padding: 42px 30px;
 
           display: flex;
           flex-direction: column;
@@ -867,12 +869,72 @@ export default function AdmissionPopup({
           text-align: center;
 
           box-sizing: border-box;
+
+          overflow: hidden;
+
+          background: #ffffff;
+        }
+
+
+        .popup-success::before {
+          content: "";
+
+          position: absolute;
+
+          width: 135px;
+          height: 100px;
+
+          top: -55px;
+          left: -55px;
+
+          border-radius: 50%;
+
+          background:
+            radial-gradient(
+              circle,
+              rgba(198, 177, 255, 0.90) 0%,
+              rgba(165, 140, 235, 0.55) 48%,
+              rgba(165, 140, 235, 0) 74%
+            );
+
+          pointer-events: none;
+        }
+
+
+        .popup-success::after {
+          content: "";
+
+          position: absolute;
+
+          width: 220px;
+          height: 110px;
+
+          right: -70px;
+          bottom: -65px;
+
+          border-radius: 50%;
+
+          background:
+            radial-gradient(
+              ellipse,
+              rgba(198, 177, 255, 0.52) 0%,
+              rgba(165, 140, 235, 0.34) 50%,
+              rgba(165, 140, 235, 0) 76%
+            );
+
+          pointer-events: none;
+        }
+
+
+        .popup-success > * {
+          position: relative;
+          z-index: 1;
         }
 
 
         .popup-success-icon {
-          width: 55px;
-          height: 55px;
+          width: 58px;
+          height: 58px;
 
           border-radius: 50%;
 
@@ -880,59 +942,75 @@ export default function AdmissionPopup({
           align-items: center;
           justify-content: center;
 
-          background:
-            linear-gradient(
-              135deg,
-              #5635d6,
-              #d63fbc
-            );
+          background: #032F70;
 
-          color: white;
+          color: #ffffff;
 
-          font-size: 26px;
+          font-size: 28px;
+          font-weight: 800;
 
-          margin-bottom: 14px;
+          margin-bottom: 16px;
+
+          box-shadow:
+            0 8px 18px rgba(3, 47, 112, 0.22);
         }
 
 
         .popup-success h2 {
-          margin: 0 0 7px;
+          margin: 0 0 8px;
 
           color: #032F70;
 
-          font-size: 22px;
+          font-size: 25px;
+          font-weight: 800;
         }
 
 
         .popup-success p {
-          margin: 0 0 20px;
+          margin: 0 0 22px;
 
-          color: #032F70;
+          color: #36547D;
 
           font-size: 13px;
+          font-weight: 600;
         }
 
 
         .popup-success-button {
-          height: 36px;
+          height: 40px;
 
-          padding: 0 25px;
+          padding: 0 28px;
 
           border: none;
-          border-radius: 20px;
+          border-radius: 22px;
 
-          color: white;
+          color: #ffffff;
 
-          background:
-            linear-gradient(
-              90deg,
-              #5635d6,
-              #d63fbc
-            );
+          background: #032F70;
 
           cursor: pointer;
 
-          font-weight: 700;
+          font-family: inherit;
+          font-size: 13px;
+          font-weight: 800;
+
+          box-shadow:
+            0 7px 16px rgba(3, 47, 112, 0.22);
+
+          transition:
+            background .2s ease,
+            transform .2s ease,
+            box-shadow .2s ease;
+        }
+
+
+        .popup-success-button:hover {
+          background: #08245A;
+
+          transform: translateY(-1px);
+
+          box-shadow:
+            0 10px 22px rgba(3, 47, 112, 0.30);
         }
 
 
