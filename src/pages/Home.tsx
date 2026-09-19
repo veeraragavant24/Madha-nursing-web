@@ -652,9 +652,7 @@ export default function Home({ navigate }: Props) {
 .home-stats-grid > div:nth-child(8) {
   display: none !important;
 }
-
-.home-stats-grid > div:nth-child(1) {
-  grid-column: 1 / span 2 !important;
+  portant;
 }
 
 .home-stats-grid > div:nth-child(3) {
