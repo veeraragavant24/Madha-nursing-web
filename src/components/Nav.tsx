@@ -638,7 +638,7 @@ background: linear-gradient(
     0 1px 4px rgba(184, 134, 11, 0.45);
 }
 
-/* ── GOLD RIBBON LIGHT SWEEP (extended travel to name width) ── */
+/* ── GOLD RIBBON LIGHT SWEEP — TITLE BOUND ── */
 .premium-divider::before {
   content: "";
   position: absolute;
@@ -646,6 +646,7 @@ background: linear-gradient(
   top: 0;
   height: 100%;
 
+  /* JS sets this to the M of MADHA relative to the ribbon. */
   left: var(--shine-start, -150px);
 
   width: 90px;
@@ -666,29 +667,30 @@ background: linear-gradient(
     drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
   pointer-events: none;
+  will-change: transform, opacity;
 
-  animation: extendedRibbonShine 3.8s ease-in-out infinite;
+  animation: extendedRibbonShine 3.2s linear infinite;
 }
 
 @keyframes extendedRibbonShine {
   0% {
     transform: translateX(0) skewX(-20deg);
-    opacity: 0;
+    opacity: 0.15;
   }
 
-  10% {
+  6% {
     transform: translateX(0) skewX(-20deg);
     opacity: 1;
   }
 
-  90% {
+  94% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
     opacity: 1;
   }
 
   100% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
-    opacity: 0;
+    opacity: 0.15;
   }
 }
 
@@ -779,8 +781,11 @@ background: linear-gradient(
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  min-width: 0;
+  /* FIX: keep the navigation in its own flex space so it
+     cannot center itself over the college title. */
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
 
   gap: 18px;
 
@@ -1360,34 +1365,26 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation - TITLE BOUND: M OF MADHA -> G OF NURSING */
+/* Metallic shine animation */
 
 .premium-divider::before{
   content:"";
   position:absolute;
   top:0;
-  left:var(--shine-start, -150px);
-  width:90px;
+  left:-60%;
+  width:45%;
   height:100%;
 
   background:linear-gradient(
       90deg,
-      transparent 0%,
-      rgba(255,255,255,0) 20%,
-      rgba(255,255,255,.75) 42%,
-      #ffffff 50%,
-      rgba(255,255,255,.75) 58%,
-      rgba(255,255,255,0) 80%,
-      transparent 100%
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
   );
 
-  filter:
-      drop-shadow(0 0 3px rgba(255,255,255,.9))
-      drop-shadow(0 0 7px rgba(255,255,255,.55));
+  transform:skewX(-25deg);
 
-  pointer-events:none;
-
-  animation:titleBoundRibbonShine 3.8s ease-in-out infinite;
+  animation:goldShine 3.5s infinite;
 }
 
 /* Center diamond */
@@ -1418,25 +1415,12 @@ font-weight: 700;
       0 0 16px rgba(255,215,0,.45);
 }
 
-@keyframes titleBoundRibbonShine{
-  0%{
-      transform:translateX(0) skewX(-25deg);
-      opacity:0;
+@keyframes goldShine{
+  from{
+      left:-60%;
   }
-
-  10%{
-      transform:translateX(0) skewX(-25deg);
-      opacity:1;
-  }
-
-  90%{
-      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
-      opacity:1;
-  }
-
-  100%{
-      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
-      opacity:0;
+  to{
+      left:130%;
   }
 }
 
@@ -2012,34 +1996,26 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation - TITLE BOUND: M OF MADHA -> G OF NURSING */
+/* Metallic shine animation */
 
 .premium-divider::before{
   content:"";
   position:absolute;
   top:0;
-  left:var(--shine-start, -150px);
-  width:90px;
+  left:-60%;
+  width:45%;
   height:100%;
 
   background:linear-gradient(
       90deg,
-      transparent 0%,
-      rgba(255,255,255,0) 20%,
-      rgba(255,255,255,.75) 42%,
-      #ffffff 50%,
-      rgba(255,255,255,.75) 58%,
-      rgba(255,255,255,0) 80%,
-      transparent 100%
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
   );
 
-  filter:
-      drop-shadow(0 0 3px rgba(255,255,255,.9))
-      drop-shadow(0 0 7px rgba(255,255,255,.55));
+  transform:skewX(-25deg);
 
-  pointer-events:none;
-
-  animation:titleBoundRibbonShine 3.8s ease-in-out infinite;
+  animation:goldShine 3.5s infinite;
 }
 
 /* Center diamond */
@@ -2070,25 +2046,12 @@ font-weight: 700;
       0 0 16px rgba(255,215,0,.45);
 }
 
-@keyframes titleBoundRibbonShine{
-  0%{
-      transform:translateX(0) skewX(-25deg);
-      opacity:0;
+@keyframes goldShine{
+  from{
+      left:-60%;
   }
-
-  10%{
-      transform:translateX(0) skewX(-25deg);
-      opacity:1;
-  }
-
-  90%{
-      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
-      opacity:1;
-  }
-
-  100%{
-      transform:translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-25deg);
-      opacity:0;
+  to{
+      left:130%;
   }
 }
 
