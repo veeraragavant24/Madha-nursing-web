@@ -1963,19 +1963,13 @@ font-weight: 700;
     animation: mobileCollegeTitleIn 0.8s ease-out both !important;
   }
 
-  /* =======================================================
-   MOBILE — PREMIUM LUXURY GOLD RIBBON
-   ======================================================= */
+  /* Premium Luxury Gold Ribbon */
 
 .premium-divider {
-  position: relative !important;
-
-  width: 110px !important;
-  height: 3px !important;
-
-  margin: 6px auto 2px !important;
-
-  border-radius: 999px !important;
+  position: relative;
+  width: 150px;
+  height: 5px;
+  border-radius: 999px;
 
   background: linear-gradient(
     90deg,
@@ -1986,114 +1980,73 @@ font-weight: 700;
     #ffd54f 75%,
     #b8860b 90%,
     #6b4a00 100%
-  ) !important;
+  );
 
   box-shadow:
     0 1px 0 rgba(255,255,255,.7) inset,
     0 -1px 0 rgba(0,0,0,.25) inset,
-    0 0 6px rgba(255,215,0,.40),
-    0 0 12px rgba(255,215,0,.20) !important;
+    0 0 10px rgba(255,215,0,.45),
+    0 0 20px rgba(255,215,0,.25);
 
-  overflow: hidden !important;
+  overflow: visible;
 }
 
+/* Metallic shine animation */
 
-/* =======================================================
-   MOBILE — METALLIC WHITE SHINE
-   STAYS INSIDE THE GOLD RIBBON
-   ======================================================= */
+.premium-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:45%;
+  height:100%;
 
-.premium-divider::before {
-  content: "" !important;
+  background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
+  );
 
-  position: absolute !important;
+  transform:skewX(-25deg);
 
-  top: 0 !important;
-  left: -45% !important;
-
-  width: 35% !important;
-  height: 100% !important;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.95),
-    transparent
-  ) !important;
-
-  transform: skewX(-25deg);
-
-  animation:
-    mobileGoldShine
-    3.5s
-    ease-in-out
-    infinite !important;
-
-  pointer-events: none !important;
-
-  z-index: 2 !important;
+  animation:goldShine 3.5s infinite;
 }
 
+/* Center diamond */
 
-/* =======================================================
-   MOBILE — CENTER DIAMOND
-   ======================================================= */
+.premium-divider::after{
+  content:"";
+  position:absolute;
 
-.premium-divider::after {
-  content: "" !important;
+  left:50%;
+  top:50%;
 
-  position: absolute !important;
+  width:10px;
+  height:10px;
 
-  left: 50% !important;
-  top: 50% !important;
+  transform:translate(-50%,-50%) rotate(45deg);
 
-  width: 8px !important;
-  height: 8px !important;
+  background:linear-gradient(
+      135deg,
+      #fff9d6,
+      #ffd54f,
+      #b8860b
+  );
 
-  transform:
-    translate(-50%, -50%)
-    rotate(45deg) !important;
-
-  background: linear-gradient(
-    135deg,
-    #fff9d6,
-    #ffd54f,
-    #b8860b
-  ) !important;
-
-  border:
-    1px solid rgba(255,255,255,.7) !important;
+  border:1px solid rgba(255,255,255,.7);
 
   box-shadow:
-    0 0 5px rgba(255,215,0,.8),
-    0 0 10px rgba(255,215,0,.40) !important;
-
-  z-index: 4 !important;
+      0 0 8px rgba(255,215,0,.8),
+      0 0 16px rgba(255,215,0,.45);
 }
 
-
-/* =======================================================
-   MOBILE — SHINE ANIMATION
-   ======================================================= */
-
-@keyframes mobileGoldShine {
-
-  0% {
-    left: -45%;
-    opacity: 0;
+@keyframes goldShine{
+  from{
+      left:-60%;
   }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    left: 110%;
-    opacity: 0;
+  to{
+      left:130%;
   }
 }
 
