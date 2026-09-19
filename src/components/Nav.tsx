@@ -236,72 +236,59 @@ a.top-contact-item:hover {
   color: #18C6C8;
 }
 
-
 /* =========================================
-   TOP CONTACT SOCIAL ICONS
-   Instagram + Facebook beside email
+   SOCIAL ICONS — TOP CONTACT BAR
 ========================================= */
-.top-contact-socials {
+
+.top-social-icons {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  margin-left: -14px;
-  flex-shrink: 0;
+  gap: 10px;
+  margin-left: -12px;
 }
 
-.top-social-link {
-  width: 25px;
-  height: 25px;
+.top-social-icon {
+  width: 38px;
+  height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  padding: 0;
+  box-sizing: border-box;
+  /* Match the contact bar exactly — no separate icon background */
+  background: #032f70;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #d7dee9;
   text-decoration: none;
-  border-radius: 50%;
-  transition: transform .25s ease, color .25s ease, filter .25s ease;
+  flex: 0 0 auto;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.top-social-link svg {
+.top-social-icon:hover {
+  transform: translateY(-2px);
+  background: #032f70;
+  border-color: rgba(24, 198, 200, 0.45);
+  color: #ffffff;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.20),
+    0 0 10px rgba(24, 198, 200, 0.12);
+}
+
+.top-social-icon svg {
+  display: block;
   width: 19px;
   height: 19px;
-  display: block;
-  fill: currentColor;
-  stroke: currentColor;
-  stroke-width: 1.7;
 }
 
-.instagram-link:hover {
-  color: #E1306C;
-  transform: translateY(-2px) scale(1.12);
-  filter: drop-shadow(0 0 6px rgba(225,48,108,.55));
-}
-
-.facebook-link:hover {
-  color: #1877F2;
-  transform: translateY(-2px) scale(1.12);
-  filter: drop-shadow(0 0 6px rgba(24,119,242,.55));
-}
-
-.top-social-link:focus-visible {
-  outline: 2px solid #18C6C8;
-  outline-offset: 3px;
-}
-
-@media (max-width: 768px) {
-  .top-contact-socials {
-    gap: 5px;
-    margin-left: -8px;
-  }
-
-  .top-social-link {
-    width: 22px;
-    height: 22px;
-  }
-
-  .top-social-link svg {
-    width: 16px;
-    height: 16px;
-  }
+.top-social-icon.facebook svg {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 768px) {
@@ -317,6 +304,27 @@ a.top-contact-item:hover {
 
   .top-contact-item {
     font-size: 15px;
+  }
+
+  .top-social-icons {
+    gap: 6px;
+    margin-left: -8px;
+  }
+
+  .top-social-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .top-social-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .top-social-icon.facebook svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -1658,6 +1666,27 @@ font-weight: 700;
     font-size: 7.5px !important;
   }
 
+  .top-social-icons {
+    gap: 4px;
+    margin-left: -5px;
+  }
+
+  .top-social-icon {
+    width: 27px;
+    height: 27px;
+    border-radius: 7px;
+  }
+
+  .top-social-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .top-social-icon.facebook svg {
+    width: 13px;
+    height: 13px;
+  }
+
   .top-contact-inner .top-contact-item:nth-child(2) {
     display: none !important;
   }
@@ -2301,33 +2330,65 @@ font-weight: 700;
       <span>info@madhanursing.in</span>
     </a>
 
-    {/* SOCIAL MEDIA — BESIDE EMAIL */}
-    <div className="top-contact-socials" aria-label="Social media links">
+    <div className="top-social-icons">
+
+      {/* Instagram */}
       <a
-        href="https://www.instagram.com/"
+        href="https://www.instagram.com/madhacollegeofnursing"
+        className="top-social-icon"
+        aria-label="Instagram"
         target="_blank"
         rel="noopener noreferrer"
-        className="top-social-link instagram-link"
-        aria-label="Instagram"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.5" r="1" className="social-dot" />
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <rect
+            x="3.5"
+            y="3.5"
+            width="17"
+            height="17"
+            rx="4.5"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="4"
+            stroke="currentColor"
+            strokeWidth="1.8"
+          />
+          <circle
+            cx="17.4"
+            cy="6.7"
+            r="1"
+            fill="currentColor"
+          />
         </svg>
       </a>
 
+      {/* Facebook */}
       <a
-        href="https://www.facebook.com/"
+        href="https://www.facebook.com/madhacollegeofnursing"
+        className="top-social-icon facebook"
+        aria-label="Facebook"
         target="_blank"
         rel="noopener noreferrer"
-        className="top-social-link facebook-link"
-        aria-label="Facebook"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.67.33-1 1-1Z" />
+        <svg
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M13.6 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3h2.7v8h3.4Z" />
         </svg>
       </a>
+
     </div>
 
     <div className="top-contact-item top-address">
