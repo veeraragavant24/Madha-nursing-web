@@ -1357,11 +1357,13 @@ font-weight: 700;
   pointer-events: none !important;
 
   /* EXACT SYSTEM ANIMATION */
-animation:
-  whiteHeaderTitleShine
-  3.8s
-  ease-in-out
-  infinite !important;
+  animation:
+    extendedRibbonShine
+    3.8s
+    ease-in-out
+    infinite !important;
+
+  z-index: 3 !important;
 }
 
 
