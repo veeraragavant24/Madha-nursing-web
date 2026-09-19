@@ -1498,9 +1498,9 @@ font-weight: 700;
 
     padding-bottom: 6px !important;
 
-    padding-left: 9px !important;
+    padding-left: 7px !important;
 
-    padding-right: 9px !important;
+    padding-right: 7px !important;
 
     line-height: 1 !important;
 
@@ -1518,11 +1518,13 @@ font-weight: 700;
   .nav-root.solid .nav-item {
 
     font-size:
-  clamp(
-    13px,
-    .72vw,
-    16px
-  ) !important;
+      clamp(
+        12px,
+        .68vw,
+        15px
+      ) !important;
+  }
+
 
   /* =======================================================
      ABOUT ARROW
