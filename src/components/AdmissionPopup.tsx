@@ -26,7 +26,6 @@ export default function AdmissionPopup({
 
     try {
       const response = await fetch('https://madha-nursing-api.onrender.com/api/admission-enquiry', {
-        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -772,7 +771,7 @@ export default function AdmissionPopup({
         .popup-field input,
         .popup-field select {
           color: #032F70 !important;
-          font-family: Arial, Helvetica, sans-serif !important;
+          font-family: 'Poppins', 'Segoe UI', Arial, sans-serif !important;
           font-size: 14px !important;
           font-weight: 800 !important;
           opacity: 1 !important;
@@ -786,7 +785,7 @@ export default function AdmissionPopup({
         .popup-field input::placeholder {
           color: #032F70 !important;
           opacity: 1 !important;
-          font-family: Arial, Helvetica, sans-serif !important;
+          font-family: 'Poppins', 'Segoe UI', Arial, sans-serif !important;
           font-size: 14px !important;
           font-weight: 800 !important;
           text-shadow: none !important;
@@ -801,7 +800,7 @@ export default function AdmissionPopup({
         .popup-field select option {
           color: #032F70 !important;
           background: #ffffff !important;
-          font-family: Arial, Helvetica, sans-serif !important;
+          font-family: 'Poppins', 'Segoe UI', Arial, sans-serif !important;
           font-size: 14px !important;
           font-weight: 800 !important;
         }
