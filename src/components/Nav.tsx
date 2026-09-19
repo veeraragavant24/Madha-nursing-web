@@ -638,59 +638,55 @@ background: linear-gradient(
     0 1px 4px rgba(184, 134, 11, 0.45);
 }
 
-/* ── GOLD RIBBON LIGHT SWEEP — TITLE BOUND ── */
+/* ── GOLD RIBBON LIGHT SWEEP: M OF MADHA → G OF NURSING ── */
 .premium-divider::before {
   content: "";
   position: absolute;
-
   top: 0;
-  height: 100%;
-
-  /* JS sets this to the M of MADHA relative to the ribbon. */
   left: var(--shine-start, -150px);
-
   width: 90px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0) 20%,
-    rgba(255, 255, 255, 0.75) 42%,
-    #FFFFFF 50%,
-    rgba(255, 255, 255, 0.75) 58%,
-    rgba(255, 255, 255, 0) 80%,
+    rgba(255,255,255,0) 18%,
+    rgba(255,255,255,.45) 38%,
+    #ffffff 50%,
+    rgba(255,255,255,.45) 62%,
+    rgba(255,255,255,0) 82%,
     transparent 100%
   );
 
   filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
+    drop-shadow(0 0 3px rgba(255,255,255,.95))
+    drop-shadow(0 0 8px rgba(255,255,255,.65));
 
-  pointer-events: none;
   will-change: transform, opacity;
-
-  animation: extendedRibbonShine 3.2s linear infinite;
+  animation: extendedRibbonShine 3.6s linear infinite;
 }
 
 @keyframes extendedRibbonShine {
   0% {
     transform: translateX(0) skewX(-20deg);
-    opacity: 0.15;
+    opacity: 0;
   }
 
-  6% {
+  5% {
     transform: translateX(0) skewX(-20deg);
     opacity: 1;
   }
 
-  94% {
+  95% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
     opacity: 1;
   }
 
   100% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
-    opacity: 0.15;
+    opacity: 0;
   }
 }
 
@@ -779,13 +775,11 @@ background: linear-gradient(
         .nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
-  /* FIX: keep the navigation in its own flex space so it
-     cannot center itself over the college title. */
-  flex: 1 1 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
 
   gap: 18px;
 
@@ -904,7 +898,63 @@ letter-spacing: 0;
           gap: 16px;
            margin-right: 90px;
         }
-        /* =========================================
+
+/* =========================================================
+   DESKTOP 1920px HEADER PROTECTION
+   Brand/title owns the left column.
+   Navigation can NEVER overlap the college title.
+========================================================= */
+@media (min-width: 1401px) {
+  .nav-root.transparent .nav-inner {
+    display: grid !important;
+    grid-template-columns: max-content minmax(0, 1fr) max-content !important;
+    align-items: center !important;
+    column-gap: 24px !important;
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav-root.transparent .nav-brand {
+    width: max-content !important;
+    max-width: none !important;
+    min-width: max-content !important;
+    flex: none !important;
+    overflow: visible !important;
+  }
+
+  .nav-root.transparent .nav-brand-text {
+    width: max-content !important;
+    max-width: none !important;
+    flex: none !important;
+    overflow: visible !important;
+  }
+
+  .nav-root.transparent .nav-links {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: none !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+    overflow: visible !important;
+  }
+
+  .nav-root.transparent .nav-right {
+    width: max-content !important;
+    min-width: max-content !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    justify-content: flex-end !important;
+  }
+
+  .nav-root.transparent .btn-apply {
+    transform: none !important;
+    margin: 0 !important;
+  }
+}
+
+/* =========================================
    APPLY BUTTON — NORMAL
 ========================================= */
 
