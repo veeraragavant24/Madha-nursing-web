@@ -427,7 +427,7 @@ export default function AdmissionPopup({
         .admission-popup {
           position: relative;
 
-          width: 390px;
+          width: 440px;
           max-width: 100%;
 
           background: #ffffff;
@@ -545,7 +545,7 @@ export default function AdmissionPopup({
         .popup-form {
           position: relative;
 
-          padding: 24px 30px 20px;
+          padding: 28px 34px 23px;
 
           box-sizing: border-box;
         }
@@ -566,10 +566,10 @@ export default function AdmissionPopup({
 
 
         .popup-cap-icon {
-          width: 48px;
-          height: 48px;
+          width: 54px;
+          height: 54px;
 
-          min-width: 48px;
+          min-width: 54px;
 
           border-radius: 50%;
 
@@ -598,7 +598,7 @@ export default function AdmissionPopup({
 
           font-family: var(--font-sans, Arial, sans-serif);
 
-          font-size: 23px;
+          font-size: 26px;
 
           line-height: 1.1;
 
@@ -625,9 +625,9 @@ export default function AdmissionPopup({
 
           color: #36547D;
 
-          font-size: 11px;
+          font-size: 12px;
 
-          line-height: 1.45;
+          line-height: 1.5;
 
           font-weight: 600;
         }
@@ -639,9 +639,9 @@ export default function AdmissionPopup({
           position: relative;
 
           width: 100%;
-          height: 38px;
+          height: 43px;
 
-          margin-bottom: 8px;
+          margin-bottom: 9px;
 
           display: flex;
           align-items: center;
@@ -706,7 +706,7 @@ export default function AdmissionPopup({
 
           font-family: inherit;
 
-          font-size: 12px;
+          font-size: 13px;
 
           font-weight: 700;
 
@@ -772,9 +772,9 @@ export default function AdmissionPopup({
 
         .popup-submit {
           width: 100%;
-          height: 40px;
+          height: 44px;
 
-          margin-top: 7px;
+          margin-top: 8px;
 
           border: none;
           border-radius: 22px;
@@ -791,7 +791,7 @@ export default function AdmissionPopup({
 
           font-family: inherit;
 
-          font-size: 13px;
+          font-size: 14px;
 
           font-weight: 800;
 
@@ -985,13 +985,13 @@ export default function AdmissionPopup({
 
 
           .admission-popup {
-            width: 390px;
+            width: 440px;
             max-width: 100%;
           }
 
 
           .popup-form {
-            padding: 22px 24px 18px;
+            padding: 24px 27px 20px;
           }
 
 
@@ -1006,7 +1006,7 @@ export default function AdmissionPopup({
 
 
           .popup-field {
-            height: 34px;
+            height: 38px;
           }
 
 
@@ -1017,7 +1017,7 @@ export default function AdmissionPopup({
 
 
           .popup-submit {
-            height: 39px;
+            height: 42px;
           }
 
         }
@@ -1036,7 +1036,7 @@ export default function AdmissionPopup({
 
 
           .popup-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 800;
           }
 
