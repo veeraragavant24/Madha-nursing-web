@@ -18,7 +18,12 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed(origin =>
                 origin == "http://localhost:8443" ||
                 origin == "https://localhost:8443" ||
-                origin == "https://veeraragavant24-madha-nursing-web-8.vercel.app"
+
+                // Previous Vercel frontend
+                origin == "https://veeraragavant24-madha-nursing-web-8.vercel.app" ||
+
+                // Current Render frontend
+                origin == "https://madha-nursing-web-1.onrender.com"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -35,8 +40,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // =====================================================
-// DATABASE - SQL SERVER
+// DATABASE - POSTGRESQL
 // =====================================================
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")
