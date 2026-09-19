@@ -1963,45 +1963,139 @@ font-weight: 700;
     animation: mobileCollegeTitleIn 0.8s ease-out both !important;
   }
 
+  /* =======================================================
+   MOBILE — PREMIUM LUXURY GOLD RIBBON
+   ======================================================= */
 
-  /* =====================================================
-     MOBILE TITLE ANIMATION
-     ===================================================== */
+.premium-divider {
+  position: relative !important;
 
-  @keyframes mobileCollegeTitleIn {
+  width: 110px !important;
+  height: 3px !important;
 
-    from {
-      opacity: 0;
-      transform: translateY(7px);
-    }
+  margin: 6px auto 2px !important;
 
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  border-radius: 999px !important;
 
+  background: linear-gradient(
+    90deg,
+    #6b4a00 0%,
+    #b8860b 10%,
+    #ffd54f 25%,
+    #fff3b0 50%,
+    #ffd54f 75%,
+    #b8860b 90%,
+    #6b4a00 100%
+  ) !important;
+
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.7) inset,
+    0 -1px 0 rgba(0,0,0,.25) inset,
+    0 0 6px rgba(255,215,0,.40),
+    0 0 12px rgba(255,215,0,.20) !important;
+
+  overflow: hidden !important;
+}
+
+
+/* =======================================================
+   MOBILE — METALLIC WHITE SHINE
+   STAYS INSIDE THE GOLD RIBBON
+   ======================================================= */
+
+.premium-divider::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  top: 0 !important;
+  left: -45% !important;
+
+  width: 35% !important;
+  height: 100% !important;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.95),
+    transparent
+  ) !important;
+
+  transform: skewX(-25deg);
+
+  animation:
+    mobileGoldShine
+    3.5s
+    ease-in-out
+    infinite !important;
+
+  pointer-events: none !important;
+
+  z-index: 2 !important;
+}
+
+
+/* =======================================================
+   MOBILE — CENTER DIAMOND
+   ======================================================= */
+
+.premium-divider::after {
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 50% !important;
+  top: 50% !important;
+
+  width: 8px !important;
+  height: 8px !important;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg) !important;
+
+  background: linear-gradient(
+    135deg,
+    #fff9d6,
+    #ffd54f,
+    #b8860b
+  ) !important;
+
+  border:
+    1px solid rgba(255,255,255,.7) !important;
+
+  box-shadow:
+    0 0 5px rgba(255,215,0,.8),
+    0 0 10px rgba(255,215,0,.40) !important;
+
+  z-index: 4 !important;
+}
+
+
+/* =======================================================
+   MOBILE — SHINE ANIMATION
+   ======================================================= */
+
+@keyframes mobileGoldShine {
+
+  0% {
+    left: -45%;
+    opacity: 0;
   }
 
-
-  /* =====================================================
-     MOBILE GOLD RIBBON
-     ===================================================== */
-
-  .premium-divider {
-
-    width: clamp(100px, 28vw, 145px) !important;
-
-    max-width: 100% !important;
-
-    height: 3px !important;
-
-    margin: 6px auto 2px !important;
-
-    align-self: center !important;
-
-    overflow: visible !important;
+  10% {
+    opacity: 1;
   }
 
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
 
   /* =====================================================
      HIDE DESKTOP NAVIGATION
