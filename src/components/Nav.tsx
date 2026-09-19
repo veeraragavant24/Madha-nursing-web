@@ -498,6 +498,59 @@ a.top-contact-item:hover {
     margin: 0 !important;
   }
 
+  /* =========================================================
+     DESKTOP 1920px — COMPACT HEADER SPACING
+     Only reduces title/menu/apply sizing and spacing.
+     ========================================================= */
+
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 24px !important;
+    letter-spacing: 0.055em !important;
+  }
+
+  .nav-root.transparent .nav-brand,
+  .nav-root.solid .nav-brand {
+    gap: 10px !important;
+  }
+
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    gap: 0 !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+  }
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    font-size: 13px !important;
+    padding: 7px 6px !important;
+  }
+
+  .nav-root.transparent .nav-right,
+  .nav-root.solid .nav-right {
+    margin-left: 6px !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    gap: 0 !important;
+  }
+
+  .nav-root.transparent .btn-apply,
+  .nav-root.solid .btn-apply {
+    width: 100px !important;
+    height: 34px !important;
+    padding: 5px 8px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+    transform: none !important;
+  }
+
+  .nav-root.transparent .btn-apply svg,
+  .nav-root.solid .btn-apply svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+
 }
 
 /* Premium floating header transition */
@@ -3134,3 +3187,5 @@ font-weight: 700;
     </>
   )
 }
+
+
