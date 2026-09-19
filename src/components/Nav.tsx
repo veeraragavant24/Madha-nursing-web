@@ -73,11 +73,6 @@ useEffect(() => {
       '--shine-travel',
       `${travel}px`
     )
-
-    ribbon.style.setProperty(
-      '--shine-distance',
-      `${ribbonW + 90}px`
-    )
   }
 
   measureNormalHeader()
@@ -120,11 +115,6 @@ useEffect(() => {
     ribbon.style.setProperty(
       '--shine-travel',
       `${travel}px`
-    )
-
-    ribbon.style.setProperty(
-      '--shine-distance',
-      `${ribbonW + 90}px`
     )
   }
 
@@ -414,7 +404,7 @@ a.top-contact-item:hover {
 
 
   /* APPLY NOW AREA */
-  .nav-root.solid .nav-right {
+  .nav-root.solid .nav-right {git push origin main
     margin-left: 4px !important;
     margin-right: 0 !important;
 
@@ -621,28 +611,6 @@ background: linear-gradient(
 
   100% {
     transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
-    opacity: 0;
-  }
-}
-
-@keyframes ribbonShineInside {
-  0% {
-    left: var(--shine-start, -150px);
-    opacity: 0;
-  }
-
-  8% {
-    left: var(--shine-start, -150px);
-    opacity: 1;
-  }
-
-  92% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 1;
-  }
-
-  100% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
     opacity: 0;
   }
 }
@@ -1321,7 +1289,7 @@ font-weight: 700;
     0 1px 4px rgba(184, 134, 11, 0.45),
     0 0 8px rgba(212, 175, 55, 0.25) !important;
 
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 
@@ -1340,19 +1308,15 @@ font-weight: 700;
   width: 14px !important;
   height: 14px !important;
 
-  background: #fff4b0 !important;
-  border: 2px solid #ffffff !important;
+  background: #e6b71d !important;
+  border: 1px solid #e0be41 !important;
 
   transform:
     translate(-50%, -50%)
     rotate(45deg) !important;
 
   box-shadow:
-    0 0 4px rgba(255, 255, 255, 0.95),
-    0 0 9px rgba(255, 255, 255, 0.75),
-    0 1px 5px rgba(184, 134, 11, 0.55) !important;
-
-  z-index: 10 !important;
+    0 1px 4px rgba(184, 134, 11, 0.45) !important;
 }
 
 
@@ -1369,9 +1333,8 @@ font-weight: 700;
   top: 0 !important;
   height: 100% !important;
 
-  /* START EXACTLY AT THE M OF MADHA
-     (no !important on left — see note below) */
-  left: var(--shine-start, -150px);
+  /* SYSTEM STARTING CRITERIA */
+  left: var(--shine-start, -150px) !important;
 
   /* SAME 90px SHINE AS SYSTEM DESKTOP */
   width: 90px !important;
@@ -1395,12 +1358,10 @@ font-weight: 700;
 
   /* EXACT SYSTEM ANIMATION */
   animation:
-    ribbonShineInside
+    extendedRibbonShine
     3.8s
     ease-in-out
     infinite !important;
-
-  will-change: left, opacity !important;
 
   z-index: 3 !important;
 }
@@ -1994,58 +1955,11 @@ font-weight: 700;
 
     align-self: center !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
-
-  
 
   /* =====================================================
-     MOBILE — RIBBON SHINE
-     KEEP THE WHITE SHINE INSIDE THE RIBBON
-     ===================================================== */
-
-  .premium-divider::before {
-
-    content: "" !important;
-
-    position: absolute !important;
-
-    top: 0 !important;
-    /* no !important on left — see note in laptop block above */
-    left: var(--shine-start, -150px);
-
-    width: 90px !important;
-    height: 100% !important;
-
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.75) 42%,
-      #FFFFFF 50%,
-      rgba(255, 255, 255, 0.75) 58%,
-      rgba(255, 255, 255, 0) 80%,
-      transparent 100%
-    ) !important;
-
-    filter:
-      drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-      drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
-
-    pointer-events: none !important;
-
-    animation:
-      ribbonShineInside
-      3.8s
-      ease-in-out
-      infinite !important;
-
-    will-change: left, opacity !important;
-
-    z-index: 3 !important;
-  }
-/* =====================================================
      HIDE DESKTOP NAVIGATION
      ===================================================== */
 
