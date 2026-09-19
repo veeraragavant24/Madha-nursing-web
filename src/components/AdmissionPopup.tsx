@@ -427,7 +427,7 @@ export default function AdmissionPopup({
         .admission-popup {
           position: relative;
 
-          width: 440px;
+          width: 480px;
           max-width: 100%;
 
           background: #ffffff;
@@ -545,7 +545,7 @@ export default function AdmissionPopup({
         .popup-form {
           position: relative;
 
-          padding: 28px 34px 23px;
+          padding: 30px 38px 25px;
 
           box-sizing: border-box;
         }
@@ -566,10 +566,10 @@ export default function AdmissionPopup({
 
 
         .popup-cap-icon {
-          width: 54px;
-          height: 54px;
+          width: 58px;
+          height: 58px;
 
-          min-width: 54px;
+          min-width: 58px;
 
           border-radius: 50%;
 
@@ -598,7 +598,7 @@ export default function AdmissionPopup({
 
           font-family: var(--font-sans, Arial, sans-serif);
 
-          font-size: 26px;
+          font-size: 28px;
 
           line-height: 1.1;
 
@@ -706,9 +706,9 @@ export default function AdmissionPopup({
 
           font-family: inherit;
 
-          font-size: 13px;
+          font-size: 14px;
 
-          font-weight: 700;
+          font-weight:  800;
 
           opacity: 1;
           filter: none;
@@ -768,13 +768,56 @@ export default function AdmissionPopup({
         }
 
 
+        /* CRISP FIELD TYPOGRAPHY */
+        .popup-field input,
+        .popup-field select {
+          color: #032F70 !important;
+          font-family: Arial, Helvetica, sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 800 !important;
+          opacity: 1 !important;
+          filter: none !important;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-rendering: geometricPrecision;
+          text-shadow: none !important;
+        }
+
+        .popup-field input::placeholder {
+          color: #032F70 !important;
+          opacity: 1 !important;
+          font-family: Arial, Helvetica, sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 800 !important;
+          text-shadow: none !important;
+        }
+
+        .popup-field select {
+          color: #032F70 !important;
+          font-size: 14px !important;
+          font-weight: 800 !important;
+        }
+
+        .popup-field select option {
+          color: #032F70 !important;
+          background: #ffffff !important;
+          font-family: Arial, Helvetica, sans-serif !important;
+          font-size: 14px !important;
+          font-weight: 800 !important;
+        }
+
+        .popup-field {
+          height: 46px;
+        }
+
+
         /* SUBMIT */
 
         .popup-submit {
           width: 100%;
-          height: 44px;
+          height: 47px;
 
-          margin-top: 8px;
+          margin-top: 9px;
 
           border: none;
           border-radius: 22px;
@@ -1063,13 +1106,13 @@ export default function AdmissionPopup({
 
 
           .admission-popup {
-            width: 440px;
+            width: 480px;
             max-width: 100%;
           }
 
 
           .popup-form {
-            padding: 24px 27px 20px;
+            padding: 26px 30px 22px;
           }
 
 
@@ -1084,7 +1127,7 @@ export default function AdmissionPopup({
 
 
           .popup-field {
-            height: 38px;
+            height: 42px;
           }
 
 
@@ -1095,7 +1138,7 @@ export default function AdmissionPopup({
 
 
           .popup-submit {
-            height: 42px;
+            height: 45px;
           }
 
         }
