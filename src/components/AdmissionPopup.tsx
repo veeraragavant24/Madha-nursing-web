@@ -25,7 +25,7 @@ export default function AdmissionPopup({
     setSending(true)
 
     try {
-      const response = await fetch('/api/admission-enquiry', {
+      const response = await fetch('https://madha-nursing-api.onrender.com/api/admission-enquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
