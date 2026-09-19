@@ -472,12 +472,34 @@ export default function Home({ navigate }: Props) {
   padding: 56px 20px !important;
 }
 
+/* =====================================================
+   MOBILE STATS
+   3 ITEMS FIRST ROW
+   2 ITEMS SECOND ROW
+   ===================================================== */
+
 .home-stats-grid {
   display: grid !important;
   grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
   gap: 42px 6px !important;
   align-items: center !important;
 }
+
+
+/* HIDE ALL DIVIDER ELEMENTS ON MOBILE */
+
+.home-stats-grid > div:nth-child(2),
+.home-stats-grid > div:nth-child(4),
+.home-stats-grid > div:nth-child(6),
+.home-stats-grid > div:nth-child(8) {
+  display: none !important;
+}
+
+
+/* =====================================================
+   FIRST ROW
+   25+ | 3200+ | 18
+   ===================================================== */
 
 .home-stats-grid > div:nth-child(1) {
   grid-column: 1 / span 2 !important;
@@ -490,6 +512,13 @@ export default function Home({ navigate }: Props) {
 .home-stats-grid > div:nth-child(5) {
   grid-column: 5 / span 2 !important;
 }
+
+
+/* =====================================================
+   SECOND ROW
+   98% | 120+
+   CENTERED
+   ===================================================== */
 
 .home-stats-grid > div:nth-child(7) {
   grid-column: 2 / span 2 !important;
@@ -617,6 +646,13 @@ export default function Home({ navigate }: Props) {
   align-items: center !important;
 }
 
+.home-stats-grid > div:nth-child(2),
+.home-stats-grid > div:nth-child(4),
+.home-stats-grid > div:nth-child(6),
+.home-stats-grid > div:nth-child(8) {
+  display: none !important;
+}
+
 .home-stats-grid > div:nth-child(1) {
   grid-column: 1 / span 2 !important;
 }
@@ -636,6 +672,7 @@ export default function Home({ navigate }: Props) {
 .home-stats-grid > div:nth-child(9) {
   grid-column: 4 / span 2 !important;
 }
+
 
     .home-mobile-section {
       padding-left: 16px !important;
