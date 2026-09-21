@@ -885,20 +885,25 @@ export default function Home({ navigate }: Props) {
   }
 }
 /* =========================================================
-   MOBILE — REMOVE ONLY EMPTY BLUE AREA
+   MOBILE — REMOVE ONLY THE BLUE HERO BACKGROUND
    ========================================================= */
 
 @media (max-width: 768px) {
   .hero-slider {
-    background: transparent !important;
+    background: #ffffff !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-slider {
-    background: transparent !important;
+    background: #ffffff !important;
   }
 }
+
+.hero-slider {
+  background: transparent !important;
+}
+  
     
 `}</style>
 
