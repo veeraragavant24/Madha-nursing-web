@@ -437,7 +437,7 @@ a.top-contact-item:hover {
   /* COLLEGE TITLE */
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 23px !important;
+    font-size: 24px !important;
     letter-spacing: 0.035em !important;
     white-space: nowrap !important;
   }
@@ -506,7 +506,29 @@ a.top-contact-item:hover {
     box-sizing: border-box !important;
   }
 
+/* =========================================================
+   NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
+   ALL LARGE DESKTOP WIDTHS
+   COLLEGE LOGO/TITLE STAYS FIXED
+   ========================================================= */
 
+@media (min-width: 1401px) {
+
+  .nav-root.transparent .nav-links {
+    position: relative !important;
+    left: 40px !important;
+  }
+
+  .nav-root.transparent .nav-right {
+    position: relative !important;
+    left: 40px !important;
+  }
+
+  .nav-root.transparent .btn-apply {
+    transform: none !important;
+  }
+
+}
 
 
 
