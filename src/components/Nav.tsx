@@ -495,23 +495,16 @@ a.top-contact-item:hover {
     flex: 0 0 auto !important;
   }
 }
-  /* =========================================================
-     NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
-     COLLEGE LOGO/TITLE STAYS FIXED
-     ========================================================= */
+ .nav-root.solid .nav-inner {
+    transform: none !important;
 
-  .nav-root.transparent .nav-links {
-    transform: translateX(40px) !important;
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+
+    gap: 10px !important;
+
+    box-sizing: border-box !important;
   }
-
-  .nav-root.transparent .nav-right {
-    transform: translateX(40px) !important;
-  }
-
-  .nav-root.transparent .btn-apply {
-    transform: translateX(0) !important;
-  }
-
 
 
 
