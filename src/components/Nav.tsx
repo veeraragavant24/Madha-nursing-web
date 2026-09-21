@@ -437,7 +437,7 @@ a.top-contact-item:hover {
   /* COLLEGE TITLE */
   .nav-root.transparent .nav-college-name,
   .nav-root.solid .nav-college-name {
-    font-size: 21px !important;
+    font-size: 23px !important;
     letter-spacing: 0.035em !important;
     white-space: nowrap !important;
   }
@@ -450,28 +450,40 @@ a.top-contact-item:hover {
     min-width: 0 !important;
   }
 
- /* MENU */
-.nav-root.transparent .nav-links,
-.nav-root.solid .nav-links {
-  gap: 4px !important;
-  min-width: 0 !important;
-  flex: 1 1 auto !important;
-  flex-wrap: nowrap !important;
-  white-space: nowrap !important;
+  /* MENU */
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    gap: 4px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    .nav-root.transparent .nav-links {
+  padding-left: 20px !important;
 }
+  }
 
-/* MOVE NORMAL HEADER MENU TO THE RIGHT */
+/* =========================================================
+   NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
+   ========================================================= */
+
 .nav-root.transparent .nav-links {
   position: relative !important;
-  left: 20px !important;
+  left: 30px !important;
 }
 
-/* MOVE NORMAL HEADER APPLY NOW TO THE RIGHT */
 .nav-root.transparent .nav-right {
   position: relative !important;
-  left: 20px !important;
+  left: 30px !important;
+}
 
-  }
+.nav-root.transparent .btn-apply {
+  transform: translateX(0) !important;
+}
+
+
+
+
 
   /* MENU ITEMS */
   .nav-root.transparent .nav-item,
