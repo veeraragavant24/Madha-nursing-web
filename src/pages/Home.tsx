@@ -432,41 +432,15 @@ export default function Home({ navigate }: Props) {
 }
 
 .home-stats-grid {
-  display: grid !important;
-
+  display: grid;
   grid-template-columns:
-    minmax(0, 1fr)
-    1px
-    minmax(0, 1fr)
-    1px
-    minmax(0, 1fr)
-    1px
-    minmax(0, 1fr)
-    1px
-    minmax(0, 1fr) !important;
-
-  grid-template-rows: 1fr !important;
-
-  gap: 24px !important;
-
-  width: 100% !important;
-  align-items: center !important;
-  justify-items: center !important;
-}
-  .home-stats-grid > div {
-  min-width: 0;
-}
-
-.home-stats-grid > div:nth-child(1),
-.home-stats-grid > div:nth-child(2),
-.home-stats-grid > div:nth-child(3),
-.home-stats-grid > div:nth-child(4),
-.home-stats-grid > div:nth-child(5),
-.home-stats-grid > div:nth-child(6),
-.home-stats-grid > div:nth-child(7),
-.home-stats-grid > div:nth-child(8),
-.home-stats-grid > div:nth-child(9) {
-  grid-row: 1 !important;
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
 }
 
 .home-stat-divider {
@@ -827,8 +801,7 @@ export default function Home({ navigate }: Props) {
     grid-row: 1 !important;
   }
 }
-
-/* =========================================================
+  /* =========================================================
    DESKTOP PC — FORCE ALL 5 STATS INTO ONE ROW
    ========================================================= */
 
@@ -911,7 +884,21 @@ export default function Home({ navigate }: Props) {
     grid-row: 1 !important;
   }
 }
+/* =========================================================
+   MOBILE — REMOVE ONLY EMPTY BLUE AREA
+   ========================================================= */
 
+@media (max-width: 768px) {
+  .hero-slider {
+    background: transparent !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider {
+    background: transparent !important;
+  }
+}
     
 `}</style>
 
