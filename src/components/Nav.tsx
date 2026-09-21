@@ -516,12 +516,12 @@ a.top-contact-item:hover {
 
   .nav-root.transparent .nav-links {
     position: relative !important;
-    right: 40px !important;
+    left : 60px !important;
   }
 
   .nav-root.transparent .nav-right {
     position: relative !important;
-    right: 40px !important;
+    left: 60px !important;
   }
 
   .nav-root.transparent .btn-apply {
@@ -529,6 +529,17 @@ a.top-contact-item:hover {
   }
 
 }
+   .nav-root.solid .nav-inner {
+    transform: none !important;
+
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+
+    gap: 10px !important;
+
+    box-sizing: border-box !important;
+  }
+
 
 
 
