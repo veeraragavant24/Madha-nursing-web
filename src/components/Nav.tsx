@@ -638,59 +638,51 @@ background: linear-gradient(
     0 1px 4px rgba(184, 134, 11, 0.45);
 }
 
-/* ── GOLD RIBBON LIGHT SWEEP — TITLE BOUND ── */
+/* TITLE-BOUND GOLD RIBBON SHINE */
 .premium-divider::before {
   content: "";
   position: absolute;
-
   top: 0;
-  height: 100%;
-
-  /* JS sets this to the M of MADHA relative to the ribbon. */
   left: var(--shine-start, -150px);
-
   width: 90px;
+  height: 100%;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0) 20%,
-    rgba(255, 255, 255, 0.75) 42%,
-    #FFFFFF 50%,
-    rgba(255, 255, 255, 0.75) 58%,
-    rgba(255, 255, 255, 0) 80%,
+    rgba(255,255,255,0) 18%,
+    rgba(255,255,255,.65) 40%,
+    #ffffff 50%,
+    rgba(255,255,255,.65) 60%,
+    rgba(255,255,255,0) 82%,
     transparent 100%
   );
 
-  filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
-
+  transform: skewX(-22deg);
+  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
+          drop-shadow(0 0 7px rgba(255,255,255,.55));
   pointer-events: none;
-  will-change: transform, opacity;
+  will-change: left, opacity;
 
-  animation: extendedRibbonShine 3.2s linear infinite;
+  animation: titleBoundRibbonShine 3.2s linear infinite !important;
 }
 
-@keyframes extendedRibbonShine {
+@keyframes titleBoundRibbonShine {
   0% {
-    transform: translateX(0) skewX(-20deg);
-    opacity: 0.15;
+    left: var(--shine-start, -150px);
+    opacity: 0;
   }
-
-  6% {
-    transform: translateX(0) skewX(-20deg);
+  8% {
+    left: var(--shine-start, -150px);
     opacity: 1;
   }
-
-  94% {
-    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
+  92% {
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
     opacity: 1;
   }
-
   100% {
-    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
-    opacity: 0.15;
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+    opacity: 0;
   }
 }
 
@@ -781,11 +773,8 @@ background: linear-gradient(
   align-items: center;
   justify-content: center;
 
-  /* FIX: keep the navigation in its own flex space so it
-     cannot center itself over the college title. */
-  flex: 1 1 0 !important;
-  width: auto !important;
-  min-width: 0 !important;
+  width: 100%;
+  min-width: 0;
 
   gap: 18px;
 
@@ -1365,26 +1354,52 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation */
+/* TITLE-BOUND GOLD RIBBON SHINE */
+.premium-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--shine-start, -150px);
+  width: 90px;
+  height: 100%;
 
-.premium-divider::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-60%;
-  width:45%;
-  height:100%;
-
-  background:linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.9),
-      transparent
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0) 18%,
+    rgba(255,255,255,.65) 40%,
+    #ffffff 50%,
+    rgba(255,255,255,.65) 60%,
+    rgba(255,255,255,0) 82%,
+    transparent 100%
   );
 
-  transform:skewX(-25deg);
+  transform: skewX(-22deg);
+  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
+          drop-shadow(0 0 7px rgba(255,255,255,.55));
+  pointer-events: none;
+  will-change: left, opacity;
 
-  animation:goldShine 3.5s infinite;
+  animation: titleBoundRibbonShine 3.2s linear infinite !important;
+}
+
+@keyframes titleBoundRibbonShine {
+  0% {
+    left: var(--shine-start, -150px);
+    opacity: 0;
+  }
+  8% {
+    left: var(--shine-start, -150px);
+    opacity: 1;
+  }
+  92% {
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+    opacity: 1;
+  }
+  100% {
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+    opacity: 0;
+  }
 }
 
 /* Center diamond */
@@ -1414,20 +1429,6 @@ font-weight: 700;
       0 0 8px rgba(255,215,0,.8),
       0 0 16px rgba(255,215,0,.45);
 }
-
-@keyframes goldShine{
-  from{
-      left:-60%;
-  }
-  to{
-      left:130%;
-  }
-}
-
-
-
-
-
 
   /* =======================================================
      MENU ITEMS
@@ -1996,26 +1997,52 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* Metallic shine animation */
+/* TITLE-BOUND GOLD RIBBON SHINE */
+.premium-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--shine-start, -150px);
+  width: 90px;
+  height: 100%;
 
-.premium-divider::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-60%;
-  width:45%;
-  height:100%;
-
-  background:linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.9),
-      transparent
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0) 18%,
+    rgba(255,255,255,.65) 40%,
+    #ffffff 50%,
+    rgba(255,255,255,.65) 60%,
+    rgba(255,255,255,0) 82%,
+    transparent 100%
   );
 
-  transform:skewX(-25deg);
+  transform: skewX(-22deg);
+  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
+          drop-shadow(0 0 7px rgba(255,255,255,.55));
+  pointer-events: none;
+  will-change: left, opacity;
 
-  animation:goldShine 3.5s infinite;
+  animation: titleBoundRibbonShine 3.2s linear infinite !important;
+}
+
+@keyframes titleBoundRibbonShine {
+  0% {
+    left: var(--shine-start, -150px);
+    opacity: 0;
+  }
+  8% {
+    left: var(--shine-start, -150px);
+    opacity: 1;
+  }
+  92% {
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+    opacity: 1;
+  }
+  100% {
+    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+    opacity: 0;
+  }
 }
 
 /* Center diamond */
@@ -2044,15 +2071,6 @@ font-weight: 700;
   box-shadow:
       0 0 8px rgba(255,215,0,.8),
       0 0 16px rgba(255,215,0,.45);
-}
-
-@keyframes goldShine{
-  from{
-      left:-60%;
-  }
-  to{
-      left:130%;
-  }
 }
 
   /* =====================================================
