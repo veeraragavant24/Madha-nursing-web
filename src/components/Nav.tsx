@@ -426,6 +426,74 @@ a.top-contact-item:hover {
 
 @media (min-width: 1401px) {
 
+
+/* =========================================================
+   INTERMEDIATE LAPTOP / SMALL DESKTOP
+   Prevent college title from overlapping navigation
+   ========================================================= */
+
+@media (min-width: 1401px) and (max-width: 1700px) {
+
+  /* COLLEGE TITLE */
+  .nav-root.transparent .nav-college-name,
+  .nav-root.solid .nav-college-name {
+    font-size: 21px !important;
+    letter-spacing: 0.035em !important;
+    white-space: nowrap !important;
+  }
+
+  /* BRAND */
+  .nav-root.transparent .nav-brand,
+  .nav-root.solid .nav-brand {
+    gap: 10px !important;
+    flex-shrink: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* MENU */
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    gap: 4px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  /* MENU ITEMS */
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    font-size: 14px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    white-space: nowrap !important;
+  }
+
+  /* APPLY NOW */
+  .nav-root.transparent .btn-apply,
+  .nav-root.solid .btn-apply {
+    width: 100px !important;
+    height: 36px !important;
+    font-size: 14px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    white-space: nowrap !important;
+  }
+
+  /* APPLY AREA */
+  .nav-root.transparent .nav-right,
+  .nav-root.solid .nav-right {
+    margin-left: 4px !important;
+    flex: 0 0 auto !important;
+  }
+}
+
+
+
+
+
+
+
   /* WHITE HEADER OVERALL SPACING */
   .nav-root.solid .nav-inner {
     transform: none !important;
@@ -1727,71 +1795,12 @@ font-weight: 700;
     height: 52px !important;
   }
 
-/* =========================================================
-   INTERMEDIATE LAPTOP / SMALL DESKTOP
-   Prevent college title from overlapping navigation
-   ========================================================= */
-
-@media (min-width: 1401px) and (max-width: 1700px) {
-
-  /* COLLEGE TITLE */
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-    font-size: 21px !important;
-    letter-spacing: 0.035em !important;
-    white-space: nowrap !important;
-  }
-
-  /* BRAND */
-  .nav-root.transparent .nav-brand,
-  .nav-root.solid .nav-brand {
-    gap: 10px !important;
-    flex-shrink: 1 !important;
-    min-width: 0 !important;
-  }
-
-  /* MENU */
-  .nav-root.transparent .nav-links,
-  .nav-root.solid .nav-links {
-    gap: 4px !important;
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-  }
-
-  /* MENU ITEMS */
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
-    font-size: 14px !important;
-    padding-left: 6px !important;
-    padding-right: 6px !important;
-    white-space: nowrap !important;
-  }
-
-  /* APPLY NOW */
-  .nav-root.transparent .btn-apply,
-  .nav-root.solid .btn-apply {
-    width: 100px !important;
-    height: 36px !important;
-    font-size: 14px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    white-space: nowrap !important;
-  }
-
-  /* APPLY AREA */
-  .nav-root.transparent .nav-right,
-  .nav-root.solid .nav-right {
-    margin-left: 4px !important;
-    flex: 0 0 auto !important;
-  }
-}
 
 
 
 
 
+  
    
 
 /* =========================================================
