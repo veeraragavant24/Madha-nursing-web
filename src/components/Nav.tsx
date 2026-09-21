@@ -450,17 +450,27 @@ a.top-contact-item:hover {
     min-width: 0 !important;
   }
 
-  /* MENU */
-  .nav-root.transparent .nav-links,
-  .nav-root.solid .nav-links {
-    gap: 4px !important;
-    min-width: 0 !important;
-    flex: 1 1 auto !important;
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-    .nav-root.transparent .nav-links {
-  padding-left: 20px !important;
+ /* MENU */
+.nav-root.transparent .nav-links,
+.nav-root.solid .nav-links {
+  gap: 4px !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
 }
+
+/* MOVE NORMAL HEADER MENU TO THE RIGHT */
+.nav-root.transparent .nav-links {
+  position: relative !important;
+  left: 20px !important;
+}
+
+/* MOVE NORMAL HEADER APPLY NOW TO THE RIGHT */
+.nav-root.transparent .nav-right {
+  position: relative !important;
+  left: 20px !important;
+
   }
 
   /* MENU ITEMS */
