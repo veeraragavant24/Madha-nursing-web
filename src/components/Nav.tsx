@@ -469,9 +469,9 @@ a.top-contact-item:hover {
   /* MENU ITEMS */
   .nav-root.transparent .nav-item,
   .nav-root.solid .nav-item {
-    font-size: 14px !important;
-    padding-left: 6px !important;
-    padding-right: 6px !important;
+    font-size: 15px !important;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
     white-space: nowrap !important;  
 
 
@@ -484,7 +484,7 @@ a.top-contact-item:hover {
     height: 36px !important;
     font-size: 14px !important;
     padding-left: 10px !important;
-    padding-right: 10px !important;
+    padding-right: 30px !important;
     white-space: nowrap !important;
   }
 
@@ -516,12 +516,12 @@ a.top-contact-item:hover {
 
   .nav-root.transparent .nav-links {
     position: relative !important;
-    left : 80px !important;
+    left : 90px !important;
   }
 
   .nav-root.transparent .nav-right {
     position: relative !important;
-    left: 80px !important;
+    left: 90px !important;
   }
 
   .nav-root.transparent .btn-apply {
@@ -1279,6 +1279,11 @@ font-weight: 700;
    /* =========================================================
    FINAL LAPTOP HEADER
    769px → 1400px
+
+     /* LAPTOP — CONTACT BAR FONT SIZE */
+  .top-contact-item {
+    font-size: 14px !important;
+  }
 
    NORMAL HEADER RIBBON:
    150px × 5px
