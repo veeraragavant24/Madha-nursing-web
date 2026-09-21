@@ -432,15 +432,41 @@ export default function Home({ navigate }: Props) {
 }
 
 .home-stats-grid {
-  display: grid;
+  display: grid !important;
+
   grid-template-columns:
-    minmax(0, 1fr) 1px
-    minmax(0, 1fr) 1px
-    minmax(0, 1fr) 1px
-    minmax(0, 1fr) 1px
-    minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr)
+    1px
+    minmax(0, 1fr) !important;
+
+  grid-template-rows: 1fr !important;
+
+  gap: 24px !important;
+
+  width: 100% !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+  .home-stats-grid > div {
+  min-width: 0;
+}
+
+.home-stats-grid > div:nth-child(1),
+.home-stats-grid > div:nth-child(2),
+.home-stats-grid > div:nth-child(3),
+.home-stats-grid > div:nth-child(4),
+.home-stats-grid > div:nth-child(5),
+.home-stats-grid > div:nth-child(6),
+.home-stats-grid > div:nth-child(7),
+.home-stats-grid > div:nth-child(8),
+.home-stats-grid > div:nth-child(9) {
+  grid-row: 1 !important;
 }
 
 .home-stat-divider {
@@ -715,12 +741,15 @@ export default function Home({ navigate }: Props) {
     height: 230px !important;
   }
 
-
 /* =========================================================
-   LAPTOP SCREEN — STATS IN ONE HORIZONTAL ROW
+   DESKTOP / LAPTOP — STATS IN ONE HORIZONTAL ROW
    ========================================================= */
 
 @media (min-width: 1025px) and (max-width: 1700px) {
+
+  .home-stats-section {
+    padding: 80px 40px !important;
+  }
 
   .home-stats-grid {
     display: grid !important;
@@ -737,57 +766,152 @@ export default function Home({ navigate }: Props) {
       minmax(0, 1fr) !important;
 
     grid-template-rows: 1fr !important;
+
     gap: 24px !important;
-    align-items: center !important;
+
     width: 100% !important;
+    align-items: center !important;
   }
 
+  /* 25+ */
   .home-stats-grid > div:nth-child(1) {
     grid-column: 1 !important;
     grid-row: 1 !important;
   }
 
+  /* Divider */
   .home-stats-grid > div:nth-child(2) {
     grid-column: 2 !important;
     grid-row: 1 !important;
   }
 
+  /* 3200+ */
   .home-stats-grid > div:nth-child(3) {
     grid-column: 3 !important;
     grid-row: 1 !important;
   }
 
+  /* Divider */
   .home-stats-grid > div:nth-child(4) {
     grid-column: 4 !important;
     grid-row: 1 !important;
   }
 
+  /* 18 */
   .home-stats-grid > div:nth-child(5) {
     grid-column: 5 !important;
     grid-row: 1 !important;
   }
 
+  /* Divider */
   .home-stats-grid > div:nth-child(6) {
     grid-column: 6 !important;
     grid-row: 1 !important;
   }
 
+  /* 98% */
   .home-stats-grid > div:nth-child(7) {
     grid-column: 7 !important;
     grid-row: 1 !important;
   }
 
+  /* Divider */
   .home-stats-grid > div:nth-child(8) {
     grid-column: 8 !important;
     grid-row: 1 !important;
   }
 
+  /* 120+ */
   .home-stats-grid > div:nth-child(9) {
     grid-column: 9 !important;
     grid-row: 1 !important;
   }
-
 }
+
+/* =========================================================
+   DESKTOP PC — FORCE ALL 5 STATS INTO ONE ROW
+   ========================================================= */
+
+@media (min-width: 1025px) {
+
+  .home-stats-grid {
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr) !important;
+
+    grid-template-rows: 1fr !important;
+
+    gap: 24px !important;
+
+    width: 100% !important;
+    align-items: center !important;
+    justify-items: center !important;
+  }
+
+  /* 25+ */
+  .home-stats-grid > div:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 3200+ */
+  .home-stats-grid > div:nth-child(3) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(4) {
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 18 */
+  .home-stats-grid > div:nth-child(5) {
+    grid-column: 5 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(6) {
+    grid-column: 6 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 98% */
+  .home-stats-grid > div:nth-child(7) {
+    grid-column: 7 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(8) {
+    grid-column: 8 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 120+ */
+  .home-stats-grid > div:nth-child(9) {
+    grid-column: 9 !important;
+    grid-row: 1 !important;
+  }
+}
+
     
 `}</style>
 
