@@ -282,9 +282,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 @media (max-width: 768px) {
 
   .hero-slider {
-    height: 520px !important;
-    min-height: 520px !important;
-    max-height: 520px !important;
+    height: 100svh !important;
+    min-height: 680px !important;
   }
 
   .hero-content {
@@ -347,11 +346,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
 @media (max-width: 480px) {
 
-  .@media (max-width: 480px) {
   .hero-slider {
-    height: 520px !important;
-    min-height: 520px !important;
-    max-height: 520px !important;
+    min-height: 640px !important;
   }
 }
 
