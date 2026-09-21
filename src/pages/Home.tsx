@@ -809,82 +809,43 @@ export default function Home({ navigate }: Props) {
 @media (min-width: 1025px) {
 
   .home-stats-grid {
-    display: grid !important;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr) !important;
-
-    grid-template-rows: 1fr !important;
-
-    gap: 24px !important;
-
-    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    justify-items: center !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+    width: 100% !important;
   }
 
-  /* 25+ */
-  .home-stats-grid > div:nth-child(1) {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
+  /* All direct children stay in one horizontal row */
+  .home-stats-grid > div {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-width: 0 !important;
   }
 
-  /* Divider */
-  .home-stats-grid > div:nth-child(2) {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 3200+ */
-  .home-stats-grid > div:nth-child(3) {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(4) {
-    grid-column: 4 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 18 */
-  .home-stats-grid > div:nth-child(5) {
-    grid-column: 5 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(6) {
-    grid-column: 6 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 98% */
-  .home-stats-grid > div:nth-child(7) {
-    grid-column: 7 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(8) {
-    grid-column: 8 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 120+ */
+  /* Five statistic items */
+  .home-stats-grid > div:nth-child(1),
+  .home-stats-grid > div:nth-child(3),
+  .home-stats-grid > div:nth-child(5),
+  .home-stats-grid > div:nth-child(7),
   .home-stats-grid > div:nth-child(9) {
-    grid-column: 9 !important;
-    grid-row: 1 !important;
+    flex: 1 1 0 !important;
+    text-align: center !important;
+  }
+
+  /* Four divider elements */
+  .home-stats-grid > div:nth-child(2),
+  .home-stats-grid > div:nth-child(4),
+  .home-stats-grid > div:nth-child(6),
+  .home-stats-grid > div:nth-child(8) {
+    flex: 0 0 1px !important;
+    width: 1px !important;
+    height: 80px !important;
+    display: block !important;
   }
 }
+
 
 
     
