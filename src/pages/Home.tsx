@@ -708,12 +708,86 @@ export default function Home({ navigate }: Props) {
       margin-top: 14px;
     }
 
-    .home-dept-card {
-      height: 230px !important;
-    }
+     .home-dept-card {
+    height: 230px !important;
   }
+
+
+/* =========================================================
+   LAPTOP SCREEN — STATS IN ONE HORIZONTAL ROW
+   ========================================================= */
+
+@media (min-width: 1025px) and (max-width: 1700px) {
+
+  .home-stats-grid {
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr) !important;
+
+    grid-template-rows: 1fr !important;
+    gap: 24px !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .home-stats-grid > div:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(3) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(4) {
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(5) {
+    grid-column: 5 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(6) {
+    grid-column: 6 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(7) {
+    grid-column: 7 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(8) {
+    grid-column: 8 !important;
+    grid-row: 1 !important;
+  }
+
+  .home-stats-grid > div:nth-child(9) {
+    grid-column: 9 !important;
+    grid-row: 1 !important;
+  }
+
+}
     
 `}</style>
+
 
     <div className="home-page">
       {/* ═══════════════════════════════════════════
