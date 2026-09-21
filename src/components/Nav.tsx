@@ -342,6 +342,16 @@ a.top-contact-item:hover {
   width: 100%;
   height: 92px;
   z-index: 1900;
+  
+ padding-left: 22px !important;
+    padding-right: 22px !important;
+
+    gap: 10px !important;
+
+    box-sizing: border-box !important;
+
+
+
 
   background: transparent;
   border-radius: 0;
@@ -374,6 +384,7 @@ a.top-contact-item:hover {
   width: 100%;
   height: 92px;
 
+   
   transform: translateY(0);
 
   background: transparent;
