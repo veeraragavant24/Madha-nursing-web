@@ -1933,6 +1933,28 @@ font-weight: 700;
    MOBILE HEADER POSITION
    ===================================================== */
 
+/* NORMAL TRANSPARENT HEADER — MOBILE */
+.nav-root.transparent {
+  position: fixed !important;
+
+  top: 20px !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  width: 100% !important;
+  height: 92px !important;
+
+  transform: none !important;
+
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 1900 !important;
+}
+
+
+
 /* WHITE SCROLL HEADER */
 .nav-root.solid {
   left: 50% !important;
