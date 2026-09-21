@@ -1952,21 +1952,27 @@ font-weight: 700;
   box-sizing: border-box !important;
 }
 
-
 /* NORMAL TRANSPARENT HEADER */
 .nav-root.transparent {
+  position: relative !important;
+
   left: 0 !important;
   right: 0 !important;
-  top: 42px !important;
+  top: auto !important;
 
   width: 100% !important;
   max-width: 100% !important;
 
+  height: 92px !important;
+
+  margin-top: 38px !important;
+
   transform: none !important;
 
   border-radius: 0 !important;
-}
 
+  z-index: 1900 !important;
+}
 
   /* =====================================================
      MOBILE HEADER INNER

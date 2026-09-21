@@ -279,6 +279,7 @@ export default function Home({ navigate }: Props) {
   .home-clinical-section {
     padding: 140px 40px;
   }
+    
 
   .home-clinical-grid {
     display: grid;
@@ -884,26 +885,8 @@ export default function Home({ navigate }: Props) {
     grid-row: 1 !important;
   }
 }
-/* =========================================================
-   MOBILE — REMOVE ONLY THE BLUE HERO BACKGROUND
-   ========================================================= */
 
-@media (max-width: 768px) {
-  .hero-slider {
-    background: #ffffff !important;
-  }
-}
 
-@media (max-width: 480px) {
-  .hero-slider {
-    background: #ffffff !important;
-  }
-}
-
-.hero-slider {
-  background: transparent !important;
-}
-  
     
 `}</style>
 
