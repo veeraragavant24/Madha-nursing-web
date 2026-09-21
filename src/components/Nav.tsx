@@ -470,8 +470,8 @@ a.top-contact-item:hover {
   .nav-root.transparent .nav-item,
   .nav-root.solid .nav-item {
     font-size: 15px !important;
-    padding-left: 7px !important;
-    padding-right: 7px !important;
+    padding-left: 9px !important;
+    padding-right: 9px !important;
     white-space: nowrap !important;  
 
 
