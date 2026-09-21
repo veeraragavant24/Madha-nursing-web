@@ -498,59 +498,6 @@ a.top-contact-item:hover {
     margin: 0 !important;
   }
 
-  /* =========================================================
-     DESKTOP 1920px — COMPACT HEADER SPACING
-     Only reduces title/menu/apply sizing and spacing.
-     ========================================================= */
-
-  .nav-root.transparent .nav-college-name,
-  .nav-root.solid .nav-college-name {
-    font-size: 24px !important;
-    letter-spacing: 0.055em !important;
-  }
-
-  .nav-root.transparent .nav-brand,
-  .nav-root.solid .nav-brand {
-    gap: 10px !important;
-  }
-
-  .nav-root.transparent .nav-links,
-  .nav-root.solid .nav-links {
-    gap: 0 !important;
-    padding-left: 2px !important;
-    padding-right: 2px !important;
-  }
-
-  .nav-root.transparent .nav-item,
-  .nav-root.solid .nav-item {
-    font-size: 13px !important;
-    padding: 7px 6px !important;
-  }
-
-  .nav-root.transparent .nav-right,
-  .nav-root.solid .nav-right {
-    margin-left: 6px !important;
-    margin-right: 0 !important;
-    padding-left: 0 !important;
-    gap: 0 !important;
-  }
-
-  .nav-root.transparent .btn-apply,
-  .nav-root.solid .btn-apply {
-    width: 100px !important;
-    height: 34px !important;
-    padding: 5px 8px !important;
-    font-size: 11px !important;
-    gap: 4px !important;
-    transform: none !important;
-  }
-
-  .nav-root.transparent .btn-apply svg,
-  .nav-root.solid .btn-apply svg {
-    width: 11px !important;
-    height: 11px !important;
-  }
-
 }
 
 /* Premium floating header transition */
@@ -691,51 +638,59 @@ background: linear-gradient(
     0 1px 4px rgba(184, 134, 11, 0.45);
 }
 
-/* TITLE-BOUND GOLD RIBBON SHINE */
+/* ── GOLD RIBBON LIGHT SWEEP — TITLE BOUND ── */
 .premium-divider::before {
   content: "";
   position: absolute;
+
   top: 0;
-  left: var(--shine-start, -150px);
-  width: 90px;
   height: 100%;
+
+  /* JS sets this to the M of MADHA relative to the ribbon. */
+  left: var(--shine-start, -150px);
+
+  width: 90px;
 
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255,255,255,0) 18%,
-    rgba(255,255,255,.65) 40%,
-    #ffffff 50%,
-    rgba(255,255,255,.65) 60%,
-    rgba(255,255,255,0) 82%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.75) 42%,
+    #FFFFFF 50%,
+    rgba(255, 255, 255, 0.75) 58%,
+    rgba(255, 255, 255, 0) 80%,
     transparent 100%
   );
 
-  transform: skewX(-22deg);
-  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
-          drop-shadow(0 0 7px rgba(255,255,255,.55));
-  pointer-events: none;
-  will-change: left, opacity;
+  filter:
+    drop-shadow(0 0 3px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.55));
 
-  animation: titleBoundRibbonShine 3.2s linear infinite !important;
+  pointer-events: none;
+  will-change: transform, opacity;
+
+  animation: extendedRibbonShine 3.2s linear infinite;
 }
 
-@keyframes titleBoundRibbonShine {
+@keyframes extendedRibbonShine {
   0% {
-    left: var(--shine-start, -150px);
-    opacity: 0;
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0.15;
   }
-  8% {
-    left: var(--shine-start, -150px);
+
+  6% {
+    transform: translateX(0) skewX(-20deg);
     opacity: 1;
   }
-  92% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
+
+  94% {
+    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
     opacity: 1;
   }
+
   100% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 0;
+    transform: translateX(calc(var(--shine-travel, 500px) - 90px)) skewX(-20deg);
+    opacity: 0.15;
   }
 }
 
@@ -826,8 +781,11 @@ background: linear-gradient(
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  min-width: 0;
+  /* FIX: keep the navigation in its own flex space so it
+     cannot center itself over the college title. */
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
 
   gap: 18px;
 
@@ -1407,52 +1365,26 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* TITLE-BOUND GOLD RIBBON SHINE */
-.premium-divider::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: var(--shine-start, -150px);
-  width: 90px;
-  height: 100%;
+/* Metallic shine animation */
 
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,0) 18%,
-    rgba(255,255,255,.65) 40%,
-    #ffffff 50%,
-    rgba(255,255,255,.65) 60%,
-    rgba(255,255,255,0) 82%,
-    transparent 100%
+.premium-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:45%;
+  height:100%;
+
+  background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
   );
 
-  transform: skewX(-22deg);
-  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
-          drop-shadow(0 0 7px rgba(255,255,255,.55));
-  pointer-events: none;
-  will-change: left, opacity;
+  transform:skewX(-25deg);
 
-  animation: titleBoundRibbonShine 3.2s linear infinite !important;
-}
-
-@keyframes titleBoundRibbonShine {
-  0% {
-    left: var(--shine-start, -150px);
-    opacity: 0;
-  }
-  8% {
-    left: var(--shine-start, -150px);
-    opacity: 1;
-  }
-  92% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 1;
-  }
-  100% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 0;
-  }
+  animation:goldShine 3.5s infinite;
 }
 
 /* Center diamond */
@@ -1482,6 +1414,20 @@ font-weight: 700;
       0 0 8px rgba(255,215,0,.8),
       0 0 16px rgba(255,215,0,.45);
 }
+
+@keyframes goldShine{
+  from{
+      left:-60%;
+  }
+  to{
+      left:130%;
+  }
+}
+
+
+
+
+
 
   /* =======================================================
      MENU ITEMS
@@ -2050,52 +1996,26 @@ font-weight: 700;
   overflow: visible;
 }
 
-/* TITLE-BOUND GOLD RIBBON SHINE */
-.premium-divider::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: var(--shine-start, -150px);
-  width: 90px;
-  height: 100%;
+/* Metallic shine animation */
 
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255,255,255,0) 18%,
-    rgba(255,255,255,.65) 40%,
-    #ffffff 50%,
-    rgba(255,255,255,.65) 60%,
-    rgba(255,255,255,0) 82%,
-    transparent 100%
+.premium-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:45%;
+  height:100%;
+
+  background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.9),
+      transparent
   );
 
-  transform: skewX(-22deg);
-  filter: drop-shadow(0 0 3px rgba(255,255,255,.9))
-          drop-shadow(0 0 7px rgba(255,255,255,.55));
-  pointer-events: none;
-  will-change: left, opacity;
+  transform:skewX(-25deg);
 
-  animation: titleBoundRibbonShine 3.2s linear infinite !important;
-}
-
-@keyframes titleBoundRibbonShine {
-  0% {
-    left: var(--shine-start, -150px);
-    opacity: 0;
-  }
-  8% {
-    left: var(--shine-start, -150px);
-    opacity: 1;
-  }
-  92% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 1;
-  }
-  100% {
-    left: calc(var(--shine-start, -150px) + var(--shine-travel, 500px) - 90px);
-    opacity: 0;
-  }
+  animation:goldShine 3.5s infinite;
 }
 
 /* Center diamond */
@@ -2124,6 +2044,15 @@ font-weight: 700;
   box-shadow:
       0 0 8px rgba(255,215,0,.8),
       0 0 16px rgba(255,215,0,.45);
+}
+
+@keyframes goldShine{
+  from{
+      left:-60%;
+  }
+  to{
+      left:130%;
+  }
 }
 
   /* =====================================================
@@ -3187,5 +3116,3 @@ font-weight: 700;
     </>
   )
 }
-
-
