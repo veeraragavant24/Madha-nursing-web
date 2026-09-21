@@ -525,7 +525,8 @@ a.top-contact-item:hover {
   }
 
   .nav-root.transparent .btn-apply {
-    transform: none !important;
+    position: relative !important;
+    right: 40px !important;
   }
 
 }
