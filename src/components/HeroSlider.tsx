@@ -347,9 +347,13 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
 @media (max-width: 480px) {
 
+  .@media (max-width: 480px) {
   .hero-slider {
-    min-height: 640px !important;
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
   }
+}
 
   .hero-content {
     padding-left: 20px !important;
