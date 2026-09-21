@@ -458,6 +458,9 @@ a.top-contact-item:hover {
     flex: 1 1 auto !important;
     flex-wrap: nowrap !important;
     white-space: nowrap !important;
+    .nav-root.transparent .nav-links {
+  padding-left: 20px !important;
+}
   }
 
   /* MENU ITEMS */
@@ -466,7 +469,9 @@ a.top-contact-item:hover {
     font-size: 14px !important;
     padding-left: 6px !important;
     padding-right: 6px !important;
-    white-space: nowrap !important;
+    white-space: nowrap !important;  
+
+
   }
 
   /* APPLY NOW */
