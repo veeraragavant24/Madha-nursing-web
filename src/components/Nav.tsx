@@ -484,14 +484,14 @@ a.top-contact-item:hover {
     height: 36px !important;
     font-size: 14px !important;
     padding-left: 10px !important;
-    padding-right: 30px !important;
+    padding-right: 10px !important;
     white-space: nowrap !important;
   }
 
   /* APPLY AREA */
   .nav-root.transparent .nav-right,
   .nav-root.solid .nav-right {
-    margin-left: 4px !important;
+    margin-left: 20px !important;
     flex: 0 0 auto !important;
   }
 }
@@ -1280,10 +1280,7 @@ font-weight: 700;
    FINAL LAPTOP HEADER
    769px → 1400px
 
-     /* LAPTOP — CONTACT BAR FONT SIZE */
-  .top-contact-item {
-    font-size: 14px !important;
-  }
+   
 
    NORMAL HEADER RIBBON:
    150px × 5px
@@ -1292,6 +1289,14 @@ font-weight: 700;
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1400px) {
+
+  /* LAPTOP — CONTACT BAR FONT SIZE */
+  .top-contact-item {
+    font-size: 14px !important;
+  }
+
+
+
 
   /* =======================================================
      MAIN HEADER
