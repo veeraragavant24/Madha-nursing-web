@@ -7,6 +7,36 @@ interface Props { navigate: (p: Page) => void }
 
 const CATEGORIES = ['All', 'Campus', 'Clinical', 'Laboratory', 'Events', 'Students']
 
+const CATEGORY_INFO: Record<string, {
+  title: string
+  description: string
+}> = {
+  All: {
+    title: 'All Gallery',
+    description: 'Explore every moment',
+  },
+  Campus: {
+    title: 'Campus',
+    description: 'Our campus & facilities',
+  },
+  Clinical: {
+    title: 'Clinical',
+    description: 'Clinical learning & practice',
+  },
+  Laboratory: {
+    title: 'Laboratory',
+    description: 'Learning through simulation',
+  },
+  Events: {
+    title: 'Events',
+    description: 'Celebrations & occasions',
+  },
+  Students: {
+    title: 'Students',
+    description: 'Student life & activities',
+  },
+}
+
 const IMAGES = [
   { id: '/gallery/lamplight2026/lamp-1.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 280 },
   { id: '/gallery/lamplight2026/lamp-2.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 200 },
@@ -58,7 +88,7 @@ const IMAGES = [
 
 
 
- { id: '/gallery/Independence-Day/1.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },,
+ { id: '/gallery/Independence-Day/1.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/3.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/4.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/5.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
@@ -68,7 +98,7 @@ const IMAGES = [
 ]
 
 export default function Gallery({ navigate }: Props) {
-  const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState<string | null>(null)
   const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>(() => {
   try {
     return JSON.parse(
@@ -84,7 +114,7 @@ export default function Gallery({ navigate }: Props) {
   const [openingAnim, setOpeningAnim] = useState(true)
   const [isViewerOpen, setIsViewerOpen] = useState(false)
 
-  const filtered = filter === 'All' ? IMAGES : IMAGES.filter(img => img.cat === filter)
+  const filtered = !filter ? [] : filter === 'All' ? IMAGES : IMAGES.filter(img => img.cat === filter)
 
   const goTo = (dir: 1 | -1) => {
     const total = filtered.length
@@ -147,24 +177,181 @@ export default function Gallery({ navigate }: Props) {
   }
 
   /* ========================================
-     FILTER BAR
+     CATEGORY CARDS
   ======================================== */
 
-  .gallery-filter-bar {
+  .gallery-category-section {
     background: white;
-    border-bottom: 1px solid rgba(11, 37, 69, 0.07);
-    position: sticky;
-    top: 42px;
-    z-index: 100;
+    padding: 42px 40px 52px;
   }
 
-  .gallery-filter-inner {
+  .gallery-category-grid {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 16px 40px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .gallery-category-card {
+    position: relative;
+    min-height: 205px;
+    padding: 28px 26px;
+    border-radius: 24px;
+    border: 1px solid rgba(11, 37, 69, 0.10);
+    background: linear-gradient(145deg, #F7FAFD 0%, #EDF4F9 100%);
+    cursor: pointer;
+    overflow: hidden;
+    text-align: left;
+    color: #0B2545;
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+
     display: flex;
-    gap: 10px;
-    overflow-x: auto;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    box-shadow: 0 8px 24px rgba(11,37,69,.07);
+
+    transition:
+      transform .4s cubic-bezier(.16,1,.3,1),
+      box-shadow .4s ease,
+      border-color .35s ease,
+      background .35s ease;
+  }
+
+  .gallery-category-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7,26,54,.04) 0%,
+        rgba(7,26,54,.86) 100%
+      );
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+
+  /* Category images are revealed only for the selected card. */
+  .gallery-category-card.active.has-image {
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+
+  .gallery-category-card.active.has-image::before {
+    opacity: 1;
+  }
+
+  .gallery-category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 42px rgba(11,37,69,.15);
+    border-color: rgba(24,198,200,.45);
+  }
+
+  .gallery-category-card:focus-visible {
+    outline: 3px solid rgba(24,198,200,.35);
+    outline-offset: 4px;
+  }
+
+  .gallery-category-card.active {
+    transform: translateY(-6px);
+    border-color: #18C6C8;
+    box-shadow:
+      0 22px 46px rgba(24,198,200,.22),
+      0 0 0 3px rgba(24,198,200,.12);
+  }
+
+  .gallery-category-card.active::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #18C6C8;
+    box-shadow: 0 0 0 6px rgba(24,198,200,.18);
+  }
+
+  .gallery-category-content {
+    position: relative;
+    z-index: 2;
+    padding-right: 38px;
+  }
+
+  .gallery-category-title {
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 750;
+    color: #0B2545;
+    margin-bottom: 5px;
+  }
+
+  .gallery-category-description {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.45;
+  }
+
+  .gallery-category-count {
+    margin-top: 7px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    color: #18C6C8;
+    letter-spacing: .04em;
+  }
+
+  .gallery-category-card.active.has-image .gallery-category-title {
+    color: white;
+  }
+
+  .gallery-category-card.active.has-image .gallery-category-description {
+    color: rgba(255,255,255,.84);
+  }
+
+  .gallery-category-card.active.has-image .gallery-category-count {
+    color: #7FF1F2;
+  }
+
+  .gallery-category-arrow {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    z-index: 2;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(11,37,69,.08);
+    color: #0B2545;
+
+    font-size: 17px;
+    backdrop-filter: blur(8px);
+
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all .3s ease;
+  }
+
+  .gallery-category-card.active.has-image .gallery-category-arrow {
+    background: rgba(255,255,255,.18);
+    color: white;
+  }
+
+  .gallery-category-card:hover .gallery-category-arrow,
+  .gallery-category-card.active .gallery-category-arrow {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   /* ========================================
@@ -195,16 +382,6 @@ export default function Gallery({ navigate }: Props) {
     background: #e8edf3;
   }
 
-  .event-gallery-item {
-  position: relative;
-  width: 100%;
-  height: 280px;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 16px;
-  background: #e8edf3;
-}
-
 /* Image before loading */
 .event-gallery-item img.image-loading {
   opacity: 0;
@@ -225,6 +402,11 @@ export default function Gallery({ navigate }: Props) {
 
   .event-gallery-item:hover img {
     transform: scale(1.04);
+  }
+
+  .event-gallery-item:focus-visible {
+    outline: 3px solid rgba(24,198,200,.45);
+    outline-offset: 3px;
   }
   /* ========================================
      FULL-SCREEN IMAGE VIEWER
@@ -389,20 +571,37 @@ export default function Gallery({ navigate }: Props) {
       line-height: 1.7 !important;
     }
 
-    .gallery-filter-inner {
-      padding: 12px 16px !important;
-      gap: 8px !important;
-      scrollbar-width: none;
+    .gallery-category-section {
+      padding: 28px 20px 34px !important;
     }
 
-    .gallery-filter-inner::-webkit-scrollbar {
-      display: none;
+    .gallery-category-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .gallery-filter-inner button {
-      padding: 9px 18px !important;
-      font-size: 12px !important;
-      flex-shrink: 0;
+    .gallery-category-card {
+      min-height: 190px;
+      padding: 22px 18px;
+      border-radius: 20px;
+    }
+    .gallery-category-title {
+      font-size: 16px;
+    }
+
+    .gallery-category-description {
+      font-size: 11px;
+    }
+
+    .gallery-category-count {
+      font-size: 11px;
+    }
+
+    .gallery-category-arrow {
+      right: 14px;
+      bottom: 14px;
+      width: 29px;
+      height: 29px;
     }
 
     .gallery-section {
@@ -464,6 +663,44 @@ export default function Gallery({ navigate }: Props) {
       font-size: 34px !important;
     }
 
+    .gallery-category-section {
+      padding: 22px 16px 28px !important;
+    }
+
+    .gallery-category-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .gallery-category-card {
+      min-height: 175px;
+      padding: 22px 18px;
+      border-radius: 18px;
+    }
+    .gallery-category-content {
+      padding-right: 28px;
+    }
+
+    .gallery-category-title {
+      font-size: 15px;
+    }
+
+    .gallery-category-description {
+      font-size: 10.5px;
+    }
+
+    .gallery-category-count {
+      font-size: 10.5px;
+    }
+
+    .gallery-category-arrow {
+      right: 11px;
+      bottom: 11px;
+      width: 27px;
+      height: 27px;
+      font-size: 14px;
+    }
+
     .gallery-section {
       padding: 32px 16px 52px !important;
     }
@@ -514,95 +751,227 @@ export default function Gallery({ navigate }: Props) {
         </div>
       </section>
 
-      {/* Filter pills */}
-      <div className="gallery-filter-bar">
-        <div className="gallery-filter-inner">
-          {CATEGORIES.map(cat => (
-            <button key={cat} onClick={() => setFilter(cat)} style={{
-              padding: '10px 24px', borderRadius: 100, border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14,
-              background: filter === cat ? '#0B2545' : '#F3F7FB',
-              color: filter === cat ? 'white' : '#475569',
-              transition: 'all .25s', whiteSpace: 'nowrap',
-            }}>
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
+      {/* Category Cards */}
+      <section className="gallery-category-section" aria-label="Gallery categories">
+        <div className="gallery-category-grid">
+          {CATEGORIES.map(cat => {
+            const categoryImages =
+              cat === 'All'
+                ? IMAGES
+                : IMAGES.filter(img => img.cat === cat)
 
-      {/* Masonry gallery */}
-      <section
-  className="gallery-section"
-  style={{ background: '#F3F7FB' }}
->
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-         {['Lamplighting Ceremony', 'Pongal Celebration','Christmas Celebration','Independence Day'].map((eventName, i) => {
-  const eventImages = filtered.filter(img => img.event === eventName)
+            const previewImage = categoryImages[0]?.id
 
-  if (eventImages.length === 0) return null
+            return (
+              <button
+                key={cat}
+                type="button"
+                className={`gallery-category-card ${
+                  filter === cat ? 'active' : ''
+                } ${previewImage ? 'has-image' : ''}`}
+                style={
+                  previewImage
+                    ? {
+                        backgroundImage: `url("${previewImage}")`,
+                      }
+                    : undefined
+                }
+                onClick={() => {
+                  setFilter(cat)
 
-  return (
-    <Reveal key={eventName} delay={i % 4}>
-    <div style={{ marginBottom: 70 }}>
+                  window.setTimeout(() => {
+                    document.querySelector('.gallery-section')?.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start',
+                    })
+                  }, 80)
+                }}
+                aria-pressed={filter === cat}
+                aria-label={`Show ${CATEGORY_INFO[cat].title}, ${categoryImages.length} photo${categoryImages.length === 1 ? '' : 's'}`}
+              >
 
-      {/* Event Heading */}
-      <h2
-        style={{
-          fontSize: 30,
-          fontWeight: 700,
-          color: '#0B2545',
-          marginBottom: 24,
-        }}
-      >
-        {eventName}
-      </h2>
+                <span className="gallery-category-content">
+                  <span className="gallery-category-title">
+                    {CATEGORY_INFO[cat].title}
+                  </span>
 
-      {/* Event Images */}
-      <div className="event-gallery-grid">
-        {eventImages.map((img, i) => (
-          <div
-            key={`${img.id}-${i}`}
-            className="event-gallery-item"
-            onClick={() => openViewer(img)}
-          >
-          <img
-  src={img.id}
-  alt={img.alt}
-  loading="lazy"
-  decoding="async"
-  className={loadedImages[img.id] ? 'image-loaded' : 'image-loading'}
-  onLoad={() => {
-    if (loadedImages[img.id]) return
+                  <span className="gallery-category-description">
+                    {CATEGORY_INFO[cat].description}
+                  </span>
 
-    setTimeout(() => {
-      setLoadedImages(prev => {
-        const updated = {
-          ...prev,
-          [img.id]: true,
-        }
+                  <span className="gallery-category-count">
+                    {categoryImages.length} {categoryImages.length === 1 ? 'Photo' : 'Photos'}
+                  </span>
+                </span>
 
-        sessionStorage.setItem(
-          'madha-gallery-loaded',
-          JSON.stringify(updated)
-        )
-
-        return updated
-      })
-    }, 500)
-  }}
-/>
-          </div>
-        ))}
-      </div>
-
-    </div>
-    </Reveal>
-  )
-})}
-            
+                <span className="gallery-category-arrow" aria-hidden="true">
+                  →
+                </span>
+              </button>
+            )
+          })}
         </div>
       </section>
+
+      {/* Images appear only after a category card is selected */}
+      {filter && (
+        <section
+          className="gallery-section"
+          style={{ background: '#F3F7FB' }}
+        >
+          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+         {filter === 'All' || filter === 'Events' ? (
+           ['Lamplighting Ceremony', 'Pongal Celebration', 'Christmas Celebration', 'Independence Day'].map((eventName, i) => {
+             const eventImages = filtered.filter(img => img.event === eventName)
+
+             if (eventImages.length === 0) return null
+
+             return (
+               <Reveal key={eventName} delay={i % 4}>
+                 <div style={{ marginBottom: 70 }}>
+
+                   <h2
+                     style={{
+                       fontSize: 30,
+                       fontWeight: 700,
+                       color: '#0B2545',
+                       marginBottom: 24,
+                     }}
+                   >
+                     {eventName}
+                   </h2>
+
+                   <div className="event-gallery-grid">
+                     {eventImages.map((img, i) => (
+                       <div
+                         key={`${img.id}-${i}`}
+                         className="event-gallery-item"
+                         onClick={() => openViewer(img)}
+                         role="button"
+                         tabIndex={0}
+                         onKeyDown={(e) => {
+                           if (e.key === 'Enter' || e.key === ' ') {
+                             e.preventDefault()
+                             openViewer(img)
+                           }
+                         }}
+                         aria-label={`Open ${img.alt}`}
+                       >
+                         <img
+                           src={img.id}
+                           alt={img.alt}
+                           loading="lazy"
+                           decoding="async"
+                           className={loadedImages[img.id] ? 'image-loaded' : 'image-loading'}
+                           onLoad={() => {
+                             if (loadedImages[img.id]) return
+
+                             setTimeout(() => {
+                               setLoadedImages(prev => {
+                                 const updated = {
+                                   ...prev,
+                                   [img.id]: true,
+                                 }
+
+                                 sessionStorage.setItem(
+                                   'madha-gallery-loaded',
+                                   JSON.stringify(updated)
+                                 )
+
+                                 return updated
+                               })
+                             }, 500)
+                           }}
+                         />
+                       </div>
+                     ))}
+                   </div>
+
+                 </div>
+               </Reveal>
+             )
+           })
+         ) : filtered.length > 0 ? (
+           <Reveal>
+             <div style={{ marginBottom: 40 }}>
+               <h2
+                 style={{
+                   fontSize: 30,
+                   fontWeight: 700,
+                   color: '#0B2545',
+                   marginBottom: 24,
+                 }}
+               >
+                 {CATEGORY_INFO[filter]?.title || filter}
+               </h2>
+
+               <div className="event-gallery-grid">
+                 {filtered.map((img, i) => (
+                   <div
+                     key={`${img.id}-${i}`}
+                     className="event-gallery-item"
+                     onClick={() => openViewer(img)}
+                     role="button"
+                     tabIndex={0}
+                     onKeyDown={(e) => {
+                       if (e.key === 'Enter' || e.key === ' ') {
+                         e.preventDefault()
+                         openViewer(img)
+                       }
+                     }}
+                     aria-label={`Open ${img.alt}`}
+                   >
+                     <img
+                       src={img.id}
+                       alt={img.alt}
+                       loading="lazy"
+                       decoding="async"
+                       className={loadedImages[img.id] ? 'image-loaded' : 'image-loading'}
+                       onLoad={() => {
+                         if (loadedImages[img.id]) return
+
+                         setTimeout(() => {
+                           setLoadedImages(prev => {
+                             const updated = {
+                               ...prev,
+                               [img.id]: true,
+                             }
+
+                             sessionStorage.setItem(
+                               'madha-gallery-loaded',
+                               JSON.stringify(updated)
+                             )
+
+                             return updated
+                           })
+                         }, 500)
+                       }}
+                     />
+                   </div>
+                 ))}
+               </div>
+             </div>
+           </Reveal>
+         ) : (
+           <div
+             style={{
+               minHeight: 260,
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               textAlign: 'center',
+               color: '#64748B',
+               fontSize: 16,
+               fontWeight: 600,
+             }}
+           >
+             No images available in this category yet.
+           </div>
+         )}
+            
+          </div>
+        </section>
+      )}
 
       {/* Full-screen image viewer */}
       {isViewerOpen && filtered[viewerIndex] && (

@@ -64,22 +64,7 @@ const RESEARCH_ITEMS = [
   { icon: '📊', title: 'Evidence-Based Practice',  desc: 'Our researchers focus on integrating the best available evidence with healthcare educators’ expertise and clients’ needs while considering the practice environment for students.' },
 ]
 
-const GALLERY_IMGS = [
-  { src: '/campus/madaha-nursing-college-9.webp', h: 260, alt: 'Madha College campus' },
-{ src: '/gallery/lamplight2026/lamp-5.webp', h: 260, alt: 'Lamplighting' },
-{ src: '/gallery/Xmas 25/16.webp', h: 260, alt: 'Chirstmas celebration' },
-  
-  
-  { src: '/departments/Mental Health Nrsing/1.webp', h: 240, alt: 'Nursing students' },
-  { src: '/gallery/pongal-2025/3.webp', h: 260, alt: 'Pongal Festivel' },
-  { src: '/gallery/graduation-2026/7.webp', h: 260, alt: 'Graduation Day' },
-  
-  
-  { src: '/departments/Medical-Surgical-Nursing/1.webp', h: 220, alt: 'Nursing students' },
-  { src: '/gallery/Xmas 25/10.webp', h: 260, alt: 'Chirstmas celebration' },
-  { src: '/gallery/graduation-2026/6.webp', h: 260, alt: 'Graduation Day' },
-]
-
+ 
 const ADMISSION_STEPS = [
   { num: '01', title: 'Check Eligibility', desc: 'Passed 10+2 with Physics, Chemistry, Biology and English. Minimum 45% aggregate marks for general category.' },
   { num: '02', title: 'Submit Application', desc: 'Fill the online application form with academic documents, photograph and identification proof.' },
@@ -283,16 +268,32 @@ export default function Home({ navigate }: Props) {
 
   .home-clinical-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 80px;
     align-items: start;
+    width: 100%;
   }
 
-  .home-clinical-content,
-  .home-clinical-timeline {
+  /* Clinical Excellence stays on the LEFT */
+  .home-clinical-content {
+    grid-column: 1;
     min-width: 0;
     width: 100%;
   }
+    
+
+  /* Semester list stays on the RIGHT */
+  .home-clinical-timeline {
+    grid-column: 2;
+    min-width: 0;
+    width: 100%;
+  }
+    @media (min-width: 769px) {
+  .home-clinical-timeline {
+    transform: translateX(120px);
+  }
+}
+    
 
   .home-clinical-step {
     display: flex;
@@ -809,43 +810,82 @@ export default function Home({ navigate }: Props) {
 @media (min-width: 1025px) {
 
   .home-stats-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 0 !important;
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr)
+      1px
+      minmax(0, 1fr) !important;
+
+    grid-template-rows: 1fr !important;
+
+    gap: 24px !important;
+
     width: 100% !important;
+    align-items: center !important;
+    justify-items: center !important;
   }
 
-  /* All direct children stay in one horizontal row */
-  .home-stats-grid > div {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    min-width: 0 !important;
+  /* 25+ */
+  .home-stats-grid > div:nth-child(1) {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
   }
 
-  /* Five statistic items */
-  .home-stats-grid > div:nth-child(1),
-  .home-stats-grid > div:nth-child(3),
-  .home-stats-grid > div:nth-child(5),
-  .home-stats-grid > div:nth-child(7),
-  .home-stats-grid > div:nth-child(9) {
-    flex: 1 1 0 !important;
-    text-align: center !important;
+  /* Divider */
+  .home-stats-grid > div:nth-child(2) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
   }
 
-  /* Four divider elements */
-  .home-stats-grid > div:nth-child(2),
-  .home-stats-grid > div:nth-child(4),
-  .home-stats-grid > div:nth-child(6),
+  /* 3200+ */
+  .home-stats-grid > div:nth-child(3) {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(4) {
+    grid-column: 4 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 18 */
+  .home-stats-grid > div:nth-child(5) {
+    grid-column: 5 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
+  .home-stats-grid > div:nth-child(6) {
+    grid-column: 6 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 98% */
+  .home-stats-grid > div:nth-child(7) {
+    grid-column: 7 !important;
+    grid-row: 1 !important;
+  }
+
+  /* Divider */
   .home-stats-grid > div:nth-child(8) {
-    flex: 0 0 1px !important;
-    width: 1px !important;
-    height: 80px !important;
-    display: block !important;
+    grid-column: 8 !important;
+    grid-row: 1 !important;
+  }
+
+  /* 120+ */
+  .home-stats-grid > div:nth-child(9) {
+    grid-column: 9 !important;
+    grid-row: 1 !important;
   }
 }
-
 
 
     
@@ -1377,44 +1417,7 @@ Our faculty are empowered to undertake research activities by utilizing the faci
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════
-          8. GALLERY — Pinterest masonry preview
-      ═══════════════════════════════════════════ */}
-      <section style={{ background: '#FAFBFD', padding: '120px 40px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 64 }}>
-            <Reveal><span className="section-tag">Campus Life</span></Reveal>
-            <Reveal delay={1}>
-              <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20 }}>
-                Life at<br/>
-                <span className="text-teal-g">Madha College</span>
-              </h2>
-            </Reveal>
-          </div>
-
-          <div className="masonry-grid">
-            {GALLERY_IMGS.map((img, i) => (
-              <div key={i} className="masonry-item" style={{ height: img.h }}>
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, display: 'block' }}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 48 }}>
-            <Reveal>
-              <button onClick={() => navigate('gallery')} className="btn-navy">
-                View Full Gallery
-              </button>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ═══════════════════════════════════════════
           9. TESTIMONIALS — Glass cards on dark bg
