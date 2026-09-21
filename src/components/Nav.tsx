@@ -458,28 +458,9 @@ a.top-contact-item:hover {
     flex: 1 1 auto !important;
     flex-wrap: nowrap !important;
     white-space: nowrap !important;
-    .nav-root.transparent .nav-links {
-  padding-left: 20px !important;
-}
+    
   }
 
-/* =========================================================
-   NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
-   ========================================================= */
-
-.nav-root.transparent .nav-links {
-  position: relative !important;
-  left: 30px !important;
-}
-
-.nav-root.transparent .nav-right {
-  position: relative !important;
-  left: 30px !important;
-}
-
-.nav-root.transparent .btn-apply {
-  transform: translateX(0) !important;
-}
 
 
 
@@ -514,7 +495,22 @@ a.top-contact-item:hover {
     flex: 0 0 auto !important;
   }
 }
+  /* =========================================================
+     NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
+     COLLEGE LOGO/TITLE STAYS FIXED
+     ========================================================= */
 
+  .nav-root.transparent .nav-links {
+    transform: translateX(40px) !important;
+  }
+
+  .nav-root.transparent .nav-right {
+    transform: translateX(40px) !important;
+  }
+
+  .nav-root.transparent .btn-apply {
+    transform: translateX(0) !important;
+  }
 
 
 
