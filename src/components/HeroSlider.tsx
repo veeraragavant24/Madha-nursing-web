@@ -472,11 +472,11 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           transition: 'all .85s .42s cubic-bezier(.16,1,.3,1)',
           animation: `fadeUp .7s .2s cubic-bezier(.16,1,.3,1) both`,
         }}>
-          <button onClick={() => navigate(slide.ctaPage)} className="btn-teal" style={{ fontSize: 16, padding: '16px 36px' }}>
+          <button onClick={() => navigate(slide.ctaPage)} className="btn-teal" style={{ fontSize: 14, padding: '11px 24px' }}>
             {slide.ctaLabel}
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 15, padding: '15px 36px' }}>
+          <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 14, padding: '10px 24px' }}>
             {slide.ctaSecondaryLabel}
           </button>
         </div>
