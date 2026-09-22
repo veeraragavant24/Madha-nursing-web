@@ -1295,9 +1295,7 @@ font-weight: 700;
   .top-contact-item {
     font-size: 14px !important;
   }
-.top-contact-item{
-padding-top:10px  !important;
-}
+
 
 
 
@@ -1328,6 +1326,7 @@ padding-top:10px  !important;
     align-items: center !important;
 
     box-sizing: border-box !important;
+    padding-top: 10px !important;
 
     overflow: visible !important;
   }
@@ -2636,7 +2635,7 @@ padding-top:10px  !important;
         <div className="nav-logo-ring">
 
           <img
-            src="/logos/favico.png"
+            src="/logos/mdch-logo (1).png"
             alt="Madha College of Nursing"
             className="nav-logo-img"
           />
