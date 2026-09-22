@@ -380,6 +380,26 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     justify-content: center;
   }
 }
+  /* =========================================================
+   LAPTOP ONLY — MOVE HERO CONTENT DOWN & REDUCE FONT SIZE
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1700px) {
+
+  .hero-content {
+    padding-top: 170px !important;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(38px, 4.0vw, 54px) !important;
+  }
+
+  .hero-content p {
+    font-size: 18px !important;
+    line-height: 1.7 !important;
+  }
+
+}
 
 
 
