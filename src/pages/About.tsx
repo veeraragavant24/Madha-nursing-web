@@ -583,54 +583,171 @@ export default function About({ navigate }: Props) {
     border-radius: 22px !important;
   }
 
+/* =====================================================
+   MOBILE — JOURNEY TIMELINE
+   ===================================================== */
 
-  /* =====================================================
-     MOBILE — JOURNEY BOX SIZE
-     EXISTING ANIMATION UNCHANGED
-     ===================================================== */
+@media (max-width: 768px) {
 
   .about-timeline-section {
     padding: 70px 16px !important;
     overflow-x: hidden !important;
   }
 
-  .about-journey-timeline {
-    width: 100% !important;
-    padding-left: 28px !important;
-    padding-right: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  /*
-     Keep the timeline rows as they are structurally,
-     but make the cards fit the mobile screen.
-  */
-  .about-journey-row {
-    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) !important;
-    min-height: 205px !important;
-  }
-
-  .about-journey-card {
+  .about-timeline-section > div {
     width: 100% !important;
     max-width: 100% !important;
-    min-height: 165px !important;
-    padding: 20px 18px !important;
-    border-radius: 18px !important;
+  }
+
+  .about-journey-timeline {
+    width: 100% !important;
+    padding: 10px 0 20px 28px !important;
     box-sizing: border-box !important;
   }
 
-  .about-journey-title {
-    font-size: 17px !important;
-    line-height: 1.4 !important;
+  /* Timeline line moves to the LEFT */
+  .about-journey-timeline::before {
+    left: 12px !important;
+    width: 3px !important;
+    transform: none !important;
   }
 
+  /* One column on mobile */
+  .about-journey-row {
+    display: block !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin-bottom: 28px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Both sides become full-width */
+  .about-journey-left,
+  .about-journey-right {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .about-journey-left {
+    padding: 0 !important;
+  }
+
+  .about-journey-right {
+    padding: 0 !important;
+    margin-top: 20px !important;
+  }
+
+  /* Timeline cards */
+  .about-journey-card {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Remove desktop horizontal animation distance on mobile */
+  .about-journey-left .about-journey-card,
+  .about-journey-right .about-journey-card {
+    transform: translateX(0) scale(.96) !important;
+  }
+
+  /* Keep cards visible after animation */
+  .about-journey-timeline.journey-visible
+  .about-journey-left .about-journey-card,
+  .about-journey-timeline.journey-visible
+  .about-journey-right .about-journey-card {
+    animation-name: journeyMobileCard !important;
+  }
+
+  /* Connectors are not needed horizontally on mobile */
+  .about-journey-left::after,
+  .about-journey-right::before {
+    display: none !important;
+  }
+
+  /* Mobile timeline dot */
+  .about-journey-dot {
+    position: absolute !important;
+    left: -23px !important;
+    top: 50% !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    transform: translateY(-50%) scale(0) !important;
+  }
+
+  .about-journey-timeline.journey-visible
+  .about-journey-dot {
+    animation-name: journeyMobileDot !important;
+  }
+
+  /* Mobile year */
+  .about-journey-year {
+    min-width: 64px !important;
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Mobile title */
+  .about-journey-title {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Mobile description */
   .about-journey-desc {
-    font-size: 14px !important;
-    line-height: 1.65 !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
   }
 
 }
 
+/* =====================================================
+   MOBILE JOURNEY ANIMATION
+   ===================================================== */
+
+@keyframes journeyMobileCard {
+
+  0% {
+    opacity: 0;
+    transform: translateX(0) scale(.96);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateX(0) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+}
+
+@keyframes journeyMobileDot {
+
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.25);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+}
 
 /* =====================================================
    VERY SMALL MOBILE
@@ -665,7 +782,40 @@ export default function About({ navigate }: Props) {
   }
 
 }
+@media (max-width: 480px) {
 
+  .about-vision-card {
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .about-journey-timeline {
+    padding-left: 24px !important;
+  }
+
+  .about-journey-timeline::before {
+    left: 10px !important;
+  }
+
+  .about-journey-dot {
+    left: -21px !important;
+  }
+
+  .about-journey-card {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+  }
+
+  .about-journey-title {
+    font-size: 17px !important;
+  }
+
+  .about-journey-desc {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+}
        
       `}</style>
 
