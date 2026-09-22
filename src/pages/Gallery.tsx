@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import Reveal from '../components/Reveal'
 import Stagger from '../components/Stagger'
 
@@ -195,15 +196,15 @@ export default function Gallery({ navigate }: Props) {
 
   .gallery-category-card {
     position: relative;
-    min-height: 205px;
-    padding: 28px 26px;
+    min-height: 280px;
+    padding: 22px;
     border-radius: 24px;
-    border: 1px solid rgba(11, 37, 69, 0.10);
-    background: linear-gradient(145deg, #F7FAFD 0%, #EDF4F9 100%);
+    border: 1px solid rgba(24,198,200,.35);
+    background: #071A36;
     cursor: pointer;
     overflow: hidden;
     text-align: left;
-    color: #0B2545;
+    color: #18C6C8;
     font-family: inherit;
     appearance: none;
     -webkit-appearance: none;
@@ -212,44 +213,38 @@ export default function Gallery({ navigate }: Props) {
     flex-direction: column;
     justify-content: flex-end;
 
-    box-shadow: 0 8px 24px rgba(11,37,69,.07);
+    box-shadow:
+      0 10px 30px rgba(7,26,54,.12);
 
     transition:
-      transform .4s cubic-bezier(.16,1,.3,1),
-      box-shadow .4s ease,
-      border-color .35s ease,
-      background .35s ease;
+      transform .45s cubic-bezier(.16,1,.3,1),
+      box-shadow .45s ease,
+      border-color .35s ease;
   }
 
-  .gallery-category-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        180deg,
-        rgba(7,26,54,.04) 0%,
-        rgba(7,26,54,.86) 100%
-      );
-    opacity: 0;
-    transition: opacity .35s ease;
+  .gallery-category-card.has-image {
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  /* Category images are revealed only for the selected card. */
+  .gallery-category-card.has-image::before {
+    content: none;
+  }
+
   .gallery-category-card.active.has-image {
     background-size: cover;
     background-position: center;
-    color: white;
-  }
-
-  .gallery-category-card.active.has-image::before {
-    opacity: 1;
+    color: #18C6C8;
   }
 
   .gallery-category-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 22px 42px rgba(11,37,69,.15);
-    border-color: rgba(24,198,200,.45);
+    box-shadow:
+      0 24px 48px rgba(7,26,54,.13),
+      0 0 0 1px rgba(24,198,200,.16);
+    border-color: rgba(24,198,200,.48);
   }
 
   .gallery-category-card:focus-visible {
@@ -261,7 +256,7 @@ export default function Gallery({ navigate }: Props) {
     transform: translateY(-6px);
     border-color: #18C6C8;
     box-shadow:
-      0 22px 46px rgba(24,198,200,.22),
+      0 24px 50px rgba(24,198,200,.20),
       0 0 0 3px rgba(24,198,200,.12);
   }
 
@@ -275,77 +270,109 @@ export default function Gallery({ navigate }: Props) {
     border-radius: 50%;
     background: #18C6C8;
     box-shadow: 0 0 0 6px rgba(24,198,200,.18);
+    z-index: 3;
   }
 
   .gallery-category-content {
     position: relative;
     z-index: 2;
-    padding-right: 38px;
+    width: 100%;
+    padding: 18px 48px 18px 20px;
+    border: 1px solid rgba(24,198,200,.55);
+    border-radius: 18px;
+    background: rgba(7,26,54,.94);
+    box-shadow:
+      0 8px 24px rgba(7,26,54,.28);
+    transition:
+      background .35s ease,
+      border-color .35s ease,
+      transform .35s ease;
+  }
+
+  .gallery-category-card:hover .gallery-category-content {
+    transform: translateY(-2px);
+    border-color: rgba(24,198,200,.30);
   }
 
   .gallery-category-title {
+    display: block;
     font-family: var(--font-sans);
-    font-size: 18px;
-    font-weight: 750;
-    color: #0B2545;
-    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #18C6C8;
+    letter-spacing: .01em;
+    line-height: 1.2;
+    margin-bottom: 7px;
   }
 
   .gallery-category-description {
-    font-size: 12px;
-    color: #64748B;
-    line-height: 1.45;
+    display: block;
+    font-size: 13px;
+    color: #CBD5E1;
+    line-height: 1.55;
+    font-weight: 500;
   }
 
   .gallery-category-count {
-    margin-top: 7px;
+    display: inline-flex;
+    margin-top: 10px;
     font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
     color: #18C6C8;
-    letter-spacing: .04em;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+  }
+
+  .gallery-category-card.active.has-image .gallery-category-content {
+    background: rgba(7,26,54,.94);
+    border-color: rgba(24,198,200,.65);
+    box-shadow:
+      0 12px 28px rgba(7,26,54,.30);
   }
 
   .gallery-category-card.active.has-image .gallery-category-title {
-    color: white;
+    color: #18C6C8;
   }
 
   .gallery-category-card.active.has-image .gallery-category-description {
-    color: rgba(255,255,255,.84);
+    color: #CBD5E1;
   }
 
   .gallery-category-card.active.has-image .gallery-category-count {
-    color: #7FF1F2;
+    color: #18C6C8;
   }
 
   .gallery-category-arrow {
     position: absolute;
     right: 18px;
     bottom: 18px;
-    z-index: 2;
+    z-index: 3;
 
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: rgba(11,37,69,.08);
-    color: #0B2545;
+    background: #071A36;
+    border: 1px solid rgba(24,198,200,.55);
+    color: #18C6C8;
 
-    font-size: 17px;
-    backdrop-filter: blur(8px);
+    font-size: 19px;
+    font-weight: 700;
 
     opacity: 0;
-    transform: translateX(-5px);
+    transform: translateX(-7px);
     transition: all .3s ease;
   }
 
   .gallery-category-card.active.has-image .gallery-category-arrow {
-    background: rgba(255,255,255,.18);
-    color: white;
+    background: #071A36;
+    border-color: rgba(24,198,200,.65);
+    color: #18C6C8;
   }
 
   .gallery-category-card:hover .gallery-category-arrow,
@@ -415,7 +442,7 @@ export default function Gallery({ navigate }: Props) {
   .gallery-viewer {
     position: fixed;
     inset: 0;
-    z-index: 2000;
+    z-index: 99999;
     background: rgba(7, 26, 54, 0.94);
     display: flex;
     align-items: center;
@@ -581,20 +608,25 @@ export default function Gallery({ navigate }: Props) {
     }
 
     .gallery-category-card {
-      min-height: 190px;
-      padding: 22px 18px;
+      min-height: 235px;
+      padding: 18px;
       border-radius: 20px;
     }
+    .gallery-category-content {
+      padding: 16px 42px 16px 17px;
+      border-radius: 16px;
+    }
+
     .gallery-category-title {
-      font-size: 16px;
+      font-size: 18px;
     }
 
     .gallery-category-description {
-      font-size: 11px;
+      font-size: 11.5px;
     }
 
     .gallery-category-count {
-      font-size: 11px;
+      font-size: 10.5px;
     }
 
     .gallery-category-arrow {
@@ -673,16 +705,18 @@ export default function Gallery({ navigate }: Props) {
     }
 
     .gallery-category-card {
-      min-height: 175px;
-      padding: 22px 18px;
+      min-height: 220px;
+      padding: 16px;
       border-radius: 18px;
     }
+
     .gallery-category-content {
-      padding-right: 28px;
+      padding: 15px 38px 15px 16px;
+      border-radius: 15px;
     }
 
     .gallery-category-title {
-      font-size: 15px;
+      font-size: 17px;
     }
 
     .gallery-category-description {
@@ -690,7 +724,7 @@ export default function Gallery({ navigate }: Props) {
     }
 
     .gallery-category-count {
-      font-size: 10.5px;
+      font-size: 10px;
     }
 
     .gallery-category-arrow {
@@ -780,11 +814,11 @@ export default function Gallery({ navigate }: Props) {
                   setFilter(cat)
 
                   window.setTimeout(() => {
-                    document.querySelector('.gallery-section')?.scrollIntoView({
+                    document.querySelector('.event-gallery-grid')?.scrollIntoView({
                       behavior: 'smooth',
                       block: 'start',
                     })
-                  }, 80)
+                  }, 120)
                 }}
                 aria-pressed={filter === cat}
                 aria-label={`Show ${CATEGORY_INFO[cat].title}, ${categoryImages.length} photo${categoryImages.length === 1 ? '' : 's'}`}
@@ -974,7 +1008,7 @@ export default function Gallery({ navigate }: Props) {
       )}
 
       {/* Full-screen image viewer */}
-      {isViewerOpen && filtered[viewerIndex] && (
+      {isViewerOpen && filtered[viewerIndex] && createPortal((
         <div
           className="gallery-viewer"
           onClick={() => setIsViewerOpen(false)}
@@ -1003,7 +1037,7 @@ export default function Gallery({ navigate }: Props) {
               className={`gallery-viewer-img ${openingAnim ? '' : (slideDir === 1 ? 'gallery-viewer-img-next' : 'gallery-viewer-img-prev')}`}
               src={filtered[viewerIndex].id}
               alt={filtered[viewerIndex].alt}
-              loading="lazy"
+              loading="eager"
               decoding="async"
               draggable={false}
             />
@@ -1024,7 +1058,7 @@ export default function Gallery({ navigate }: Props) {
             {String(viewerIndex + 1).padStart(2, '0')} / {String(filtered.length).padStart(2, '0')}
           </div>
         </div>
-      )}
+      ), document.body)}
     </div>
   )
 }
