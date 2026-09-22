@@ -557,6 +557,115 @@ export default function About({ navigate }: Props) {
   transform: translateY(-5px) !important;
 
 }
+  /* =====================================================
+   MOBILE — VISION / MISSION BOX SIZE
+   EXISTING ANIMATION UNCHANGED
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .about-vision-section {
+    padding: 64px 16px !important;
+    overflow-x: hidden !important;
+  }
+
+  .about-vision-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .about-vision-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 28px 24px !important;
+    border-radius: 22px !important;
+  }
+
+
+  /* =====================================================
+     MOBILE — JOURNEY BOX SIZE
+     EXISTING ANIMATION UNCHANGED
+     ===================================================== */
+
+  .about-timeline-section {
+    padding: 70px 16px !important;
+    overflow-x: hidden !important;
+  }
+
+  .about-journey-timeline {
+    width: 100% !important;
+    padding-left: 28px !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /*
+     Keep the timeline rows as they are structurally,
+     but make the cards fit the mobile screen.
+  */
+  .about-journey-row {
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) !important;
+    min-height: 205px !important;
+  }
+
+  .about-journey-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 165px !important;
+    padding: 20px 18px !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-journey-title {
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+  }
+
+  .about-journey-desc {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+   EXISTING ANIMATION UNCHANGED
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+  .about-vision-card {
+    padding: 24px 20px !important;
+  }
+
+  .about-journey-timeline {
+    padding-left: 20px !important;
+  }
+
+  .about-journey-row {
+    grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) !important;
+  }
+
+  .about-journey-card {
+    padding: 18px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .about-journey-title {
+    font-size: 16px !important;
+  }
+
+  .about-journey-desc {
+    font-size: 14px !important;
+  }
+
+}
+
        
       `}</style>
 
