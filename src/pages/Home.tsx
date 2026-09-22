@@ -604,15 +604,23 @@ export default function Home({ navigate }: Props) {
     }
 
     .home-clinical-content {
-      width: 100% !important;
-      min-width: 0 !important;
-    }
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+}
 
-    .home-clinical-timeline {
-      width: 100% !important;
-      min-width: 0 !important;
-      padding-top: 8px;
-    }
+.home-clinical-timeline {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-top: 8px;
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+}
 
     .home-clinical-step {
       display: flex !important;
@@ -629,9 +637,6 @@ export default function Home({ navigate }: Props) {
       overflow-wrap: break-word;
     }
   }
-
-
-  
 
 
   /* ================================
