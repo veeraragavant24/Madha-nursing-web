@@ -25,7 +25,7 @@ const SLIDES: Slide[] = [
   // 01 — CAMPUS BUILDING
   {
     id: 'campus',
-    img: '/hero/slide-1.webp',
+    img: '/hero/imageslide1.png',
     imgPos: 'center 45%',
     badge: 'Welcome to Madha College of Nursing',
     headline: ['Building Futures.', 'Inspiring Care.'],
@@ -39,7 +39,7 @@ const SLIDES: Slide[] = [
   // 02 — STUDENTS PRACTICAL
   {
     id: 'practical',
-    img: '/hero/slide-2.webp',
+    img: 'hero/imageslide2.png',
     imgPos: 'center 45%',
     badge: 'Hands-On Nursing Education',
     headline: ['Where Learning', 'Becomes Practice.'],
