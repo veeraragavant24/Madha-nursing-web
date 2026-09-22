@@ -1303,6 +1303,11 @@ font-weight: 700;
      MAIN HEADER
      ======================================================= */
 
+      .nav-root.transparent {
+    top: 55px !important;
+  }
+
+
   .nav-root.transparent,
   .nav-root.solid {
     left: 0 !important;
@@ -1311,6 +1316,7 @@ font-weight: 700;
     max-width: 100% !important;
     transform: none !important;
     box-sizing: border-box !important;
+    
   }
 
 

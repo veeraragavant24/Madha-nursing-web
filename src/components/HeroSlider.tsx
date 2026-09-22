@@ -486,7 +486,7 @@ fontSize: 'clamp(40px, 5vw, 80px)',
 
         {/* Sub */}
         <p key={`p-${current}`} style={{
-          fontSize: 25, color: '#F1F5F9', lineHeight: 1.78,
+          fontSize: 22, color: '#F1F5F9', lineHeight: 1.78,
           maxWidth: 540, marginBottom: 44,
           opacity: heroIn ? 1 : 0,
           transform: heroIn ? 'none' : 'translateY(16px)',
