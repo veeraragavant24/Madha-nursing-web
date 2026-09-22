@@ -834,18 +834,17 @@ export default function About({ navigate }: Props) {
         }}
       >
 
-        <img
-          src="/campus/madaha-nursing-college-9.webp"
-          alt="Madha College students"
-          loading="lazy"
-          decoding="async"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: 0.25
-          }}
-        />
+       <img
+src="/campus/college-image.png"
+  alt="Madha College campus"
+  loading="lazy"
+  decoding="async"
+  style={{
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  }}
+/>
 
         <div
           style={{
@@ -1414,9 +1413,7 @@ export default function About({ navigate }: Props) {
         </div>
 
       </section>
-
-
-      {/* =====================================================
+ {/* =====================================================
           CAMPUS PHOTO
           ===================================================== */}
 
@@ -1436,28 +1433,34 @@ export default function About({ navigate }: Props) {
 
           <Reveal type="scale">
 
-            <div
-              className="about-campus-card"
-              style={{
-                borderRadius: 32,
-                overflow: 'hidden',
-                height: 480,
-                position: 'relative'
-              }}
-            >
+           <div
+    className="about-campus-card"
+    style={{
+      width: '100%',
+      borderRadius: '32px !important' as any,
+      overflow: 'hidden',
+      clipPath: 'inset(0 round 32px)',
+      lineHeight: 0,
+      position: 'relative'
+    }}
+  >
 
-              <img
-                src="/campus/madaha-nursing-college-9.webp"
-                alt="Madha College campus"
-                loading="lazy"
-                decoding="async"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
+    <img
+      src="/campus/college-image.png"
+      alt="Madha College campus"
+      loading="lazy"
+      decoding="async"
+      style={{
+        width: '100%',
+        height: 'auto',
+        display: 'block',
+        objectFit: 'cover',
+        margin: 0,
+        padding: 0
+      }}
+    />
 
+      
               <div
                 style={{
                   position: 'absolute',
