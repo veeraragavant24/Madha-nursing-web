@@ -314,6 +314,16 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     font-size: 15px !important;
   }
 
+.hero-cta-group .btn-teal,
+.hero-cta-group .btn-ghost {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 52px !important;
+  padding: 10px 24px !important;
+  font-size: 14px !important;
+}
+
+
   .float-badge {
     display: none !important;
   }
@@ -466,7 +476,10 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
         {/* CTAs */}
         <div className="hero-cta-group" style={{
-  display: 'flex', gap: 14, flexWrap: 'wrap',
+  display: 'flex',
+  gap: 14,
+  flexWrap: 'wrap',
+  width: 'fit-content',
           opacity: heroIn ? 1 : 0,
           transform: heroIn ? 'none' : 'translateY(16px)',
           transition: 'all .85s .42s cubic-bezier(.16,1,.3,1)',

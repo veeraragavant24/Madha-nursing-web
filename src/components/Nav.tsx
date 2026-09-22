@@ -1937,7 +1937,7 @@ font-weight: 700;
 .nav-root.transparent {
   position: fixed !important;
 
-  top: 20px !important;
+  top: 28px !important;
   left: 0 !important;
   right: 0 !important;
 
