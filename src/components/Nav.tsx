@@ -2962,7 +2962,7 @@ font-weight: 700;
         <div className="nav-logo-ring">
 
           <img
-            src="/logos/favico.png"
+            src="/logos/mdch-logo (1).png"
             alt="Madha College of Nursing"
             className="nav-logo-img"
           />
