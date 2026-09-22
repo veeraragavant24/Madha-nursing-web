@@ -381,6 +381,8 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   }
 }
 
+
+
       `}</style>
 
 
@@ -452,7 +454,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           transition: 'all .85s .15s cubic-bezier(.16,1,.3,1)',
         }}>
           <h1 key={`h-${current}`} className="font-sans" style={{
-            fontSize: 'clamp(48px, 5.8vw, 92px)',
+fontSize: 'clamp(40px, 5vw, 80px)',
             fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em',
             color: 'white', maxWidth: 780,
             animation: `fadeUp .75s cubic-bezier(.16,1,.3,1) forwards`,
