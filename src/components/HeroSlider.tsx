@@ -400,6 +400,66 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   }
 
 }
+  /* =====================================================
+   MOBILE HERO APPLY NOW BUTTON
+   Appears beside the existing slider CTA buttons
+   ===================================================== */
+
+.hero-mobile-apply {
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 38px;
+  padding: 0 18px;
+
+  border: 1px solid rgba(24, 198, 200, 0.8);
+  border-radius: 8px;
+
+  background: #18C6C8;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(24, 198, 200, 0.22);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.hero-mobile-apply:hover {
+  background: #12aeb0;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(24, 198, 200, 0.28);
+}
+
+
+/* =====================================================
+   MOBILE ONLY
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .hero-mobile-apply {
+    display: inline-flex !important;
+  }
+
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+}
   
 
 
@@ -515,6 +575,13 @@ fontSize: 'clamp(40px, 5vw, 80px)',
           <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 14, padding: '10px 24px' }}>
             {slide.ctaSecondaryLabel}
           </button>
+      {/* APPLY NOW - MOBILE ONLY */}
+<button
+  onClick={() => navigate('contact')}
+  className="hero-mobile-apply"
+>
+  Apply Now
+</button>
            
            
   
