@@ -514,6 +514,19 @@ fontSize: 'clamp(40px, 5vw, 80px)',
           <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 14, padding: '10px 24px' }}>
             {slide.ctaSecondaryLabel}
           </button>
+           {/* APPLY NOW */}
+  <button
+    className="btn-apply"
+    onClick={() => navigate('contact')}
+    style={{
+      fontSize: 14,
+      padding: '10px 24px',
+    }}
+  >
+    Apply Now
+  </button>
+           
+  
         </div>
 
         {/* Floating accreditation badge */}

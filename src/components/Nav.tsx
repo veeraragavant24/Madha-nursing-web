@@ -2479,43 +2479,17 @@ font-weight: 700;
 }
 
 /* =========================================================
-   MOBILE FLOATING APPLY NOW BUTTON
-   Right side of the screen, vertically centered.
+   MOBILE — HIDE HEADER APPLY NOW BUTTON
    ========================================================= */
 
 @media (max-width: 768px) {
 
   .nav-root .nav-right .btn-apply {
-    display: inline-flex !important;
-
-    position: fixed !important;
-
-    right: 0 !important;
-    top: 50vh !important;
-
-    transform: translateY(-50%) !important;
-
-    width: clamp(78px, 20vw, 92px) !important;
-    min-width: 78px !important;
-
-    height: 34px !important;
-
-    margin: 0 !important;
-    padding: 5px 8px !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    gap: 3px !important;
-
-    font-size: clamp(9px, 2.6vw, 11px) !important;
-    line-height: 1 !important;
-
-    white-space: nowrap !important;
-
-    z-index: 99999 !important;
-
-    border-radius: 16px 0 0 16px !important;
+    display: none !important;
+    position: static !important;
+right: auto !important;
+top: auto !important;
+transform: none !important;
   }
 
 }
