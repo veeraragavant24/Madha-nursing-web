@@ -455,6 +455,45 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     border-radius: 20px !important;
   }
 }
+  /* =====================================================
+   MOBILE APPLY NOW - INSIDE HERO SLIDER
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  .hero-cta-group .hero-apply-mobile {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    transform: none !important;
+
+    width: auto !important;
+    min-width: 90px !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 10px 18px !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+
+    white-space: nowrap !important;
+    z-index: 999 !important;
+
+    border-radius: 20px !important;
+    cursor: pointer !important;
+  }
+}
 
 
 
