@@ -400,100 +400,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   }
 
 }
-  /* =====================================================
-   MOBILE ONLY - APPLY NOW BUTTON
-   ===================================================== */
-
-@media (max-width: 768px) {
-
-  /* Keep slider content below the normal header */
-  .hero-slider,
-  .hero-section {
-    margin-top: 0 !important;
-    position: relative !important;
-    z-index: 1 !important;
-  }
-
-  /* Keep all CTA buttons visible */
-  .hero-cta-group {
-    position: relative !important;
-    z-index: 20 !important;
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-  }
-
-  /* Apply Now beside the other slider buttons */
-  .hero-cta-group .btn-apply {
-    display: inline-flex !important;
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
-
-    width: auto !important;
-    min-width: 0 !important;
-    height: auto !important;
-
-    margin: 0 !important;
-    padding: 10px 18px !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    font-size: 13px !important;
-    line-height: 1.2 !important;
-    white-space: nowrap !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-    z-index: 30 !important;
-
-    border-radius: 20px !important;
-  }
-}
-  /* =====================================================
-   MOBILE APPLY NOW - INSIDE HERO SLIDER
-   ===================================================== */
-
-@media (max-width: 768px) {
-
-  .hero-cta-group .hero-apply-mobile {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    left: auto !important;
-
-    transform: none !important;
-
-    width: auto !important;
-    min-width: 90px !important;
-    height: auto !important;
-
-    margin: 0 !important;
-    padding: 10px 18px !important;
-
-    align-items: center !important;
-    justify-content: center !important;
-
-    font-size: 13px !important;
-    line-height: 1.2 !important;
-
-    white-space: nowrap !important;
-    z-index: 999 !important;
-
-    border-radius: 20px !important;
-    cursor: pointer !important;
-  }
-}
+  
 
 
 
@@ -608,17 +515,7 @@ fontSize: 'clamp(40px, 5vw, 80px)',
           <button onClick={() => navigate(slide.ctaSecondaryPage)} className="btn-ghost" style={{ fontSize: 14, padding: '10px 24px' }}>
             {slide.ctaSecondaryLabel}
           </button>
-           {/* APPLY NOW */}
-  <button
-    className="btn-apply"
-    onClick={() => navigate('contact')}
-    style={{
-      fontSize: 14,
-      padding: '10px 24px',
-    }}
-  >
-    Apply Now
-  </button>
+           
            
   
         </div>
