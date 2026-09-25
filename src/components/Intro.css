@@ -296,12 +296,12 @@
   }
 
   .intro-title h1 {
-    font-size: 12px;
+    font-size: 24px;
     letter-spacing: 2px;
   }
 
   .intro-title h2 {
-    font-size: 8px;
+    font-size: 19px;
     letter-spacing: 3px;
   }
 
@@ -478,4 +478,37 @@
 .madha-intro-content p {
   position: relative !important;
   z-index: 20 !important;
+}
+/* =========================================================
+   MADHA INTRO - MOBILE FONT SIZE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .madha-intro-content h1 {
+    font-size: 20px !important;
+    letter-spacing: 2px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  .madha-intro-content p {
+    font-size: 10px !important;
+    letter-spacing: 1.5px !important;
+    line-height: 1.4 !important;
+  }
+
+}
+@media (max-width: 420px) {
+
+  .madha-intro-content h1 {
+    font-size: 17px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .madha-intro-content p {
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+  }
+
 }
