@@ -548,8 +548,9 @@ export default function Home({ navigate }: Props) {
     }
 
 
-    
-     /* CLINICAL TRAINING MOBILE */
+    /* ================================
+       CLINICAL TRAINING MOBILE
+    ================================= */
 
     .home-clinical-section {
       padding: 64px 20px !important;
@@ -588,7 +589,6 @@ export default function Home({ navigate }: Props) {
       overflow-wrap: break-word;
     }
   }
-
 
 
   /* ================================
