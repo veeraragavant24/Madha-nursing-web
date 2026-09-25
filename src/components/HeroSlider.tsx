@@ -39,7 +39,7 @@ const SLIDES: Slide[] = [
   // 02 — STUDENTS PRACTICAL
   {
     id: 'practical',
-    img: 'hero/imageslide2.png',
+    img: '/hero/imageslide2.png',
     imgPos: 'center 45%',
     badge: 'Hands-On Nursing Education',
     headline: ['Where Learning', 'Becomes Practice.'],
@@ -268,9 +268,10 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
  @media (max-width: 768px) {
 
   .hero-slider {
-    height: auto !important;
-    min-height: 0 !important;
-    background: transparent !important;
+    height: 100svh !important;
+    min-height: 620px !important;
+    background: #071A36 !important;
+    overflow: hidden !important;
   }
   .hero-content {
     padding: 100px 24px 120px !important;
