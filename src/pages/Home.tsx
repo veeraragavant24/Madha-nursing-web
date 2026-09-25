@@ -58,13 +58,28 @@ const TESTIMONIALS = [
 ]
 
 const RESEARCH_ITEMS = [
-  { icon: '🔬', title: 'Infectious Disease Management',  desc: 'Researchers have explored the post-pandemic impact on health, transformation needs, and challenges brought by the pandemic to the field of infectious disease management.' },
-  { icon: '🧬', title: 'Paediatric Care Innovation',  desc: 'Our faculty are actively involved in original research papers, reviews, and commentaries on the etiology and treatment of diseases and disorders affecting children.' },
-  { icon: '🏥', title: 'Community Health Outreach',  desc: 'The institution recognizes the importance of integrating social responsibility and community engagement into research projects to achieve its vision and mission of enhancing the quality of teaching, research, and service.' },
-  { icon: '📊', title: 'Evidence-Based Practice',  desc: 'Our researchers focus on integrating the best available evidence with healthcare educators’ expertise and clients’ needs while considering the practice environment for students.' },
+  { icon: '🔬', title: 'Infectious Disease Management', stat: '14 Published Papers', desc: 'Pioneering research on post-COVID respiratory care protocols adopted across Tamil Nadu.' },
+  { icon: '🧬', title: 'Paediatric Care Innovation', stat: '₹28L Research Grant', desc: 'DST-funded project on neonatal care practices improving outcomes in rural healthcare settings.' },
+  { icon: '🏥', title: 'Community Health Outreach', stat: '12,000+ Patients Served', desc: 'Longitudinal study on community nursing interventions in urban slums of Chennai.' },
+  { icon: '📊', title: 'Evidence-Based Practice', stat: '96 Conference Presentations', desc: 'Faculty and students presenting research at national and international nursing conferences.' },
 ]
 
- 
+const GALLERY_IMGS = [
+  { src: '/campus/madaha-nursing-college-9.webp', h: 260, alt: 'Madha College campus' },
+{ src: '/gallery/lamplight2026/lamp-5.webp', h: 260, alt: 'Lamplighting' },
+{ src: '/gallery/Xmas 25/16.webp', h: 260, alt: 'Chirstmas celebration' },
+  
+  
+  { src: '/departments/Mental Health Nrsing/1.webp', h: 240, alt: 'Nursing students' },
+  { src: '/gallery/pongal-2025/3.webp', h: 260, alt: 'Pongal Festivel' },
+  { src: '/gallery/graduation-2026/7.webp', h: 260, alt: 'Graduation Day' },
+  
+  
+  { src: '/departments/Medical-Surgical-Nursing/1.webp', h: 220, alt: 'Nursing students' },
+  { src: '/gallery/Xmas 25/10.webp', h: 260, alt: 'Chirstmas celebration' },
+  { src: '/gallery/graduation-2026/6.webp', h: 260, alt: 'Graduation Day' },
+]
+
 const ADMISSION_STEPS = [
   { num: '01', title: 'Check Eligibility', desc: 'Passed 10+2 with Physics, Chemistry, Biology and English. Minimum 45% aggregate marks for general category.' },
   { num: '02', title: 'Submit Application', desc: 'Fill the online application form with academic documents, photograph and identification proof.' },
@@ -264,36 +279,19 @@ export default function Home({ navigate }: Props) {
   .home-clinical-section {
     padding: 140px 40px;
   }
-    
 
   .home-clinical-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: start;
-    width: 100%;
   }
 
-  /* Clinical Excellence stays on the LEFT */
-  .home-clinical-content {
-    grid-column: 1;
+  .home-clinical-content,
+  .home-clinical-timeline {
     min-width: 0;
     width: 100%;
   }
-    
-
-  /* Semester list stays on the RIGHT */
-  .home-clinical-timeline {
-    grid-column: 2;
-    min-width: 0;
-    width: 100%;
-  }
-    @media (min-width: 769px) {
-  .home-clinical-timeline {
-    transform: translateX(120px);
-  }
-}
-    
 
   .home-clinical-step {
     display: flex;
@@ -474,60 +472,9 @@ export default function Home({ navigate }: Props) {
   padding: 56px 20px !important;
 }
 
-/* =====================================================
-   MOBILE STATS
-   3 ITEMS FIRST ROW
-   2 ITEMS SECOND ROW
-   ===================================================== */
-
 .home-stats-grid {
-  display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 42px 6px !important;
-  align-items: center !important;
-}
-
-
-/* HIDE ALL DIVIDER ELEMENTS ON MOBILE */
-
-.home-stats-grid > div:nth-child(2),
-.home-stats-grid > div:nth-child(4),
-.home-stats-grid > div:nth-child(6),
-.home-stats-grid > div:nth-child(8) {
-  display: none !important;
-}
-
-
-/* =====================================================
-   FIRST ROW
-   25+ | 3200+ | 18
-   ===================================================== */
-
-.home-stats-grid > div:nth-child(1) {
-  grid-column: 1 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(3) {
-  grid-column: 3 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(5) {
-  grid-column: 5 / span 2 !important;
-}
-
-
-/* =====================================================
-   SECOND ROW
-   98% | 120+
-   CENTERED
-   ===================================================== */
-
-.home-stats-grid > div:nth-child(7) {
-  grid-column: 2 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(9) {
-  grid-column: 4 / span 2 !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px 20px;
 }
 
 .home-stat-divider {
@@ -604,23 +551,15 @@ export default function Home({ navigate }: Props) {
     }
 
     .home-clinical-content {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-}
+      width: 100% !important;
+      min-width: 0 !important;
+    }
 
-.home-clinical-timeline {
-  width: 100% !important;
-  min-width: 0 !important;
-  padding-top: 8px;
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-}
+    .home-clinical-timeline {
+      width: 100% !important;
+      min-width: 0 !important;
+      padding-top: 8px;
+    }
 
     .home-clinical-step {
       display: flex !important;
@@ -650,37 +589,9 @@ export default function Home({ navigate }: Props) {
 }
 
 .home-stats-grid {
-  display: grid !important;
-  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-  gap: 36px 4px !important;
-  align-items: center !important;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 12px;
 }
-
-.home-stats-grid > div:nth-child(2),
-.home-stats-grid > div:nth-child(4),
-.home-stats-grid > div:nth-child(6),
-.home-stats-grid > div:nth-child(8) {
-  display: none !important;
-}
-  portant;
-}
-
-.home-stats-grid > div:nth-child(3) {
-  grid-column: 3 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(5) {
-  grid-column: 5 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(7) {
-  grid-column: 2 / span 2 !important;
-}
-
-.home-stats-grid > div:nth-child(9) {
-  grid-column: 4 / span 2 !important;
-}
-
 
     .home-mobile-section {
       padding-left: 16px !important;
@@ -718,184 +629,11 @@ export default function Home({ navigate }: Props) {
       margin-top: 14px;
     }
 
-     .home-dept-card {
-    height: 230px !important;
+    .home-dept-card {
+      height: 230px !important;
+    }
   }
-
-/* =========================================================
-   DESKTOP / LAPTOP — STATS IN ONE HORIZONTAL ROW
-   ========================================================= */
-
-@media (min-width: 1025px) and (max-width: 1700px) {
-
-  .home-stats-section {
-    padding: 80px 40px !important;
-  }
-
-  .home-stats-grid {
-    display: grid !important;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr) !important;
-
-    grid-template-rows: 1fr !important;
-
-    gap: 24px !important;
-
-    width: 100% !important;
-    align-items: center !important;
-  }
-
-  /* 25+ */
-  .home-stats-grid > div:nth-child(1) {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(2) {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 3200+ */
-  .home-stats-grid > div:nth-child(3) {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(4) {
-    grid-column: 4 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 18 */
-  .home-stats-grid > div:nth-child(5) {
-    grid-column: 5 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(6) {
-    grid-column: 6 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 98% */
-  .home-stats-grid > div:nth-child(7) {
-    grid-column: 7 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(8) {
-    grid-column: 8 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 120+ */
-  .home-stats-grid > div:nth-child(9) {
-    grid-column: 9 !important;
-    grid-row: 1 !important;
-  }
-}
-  /* =========================================================
-   DESKTOP PC — FORCE ALL 5 STATS INTO ONE ROW
-   ========================================================= */
-
-@media (min-width: 1025px) {
-
-  .home-stats-grid {
-    display: grid !important;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr)
-      1px
-      minmax(0, 1fr) !important;
-
-    grid-template-rows: 1fr !important;
-
-    gap: 24px !important;
-
-    width: 100% !important;
-    align-items: center !important;
-    justify-items: center !important;
-  }
-
-  /* 25+ */
-  .home-stats-grid > div:nth-child(1) {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(2) {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 3200+ */
-  .home-stats-grid > div:nth-child(3) {
-    grid-column: 3 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(4) {
-    grid-column: 4 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 18 */
-  .home-stats-grid > div:nth-child(5) {
-    grid-column: 5 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(6) {
-    grid-column: 6 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 98% */
-  .home-stats-grid > div:nth-child(7) {
-    grid-column: 7 !important;
-    grid-row: 1 !important;
-  }
-
-  /* Divider */
-  .home-stats-grid > div:nth-child(8) {
-    grid-column: 8 !important;
-    grid-row: 1 !important;
-  }
-
-  /* 120+ */
-  .home-stats-grid > div:nth-child(9) {
-    grid-column: 9 !important;
-    grid-row: 1 !important;
-  }
-}
-
-
-    
 `}</style>
-
 
     <div className="home-page">
       {/* ═══════════════════════════════════════════
@@ -930,123 +668,190 @@ export default function Home({ navigate }: Props) {
       </section>
 
       {/* ═══════════════════════════════════════════
-          3. WHY MADHA — Magazine editorial
+          3. WHY MADHA — Content first, image below
       ═══════════════════════════════════════════ */}
       <section
-  className="home-mobile-section"
-  style={{ background: '#FAFBFD', padding: '120px 40px' }}
->
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-         <div className="home-responsive-grid">
-            {/* Video */}
-<Reveal type="left">
-  <div className="home-why-image" style={{ position: 'relative' }}>
-    <div
-      style={{
-        borderRadius: 28,
-        overflow: 'hidden',
-        aspectRatio: '4/5',
-        position: 'relative',
-        background: '#0B2545',
-        transition: 'transform .6s cubic-bezier(.16,1,.3,1)',
-      }}
-      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-    >
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        controls={false}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-        }}
+        className="home-mobile-section"
+        style={{ background: '#FAFBFD', padding: '120px 40px' }}
       >
-        <source src="/videos/why-madha.mp4" type="video/mp4" />
-      </video>
-    </div>
-                {/* Floating stat card */}
-                <div className="glass-card home-floating-stat" style={{
-                  position: 'absolute', bottom: -24, right: -24,
-                  borderRadius: 20, padding: '24px 28px', minWidth: 200,
-                  boxShadow: '0 24px 48px rgba(11,37,69,.15)',
-                }}>
-                  <div className="font-sans" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, color: '#0B2545', letterSpacing: '-.03em', lineHeight: 1 }}>98%</div>
-                  <div style={{ color: '#1E5AA8', fontSize: 17, fontWeight: 600, marginTop: 6 }}>Placement Rate</div>
-                  <div style={{ color: '#475569', fontSize: 15, marginTop: 2 }}>2024 Batch</div>
-                </div>
-                {/* Accreditation badge */}
-                <div className="home-inc-badge" style={{
-  position: 'absolute', top: 24, left: -24,
-                  background: 'linear-gradient(135deg,#18C6C8,#1E5AA8)', borderRadius: 16, padding: '14px 20px',
-                  boxShadow: '0 16px 32px rgba(24,198,200,.35)',
-                }}>
-                  <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 17 }}>INC</div>
-                  <div style={{ color: '#F1F5F9', fontSize: 14, fontWeight: 600, letterSpacing: '.08em' }}>APPROVED</div>
-                </div>
-              </div>
+        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+          {/* Content */}
+          <div
+            style={{
+              width: '100%',
+              maxWidth: 1100,
+              margin: '0 auto',
+              textAlign: 'center',
+            }}
+          >
+            <Reveal delay={1}>
+              <span className="section-tag">Why Madha College</span>
             </Reveal>
 
-            {/* Content */}
-            <div>
-              <Reveal delay={1}>
-                <span className="section-tag">Why Madha College</span>
-              </Reveal>
-              <Reveal delay={2}>
-                <h2 className="font-sans" style={{ fontSize: 'clamp(34px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.02em', color: '#0B2545', marginTop: 20, marginBottom: 24 }}>
-                  Where Compassion<br/>Meets Clinical<br/>
-                  <span className="text-teal-g">Excellence</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={3}>
-                <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 36 }}>
-                  At Madha College of Nursing, we believe that great nurses are made through rigorous academic training, hands-on clinical exposure, and character development rooted in compassion. Our 25-year legacy reflects a deep commitment to producing healthcare professionals who lead with both skill and heart.
-                </p>
-              </Reveal>
+            <Reveal delay={2}>
+              <h2
+                className="font-sans"
+                style={{
+                  fontSize: 'clamp(34px, 4vw, 56px)',
+                  fontWeight: 700,
+                  lineHeight: 1.1,
+                  letterSpacing: '-.02em',
+                  color: '#0B2545',
+                  marginTop: 20,
+                  marginBottom: 24,
+                  textAlign: 'center',
+                }}
+              >
+                Where Compassion<br />
+                Meets Clinical<br />
+                <span className="text-teal-g">Excellence</span>
+              </h2>
+            </Reveal>
 
-              <div className="home-feature-grid">
-                {[
-                  { icon: '🏥', title: '18 Affiliated Hospitals', desc: 'Live clinical rotations across premier hospitals in Chennai and beyond' },
-                  { icon: '🔬', title: 'Modern Laboratories', desc: 'A specialized educational environment with high-fidelity simulation stations, clinical practice beds and workstations, task trainers, and anatomy models.' },
-                  { icon: '📚', title: 'Research Culture', desc: 'Research activities in an institution involve systematic investigations and scholarly publications presented at national and international forums.' },
-                  { icon: '🌍', title: 'Global Alumni Network', desc: 'Graduates working in USA, UK, UAE, Canada, Australia, and 25+ countries' },
-                ].map((item, i) => (
-                  <Reveal key={item.title} delay={(i + 3) as 1 | 2 | 3 | 4 | 5 | 6} type="scale">
-                    <div style={{
-  background: '#F3F7FB',
-  borderRadius: 20,
-  padding: '22px',
-  border: '1px solid rgba(11,37,69,.06)',
-  transition: 'all .3s cubic-bezier(.16,1,.3,1)',
-  height: '100%',
-  minHeight: 240,
-  boxSizing: 'border-box',
-}}
-                      onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'white'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(24,198,200,.3)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 32px rgba(11,37,69,.1)'; (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)' }}
-                      onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = '#F3F7FB'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(11,37,69,.06)'; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'; (e.currentTarget as HTMLDivElement).style.transform = 'none' }}
+            <Reveal delay={3}>
+              <p
+                style={{
+                  color: '#1E293B',
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  maxWidth: 1050,
+                  margin: '0 auto 36px',
+                  textAlign: 'center',
+                }}
+              >
+                At Madha College of Nursing, we believe that great nurses are made through rigorous academic training, hands-on clinical exposure, and character development rooted in compassion. Our 25-year legacy reflects a deep commitment to producing healthcare professionals who lead with both skill and heart.
+              </p>
+            </Reveal>
+
+            {/* Feature boxes */}
+            <div className="home-feature-grid">
+              {[
+                { icon: '🏥', title: '18 Affiliated Hospitals', desc: 'Live clinical rotations across premier hospitals in Chennai and beyond' },
+                { icon: '🔬', title: 'Modern Laboratories', desc: 'A specialized educational environment with high-fidelity simulation stations, clinical practice beds and workstations, task trainers, and anatomy models.' },
+                { icon: '📚', title: 'Research Culture', desc: 'Research activities in an institution involve systematic investigations and scholarly publications presented at national and international forums.' },
+                { icon: '🌍', title: 'Global Alumni Network', desc: 'Graduates working in USA, UK, UAE, Canada, Australia, and 25+ countries' },
+              ].map((item, i) => (
+                <Reveal key={item.title} delay={(i + 3) as 1 | 2 | 3 | 4 | 5 | 6} type="scale">
+                  <div
+                    style={{
+                      background: '#F3F7FB',
+                      borderRadius: 20,
+                      padding: '22px',
+                      border: '1px solid rgba(11,37,69,.06)',
+                      transition: 'all .3s cubic-bezier(.16,1,.3,1)',
+                      height: '100%',
+                      boxSizing: 'border-box',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLDivElement).style.background = 'white';
+                      (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(24,198,200,.3)';
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 32px rgba(11,37,69,.1)';
+                      (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLDivElement).style.background = '#F3F7FB';
+                      (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(11,37,69,.06)';
+                      (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
+                      (e.currentTarget as HTMLDivElement).style.transform = 'none';
+                    }}
+                  >
+                    <div style={{ fontSize: 24, marginBottom: 10 }}>{item.icon}</div>
+                    <div
+                      className="font-sans"
+                      style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 6 }}
                     >
-                      <div style={{ fontSize: 24, marginBottom: 10 }}>{item.icon}</div>
-                      <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 6 }}>{item.title}</div>
-                      <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{item.desc}</div>
+                      {item.title}
                     </div>
-                  </Reveal>
-                ))}
+                    <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>
+                      {item.desc}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={5}>
+              <button onClick={() => navigate('about')} className="btn-outline-navy">
+                Discover Our Story
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </Reveal>
+          </div>
+
+          {/* Image — placed below all Why Madha content */}
+          <Reveal type="scale">
+            <div
+              className="home-why-image"
+              style={{
+                position: 'relative',
+                width: '100%',
+                maxWidth: 1100,
+                margin: '72px auto 0',
+              }}
+            >
+              <div
+                style={{
+                  borderRadius: 28,
+                  overflow: 'hidden',
+                  aspectRatio: '16/7',
+                  position: 'relative',
+                  background: '#0B2545',
+                  transition: 'transform .6s cubic-bezier(.16,1,.3,1)',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.02)')}
+                onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+              >
+                <img
+                  src="/images/MCON.png"
+                  alt="Madha College of Nursing"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
+                  }}
+                />
               </div>
 
-              <Reveal delay={5}>
-                <button onClick={() => navigate('about')} className="btn-outline-navy">
-                  Discover Our Story
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-              </Reveal>
+              {/* Floating stat card */}
+              <div
+                className="glass-card home-floating-stat"
+                style={{
+                  position: 'absolute',
+                  bottom: -24,
+                  right: -24,
+                  borderRadius: 20,
+                  padding: '24px 28px',
+                  minWidth: 200,
+                  boxShadow: '0 24px 48px rgba(11,37,69,.15)',
+                }}
+              >
+                <div className="font-sans" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, color: '#0B2545', letterSpacing: '-.03em', lineHeight: 1 }}>98%</div>
+                <div style={{ color: '#1E5AA8', fontSize: 17, fontWeight: 600, marginTop: 6 }}>Placement Rate</div>
+                <div style={{ color: '#475569', fontSize: 15, marginTop: 2 }}>2024 Batch</div>
+              </div>
+
+              {/* Accreditation badge */}
+              <div
+                className="home-inc-badge"
+                style={{
+                  position: 'absolute',
+                  top: 24,
+                  left: -24,
+                  background: 'linear-gradient(135deg,#18C6C8,#1E5AA8)',
+                  borderRadius: 16,
+                  padding: '14px 20px',
+                  boxShadow: '0 16px 32px rgba(24,198,200,.35)',
+                }}
+              >
+                <div className="font-sans" style={{ color: 'white', fontWeight: 700, fontSize: 17 }}>INC</div>
+                <div style={{ color: '#F1F5F9', fontSize: 14, fontWeight: 600, letterSpacing: '.08em' }}>APPROVED</div>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -1190,42 +995,21 @@ export default function Home({ navigate }: Props) {
               </Reveal>
 
               {/* Hospital list */}
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 12,
-                marginBottom: 48,
-              }}>
-                <Reveal type="left">
-                  <div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 48 }}>
+                {['Madha Medical College Hospital'].map(h => (
+                  <Reveal key={h} type="left">
                     <span style={{
-                      background: 'rgba(24,198,200,.10)',
-                      border: '1px solid rgba(24,198,200,.22)',
-                      color: '#F1F5F9',
-                      padding: '8px 16px',
-                      borderRadius: 100,
-                      fontSize: 15,
-                      fontWeight: 500,
-                      display: 'inline-block',
+                      background: 'rgba(24,198,200,.10)', border: '1px solid rgba(24,198,200,.22)',
+                      color: '#F1F5F9', padding: '8px 16px', borderRadius: 100,
+                      fontSize: 15, fontWeight: 500, display: 'inline-block',
                     }}>
-                      Madha Medical College & Hospital
+                      {h}
                     </span>
-
-                    <div style={{
-                      color: '#F1F5F9',
-                      fontSize: 15,
-                      fontWeight: 500,
-                      marginTop: 12,
-                      paddingLeft: 4,
-                      lineHeight: 1.6,
-                    }}>
-                      Affiliated with Accredited Health Care Organizations in Tamilnadu
-                    </div>
-                  </div>
-                </Reveal>
+                  </Reveal>
+                ))}
               </div>
 
-<Reveal type="left" delay={3}>
+              <Reveal type="left" delay={3}>
                 <button onClick={() => navigate('departments')} className="btn-teal">
                   Explore Departments
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1234,8 +1018,12 @@ export default function Home({ navigate }: Props) {
             </div>
 
            {/* Right — Timeline */}
-<div className="home-clinical-timeline">
-              <div className="home-semester-accordion">
+<div
+  className="home-clinical-timeline"
+  style={{
+    transform: 'translateX(80px)',
+  }}
+>              <div className="home-semester-accordion">
               {SEMESTER_SUBJECTS.map((semester, index) => {
                 const isOpen = openSemester === index
 
@@ -1364,11 +1152,17 @@ export default function Home({ navigate }: Props) {
               </Reveal>
               <Reveal delay={2}>
                 <p style={{ color: '#1E293B', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>
-Our faculty are empowered to undertake research activities by utilizing the facilities provided by the college, including reference books, collections of rare books, encyclopaedias, magazines, periodicals, research journals, e-journals, e-books, and free internet access. Research and innovation in education support students’ professional growth and development.                </p>
+                  Our faculty and research scholars pursue impactful research funded by DST, ICMR, and international bodies — driving meaningful improvements in patient care and healthcare policy.
+                </p>
               </Reveal>
               <Reveal delay={3}>
                 <div style={{ display: 'flex', gap: 40 }}>
-                  
+                  {[{ val: '48+', label: 'Research Papers' }, { val: '₹1.2Cr', label: 'Grant Funding' }, { val: '6', label: 'Active Projects' }].map(s => (
+                    <div key={s.label}>
+                      <div className="font-sans text-gold-g" style={{ fontSize: 'clamp(40px, 4vw, 64px)', fontWeight: 700, letterSpacing: '-.02em' }}>{s.val}</div>
+                      <div style={{ color: '#475569', fontSize: 17, fontWeight: 500, marginTop: 4 }}>{s.label}</div>
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>
@@ -1377,43 +1171,17 @@ Our faculty are empowered to undertake research activities by utilizing the faci
               {RESEARCH_ITEMS.map((r, i) => (
                 <Reveal key={r.title} delay={(i + 1) as 1 | 2 | 3 | 4} type="scale">
                   <div style={{
-                    background: 'white',
-                    borderRadius: 20,
-                    padding: '28px 24px',
+                    background: 'white', borderRadius: 20, padding: '28px 24px',
                     border: '1px solid rgba(11,37,69,.06)',
                     transition: 'all .4s cubic-bezier(.16,1,.3,1)',
-                    height: '100%',
-                    minHeight: 250,
-                    boxSizing: 'border-box',
-                    display: 'flex',
-                    flexDirection: 'column',
                   }}
                     onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(24,198,200,.35)'; el.style.boxShadow = '0 20px 40px rgba(11,37,69,.1)'; el.style.transform = 'translateY(-6px)' }}
                     onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = 'rgba(11,37,69,.06)'; el.style.boxShadow = 'none'; el.style.transform = 'none' }}
                   >
-<div style={{
-  display: 'flex',
-  alignItems: 'center',
-  gap: 12,
-  marginBottom: 14,
-}}>
-  <span style={{ fontSize: 28 }}>{r.icon}</span>
-  <div className="font-sans" style={{
-    fontWeight: 700,
-    fontSize: 20,
-    color: '#0B2545',
-    lineHeight: 1.3,
-  }}>
-    {r.title}
-  </div>
-</div>
-                    <div style={{
-                      color: '#18C6C8',
-                      fontSize: 'clamp(16px, 1.3vw, 18px)',
-                      lineHeight: 1.7
-                    }}>
-                      {r.desc}
-                    </div>
+                    <div style={{ fontSize: 28, marginBottom: 14 }}>{r.icon}</div>
+                    <div className="font-sans" style={{ fontWeight: 700, fontSize: 20, color: '#0B2545', marginBottom: 8, lineHeight: 1.3 }}>{r.title}</div>
+                    <div className="font-sans" style={{ fontSize: 15, fontWeight: 600, color: '#18C6C8', marginBottom: 8 }}>{r.stat}</div>
+                    <div style={{ color: '#1E293B', fontSize: 'clamp(16px, 1.3vw, 18px)', lineHeight: 1.7 }}>{r.desc}</div>
                   </div>
                 </Reveal>
               ))}
@@ -1422,7 +1190,7 @@ Our faculty are empowered to undertake research activities by utilizing the faci
         </div>
       </section>
 
-      
+     
 
       {/* ═══════════════════════════════════════════
           9. TESTIMONIALS — Glass cards on dark bg
