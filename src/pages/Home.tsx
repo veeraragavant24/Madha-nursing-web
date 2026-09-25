@@ -462,24 +462,35 @@ export default function Home({ navigate }: Props) {
   }
 
 
-  /* ================================
+    /* ================================
      MOBILE
   ================================= */
 
   @media (max-width: 768px) {
 
-  .home-stats-section {
-  padding: 56px 20px !important;
-}
+    .home-stats-section {
+      padding: 56px 20px !important;
+    }
 
-.home-stats-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px 20px;
-}
+    .home-why-image-frame {
+      width: 100% !important;
+      aspect-ratio: 16 / 9 !important;
+    }
 
-.home-stat-divider {
-  display: none;
-}
+    .home-why-image {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-top: 32px !important;
+    }
+
+    .home-stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px 20px;
+    }
+
+    .home-stat-divider {
+      display: none;
+    }
 
     .home-admissions-grid {
       grid-template-columns: 1fr;
@@ -537,7 +548,8 @@ export default function Home({ navigate }: Props) {
     }
 
 
-    /* CLINICAL TRAINING MOBILE */
+    
+     /* CLINICAL TRAINING MOBILE */
 
     .home-clinical-section {
       padding: 64px 20px !important;
@@ -578,20 +590,25 @@ export default function Home({ navigate }: Props) {
   }
 
 
+
   /* ================================
      SMALL MOBILE
   ================================= */
 
   @media (max-width: 480px) {
 
-  .home-stats-section {
-  padding: 48px 16px !important;
-}
+    .home-stats-section {
+      padding: 48px 16px !important;
+    }
 
-.home-stats-grid {
-  grid-template-columns: 1fr 1fr;
-  gap: 32px 12px;
-}
+    .home-why-image-frame {
+      aspect-ratio: 16 / 10 !important;
+    }
+
+    .home-stats-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 12px;
+    }
 
     .home-mobile-section {
       padding-left: 16px !important;
