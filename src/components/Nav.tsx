@@ -2509,6 +2509,223 @@ transform: none !important;
   }
 
 }
+  /* =========================================================
+   MADHA HEADER — RESPONSIVE LOGO
+   MOBILE + LAPTOP + DESKTOP PC
+   ========================================================= */
+
+
+/* =========================================================
+   1. MOBILE
+   0px → 768px
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .nav-logo-ring {
+    position: relative !important;
+
+    width: 58px !important;
+    height: 58px !important;
+
+    flex: 0 0 58px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+  }
+
+  .nav-logo-ring::before {
+    content: "";
+
+    position: absolute;
+
+    width: 78px;
+    height: 78px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.55) 25%,
+      rgba(255, 255, 255, 0.28) 45%,
+      rgba(255, 255, 255, 0.10) 65%,
+      transparent 82%
+    );
+
+    filter: blur(9px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  .nav-logo-img {
+    position: relative !important;
+
+    width: 52px !important;
+    height: 52px !important;
+
+    object-fit: contain !important;
+
+    z-index: 2 !important;
+
+    filter:
+      drop-shadow(0 0 5px rgba(255,255,255,.95))
+      drop-shadow(0 0 12px rgba(255,255,255,.75))
+      drop-shadow(0 0 22px rgba(255,255,255,.45)) !important;
+  }
+}
+
+
+/* =========================================================
+   2. LAPTOP
+   769px → 1399px
+   ========================================================= */
+
+@media (min-width: 769px) and (max-width: 1399px) {
+
+  .nav-logo-ring {
+    position: relative !important;
+
+    width: 78px !important;
+    height: 78px !important;
+
+    flex: 0 0 78px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+  }
+
+  .nav-logo-ring::before {
+    content: "";
+
+    position: absolute;
+
+    width: 105px;
+    height: 105px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.78) 0%,
+      rgba(255, 255, 255, 0.55) 25%,
+      rgba(255, 255, 255, 0.28) 45%,
+      rgba(255, 255, 255, 0.10) 65%,
+      transparent 82%
+    );
+
+    filter: blur(11px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  .nav-logo-img {
+    position: relative !important;
+
+    width: 72px !important;
+    height: 72px !important;
+
+    object-fit: contain !important;
+
+    z-index: 2 !important;
+
+    filter:
+      drop-shadow(0 0 6px rgba(255,255,255,.95))
+      drop-shadow(0 0 15px rgba(255,255,255,.75))
+      drop-shadow(0 0 26px rgba(255,255,255,.45)) !important;
+  }
+}
+
+
+/* =========================================================
+   3. DESKTOP PC
+   1400px and above
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .nav-logo-ring {
+    position: relative !important;
+
+    width: 92px !important;
+    height: 92px !important;
+
+    flex: 0 0 92px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    overflow: visible !important;
+  }
+
+  .nav-logo-ring::before {
+    content: "";
+
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.80) 0%,
+      rgba(255, 255, 255, 0.58) 25%,
+      rgba(255, 255, 255, 0.30) 45%,
+      rgba(255, 255, 255, 0.11) 65%,
+      transparent 82%
+    );
+
+    filter: blur(12px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  .nav-logo-img {
+    position: relative !important;
+
+    width: 88px !important;
+    height: 88px !important;
+
+    object-fit: contain !important;
+
+    z-index: 2 !important;
+
+    filter:
+      drop-shadow(0 0 7px rgba(255,255,255,.95))
+      drop-shadow(0 0 17px rgba(255,255,255,.75))
+      drop-shadow(0 0 30px rgba(255,255,255,.45)) !important;
+  }
+}
 
  
 
