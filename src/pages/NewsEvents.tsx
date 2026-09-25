@@ -760,7 +760,7 @@ const response = await fetch(
                     marginTop: 20,
                   }}
                 >
-                  All Upcoming <span className="text-teal-g">Events</span>
+                  All  Upcoming <span className="text-teal-g">Events</span>
                 </h2>
               </Reveal>
             </div>

@@ -14,6 +14,7 @@ import NewsEvents from './pages/NewsEvents'
 import AdminLogin from './pages/AdminLogin'
 import AdminNewsEvents from './pages/AdminNewsEvents'
 import Intro from './components/Intro'
+import Chatbot from './components/Chatbot'
 
 type Page =
   | 'home'
@@ -252,9 +253,12 @@ export default function App() {
             </main>
 
             <Footer
-              navigate={navigate}
-            />
-          </div>
+  navigate={navigate}
+/>
+
+<Chatbot
+  navigate={(page: string) => navigate(page as Page)}
+/>       </div>
         </>
       )}
     </>

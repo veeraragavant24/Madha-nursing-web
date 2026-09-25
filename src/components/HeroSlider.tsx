@@ -223,23 +223,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
           to   { width: 100%; }
         }
 
-        .arrow-btn {
-          width: 52px; height: 52px;
-          border-radius: 50%;
-          background: rgba(255,255,255,.10);
-          border: 1.5px solid rgba(255,255,255,.20);
-          color: white;
-          display: flex; align-items: center; justify-content: center;
-          cursor: pointer;
-          transition: all .3s cubic-bezier(.16,1,.3,1);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-        }
-        .arrow-btn:hover {
-          background: rgba(24,198,200,.25);
-          border-color: rgba(24,198,200,.50);
-          transform: scale(1.08);
-        }
+        
 
         .slide-num {
           font-family: 'Roboto Condensed', sans-serif;
@@ -279,13 +263,15 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   justify-content: space-between;
 }
 
-@media (max-width: 768px) {
+
+
+ @media (max-width: 768px) {
 
   .hero-slider {
-    height: 100svh !important;
-    min-height: 680px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    background: transparent !important;
   }
-
   .hero-content {
     padding: 100px 24px 120px !important;
     justify-content: center;
@@ -353,11 +339,11 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     display: none !important;
   }
 }
-
 @media (max-width: 480px) {
 
   .hero-slider {
-    min-height: 640px !important;
+    min-height: 0 !important;
+    background: transparent !important;
   }
 }
 
@@ -399,6 +385,25 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     line-height: 1.7 !important;
   }
 
+}
+  /* =========================================================
+   HERO SLIDER DOTS — CENTER POSITION
+   ========================================================= */
+
+.hero-slider-dots {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: 28px !important;
+  transform: translateX(-50%) !important;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 14px !important;
+
+  width: auto !important;
+  margin: 0 !important;
 }
   
   
@@ -556,7 +561,16 @@ fontSize: 'clamp(40px, 5vw, 80px)',
         {/* Dot progress indicators */}
         <div
   className="hero-bottom-dots"
-  style={{ display: 'flex', alignItems: 'center', gap: 6 }}
+  style={{
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 6,
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+}}
+
 >
           {SLIDES.map((_, i) => (
             <button
@@ -572,30 +586,7 @@ fontSize: 'clamp(40px, 5vw, 80px)',
           ))}
         </div>
 
-        {/* Arrow navigation */}
-       <div
-  className="hero-bottom-arrows"
-  style={{ display: 'flex', gap: 10 }}
->
-          <button
-            className="arrow-btn"
-            aria-label="Previous slide"
-            onClick={() => { prev2(); resetTimer() }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 5l-7 7 7 7"/>
-            </svg>
-          </button>
-          <button
-            className="arrow-btn"
-            aria-label="Next slide"
-            onClick={() => { next(); resetTimer() }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
+        
       </div>
 
       {/* ── Scroll cue ── */}

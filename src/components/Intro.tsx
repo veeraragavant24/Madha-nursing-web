@@ -28,24 +28,74 @@ export default function Intro({ onComplete }: IntroProps) {
     <div className={`madha-intro ${closing ? 'closing' : ''}`}>
       <div className="madha-intro-content">
 
-        <img
-  src="/logos/favico.png"
-  alt="Madha College of Nursing"
-  className="madha-intro-logo"
+       <div
   style={{
-    display: 'block',
-    width: '140px',
-    height: '140px',
-    objectFit: 'contain',
-    maxWidth: '80vw',
-    visibility: 'visible',
-    opacity: 1,
+    position: 'relative',
+    width: '180px',
+    height: '180px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  {/* WHITE GLOW BEHIND LOGO */}
+  <div
+  style={{
+    position: 'absolute',
+    width: '180px',
+    height: '180px',
+    top: '-10px',
+    borderRadius: '50%',
+    background:
+      'radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.73) 25%, rgba(255,255,255,0.18) 45%, rgba(255,255,255,0.06) 65%, transparent 80%)',
+    filter: 'blur(10px)',
+    pointerEvents: 'none',
   }}
 />
 
-        <h1>MADHA COLLEGE OF NURSING</h1>
+  <img
+    src="/logos/mdch-logo (1).png"
+    alt="Madha College of Nursing"
+    className="madha-intro-logo"
+    style={{
+      position: 'relative',
+      zIndex: 2,
+      display: 'block',
+      width: '140px',
+      height: '140px',
+      objectFit: 'contain',
+      maxWidth: '80vw',
+      visibility: 'visible',
+      opacity: 1,
+    }}
+  />
+</div>
 
-        <p>Excellence in Nursing Education</p>
+        <h1
+  style={{
+    fontFamily: '"Cormorant Garamond", Georgia, serif',
+    fontSize: '44px',
+    fontWeight: 600,
+    letterSpacing: '2px',
+    color: '#ffffff',
+    margin: '0',
+    lineHeight: 1.8,
+    textTransform: 'uppercase',
+  }}
+>
+  MADHA COLLEGE OF NURSING
+</h1>
+
+       <hr></hr> <p style={{
+    fontFamily: '"Cormorant Garamond", Georgia, serif',
+    fontSize: '18px',
+    fontWeight: 600,
+    letterSpacing: '2px',
+    color: '#ffffff',
+    margin: '0',
+    lineHeight: 1.1,
+    textTransform: 'uppercase',
+  }}>Excellence in Nursing Education</p>
 
       </div>
     </div>

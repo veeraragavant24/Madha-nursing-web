@@ -367,3 +367,115 @@
     width: 110px;
   }
 }
+/* =========================================================
+   MADHA INTRO - WHITE LIGHT BEHIND LOGO
+   ========================================================= */
+
+.madha-intro {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  background: #071a36 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99999 !important;
+  overflow: hidden !important;
+}
+
+
+/* =========================================================
+   INTRO CONTENT
+   ========================================================= */
+
+.madha-intro-content {
+  position: relative !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+
+  width: 90% !important;
+  max-width: 700px !important;
+
+  z-index: 10 !important;
+}
+
+
+/* =========================================================
+   LARGE SOFT WHITE GLOW BEHIND LOGO
+   ========================================================= */
+
+.madha-intro-content::before {
+  content: "" !important;
+
+  position: absolute !important;
+
+  width: 380px !important;
+  height: 380px !important;
+
+  left: 50% !important;
+  top: 55px !important;
+
+  transform: translateX(-50%) !important;
+
+  border-radius: 50% !important;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.40) 18%,
+    rgba(255, 255, 255, 0.23) 38%,
+    rgba(255, 255, 255, 0.10) 58%,
+    rgba(255, 255, 255, 0.03) 72%,
+    transparent 82%
+  ) !important;
+
+  filter: blur(12px) !important;
+
+  pointer-events: none !important;
+
+  z-index: 0 !important;
+}
+
+
+/* =========================================================
+   LOGO MUST STAY ABOVE THE GLOW
+   ========================================================= */
+
+.madha-intro-logo {
+  position: relative !important;
+
+  z-index: 20 !important;
+
+  display: block !important;
+
+  width: 140px !important;
+  height: 140px !important;
+
+  object-fit: contain !important;
+
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  filter:
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.45))
+    drop-shadow(0 10px 22px rgba(0, 0, 0, 0.30)) !important;
+}
+
+
+/* =========================================================
+   TEXT ABOVE THE GLOW
+   ========================================================= */
+
+.madha-intro-content h1,
+.madha-intro-content p {
+  position: relative !important;
+  z-index: 20 !important;
+}
