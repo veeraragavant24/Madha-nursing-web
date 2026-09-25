@@ -71,32 +71,13 @@ export default function Intro({ onComplete }: IntroProps) {
   />
 </div>
 
-        <h1
-  style={{
-    fontFamily: '"Cormorant Garamond", Georgia, serif',
-    fontSize: '44px',
-    fontWeight: 600,
-    letterSpacing: '2px',
-    color: '#ffffff',
-    margin: '0',
-    lineHeight: 1.8,
-    textTransform: 'uppercase',
-  }}
->
+       <h1 className="madha-intro-title">
   MADHA COLLEGE OF NURSING
 </h1>
 
-       <hr></hr> <p style={{
-    fontFamily: '"Cormorant Garamond", Georgia, serif',
-    fontSize: '18px',
-    fontWeight: 600,
-    letterSpacing: '2px',
-    color: '#ffffff',
-    margin: '0',
-    lineHeight: 1.1,
-    textTransform: 'uppercase',
-  }}>Excellence in Nursing Education</p>
-
+       <hr></hr> <p className="madha-intro-tagline">
+  Excellence in Nursing Education
+</p>
       </div>
     </div>
   )
