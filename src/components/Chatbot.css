@@ -640,20 +640,16 @@ margin-top: 28px;
 
 @media (min-width: 1025px) {
 
-  .chatbot-window {
+  .madha-chatbot {
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .madha-chatbot-window {
     width: 430px !important;
     height: 680px !important;
     max-height: 80vh !important;
-    right: 24px !important;
-    bottom: 24px !important;
     border-radius: 24px !important;
   }
 
-  .chatbot-header {
-    height: 76px !important;
-  }
-
-  .chatbot-messages {
-    height: calc(100% - 76px) !important;
-  }
 }
