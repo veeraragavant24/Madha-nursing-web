@@ -11,7 +11,7 @@ const DEPTS = [
     fullName: 'Department of Medical Surgical Nursing',
     abbr: 'MSN',
     color: '#0B2545',
-    img: 'photo-1691139601099-932c01ec198b',
+    img: '/departments/Medical-Surgical-Nursing/medical.png',
     head: 'Dr. Kanimozhi',
     headDesig: 'M.Sc. Nursing,Ph.D — Vice-principal & Head of Department',
     
@@ -29,10 +29,10 @@ research: [
   {
     id: 'pdn',
     name: 'Paediatric Nursing',
-    fullName: 'Department of Pediatric Nursing',
+    fullName: 'public/Department of Pediatric Nursing',
     abbr: 'PDN',
     color: '#1E5AA8',
-    img: 'photo-1765896387387-0538bc9f997e',
+    img: 'departments/Child Health Nursing/pediatric.png',
     head: 'Ms Reheetha jeslin A',
     headDesig: 'M.Sc. Nursing (Paediatric) — Associate Professor & Head of Department',
     
@@ -52,7 +52,7 @@ research: [
     fullName: 'Department of Community Health Nursing',
     abbr: 'CHN',
     color: '#18C6C8',
-    img: 'photo-1758270704262-ecc82b23dc37',
+    img: '/departments/Community Health Nursing/community.png',
     head: 'Ms. Kanchana.S',
     headDesig: 'M.Sc. Nursing,  — Professor & Head of Department',
    
@@ -63,7 +63,7 @@ research: [
   'Kayakalp Initiative Programme',
   'TeCHO+ Initiative Awareness Programme',
   'Biomedical Waste Management',
-],    labs: ['Community  Health lab', 'Epidemiology & Statistics Room'],
+],    labs: ['Community Health Nursing lab', 'Epidemiology & Statistics Room'],
   },
   {
     id: 'obg',
@@ -71,7 +71,7 @@ research: [
     fullName: 'Department of Obstetrics & Gynecological Nursing',
     abbr: 'OBG',
     color: '#F59E0B',
-    img: 'photo-1676281050264-178eff38874a',
+    img: '/departments/Obstetrics abd gynecological nsg/obstric.png',
     head: 'Ms. Jessy Rani. P',
     headDesig: 'M.Sc. Nursing (OBG),  — Professor & Head of Department',
     
@@ -90,7 +90,7 @@ research: [
     fullName: 'Department of Psychiatric Nursing',
     abbr: 'PSY',
     color: '#7C3AED',
-    img: 'photo-1511174511562-5f7f18b874f8',
+    img: '/departments/Mental Health Nrsing/psychiatric.png',
     head: 'Dr. Saranya.P',
     headDesig: 'M.Sc. Nursing (Psychiatric),Ph.D. — Associate Professor &   Head of Department',
     
@@ -110,7 +110,7 @@ research: [
     fullName: 'Department of Nursing Research',
     abbr: 'R&D',
     color: '#059669',
-    img: 'photo-1614935151651-0bea6508db6b',
+    img: '/departments/Obstetrics abd gynecological nsg/research.png',
     head: 'Ms. Catherine Baby Suhasini.H',
     headDesig: 'M.Sc. Nursing,  — Associate Professor & Head of Department',
     
@@ -379,7 +379,7 @@ export default function Departments({ navigate }: Props) {
   style={{ position: 'relative', height: 340 }}
 >
               <img
-                src={`https://images.unsplash.com/${active.img}?w=1200&h=600&fit=crop&auto=format`}
+                src={active.img}
                 alt={active.name}
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}

@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': path.resolve(import.meta.dirname, './src'),
       },
     },
     server: {
@@ -45,6 +45,12 @@ export default defineConfig(({ mode }) => {
         ignored: [
           '**/.figma/**',
           '**/src/backend/**',
+          '**/*.tmp',
+          '**/*.tmp.*',
+          '**/*.png.tmp',
+          '**/*.jpg.tmp',
+          '**/*.jpeg.tmp',
+          '**/*.webp.tmp',
         ],
       },
     },
