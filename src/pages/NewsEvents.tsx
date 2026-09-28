@@ -32,8 +32,7 @@ function displayDate(dateStr: string) {
   return `${day} ${month} ${year}`
 }
 
-const API_BASE_URL =
-  'http://localhost:5021'
+const API_BASE_URL = 'https://api.madhanursingcollege.com'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK
