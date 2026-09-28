@@ -2509,6 +2509,39 @@ transform: none !important;
   }
 
 }
+@media (max-width: 768px) {
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* First row - 2 contents */
+  .stats-grid > *:nth-child(1),
+  .stats-grid > *:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  /* Second row - 3 contents */
+  .stats-grid > *:nth-child(3),
+  .stats-grid > *:nth-child(4),
+  .stats-grid > *:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .stats-grid > * {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+}
+
+
+
+
   /* =========================================================
    MADHA HEADER — RESPONSIVE LOGO
    MOBILE + LAPTOP + DESKTOP PC
@@ -2726,6 +2759,8 @@ transform: none !important;
       drop-shadow(0 0 30px rgba(255,255,255,.45)) !important;
   }
 }
+
+
 
  
 
