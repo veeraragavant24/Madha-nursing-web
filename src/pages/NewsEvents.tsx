@@ -33,7 +33,7 @@ function displayDate(dateStr: string) {
 }
 
 const API_BASE_URL =
-  'https://madha-nursing-api.onrender.com'
+  'http://localhost:5021'
 
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK

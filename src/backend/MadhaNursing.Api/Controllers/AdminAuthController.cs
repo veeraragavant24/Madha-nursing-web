@@ -11,7 +11,7 @@ using MadhaNursing.Api.Models;
 namespace MadhaNursing.Api.Controllers;
 
 [ApiController]
-[Route("api/admin")]
+[Route("admin")]
 public class AdminAuthController : ControllerBase
 {
     private readonly ApplicationDbContext _context;

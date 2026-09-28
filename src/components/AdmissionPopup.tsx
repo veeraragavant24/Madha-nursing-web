@@ -17,15 +17,16 @@ export default function AdmissionPopup({
   const [sending, setSending] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+ const handleSubmit = async (e: FormEvent) => {
+  e.preventDefault()
 
-    if (sending) return
+  if (sending) return
 
-    setSending(true)
+  setSending(true)
 
-    try {
-      const response = await fetch('https://madha-nursing-api.onrender.com/api/admission-enquiry', {
+  try {
+    const response = await fetch("http://localhost:5001/api/admission-enquiry", {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -36,20 +37,29 @@ export default function AdmissionPopup({
           course: form.course,
           message: 'Admission enquiry submitted from popup.',
         }),
-      })
-
-      if (!response.ok) {
-        throw new Error('Failed to send enquiry')
       }
+    )
 
-      setSubmitted(true)
-    } catch (error) {
-      console.error('Admission enquiry error:', error)
-      alert('Unable to send enquiry. Please try again.')
-    } finally {
-      setSending(false)
+    if (!response.ok) {
+      throw new Error('Failed to send enquiry')
     }
+
+    const result = await response.json()
+
+    console.log('Admission enquiry response:', result)
+
+    if (result.success) {
+      setSubmitted(true)
+    } else {
+      throw new Error(result.message || 'Failed to send enquiry')
+    }
+  } catch (error) {
+    console.error('Admission enquiry error:', error)
+    alert('Unable to send enquiry. Please try again.')
+  } finally {
+    setSending(false)
   }
+}
 
   return (
     <>

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MadhaNursing.Api.Data;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,14 +15,12 @@ builder.Services.AddCors(options =>
     {
         policy
             .SetIsOriginAllowed(origin =>
+                origin == "http://localhost:5173" ||
                 origin == "http://localhost:8443" ||
                 origin == "https://localhost:8443" ||
 
                 // Previous Vercel frontend
-                origin == "https://veeraragavant24-madha-nursing-web-8.vercel.app" ||
-
-                // Current Render frontend
-                origin == "https://madha-nursing-web-1.onrender.com"
+                origin == "https://veeraragavant24-madha-nursing-web-8.vercel.app"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -41,24 +38,23 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // =====================================================
-// DATABASE - POSTGRESQL
+// DATABASE - SQL SERVER
 // =====================================================
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(
+    options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     )
 );
-
-builder.Services.AddScoped<
-    Microsoft.AspNetCore.Identity.IPasswordHasher<MadhaNursing.Api.Models.AdminUser>,
-    Microsoft.AspNetCore.Identity.PasswordHasher<MadhaNursing.Api.Models.AdminUser>
->();
 
 // =====================================================
 // PASSWORD HASHING
 // =====================================================
 
+builder.Services.AddScoped<
+    Microsoft.AspNetCore.Identity.IPasswordHasher<MadhaNursing.Api.Models.AdminUser>,
+    Microsoft.AspNetCore.Identity.PasswordHasher<MadhaNursing.Api.Models.AdminUser>
+>();
 
 // =====================================================
 // JWT AUTHENTICATION
@@ -111,11 +107,11 @@ var app = builder.Build();
 // SWAGGER
 // =====================================================
 
-if (app.Environment.IsDevelopment())
-{
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 // =====================================================
 // STATIC FILES

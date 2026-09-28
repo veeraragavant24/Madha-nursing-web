@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const API_BASE =
-  'https://madha-nursing-api.onrender.com/api'
+  'https://localhost:5021/api'
   
 interface Props {
   goToDashboard: () => void

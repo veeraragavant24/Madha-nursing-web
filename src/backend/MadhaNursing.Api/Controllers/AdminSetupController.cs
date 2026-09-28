@@ -6,7 +6,7 @@ using MadhaNursing.Api.Models;
 namespace MadhaNursing.Api.Controllers;
 
 [ApiController]
-[Route("api/admin/setup")]
+[Route("admin/setup")]
 public class AdminSetupController : ControllerBase
 {
     private readonly ApplicationDbContext _context;

@@ -1,7 +1,5 @@
 using System.Net;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
+using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MadhaNursing.Api.Controllers
@@ -11,14 +9,10 @@ namespace MadhaNursing.Api.Controllers
     public class AdmissionEnquiryController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IHttpClientFactory _httpClientFactory;
 
-        public AdmissionEnquiryController(
-            IConfiguration configuration,
-            IHttpClientFactory httpClientFactory)
+        public AdmissionEnquiryController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _httpClientFactory = httpClientFactory;
         }
 
         [HttpPost]
@@ -41,6 +35,10 @@ namespace MadhaNursing.Api.Controllers
                 var phone = request.Phone?.Trim();
                 var course = request.Course?.Trim();
                 var message = request.Message?.Trim();
+
+                // ==============================
+                // VALIDATION
+                // ==============================
 
                 if (string.IsNullOrWhiteSpace(name))
                 {
@@ -69,17 +67,33 @@ namespace MadhaNursing.Api.Controllers
                     });
                 }
 
-                // Read Resend configuration from Render environment variables
-                var resendApiKey =
-                    _configuration["Resend:ApiKey"]?.Trim();
+                // ==============================
+                // EMAIL SETTINGS
+                // ==============================
+
+                var smtpServer =
+                    _configuration["EmailSettings:SmtpServer"];
+
+                var smtpPortText =
+                    _configuration["EmailSettings:SmtpPort"];
+
+                var emailUser =
+                    _configuration["EmailSettings:EmailUser"];
+
+                var emailPassword =
+                    _configuration["EmailSettings:EmailPassword"];
 
                 var collegeEmail =
-                    _configuration["Resend:CollegeEmail"]?.Trim();
+                    _configuration["EmailSettings:CollegeEmail"];
 
-                if (string.IsNullOrWhiteSpace(resendApiKey))
+                if (string.IsNullOrWhiteSpace(smtpServer) ||
+                    string.IsNullOrWhiteSpace(smtpPortText) ||
+                    string.IsNullOrWhiteSpace(emailUser) ||
+                    string.IsNullOrWhiteSpace(emailPassword) ||
+                    string.IsNullOrWhiteSpace(collegeEmail))
                 {
                     Console.WriteLine(
-                        "Resend configuration error: Resend:ApiKey is missing."
+                        "Email configuration is missing."
                     );
 
                     return StatusCode(500, new
@@ -89,40 +103,32 @@ namespace MadhaNursing.Api.Controllers
                     });
                 }
 
-                if (string.IsNullOrWhiteSpace(collegeEmail))
+                if (!int.TryParse(smtpPortText, out int smtpPort))
                 {
-                    Console.WriteLine(
-                        "Resend configuration error: Resend:CollegeEmail is missing."
-                    );
-
                     return StatusCode(500, new
                     {
                         success = false,
-                        message = "College email configuration is missing."
+                        message = "Invalid SMTP port configuration."
                     });
                 }
 
-                if (!IsValidEmail(collegeEmail))
-                {
-                    Console.WriteLine(
-                        "Resend configuration error: Resend:CollegeEmail is invalid."
-                    );
-
-                    return StatusCode(500, new
-                    {
-                        success = false,
-                        message = "College email configuration is invalid."
-                    });
-                }
+                // ==============================
+                // EMAIL SUBJECT
+                // ==============================
 
                 var subject =
                     $"New Admission Enquiry - {CleanHeaderValue(name)}";
+
+                // ==============================
+                // EMAIL HTML
+                // ==============================
 
                 var htmlBody = $@"
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset=""UTF-8"">
+    <title>New Admission Enquiry</title>
 </head>
 
 <body style=""font-family: Arial, sans-serif; line-height: 1.6;"">
@@ -167,65 +173,44 @@ namespace MadhaNursing.Api.Controllers
 </html>
 ";
 
-                // Create HTTP client
-                var client =
-                    _httpClientFactory.CreateClient();
+                // ==============================
+                // SMTP EMAIL
+                // ==============================
 
-                // Prevent the request from waiting too long
-                client.Timeout = TimeSpan.FromSeconds(20);
+                using var mail = new MailMessage();
 
-                // Resend authentication
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(
-                        "Bearer",
-                        resendApiKey
-                    );
-
-                // Resend email payload
-                var payload = new
-                {
-                    from = "Madha Nursing Website <onboarding@resend.dev>",
-                    to = new[] { collegeEmail },
-                    subject = subject,
-                    html = htmlBody,
-
-                    // Clicking Reply in the college email
-                    // will reply to the student
-                    reply_to = email
-                };
-
-                var json = JsonSerializer.Serialize(payload);
-
-                using var content = new StringContent(
-                    json,
-                    Encoding.UTF8,
-                    "application/json"
+                mail.From = new MailAddress(
+                    emailUser,
+                    "Madha Nursing Website"
                 );
 
-                // Send email through Resend HTTPS API
-                var response = await client.PostAsync(
-                    "https://api.resend.com/emails",
-                    content
+                mail.To.Add(collegeEmail);
+
+                mail.ReplyToList.Add(
+                    new MailAddress(email)
                 );
 
-                var responseBody =
-                    await response.Content.ReadAsStringAsync();
+                mail.Subject = subject;
+                mail.Body = htmlBody;
+                mail.IsBodyHtml = true;
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine(
-                        $"Resend API error: {(int)response.StatusCode} - {responseBody}"
+                using var smtp = new SmtpClient(
+                    smtpServer,
+                    smtpPort
+                );
+
+                smtp.EnableSsl = true;
+
+                smtp.Credentials =
+                    new System.Net.NetworkCredential(
+                        emailUser,
+                        emailPassword
                     );
 
-                    return StatusCode(500, new
-                    {
-                        success = false,
-                        message = "Unable to send enquiry email."
-                    });
-                }
+                await smtp.SendMailAsync(mail);
 
                 Console.WriteLine(
-                    "Admission enquiry email sent successfully through Resend."
+                    "Admission enquiry email sent successfully through Gmail SMTP."
                 );
 
                 return Ok(new
@@ -234,16 +219,16 @@ namespace MadhaNursing.Api.Controllers
                     message = "Enquiry sent successfully."
                 });
             }
-            catch (TaskCanceledException)
+            catch (SmtpException ex)
             {
                 Console.WriteLine(
-                    "Resend request timed out."
+                    $"SMTP error: {ex.Message}"
                 );
 
-                return StatusCode(504, new
+                return StatusCode(500, new
                 {
                     success = false,
-                    message = "Email service request timed out."
+                    message = "Unable to send enquiry email."
                 });
             }
             catch (Exception ex)
@@ -259,6 +244,10 @@ namespace MadhaNursing.Api.Controllers
                 });
             }
         }
+
+        // ==============================
+        // EMAIL VALIDATION
+        // ==============================
 
         private static bool IsValidEmail(string email)
         {
@@ -278,6 +267,10 @@ namespace MadhaNursing.Api.Controllers
             }
         }
 
+        // ==============================
+        // CLEAN HEADER
+        // ==============================
+
         private static string CleanHeaderValue(string value)
         {
             return value
@@ -286,6 +279,10 @@ namespace MadhaNursing.Api.Controllers
                 .Trim();
         }
 
+        // ==============================
+        // HTML ENCODING
+        // ==============================
+
         private static string HtmlEncode(string? value)
         {
             return WebUtility.HtmlEncode(
@@ -293,6 +290,10 @@ namespace MadhaNursing.Api.Controllers
             );
         }
     }
+
+    // ==========================================
+    // REQUEST MODEL
+    // ==========================================
 
     public class AdmissionEnquiryRequest
     {

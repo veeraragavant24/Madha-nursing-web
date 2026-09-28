@@ -1,22 +1,44 @@
 import { useEffect, useMemo, useState } from 'react'
+import type { FormEvent } from 'react'
 import { localDateStr, isUpcomingDate } from '../lib/dates'
-import { EVENT_IMAGE_FALLBACK, type NewsEventRow } from '../lib/newsEvents'
+import { EVENT_IMAGE_FALLBACK } from '../lib/newsEvents'
 
 const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ||
   'https://madha-nursing-api.onrender.com/api'
-
+  
 function getEventImageUrl(imageUrl?: string | null) {
-  if (!imageUrl) return EVENT_IMAGE_FALLBACK
-
-  const apiOrigin = API_BASE.replace(/\/api$/, '')
-
-  if (/^https?:\/\//i.test(imageUrl)) {
-    return imageUrl
-      .replace(/^http:\/\/localhost:5021/i, apiOrigin)
-      .replace(/^https?:\/\/[^/]+\.trycloudflare\.com/i, apiOrigin)
+  if (!imageUrl || !imageUrl.trim()) {
+    return EVENT_IMAGE_FALLBACK
   }
 
-  return `${apiOrigin}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`
+  const apiOrigin = API_BASE.replace(/\/api$/, '')
+  const trimmed = imageUrl.trim()
+
+  // Full external URL (including Cloudflare URLs).
+  if (/^https?:\/\//i.test(trimmed)) {
+    // Convert old local API URLs to the current API origin.
+    if (/^https?:\/\/localhost:5021/i.test(trimmed)) {
+      return trimmed.replace(/^https?:\/\/localhost:5021/i, apiOrigin)
+    }
+
+    return trimmed
+  }
+
+  const normalized = trimmed.startsWith('/')
+    ? trimmed
+    : `/${trimmed}`
+
+  // Frontend public assets are served by Vite.
+  if (
+    normalized.startsWith('/images/') ||
+    normalized.startsWith('/gallery/')
+  ) {
+    return normalized
+  }
+
+  // Backend-uploaded files are served by ASP.NET.
+  return `${apiOrigin}${normalized}`
 }
 
 function getAdminToken() {
@@ -72,6 +94,20 @@ interface Props {
   goHome: () => void
 }
 
+interface AdminNewsEvent {
+  id: string
+  title: string
+  description: string | null
+  category: string | null
+  event_date: string
+  location: string | null
+  image_url: string | null
+  published: boolean
+  featured: boolean
+  created_at?: string | null
+  updated_at?: string | null
+}
+
 type StatusFilter = 'all' | 'upcoming' | 'expired' | 'published' | 'draft'
 type FormMode = 'create' | 'edit'
 
@@ -97,14 +133,14 @@ const emptyForm: FormState = {
   featured: false,
 }
 
-function eventLifecycle(e: NewsEventRow): 'upcoming' | 'expired' | 'draft' {
+function eventLifecycle(e: AdminNewsEvent): 'upcoming' | 'expired' | 'draft' {
   if (!e.published) return 'draft'
   return isUpcomingDate(e.event_date) ? 'upcoming' : 'expired'
 }
 
 export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
   const [authState, setAuthState] = useState<'loading' | 'ok' | 'denied'>('loading')
-  const [events, setEvents] = useState<NewsEventRow[]>([])
+  const [events, setEvents] = useState<AdminNewsEvent[]>([])
   const [fetching, setFetching] = useState(false)
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all')
@@ -118,7 +154,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
   const [formError, setFormError] = useState<string | null>(null)
   const [busyId, setBusyId] = useState<string | null>(null)
   const [deleting, setDeleting] = useState(false)
-  const [deleteTarget, setDeleteTarget] = useState<NewsEventRow | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<AdminNewsEvent | null>(null)
   const [notice, setNotice] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
 
   useEffect(() => {
@@ -133,7 +169,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
   try {
     const data = await apiRequest('/news-events')
 
-    const mapped: NewsEventRow[] = (data ?? [])
+    const mapped: AdminNewsEvent[] = (data ?? [])
       .map((event: any) => ({
         id: event.id,
         title: event.title,
@@ -150,7 +186,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
         updated_at: event.updatedAt ?? null,
       }))
       .sort(
-        (a: NewsEventRow, b: NewsEventRow) =>
+        (a: AdminNewsEvent, b: AdminNewsEvent) =>
           b.event_date.localeCompare(a.event_date)
       )
 
@@ -242,7 +278,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     setFormOpen(true)
   }
 
-  function openEdit(e: NewsEventRow) {
+  function openEdit(e: AdminNewsEvent) {
     setFormMode('edit')
     setFormEventId(e.id)
     setForm({
@@ -286,9 +322,7 @@ export default function AdminNewsEvents({ goToLogin, goHome }: Props) {
     const formData = new FormData()
     formData.append('file', file)
 
-    const apiOrigin = API_BASE.replace(/\/api$/, '')
-
-const response = await fetch(
+    const response = await fetch(
   `${API_BASE}/news-events/upload`,
   {
     method: 'POST',
@@ -304,7 +338,7 @@ if (!response.ok) {
   )
 }
 
-const imageUrl = `${apiOrigin}${data.imageUrl}`
+const imageUrl = getEventImageUrl(data?.imageUrl)
 
 setPreviewUrl(imageUrl)
 
@@ -327,7 +361,7 @@ setForm((current) => ({
   }
 }
 
-  async function handleSave(e: React.FormEvent) {
+  async function handleSave(e: FormEvent) {
   e.preventDefault()
 
   if (!form.title.trim() || !form.event_date) {
@@ -398,7 +432,7 @@ setForm((current) => ({
   }
 }
 
-  async function handleTogglePublished(e: NewsEventRow) {
+  async function handleTogglePublished(e: AdminNewsEvent) {
   setBusyId(e.id)
 
   try {
@@ -1442,12 +1476,14 @@ setForm((current) => ({
                     <img
                       className="admin-thumb"
                       src={getEventImageUrl(e.image_url)}
-                      alt=""
+                      alt={e.title || 'Event image'}
                       loading="lazy"
                       onError={(ev) => {
-                        const t = ev.currentTarget
-                        t.onerror = null
-                        t.src = EVENT_IMAGE_FALLBACK
+                        const image = ev.currentTarget
+                        if (image.dataset.fallbackApplied === 'true') return
+                        image.dataset.fallbackApplied = 'true'
+                        image.onerror = null
+                        image.src = EVENT_IMAGE_FALLBACK
                       }}
                     />
                     <div>
@@ -1574,9 +1610,11 @@ setForm((current) => ({
                       loading="lazy"
                       decoding="async"
                       onError={(ev) => {
-                        const t = ev.currentTarget
-                        t.onerror = null
-                        t.src = EVENT_IMAGE_FALLBACK
+                        const image = ev.currentTarget
+                        if (image.dataset.fallbackApplied === 'true') return
+                        image.dataset.fallbackApplied = 'true'
+                        image.onerror = null
+                        image.src = EVENT_IMAGE_FALLBACK
                       }}
                     />
                   )}

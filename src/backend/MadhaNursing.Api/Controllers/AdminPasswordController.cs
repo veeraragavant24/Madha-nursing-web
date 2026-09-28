@@ -7,7 +7,7 @@ using MadhaNursing.Api.Models;
 namespace MadhaNursing.Api.Controllers;
 
 [ApiController]
-[Route("api/admin/password")]
+[Route("admin/password")]
 public class AdminPasswordController : ControllerBase
 {
     private readonly ApplicationDbContext _context;

@@ -9,7 +9,7 @@ using SixLabors.ImageSharp.Processing;
 namespace MadhaNursing.Api.Controllers;
 
 [ApiController]
-[Route("api/news-events")]
+[Route("news-events")]
 public class NewsEventsController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
