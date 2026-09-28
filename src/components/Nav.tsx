@@ -2509,18 +2509,129 @@ transform: none !important;
   }
 
 }
-@media (max-width: 768px) {
+/* =========================================================
+   MOBILE STATS LAYOUT
+   Row 1  → 2 contents
+   Row 2  → 3 contents
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .stats-grid {
+    display: grid !important;
+
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+
+    grid-template-rows: auto auto !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 auto !important;
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+    align-items: stretch !important;
+    justify-items: stretch !important;
+  }
+
+  /* -----------------------------------------
+     FIRST ROW
+     25+       |       3000+
+     Each item = 3 columns
+     ----------------------------------------- */
+
+  .stats-grid > :nth-child(1) {
+    grid-column: 1 / 4 !important;
+    grid-row: 1 !important;
+  }
+
+  .stats-grid > :nth-child(2) {
+    grid-column: 4 / 7 !important;
+    grid-row: 1 !important;
+  }
+
+  /* -----------------------------------------
+     SECOND ROW
+     18   |   98%   |   120+
+     Each item = 2 columns
+     ----------------------------------------- */
+
+  .stats-grid > :nth-child(3) {
+    grid-column: 1 / 3 !important;
+    grid-row: 2 !important;
+  }
+
+  .stats-grid > :nth-child(4) {
+    grid-column: 3 / 5 !important;
+    grid-row: 2 !important;
+  }
+
+  .stats-grid > :nth-child(5) {
+    grid-column: 5 / 7 !important;
+    grid-row: 2 !important;
+  }
+
+  /* -----------------------------------------
+     RESET OLD WIDTH / POSITIONING
+     ----------------------------------------- */
 
   .stats-grid > * {
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    text-align: center !important;
+
+    float: none !important;
+
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
   }
 
-  .stats-grid > *:first-child,
-  .stats-grid > *:nth-child(3) {
-    border-left: none;
+  /* -----------------------------------------
+     VERTICAL DIVIDERS
+     ----------------------------------------- */
+
+  .stats-grid > :nth-child(1),
+  .stats-grid > :nth-child(2),
+  .stats-grid > :nth-child(3),
+  .stats-grid > :nth-child(4) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .stats-grid > :nth-child(5) {
+    border-right: none !important;
+  }
+
+  /* Remove unwanted left borders */
+  .stats-grid > * {
+    border-left: none !important;
+  }
+
+  /* -----------------------------------------
+     REMOVE EXTRA SPACE BETWEEN ROWS
+     ----------------------------------------- */
+
+  .stats-grid > :nth-child(1),
+  .stats-grid > :nth-child(2) {
+    margin-bottom: 0 !important;
+  }
+
+  .stats-grid > :nth-child(3),
+  .stats-grid > :nth-child(4),
+  .stats-grid > :nth-child(5) {
+    margin-top: 0 !important;
   }
 }
-
 
   /* =========================================================
    MADHA HEADER — RESPONSIVE LOGO
