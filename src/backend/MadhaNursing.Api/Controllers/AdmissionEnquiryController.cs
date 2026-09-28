@@ -210,7 +210,7 @@ namespace MadhaNursing.Api.Controllers
                 await smtp.SendMailAsync(mail);
 
                 Console.WriteLine(
-                    "Admission enquiry email sent successfully through Gmail SMTP."
+                    "Admission enquiry email sent successfully through SMTP."
                 );
 
                 return Ok(new

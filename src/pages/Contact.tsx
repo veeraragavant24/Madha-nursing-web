@@ -35,7 +35,7 @@ export default function Contact({ navigate }: Props) {
   }
 
   try {
-    const response = await fetch('/api/admission-enquiry', {
+    const response = await fetch('http://localhost:5001/api/admission-enquiry', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
