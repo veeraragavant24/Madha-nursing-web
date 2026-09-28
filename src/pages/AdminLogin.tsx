@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const API_BASE =
-  'https://localhost:5021/api'
+const API_BASE = "http://localhost:5002/api";
   
 interface Props {
   goToDashboard: () => void
@@ -38,18 +37,18 @@ export default function AdminLogin({
 
     try {
       const response = await fetch(
-        `${API_BASE}/admin/login`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: email.trim(),
-            password,
-          }),
-        }
-      )
+  `${API_BASE}/admin/login`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email: email.trim(),
+      password,
+    }),
+  }
+)
 
       let data: any = null
 

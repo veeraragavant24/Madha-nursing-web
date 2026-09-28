@@ -5,8 +5,8 @@ import { EVENT_IMAGE_FALLBACK } from '../lib/newsEvents'
 
 const API_BASE =
   import.meta.env.VITE_API_BASE_URL ||
-  'https://madha-nursing-api.onrender.com/api'
-  
+  'http://localhost:5002'
+
 function getEventImageUrl(imageUrl?: string | null) {
   if (!imageUrl || !imageUrl.trim()) {
     return EVENT_IMAGE_FALLBACK

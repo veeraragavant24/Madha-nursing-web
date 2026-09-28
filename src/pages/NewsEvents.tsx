@@ -32,25 +32,37 @@ function displayDate(dateStr: string) {
   return `${day} ${month} ${year}`
 }
 
-const API_BASE_URL = 'https://api.madhanursingcollege.com'
+const API_BASE_URL = "http://localhost:5002";
 
-function getEventImageUrl(imageUrl?: string | null) {
-  if (!imageUrl) return EVENT_IMAGE_FALLBACK
+function getEventImageUrl(imageUrl?: string | null): string | null {
+  if (!imageUrl) return EVENT_IMAGE_FALLBACK;
 
-  if (/^https?:\/\//i.test(imageUrl)) {
-    return imageUrl
-      .replace(/^http:\/\/localhost:5021/i, API_BASE_URL)
-      .replace(/^https?:\/\/[^/]+\.trycloudflare\.com/i, API_BASE_URL)
+  // Old localhost URL
+  if (/^https?:\/\/localhost:5021/i.test(imageUrl)) {
+    return imageUrl.replace(
+      /^https?:\/\/localhost:5021/i,
+      API_BASE_URL
+    );
   }
 
+  // Old Cloudflare URL
+  if (/^https?:\/\/[^/]+\.cloudflare\.com/i.test(imageUrl)) {
+    return imageUrl.replace(
+      /^https?:\/\/[^/]+\.cloudflare\.com/i,
+      API_BASE_URL
+    );
+  }
+
+  // Relative image paths
   if (
-    imageUrl.startsWith('/uploads/') ||
-    imageUrl.startsWith('/images/events/')
+    imageUrl.startsWith("/uploads/") ||
+    imageUrl.startsWith("/images/events/")
   ) {
-    return `${API_BASE_URL}${imageUrl}`
+    return `${API_BASE_URL}${imageUrl}`;
   }
 
-  return imageUrl
+  // Already a complete URL
+  return imageUrl;
 }
 
 function eventImage(row: NewsEventRow) {
@@ -86,8 +98,8 @@ useEffect(() => {
 
     try {
 const response = await fetch(
-        `${API_BASE_URL}/api/news-events`,
-      )
+  `${API_BASE_URL}/news-events`,
+)
       if (!response.ok) {
         throw new Error('Failed to load events')
       }

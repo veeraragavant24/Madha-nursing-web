@@ -11,7 +11,7 @@ using MadhaNursing.Api.Models;
 namespace MadhaNursing.Api.Controllers;
 
 [ApiController]
-[Route("admin")]
+[Route("api/admin")]
 public class AdminAuthController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
@@ -27,11 +27,6 @@ public class AdminAuthController : ControllerBase
         _passwordHasher = passwordHasher;
         _configuration = configuration;
     }
-
-    // ============================================================
-    // ADMIN LOGIN
-    // POST: /api/admin/login
-    // ============================================================
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] AdminLoginRequest request)
@@ -89,10 +84,6 @@ public class AdminAuthController : ControllerBase
         });
     }
 
-    // ============================================================
-    // GENERATE JWT TOKEN
-    // ============================================================
-
     private string GenerateToken(AdminUser admin)
     {
         var key = _configuration["Jwt:Key"];
@@ -148,38 +139,16 @@ public class AdminAuthController : ControllerBase
             .WriteToken(token);
     }
 
-    // ============================================================
-    // CREATE FRESH ADMIN
-    //
-    // TEMPORARY ENDPOINT
-    //
-    // POST: /api/admin/create-fresh-admin
-    //
-    // This deletes existing admin users and creates:
-    //
-    // Email:    Admin@mcon
-    // Password: MCON@2026
-    // ============================================================
-
     [HttpPost("create-fresh-admin")]
     public async Task<IActionResult> CreateFreshAdmin()
     {
-        // --------------------------------------------------------
-        // DELETE ALL EXISTING ADMIN USERS
-        // --------------------------------------------------------
-
         var existingAdmins = await _context.AdminUsers.ToListAsync();
 
         if (existingAdmins.Any())
         {
             _context.AdminUsers.RemoveRange(existingAdmins);
-
             await _context.SaveChangesAsync();
         }
-
-        // --------------------------------------------------------
-        // CREATE NEW ADMIN
-        // --------------------------------------------------------
 
         var admin = new AdminUser
         {
@@ -190,19 +159,10 @@ public class AdminAuthController : ControllerBase
             CreatedAt = DateTime.UtcNow
         };
 
-        // --------------------------------------------------------
-        // GENERATE PASSWORD HASH USING THE SAME HASHER
-        // USED BY THE LOGIN SYSTEM
-        // --------------------------------------------------------
-
         admin.PasswordHash = _passwordHasher.HashPassword(
             admin,
             "MCON@2026"
         );
-
-        // --------------------------------------------------------
-        // SAVE NEW ADMIN
-        // --------------------------------------------------------
 
         _context.AdminUsers.Add(admin);
 
@@ -217,11 +177,6 @@ public class AdminAuthController : ControllerBase
         });
     }
 }
-
-
-// ================================================================
-// ADMIN LOGIN REQUEST
-// ================================================================
 
 public class AdminLoginRequest
 {
