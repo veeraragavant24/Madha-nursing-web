@@ -96,7 +96,97 @@ const IMAGES = [
  { id: '/gallery/Independence-Day/6.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/7.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  
+  // =====================================================
+  // CLINICAL
+  // =====================================================
+
+  {
+    id: '/departments/Child Health Nursing/clinical1.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students during clinical training',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Child Health Nursing/clinical2.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students providing patient care',
+    h: 280,
+  },
+
+  {
+    id: 'public/departments/Child Health Nursing/clinical3.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students during hospital practice',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Child Health Nursing/clinical4.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students learning clinical procedures',
+    h: 280,
+  },
+
+  {
+    id: 'public/departments/Child Health Nursing/clinical5.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  },
+  {
+    id: '/departments/Community Health Nursing/clinical6.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students during clinical training',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Community Health Nursing/clinical7.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students providing patient care',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Medical-Surgical-Nursing/clinical8.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students during hospital practice',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Medical-Surgical-Nursing/clinical9.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students learning clinical procedures',
+    h: 280,
+  },
+
+  {
+    id: '/departments/Medical-Surgical-Nursing/clinical10.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  }, 
+  {
+    id: '/departments/Mental Health Nrsing/clinical11.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  }, 
 ]
+ 
 
 export default function Gallery({ navigate }: Props) {
   const [filter, setFilter] = useState<string | null>(null)
