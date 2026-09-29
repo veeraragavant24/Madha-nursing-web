@@ -117,7 +117,7 @@ const IMAGES = [
   },
 
   {
-    id: 'public/departments/Child Health Nursing/clinical3.png',
+    id: '/departments/Child Health Nursing/clinical3.png',
     cat: 'Clinical',
     event: 'Clinical Training',
     alt: 'Nursing students during hospital practice',
@@ -133,7 +133,7 @@ const IMAGES = [
   },
 
   {
-    id: 'public/departments/Child Health Nursing/clinical5.png',
+    id: '/departments/Child Health Nursing/clinical5.png',
     cat: 'Clinical',
     event: 'Clinical Training',
     alt: 'Nursing students caring for patients',
