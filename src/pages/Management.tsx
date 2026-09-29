@@ -246,19 +246,19 @@ function ExecutiveCard({
 
           <div
             style={{
-              display: 'inline-block',
-              background: `${person.accent}12`,
-              border: `1px solid ${person.accent}28`,
-              borderRadius: 100,
-              padding: '4px 14px',
-              marginBottom: 13,
-              fontFamily: 'var(--font-sans)',
-              fontSize: 10,
-              fontWeight: 600,
-              letterSpacing: '.12em',
-              textTransform: 'uppercase',
-              color: person.accent,
-            }}
+  display: 'inline-block',
+  background: '#093d8b',
+  border: '1px solid #071A36',
+  borderRadius: 100,
+  padding: '4px 14px',
+  marginBottom: 13,
+  fontFamily: 'var(--font-sans)',
+  fontSize: 10,
+  fontWeight: 600,
+  letterSpacing: '.12em',
+  textTransform: 'uppercase',
+  color: '#18C6C8',
+}}
           >
             {person.tag}
           </div>

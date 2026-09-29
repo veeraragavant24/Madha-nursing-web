@@ -12,8 +12,10 @@ interface Slide {
   id: string
   img: string
   imgPos: string
+  video?: string
+videoDuration?: number
   badge: string
-  headline: string[]           // lines — second line rendered in teal gradient
+  headline: string[]
   sub: string
   ctaLabel: string
   ctaPage: Page
@@ -91,6 +93,21 @@ const SLIDES: Slide[] = [
     ctaSecondaryLabel: 'View Our Programmes',
     ctaSecondaryPage: 'courses',
   },
+    // 06 — DESKTOP / LAPTOP VIDEO SLIDE
+  {
+    id: 'final-video',
+    img: '',
+    imgPos: 'center center',
+    video: '/hero/Video Project 1 (1).mp4',
+    videoDuration: 60000,
+    badge: 'Experience Madha',
+    headline: ['Discover Life at', 'Madha College of Nursing.'],
+    sub: 'Take a closer look at our campus, learning environment, student life, and the journey that awaits you at Madha College of Nursing.',
+    ctaLabel: 'Apply for Admission',
+    ctaPage: 'contact',
+    ctaSecondaryLabel: 'Explore Our College',
+    ctaSecondaryPage: 'about',
+  },
 ]
 
 const INTERVAL = 5500
@@ -100,7 +117,40 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
   const [transitioning, setTransitioning] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Desktop/laptop detection only.
+  // 769px and above = video slide enabled.
+  // 768px and below = video slide completely excluded.
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 769px)')
+
+    const handleScreenChange = () => {
+      setIsDesktop(mediaQuery.matches)
+    }
+
+    handleScreenChange()
+
+    mediaQuery.addEventListener('change', handleScreenChange)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleScreenChange)
+    }
+  }, [])
+
+  const activeSlides = isDesktop
+    ? SLIDES
+    : SLIDES.filter((s) => !s.video)
+useEffect(() => {
+    if (current >= activeSlides.length) {
+      setCurrent(activeSlides.length - 1)
+      setPrev(null)
+      setTransitioning(false)
+    }
+  }, [activeSlides.length, current])
+
+
 
   // Touch / swipe
   const touchStartX = useRef(0)
@@ -114,18 +164,44 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     setTimeout(() => { setPrev(null); setTransitioning(false) }, TRANSITION_MS)
   }, [current, transitioning])
 
-  const next = useCallback(() => goTo((current + 1) % SLIDES.length), [current, goTo])
-  const prev2 = useCallback(() => goTo((current - 1 + SLIDES.length) % SLIDES.length), [current, goTo])
+ const next = useCallback(
+  () => goTo((current + 1) % activeSlides.length),
+  [current, goTo, activeSlides.length]
+)
+
+const prev2 = useCallback(
+  () => goTo((current - 1 + activeSlides.length) % activeSlides.length),
+  [current, goTo, activeSlides.length]
+)
 
   // Auto-play
+  // Normal image slides use 5.5 seconds.
+  // The desktop/laptop video slide uses its own videoDuration (60 seconds).
   const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current)
-    timerRef.current = setInterval(next, INTERVAL)
-  }, [next])
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+    }
+
+    const currentSlide = activeSlides[current]
+
+    const duration =
+      currentSlide?.video && currentSlide.videoDuration
+        ? currentSlide.videoDuration
+        : INTERVAL
+
+    timerRef.current = setTimeout(() => {
+      next()
+    }, duration)
+  }, [activeSlides, current, next])
 
   useEffect(() => {
     resetTimer()
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
+    }
   }, [resetTimer])
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -136,11 +212,14 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     const dx = e.changedTouches[0].clientX - touchStartX.current
     const dy = Math.abs(e.changedTouches[0].clientY - touchStartY.current)
     if (Math.abs(dx) > 48 && dy < 60) {
-      if (dx < 0) { next(); resetTimer() } else { prev2(); resetTimer() }
+      if (dx < 0) {
+        next()
+      } else {
+        prev2()
+      }
     }
   }
-
-  const slide = SLIDES[current]
+const slide = activeSlides[current]
 
   return (
     <section
@@ -151,6 +230,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     minHeight: 700,
     overflow: 'hidden',
     background: '#071A36'
+
   }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
@@ -406,7 +486,27 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   width: auto !important;
   margin: 0 !important;
 }
-  
+  /* ========================================
+   FINAL VIDEO SLIDE
+   DESKTOP / LAPTOP ONLY
+   ======================================== */
+
+.hero-video {
+  width: 100%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  background: #071A36;
+  filter: brightness(0.82) contrast(1.08) saturate(1.05);
+}
+
+/* Absolutely prevent video from appearing on mobile */
+@media (max-width: 768px) {
+  .hero-video {
+    display: none !important;
+  }
+}
   
 
 
@@ -415,7 +515,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
 
 
       {/* ── Background slides ── */}
-      {SLIDES.map((s, i) => {
+      {activeSlides.map((s, i) => {
         const isActive = i === current
         const isExiting = i === prev
         if (!isActive && !isExiting) return null
@@ -436,16 +536,43 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
               transform: `translateY(${scrollY * 0.28}px)`,
               willChange: 'transform',
             }}>
-              <img
-                src={s.img}
-                alt={s.badge}
-                className={isActive ? (i % 2 === 0 ? 'slide-img-active' : 'slide-img-active-alt') : ''}
-                style={{
-                  width: '100%', height: '115%',
-                  objectFit: 'cover', objectPosition: s.imgPos,
-                  display: 'block',
-                }}
-              />
+              {s.video ? (
+  <video
+    key={s.id}
+    src={s.video}
+    autoPlay={isActive}
+    muted
+    loop
+    playsInline
+    className="hero-video"
+    style={{
+      width: '100%',
+      height: '115%',
+      objectFit: 'cover',
+      objectPosition: s.imgPos,
+      display: 'block',
+    }}
+  />
+) : (
+  <img
+    src={s.img}
+    alt={s.badge}
+    className={
+      isActive
+        ? (i % 2 === 0
+            ? 'slide-img-active'
+            : 'slide-img-active-alt')
+        : ''
+    }
+    style={{
+      width: '100%',
+      height: '115%',
+      objectFit: 'cover',
+      objectPosition: s.imgPos,
+      display: 'block',
+    }}
+  />
+)}
             </div>
             {/* Multi-layer overlay — richer depth */}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,26,54,.96) 0%, rgba(7,26,54,.78) 48%, rgba(7,26,54,.35) 100%)' }} />
@@ -551,7 +678,7 @@ fontSize: 'clamp(40px, 5vw, 80px)',
   style={{ display: 'flex', alignItems: 'center', gap: 12 }}
 >
           <span className="slide-num">
-            {String(current + 1).padStart(2, '0')} / {String(SLIDES.length).padStart(2, '0')}
+            {String(current + 1).padStart(2, '0')} / {String(activeSlides.length).padStart(2, '0')}
           </span>
           <div style={{ width: 1, height: 16, background: 'rgba(255,255,255,.2)' }} />
           <span className="slide-num" style={{ color: 'rgba(255,255,255,.3)' }}>
@@ -573,12 +700,14 @@ fontSize: 'clamp(40px, 5vw, 80px)',
 }}
 
 >
-          {SLIDES.map((_, i) => (
+          {activeSlides.map((_, i) => (
             <button
               key={i}
               aria-label={`Go to slide ${i + 1}`}
               className={`slider-dot ${i === current ? 'active' : ''}`}
-              onClick={() => { goTo(i); resetTimer() }}
+              onClick={() => {
+                goTo(i)
+              }}
             >
               <div className="slider-dot-inner" style={{ width: i === current ? 52 : 20 }}>
                 {i === current && <div key={current} className="slider-dot-fill" />}

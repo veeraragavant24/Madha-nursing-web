@@ -734,6 +734,7 @@ export default function Home({ navigate }: Props) {
                   maxWidth: 1050,
                   margin: '0 auto 36px',
                   textAlign: 'center',
+                  
                 }}
               >
                 At Madha College of Nursing, we believe that great nurses are made through rigorous academic training, hands-on clinical exposure, and character development rooted in compassion. Our 25-year legacy reflects a deep commitment to producing healthcare professionals who lead with both skill and heart.

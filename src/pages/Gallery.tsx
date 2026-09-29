@@ -184,7 +184,31 @@ const IMAGES = [
     event: 'Clinical Training',
     alt: 'Nursing students caring for patients',
     h: 280,
-  }, 
+  }
+  , 
+  {
+    id: '/departments/Obstetrics abd gynecological nsg/clinical12.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  }
+  , {
+    id: '/departments/Obstetrics abd gynecological nsg/clinical13.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  }
+  , 
+  {
+    id: '/departments/Obstetrics abd gynecological nsg/clinical14.png',
+    cat: 'Clinical',
+    event: 'Clinical Training',
+    alt: 'Nursing students caring for patients',
+    h: 280,
+  }
+  , 
 ]
  
 
