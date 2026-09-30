@@ -570,13 +570,14 @@ const slide = activeSlides[current]
       objectFit: 'cover',
       objectPosition: s.imgPos,
       display: 'block',
+      
     }}
   />
 )}
             </div>
             {/* Multi-layer overlay — richer depth */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,26,54,.96) 0%, rgba(7,26,54,.78) 48%, rgba(7,26,54,.35) 100%)' }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,54,.92) 0%, transparent 55%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,26,54,.70) 0%, rgba(7,26,54,.55) 48%, rgba(7,26,54,.20) 100%)' }} />
+           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,26,54,.70) 0%, transparent 55%)' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 15% 50%, rgba(24,198,200,.08) 0%, transparent 55%)' }} />
           </div>
         )
