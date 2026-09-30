@@ -518,7 +518,7 @@ const slide = activeSlides[current]
       {activeSlides.map((s, i) => {
         const isActive = i === current
         const isExiting = i === prev
-        if (!isActive && !isExiting) return null
+
         return (
           <div
             key={s.id}
@@ -526,7 +526,7 @@ const slide = activeSlides[current]
               position: 'absolute', inset: 0,
               opacity: isActive ? 1 : 0,
               transition: `opacity ${TRANSITION_MS}ms cubic-bezier(.4,0,.2,1)`,
-              zIndex: isActive ? 2 : 1,
+              zIndex: isActive ? 2 : isExiting ? 1 : 0,
               willChange: 'opacity',
             }}
           >
