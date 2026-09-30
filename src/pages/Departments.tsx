@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Reveal from '../components/Reveal'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
@@ -124,6 +124,13 @@ research: [
 export default function Departments({ navigate }: Props) {
   const [active, setActive] = useState(DEPTS[0])
 
+  useEffect(() => {
+    DEPTS.forEach((dept) => {
+      const img = new Image()
+      img.src = dept.img
+      
+    })
+  }, [])
   return (
     <>
   <style>{`
@@ -381,6 +388,7 @@ export default function Departments({ navigate }: Props) {
               <img
                 src={active.img}
                 alt={active.name}
+                loading="eager"
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
