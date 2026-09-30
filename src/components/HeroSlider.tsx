@@ -99,7 +99,7 @@ const SLIDES: Slide[] = [
     img: '',
     imgPos: 'center center',
     video: '/hero/Video Project 1 (1).mp4',
-    videoDuration: 60000,
+    videoDuration: 40000,
     badge: 'Experience Madha',
     headline: ['Discover Life at', 'Madha College of Nursing.'],
     sub: 'Take a closer look at our campus, learning environment, student life, and the journey that awaits you at Madha College of Nursing.',
