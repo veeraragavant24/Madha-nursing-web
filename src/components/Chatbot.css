@@ -101,44 +101,243 @@
   transform: translateY(-2px) scale(0.98);
 }
 
-.madha-chatbot-launcher-icon {
-  width: 32px;
-  height: 32px;
+/* =====================================================
+   MCON AI ROBOT LAUNCHER
+   ===================================================== */
+
+.madha-chatbot-launcher-wrap {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  overflow: visible;
+
+  isolation: isolate;
+}
+
+
+/* =====================================================
+   CARTOON ROBOT
+   ===================================================== */
+
+.madha-chatbot-floating-bot {
+
+  position: absolute;
+
+  left: -38px;
+  top: 50%;
+
+  width: 58px;
+  height: 58px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 50%;
+  z-index: 1;
 
-  background: rgba(24, 198, 200, 0.12);
+  pointer-events: none;
 
-  border: 1px solid rgba(24, 198, 200, 0.45);
+  opacity: 0;
 
-  color: #18C6C8;
+  transform:
+    translateY(-50%)
+    translateX(30px)
+    scale(0.55);
 
-  font-size: 18px;
+  animation:
+    mconRobotPop
+    3.0s
+    cubic-bezier(.16,1,.3,1)
+    infinite;
 
-  box-shadow:
-    0 0 8px rgba(24, 198, 200, 0.25),
-    inset 0 0 8px rgba(24, 198, 200, 0.08);
+  transform-origin: center center;
+}
+
+
+/* Robot image */
+
+.madha-chatbot-floating-bot img {
+
+  width: 58px;
+  height: 58px;
+
+  display: block;
+
+  object-fit: contain;
+
+  /* Robot glow */
+  filter:
+    drop-shadow(0 0 4px rgba(24, 198, 200, 0.90))
+    drop-shadow(0 0 10px rgba(24, 198, 200, 0.65))
+    drop-shadow(0 0 20px rgba(24, 198, 200, 0.35));
+
+}
+/* =====================================================
+   SMOOTH ROBOT POP-UP
+   ===================================================== */
+
+@keyframes mconRobotPop {
+
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(25px) scale(0.65);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-18px) scale(1);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(-18px) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(25px) scale(0.65);
+  }
+
+}
+
+/* =====================================================
+   BUTTON ABOVE ROBOT
+   ===================================================== */
+
+.madha-chatbot-launcher {
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =====================================================
+   HOVER
+   ===================================================== */
+
+/* Stop robot animation when mouse is over button */
+
+.madha-chatbot-launcher-wrap:hover
+.madha-chatbot-floating-bot {
+
+  animation: none;
+
+  opacity: 1;
+
+  transform:
+    translateY(-50%)
+    translateX(-18px)
+    scale(1.05);
 
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    background 0.35s ease;
+    transform 0.3s cubic-bezier(.16,1,.3,1),
+    opacity 0.25s ease;
 }
 
-.madha-chatbot-launcher:hover .madha-chatbot-launcher-icon {
-  transform: rotate(8deg) scale(1.08);
+.madha-chatbot-launcher-wrap::after {
+  content: "Ask me about MCON";
 
-  background: rgba(24, 198, 200, 0.20);
+  position: absolute;
+
+  right: 120px;
+  bottom: 170px;
+
+  padding: 10px 18px;
+
+  color: #01e4e4;
+
+  background: #071A36;
+
+  border: 1px solid #18C6C8;
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  white-space: nowrap;
 
   box-shadow:
-    0 0 12px rgba(24, 198, 200, 0.55),
-    0 0 24px rgba(24, 198, 200, 0.25);
+    0 0 10px rgba(24, 198, 200, 0.45),
+    0 0 25px rgba(24, 198, 200, 0.20),
+    0 8px 25px rgba(7, 26, 54, 0.30);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+
+  pointer-events: none;
+
+  z-index: 20;
 }
 
+/* =====================================================
+   TOOLTIP ARROW
+   ===================================================== */
+
+.madha-chatbot-launcher-wrap::before {
+  content: "";
+
+  position: absolute;
+
+  right: 91px;
+  bottom: 75px;
+
+  width: 0;
+  height: 0;
+
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 14px solid #18C6C8;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(8px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+
+  pointer-events: none;
+
+  z-index: 21;
+}
+
+
+/* =====================================================
+   SHOW TOOLTIP ON HOVER
+   ===================================================== */
+
+.madha-chatbot-launcher-wrap:hover::after {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+.madha-chatbot-launcher-wrap:hover::before {
+
+  opacity: 1;
+
+  visibility: visible;
+}
 
 
 .madha-chatbot-window {
@@ -652,4 +851,110 @@ margin-top: 28px;
     border-radius: 24px !important;
   }
 
+}
+/* =====================================================
+   MCON ROBOT SIZE
+   ===================================================== */
+
+.madha-chatbot-launcher-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  overflow: visible !important;
+}
+
+
+/* ROBOT CONTAINER */
+.madha-chatbot-floating-bot {
+  position: absolute !important;
+
+  left: -55px !important;
+  top: 50% !important;
+
+  width: 100px !important;
+  height: 100px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  z-index: 5 !important;
+
+  pointer-events: none !important;
+}
+
+
+/* ROBOT IMAGE */
+.madha-chatbot-floating-bot img {
+  width: 100px !important;
+  height: 100px !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  display: block !important;
+
+  object-fit: contain !important;
+
+  /* ROBOT GLOW */
+  filter:
+    drop-shadow(0 0 4px rgba(24, 198, 200, 0.90))
+    drop-shadow(0 0 10px rgba(24, 198, 200, 0.55))
+    drop-shadow(0 0 20px rgba(24, 198, 200, 0.30)) !important;
+}
+
+
+/* MCON AI BUTTON ABOVE ROBOT */
+.madha-chatbot-launcher {
+  position: relative !important;
+  z-index: 10 !important;
+}
+/* =====================================================
+   MCON ROBOT POSITION - FIX
+   ===================================================== */
+
+.madha-chatbot-launcher-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+  overflow: visible !important;
+}
+
+.madha-chatbot-floating-bot {
+  position: absolute !important;
+
+  left: -66px !important;
+  top: -60px !important;
+
+  width: 100px !important;
+  height: 100px !important;
+
+  display: block !important;
+
+  z-index: 9999 !important;
+  pointer-events: none !important;
+}
+
+.madha-chatbot-floating-bot img {
+  width: 150px !important;
+  height: 150px !important;
+
+  display: block !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+
+  filter:
+    drop-shadow(0 0 4px rgba(24, 198, 200, 0.90))
+    drop-shadow(0 0 10px rgba(24, 198, 200, 0.55))
+    drop-shadow(0 0 20px rgba(24, 198, 200, 0.30)) !important;
+}
+
+.madha-chatbot-launcher {
+  position: relative !important;
+  z-index: 10 !important;
 }

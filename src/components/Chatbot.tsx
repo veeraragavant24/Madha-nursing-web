@@ -2166,53 +2166,46 @@ const renderNavigationButtons = () => {
         </div>
 
       )}
+     {/* =====================================================
+    FLOATING MCON AI BUTTON
+    ===================================================== */}
 
-      {/* =====================================================
-          FLOATING MCON AI BUTTON
-          ===================================================== */}
+{!isOpen && (
 
-      {!isOpen && (
+  <div className="madha-chatbot-launcher-wrap">
 
-        <button
-          type="button"
-          className="madha-chatbot-launcher"
-          onClick={() => setIsOpen(true)}
-          aria-label="Open Madha AI Assistant"
-        >
+    {/* Cartoon Robot */}
+    <span
+      className="madha-chatbot-floating-bot"
+      aria-hidden="true"
+    >
+      <img
+        src="/images/mcon-robot1.png"
+        alt=""
+      />
+    </span>
 
-          <span
-            className="madha-chatbot-launcher-icon"
-            aria-hidden="true"
-          >
 
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+    {/* MCON AI BUTTON */}
+    <button
+      type="button"
+      className="madha-chatbot-launcher"
+      onClick={() => setIsOpen(true)}
+      aria-label="Open Madha AI Assistant"
+    >
 
-              <path
-                d="M12 2.8L13.25 9.2L19.2 12L13.25 14.8L12 21.2L10.75 14.8L4.8 12L10.75 9.2L12 2.8Z"
-                fill="currentColor"
-              />
+      <span className="madha-chatbot-launcher-text">
+        MCON AI
+      </span>
 
-              <path
-                d="M19.2 4.5L19.65 6.35L21.2 7.1L19.65 7.85L19.2 9.7L18.75 7.85L17.2 7.1L18.75 6.35L19.2 4.5Z"
-                fill="currentColor"
-                opacity="0.7"
-              />
+    </button>
 
-            </svg>
+  </div>
 
-          </span>
+)}
+      
 
-          <span className="madha-chatbot-launcher-text">
-            MCON AI
-          </span>
 
-        </button>
-
-      )}
 
     </div>
   )
