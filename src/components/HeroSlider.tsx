@@ -119,6 +119,7 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
   const [transitioning, setTransitioning] = useState(false)
   const [isDesktop, setIsDesktop] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
 
   // Desktop/laptop detection only.
   // 769px and above = video slide enabled.
@@ -220,6 +221,17 @@ const prev2 = useCallback(
     }
   }
 const slide = activeSlides[current]
+useEffect(() => {
+  if (slide.video && videoRef.current) {
+    videoRef.current.currentTime = 0
+
+    videoRef.current
+      .play()
+      .catch((error) => {
+        console.warn('Hero video could not start:', error)
+      })
+  }
+}, [slide.video])
 
   return (
     <section
@@ -540,7 +552,7 @@ const slide = activeSlides[current]
   <video
     key={s.id}
     src={s.video}
-    autoPlay={isActive}
+    autoPlay
     muted
     loop
     playsInline
