@@ -2051,15 +2051,30 @@ const renderNavigationButtons = () => {
           CHATBOT WINDOW
           ================================================= */}
 
-      {isOpen && (
+     {isOpen && (
+  <div className="madha-chatbot-window">
 
-        <div className="madha-chatbot-window">
+    {/* OPENING ROBOT */}
+    <div className="madha-chatbot-opening-robot">
 
-          {/* =================================================
-              HEADER
-              ================================================= */}
+  {/* Robot head/body */}
+  <img
+    className="madha-opening-robot-main"
+    src="/images/mcon-robot-head.png"
+    alt=""
+  />
 
-          <div className="madha-chatbot-header">
+  {/* Separate waving hand */}
+  <img
+    className="madha-opening-robot-hand"
+    src="/images/mcon-robot-hand.png"
+    alt=""
+  />
+
+</div>
+
+    {/* HEADER */}
+    <div className="madha-chatbot-header">
 
             <div className="madha-chatbot-header-info">
 

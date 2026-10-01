@@ -243,8 +243,8 @@
 
   position: absolute;
 
-  right: 120px;
-  bottom: 155px;
+  right: 135px;
+  bottom: 160px;
 
   padding: 10px 18px;
 
@@ -347,11 +347,11 @@
   display: flex;
   flex-direction: column;
 
-  overflow: hidden;
+overflow: visible;
 
   position: relative;
 
-  border-radius: 24px;
+border-radius: 32px !important;
 
   background: rgba(250, 251, 253, 0.98);
 
@@ -392,6 +392,67 @@
 /* =====================================================
    HEADER
    ===================================================== */
+   /* =====================================================
+   OPENING ROBOT - RISES FROM BEHIND HEADER
+   ===================================================== */
+
+.madha-chatbot-opening-robot {
+  position: absolute;
+
+  left: 50%;
+  top: -113px;
+
+  width: 120px;
+  height: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateX(-50%) translateY(0);
+
+  opacity: 1;
+
+  pointer-events: none;
+
+  z-index: 1;
+
+  animation:
+    madhaOpeningRobotRise
+    4.5s
+    cubic-bezier(0.22, 0.61, 0.36, 1)
+    0.2s
+    1
+    forwards;
+}
+
+/* Robot image */
+
+.madha-chatbot-opening-robot img {
+  width: 120px;
+  height: 120px;
+
+  display: block;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 5px rgba(24, 198, 200, 0.95))
+    drop-shadow(0 0 12px rgba(24, 198, 200, 0.65))
+    drop-shadow(0 0 24px rgba(24, 198, 200, 0.35));
+}
+
+
+/* Robot rises slowly from behind header */
+@keyframes madhaOpeningRobotRise {
+  0% {
+    transform: translateX(-50%) translateY(80px);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
 
 .madha-chatbot-header {
   min-height: 76px;
@@ -401,6 +462,10 @@
   justify-content: space-between;
 
   padding: 14px 17px;
+
+  position: relative;
+z-index: 2;
+
 
   color: #ffffff;
 
@@ -522,6 +587,9 @@
 
   padding: 22px 17px;
 
+  position: relative;
+  z-index: 2;
+
   background:
     radial-gradient(
       circle at top right,
@@ -529,7 +597,16 @@
       transparent 35%
     ),
     #FAFBFD;
+
+  border: none;
+
+  border-radius: 0 0 32px 32px;
+
+  box-shadow: none;
+
+  box-sizing: border-box;
 }
+
 .madha-chatbot-messages {
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -554,30 +631,33 @@
 
   padding: 11px 14px;
 
-  border-radius: 16px;
+  border-radius: 12px;
 
   font-size: 14px;
   line-height: 1.55;
 
   word-break: break-word;
+  box-sizing: border-box;
 }
 
 .madha-chatbot-bot-message {
 
-white-space: pre-line;
-line-height: 1.65;
+  white-space: pre-line;
+  line-height: 1.65;
 
   color: #16213E;
 
   background: #ffffff;
 
   border:
-    1px solid rgba(11, 37, 69, 0.08);
+    1px solid rgba(11, 37, 69, 0.10);
 
-  border-bottom-left-radius: 5px;
+  border-radius: 12px;
 
   box-shadow:
     0 5px 16px rgba(11, 37, 69, 0.06);
+
+  box-sizing: border-box;
 }
 
 .madha-chatbot-user-message {
@@ -849,7 +929,7 @@ margin-top: 28px;
     width: 430px !important;
     height: 680px !important;
     max-height: 80vh !important;
-    border-radius: 24px !important;
+border-radius: 24px;
   }
 
 }
@@ -978,4 +1058,85 @@ margin-top: 28px;
     font-size: 17px !important;
   }
 
+}
+/* =====================================================
+   CHATBOT WINDOW TOP CORNERS FIX
+   ===================================================== */
+
+.madha-chatbot-window {
+  overflow: visible !important;
+  border-top-left-radius: 24px !important;
+  border-top-right-radius: 24px !important;
+}
+
+.madha-chatbot-header {
+  border-top-left-radius: 24px !important;
+  border-top-right-radius: 24px !important;
+}
+/* =====================================================
+   ROBOT HAND SHAKE
+   ===================================================== */
+
+.madha-opening-robot-hand {
+  transform-origin: 50% 90%;
+
+  animation: madhaRobotHandShake 1.4s ease-in-out 1;
+  animation-delay: 4.7s;
+}
+
+
+/* Smooth natural hand wave */
+
+@keyframes madhaRobotHandShake {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(-8deg);
+  }
+
+  30% {
+    transform: rotate(10deg);
+  }
+
+  45% {
+    transform: rotate(-9deg);
+  }
+
+  60% {
+    transform: rotate(8deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+
+  90% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+.madha-opening-robot-hand {
+  width: 65px !important;
+  height: 85px !important;
+
+  position: absolute;
+
+  right: -50px;
+  top: 48px;
+
+  object-fit: contain;
+
+  z-index: 3;
+
+  transform-origin: 85% 85%;
+
+  animation: madhaRobotHandShake 1.4s ease-in-out 1;
+  animation-delay: 4.7s;
 }

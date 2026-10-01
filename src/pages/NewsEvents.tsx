@@ -9,6 +9,8 @@ interface Props { navigate: (p: Page) => void }
 
 const MONTHS = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
 
+const API_BASE_URL = 'http://localhost:5002' // <-- replace with your real IIS public URL
+
 function dateBlock(dateStr: string) {
   if (!dateStr) {
     return { day: '--', month: '---', year: '----' }
@@ -25,35 +27,24 @@ function dateBlock(dateStr: string) {
   const year = String(date.getFullYear())
 
   return { day, month, year }
-} 
+}
 
 function displayDate(dateStr: string) {
   const { day, month, year } = dateBlock(dateStr)
   return `${day} ${month} ${year}`
 }
 
-const API_BASE_URL = "http://localhost:5002";
-
-function getEventImageUrl(imageUrl?: string | null): string | null {
+function getEventImageUrl(imageUrl?: string | null): string {
   if (!imageUrl) return EVENT_IMAGE_FALLBACK;
 
-  // Old localhost URL
-  if (/^https?:\/\/localhost:5021/i.test(imageUrl)) {
-    return imageUrl.replace(
-      /^https?:\/\/localhost:5021/i,
-      API_BASE_URL
-    );
+  if (/^data:/i.test(imageUrl)) {
+    return imageUrl;
   }
 
-  // Old Cloudflare URL
-  if (/^https?:\/\/[^/]+\.cloudflare\.com/i.test(imageUrl)) {
-    return imageUrl.replace(
-      /^https?:\/\/[^/]+\.cloudflare\.com/i,
-      API_BASE_URL
-    );
+  if (/^https?:\/\//i.test(imageUrl)) {
+    return imageUrl;
   }
 
-  // Relative image paths
   if (
     imageUrl.startsWith("/uploads/") ||
     imageUrl.startsWith("/images/events/")
@@ -61,13 +52,13 @@ function getEventImageUrl(imageUrl?: string | null): string | null {
     return `${API_BASE_URL}${imageUrl}`;
   }
 
-  // Already a complete URL
   return imageUrl;
 }
 
-function eventImage(row: NewsEventRow) {
+function eventImage(row: NewsEventRow): string {
   return getEventImageUrl(row.image_url)
 }
+
 
 export default function NewsEvents({ navigate }: Props) {
  const [items, setItems] = useState<NewsEventRow[]>([])
@@ -1023,3 +1014,12 @@ const response = await fetch(
     </div>
   )
 }
+
+
+
+
+
+
+
+
+
