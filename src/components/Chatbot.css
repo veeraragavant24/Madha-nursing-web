@@ -1154,6 +1154,14 @@ border-radius: 24px;
   top: 20px;
     width: 110px !important;
     height: 110px !important;
+  }
+    .madha-chatbot-launcher-wrap::after {
+  content: "Ask me about MCON";
+
+  position: absolute;
+
+  right: 135px;
+  bottom: 120px;
 
   }
 }
@@ -1164,11 +1172,18 @@ border-radius: 24px;
     position: absolute;
 
   left: 30%;
-  top: 30px;
+  top:60px;
     width: 80px !important;
     height: 80px !important;
   }
-}
+  .madha-chatbot-launcher-wrap::after {
+  content: "Ask me about MCON";
+
+  position: absolute;
+
+  right: 135px;
+  bottom: 120px;
+}}
 
 /* Small mobile */
 @media (max-width: 380px) {
