@@ -770,3 +770,27 @@ body {
 
 }
 
+/* =========================================
+   LIBRE CASLON CONDENSED
+   Website content only
+   ========================================= */
+
+body {
+  font-family: "Libre Caslon Condensed", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Keep NAV font unchanged */
+.nav-root,
+.nav-root * {
+  font-family: inherit;
+}
+
+/* Keep INTRO font unchanged */
+.madha-intro,
+.madha-intro * {
+  font-family: inherit;
+}
+
