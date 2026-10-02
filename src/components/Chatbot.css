@@ -1140,3 +1140,31 @@ border-radius: 24px;
   animation: madhaRobotHandShake 1.4s ease-in-out 1;
   animation-delay: 4.7s;
 }
+/* =========================================
+   ROBOT SIZE ONLY
+   Animation unchanged
+   ========================================= */
+
+/* Laptop / Desktop */
+@media (min-width: 769px) and (max-width: 1400px) {
+  .madha-chatbot-floating-bot img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .madha-chatbot-floating-bot img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .madha-chatbot-floating-bot img {
+    width: 55px !important;
+    height: 55px !important;
+  }
+}

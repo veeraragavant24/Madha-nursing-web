@@ -42,7 +42,76 @@ export default function Intro({ onComplete }: IntroProps) {
           font-weight: 500 !important;
           letter-spacing: 0.18em !important;
         }
+
       `}</style>
+      <style>{`
+  /* =========================================
+     INTRO TITLE
+     ========================================= */
+
+  .madha-intro .madha-intro-title {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700 !important;
+    font-size: 32px !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  /* =========================================
+     INTRO SUBTITLE
+     ========================================= */
+
+  .madha-intro .madha-intro-tagline {
+    font-family: 'Cinzel', serif !important;
+    font-weight: 500 !important;
+    font-size: 17px !important;
+    letter-spacing: 0.18em !important;
+    line-height: 1.4 !important;
+  }
+
+  /* =========================================
+     TABLET
+     ========================================= */
+
+  @media (max-width: 1024px) {
+    .madha-intro .madha-intro-title {
+      font-size: 30px !important;
+    }
+
+    .madha-intro .madha-intro-tagline {
+      font-size: 16px !important;
+    }
+  }
+
+  /* =========================================
+     MOBILE
+     ========================================= */
+
+  @media (max-width: 768px) {
+    .madha-intro .madha-intro-title {
+      font-size: 15px !important;
+    }
+
+    .madha-intro .madha-intro-tagline {
+      font-size: 12px !important;
+    }
+  }
+
+  /* =========================================
+     SMALL MOBILE
+     ========================================= */
+
+  @media (max-width: 400px) {
+    .madha-intro .madha-intro-title {
+      font-size: 15px !important;
+    }
+
+    .madha-intro .madha-intro-tagline {
+      font-size: 12px !important;
+    }
+  }
+`}</style>
 
       <div className="madha-intro-content">
 
@@ -90,30 +159,15 @@ export default function Intro({ onComplete }: IntroProps) {
           />
         </div>
 
-        <h1
-  className="madha-intro-title"
-  style={{
-    fontFamily: "'Cinzel', serif",
-    fontWeight: 700,
-    letterSpacing: '0.08em',
-  }}
->
+        <h1 className="madha-intro-title">
   MADHA COLLEGE OF NURSING
 </h1>
 
         <hr />
 
-        <p
-          className="madha-intro-tagline"
-          style={{
-            fontFamily: "'Cinzel', serif",
-            fontWeight: 500,
-            letterSpacing: '0.18em',
-            
-          }}
-        >
-          Excellence in Nursing Education
-        </p>
+       <p className="madha-intro-tagline">
+  Excellence in Nursing Education
+</p>
 
       </div>
     </div>

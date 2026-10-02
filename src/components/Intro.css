@@ -471,53 +471,5 @@
 
 
 
-/* Responsive Intro Title */
-.madha-intro .madha-intro-title {
-  font-size: 32px !important;
-}
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .madha-intro .madha-intro-title {
-    font-size: 30px !important;
-  }
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-  .madha-intro .madha-intro-title {
-    font-size: 15px !important;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 400px) {
-  .madha-intro .madha-intro-title {
-    font-size: 15px !important;
-  }
-}
-/* Responsive Intro Subtitle */
-.madha-intro .madha-intro-tagline {
-  font-size: 17px !important;
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .madha-intro .madha-intro-tagline {
-    font-size: 16px !important;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .madha-intro .madha-intro-tagline {
-    font-size: 12px !important;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 400px) {
-  .madha-intro .madha-intro-tagline {
-    font-size: 11px !important;
-  }
-}
