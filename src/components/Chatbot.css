@@ -1151,7 +1151,7 @@ border-radius: 24px;
     position: absolute;
 
   left: 50%;
-  top: -10px;
+  top: -0px;
     width: 110px !important;
     height: 110px !important;
 
@@ -1164,7 +1164,7 @@ border-radius: 24px;
     position: absolute;
 
   left: 50%;
-  top: -10px;
+  top: -0px;
     width: 80px !important;
     height: 80px !important;
   }
