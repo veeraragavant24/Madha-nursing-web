@@ -470,82 +470,54 @@
 }
 
 
-/* =========================================================
-   MADHA INTRO TITLE
-   ========================================================= */
 
-.madha-intro-title {
-  position: relative;
-  z-index: 20;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 44px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-  text-align: center;
+/* Responsive Intro Title */
+.madha-intro .madha-intro-title {
+  font-size: 32px !important;
 }
 
-
-/* =========================================================
-   MADHA INTRO TAGLINE
-   ========================================================= */
-
-.madha-intro-tagline {
-  position: relative;
-  z-index: 20;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.1;
-  text-transform: uppercase;
-  text-align: center;
+/* Tablet */
+@media (max-width: 1024px) {
+  .madha-intro .madha-intro-title {
+    font-size: 30px !important;
+  }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media screen and (max-width: 768px) {
-
-  .madha-intro-title {
-    font-size: 20px;
-    letter-spacing: 1.5px;
-    line-height: 1.2;
-    white-space: nowrap;
+/* Mobile */
+@media (max-width: 768px) {
+  .madha-intro .madha-intro-title {
+    font-size: 26px !important;
   }
-
-  .madha-intro-tagline {
-    font-size: 10px;
-    letter-spacing: 1px;
-    line-height: 1.2;
-  }
-
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media screen and (max-width: 420px) {
-
-  .madha-intro-title {
-    font-size: 17px;
-    letter-spacing: 1px;
+/* Small Mobile */
+@media (max-width: 400px) {
+  .madha-intro .madha-intro-title {
+    font-size: 23px !important;
   }
+}
+/* Responsive Intro Subtitle */
+.madha-intro .madha-intro-tagline {
+  font-size: 17px !important;
+}
 
-  .madha-intro-tagline {
-    font-size: 9px;
-    letter-spacing: 0.8px;
+/* Tablet */
+@media (max-width: 1024px) {
+  .madha-intro .madha-intro-tagline {
+    font-size: 16px !important;
   }
+}
 
+/* Mobile */
+@media (max-width: 768px) {
+  .madha-intro .madha-intro-tagline {
+    font-size: 15px !important;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+  .madha-intro .madha-intro-tagline {
+    font-size: 14px !important;
+  }
 }
