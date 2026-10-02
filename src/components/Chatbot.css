@@ -1175,7 +1175,7 @@ border-radius: 24px;
 
   .madha-chatbot-opening-robot {
     left: 50% !important;
-    top: -113px !important;
+    top: -140px !important;
     transform: translateX(-50%) translateY(0) !important;
   }
 
@@ -1183,7 +1183,7 @@ border-radius: 24px;
 @media (min-width: 769px) and (max-width: 1400px) {
 .madha-chatbot-opening-robot {
     left: 50% !important;
-    top: -113px !important;
+    top: -140px !important;
     transform: translateX(-50%) translateY(0) !important;
   }
 
