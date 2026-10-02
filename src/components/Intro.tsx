@@ -95,7 +95,6 @@ export default function Intro({ onComplete }: IntroProps) {
   style={{
     fontFamily: "'Cinzel', serif",
     fontWeight: 700,
-    fontSize: '33.5px',
     letterSpacing: '0.08em',
   }}
 >
