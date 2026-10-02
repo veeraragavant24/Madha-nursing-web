@@ -1148,16 +1148,16 @@ border-radius: 24px;
 /* Laptop / Desktop */
 @media (min-width: 769px) and (max-width: 1400px) {
   .madha-chatbot-floating-bot img {
-    width: 80px !important;
-    height: 80px !important;
+    width: 110px !important;
+    height: 110px !important;
   }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
   .madha-chatbot-floating-bot img {
-    width: 60px !important;
-    height: 60px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
 }
 
@@ -1167,4 +1167,24 @@ border-radius: 24px;
     width: 55px !important;
     height: 55px !important;
   }
+}
+/* ================================
+   MOBILE POPUP BOT POSITION
+   ================================ */
+@media (max-width: 768px) {
+
+  .madha-chatbot-opening-robot {
+    left: 50% !important;
+    top: -95px !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+
+}
+@media (min-width: 769px) and (max-width: 1400px) {
+.madha-chatbot-opening-robot {
+    left: 50% !important;
+    top: -95px !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+
 }
