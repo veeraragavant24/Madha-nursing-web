@@ -486,7 +486,7 @@
 /* Mobile */
 @media (max-width: 768px) {
   .madha-intro .madha-intro-title {
-    font-size: 23px !important;
+    font-size: 19px !important;
   }
 }
 
@@ -511,13 +511,13 @@
 /* Mobile */
 @media (max-width: 768px) {
   .madha-intro .madha-intro-tagline {
-    font-size: 15px !important;
+    font-size: 13px !important;
   }
 }
 
 /* Small Mobile */
 @media (max-width: 400px) {
   .madha-intro .madha-intro-tagline {
-    font-size: 14px !important;
+    font-size: 11px !important;
   }
 }
