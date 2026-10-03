@@ -1214,4 +1214,61 @@ border-radius: 24px;
   }
 
 }
+/* =====================================================
+   MOBILE ONLY - ULTRA SMOOTH ROBOT RISING
+   ===================================================== */
 
+@media (max-width: 600px) {
+
+  .madha-chatbot-opening-robot {
+
+    animation-name: madhaOpeningRobotRiseMobile !important;
+    animation-duration: 3.8s !important;
+    animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    animation-delay: 0.05s !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: forwards !important;
+
+    will-change: transform;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE ROBOT RISE
+   ===================================================== */
+
+@keyframes madhaOpeningRobotRiseMobile {
+
+  0% {
+    transform:
+      translate3d(-50%, 150px, 0);
+  }
+
+  20% {
+    transform:
+      translate3d(-50%, 112px, 0);
+  }
+
+  40% {
+    transform:
+      translate3d(-50%, 76px, 0);
+  }
+
+  60% {
+    transform:
+      translate3d(-50%, 46px, 0);
+  }
+
+  80% {
+    transform:
+      translate3d(-50%, 20px, 0);
+  }
+
+  100% {
+    transform:
+      translate3d(-50%, 0, 0);
+  }
+
+}
