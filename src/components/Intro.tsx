@@ -90,11 +90,11 @@ export default function Intro({ onComplete }: IntroProps) {
 
   @media (max-width: 768px) {
     .madha-intro .madha-intro-title {
-      font-size: 19px !important;
+      font-size: 24px !important;
     }
 
     .madha-intro .madha-intro-tagline {
-      font-size: 11px !important;
+      font-size: 17px !important;
     }
   }
 
@@ -104,11 +104,11 @@ export default function Intro({ onComplete }: IntroProps) {
 
   @media (max-width: 400px) {
     .madha-intro .madha-intro-title {
-      font-size: 15px !important;
+      font-size: 20px !important;
     }
 
     .madha-intro .madha-intro-tagline {
-      font-size: 12px !important;
+      font-size: 14px !important;
     }
   }
 `}</style>
