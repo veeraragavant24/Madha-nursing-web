@@ -1166,24 +1166,7 @@ border-radius: 24px;
   }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .madha-chatbot-floating-bot img {
-    position: absolute;
 
-  left: 70%;
-  top:60px;
-    width: 80px !important;
-    height: 80px !important;
-  }
-  .madha-chatbot-launcher-wrap::after {
-  content: "Ask me about MCON";
-
-  position: absolute;
-
-  right: 150px;
-  bottom: 90px;
-}}
 
 /* Small mobile */
 @media (max-width: 380px) {
