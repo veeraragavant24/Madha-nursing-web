@@ -312,6 +312,23 @@ export default function Departments({ navigate }: Props) {
         gap: 24px;
       }
     }
+      /* Department card mouse hover animation */
+
+.department-selector-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease !important;
+}
+
+.department-selector-card:hover {
+  transform: scale(1.05) translateY(-10px) !important;
+
+  box-shadow:
+    0 20px 25px rgba(0, 0, 0, 0.3) !important;
+
+  filter: brightness(1.1);
+}
   `}</style>
 
   <div className="departments-page">
@@ -347,7 +364,10 @@ export default function Departments({ navigate }: Props) {
     <div className="departments-selector">
             {DEPTS.map((d, i) => (
               <Reveal key={d.id} delay={(i % 3 + 1) as 1 | 2 | 3} type="scale">
-                <button onClick={() => setActive(d)} style={{
+                <button
+  className="department-selector-card"
+  onClick={() => setActive(d)}
+  style={{
                   width: '100%', background: active.id === d.id ? d.color : 'white', color: active.id === d.id ? 'white' : '#0B2545',
                   borderRadius: 20, padding: '28px', border: `2px solid ${active.id === d.id ? d.color : 'rgba(11,37,69,.08)'}`,
                   cursor: 'pointer', textAlign: 'left',

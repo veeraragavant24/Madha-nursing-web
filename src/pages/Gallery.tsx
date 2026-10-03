@@ -39,6 +39,7 @@ const CATEGORY_INFO: Record<string, {
 }
 
 const IMAGES = [
+  
   { id: '/gallery/lamplight2026/lamp-1.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 280 },
   { id: '/gallery/lamplight2026/lamp-2.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 200 },
   { id: '/gallery/lamplight2026/lamp-3.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 540 },
@@ -330,10 +331,9 @@ export default function Gallery({ navigate }: Props) {
     box-shadow:
       0 10px 30px rgba(7,26,54,.12);
 
-    transition:
-      transform .45s cubic-bezier(.16,1,.3,1),
-      box-shadow .45s ease,
-      border-color .35s ease;
+   transition:
+  transform .45s cubic-bezier(.16,1,.3,1),
+  box-shadow .45s ease;
   }
 
   .gallery-category-card.has-image {
@@ -360,6 +360,38 @@ export default function Gallery({ navigate }: Props) {
       0 0 0 1px rgba(24,198,200,.16);
     border-color: rgba(24,198,200,.48);
   }
+    /* ========================================
+   CATEGORY CARD HOVER WOBBLE
+======================================== */
+
+@keyframes gallery-category-wobble {
+  0%, 100% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+
+  20% {
+    transform: translateY(-8px) rotate(-5deg);
+  }
+
+  40% {
+    transform: translateY(-8px) rotate(4deg);
+  }
+
+  60% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+
+  80% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-category-card:hover,
+  .gallery-category-card:focus-visible {
+    animation: gallery-category-wobble 0.6s ease 1;
+  }
+}
 
   .gallery-category-card:focus-visible {
     outline: 3px solid rgba(24,198,200,.35);
@@ -968,7 +1000,7 @@ export default function Gallery({ navigate }: Props) {
           style={{ background: '#F3F7FB' }}
         >
           <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-         {filter === 'All' || filter === 'Events' ? (
+         {filter === 'Events' ? (
            ['Lamplighting Ceremony', 'Pongal Celebration', 'Christmas Celebration', 'Independence Day'].map((eventName, i) => {
              const eventImages = filtered.filter(img => img.event === eventName)
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Reveal from '../components/Reveal'
 
 type Page = 'home' | 'about' | 'courses' | 'departments' | 'gallery' | 'contact' | 'management' | 'principal'
@@ -72,6 +72,29 @@ export default function Courses({ navigate }: Props) {
   const [active, setActive] = useState(0)
   const course = COURSES[active]
 
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      '.course-scroll-reveal, .course-scroll-left, .course-scroll-right'
+    )
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('course-scroll-visible')
+          }
+        })
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
+      }
+    )
+
+    elements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [active])
   return (
   <div className="courses-page">
     <style>{`
@@ -125,6 +148,117 @@ export default function Courses({ navigate }: Props) {
     flex-wrap: wrap;
     gap: 32px;
   }
+
+
+/* =========================================
+   COURSES SCROLL EFFECT
+   DESKTOP + MOBILE
+   ========================================= */
+
+/* Common */
+.course-scroll-reveal,
+.course-scroll-left,
+.course-scroll-right {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* -----------------------------------------
+   DESKTOP
+   ----------------------------------------- */
+
+.course-scroll-reveal {
+  transform: translateY(55px);
+}
+
+.course-scroll-left {
+  transform: translateX(-70px);
+}
+
+.course-scroll-right {
+  transform: translateX(70px);
+}
+
+.course-scroll-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger */
+.course-scroll-left.course-delay-1 {
+  transition-delay: 0.05s;
+}
+
+.course-scroll-right.course-delay-2 {
+  transition-delay: 0.18s;
+}
+
+.course-scroll-left.course-delay-3 {
+  transition-delay: 0.05s;
+}
+
+.course-scroll-right.course-delay-4 {
+  transition-delay: 0.18s;
+}
+
+/* -----------------------------------------
+   MOBILE
+   ----------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .course-scroll-reveal,
+  .course-scroll-left,
+  .course-scroll-right {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+      opacity 0.65s ease,
+      transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .course-scroll-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .course-scroll-left.course-delay-1,
+  .course-scroll-right.course-delay-2,
+  .course-scroll-left.course-delay-3,
+  .course-scroll-right.course-delay-4 {
+    transition-delay: 0s;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+
+  .course-scroll-reveal,
+  .course-scroll-left,
+  .course-scroll-right {
+    transform: translateY(28px);
+    transition-duration: 0.6s;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .course-scroll-reveal,
+  .course-scroll-left,
+  .course-scroll-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
+
+
 
   @media (max-width: 768px) {
     .courses-hero {
@@ -240,6 +374,51 @@ export default function Courses({ navigate }: Props) {
       font-size: 14px !important;
     }
   }
+    /* =========================================
+   COURSE TAB TOP + BOTTOM HOVER LINES
+========================================= */
+
+.course-hover-tab {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Animated top and bottom lines */
+.course-hover-tab::before,
+.course-hover-tab::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: linear-gradient(
+    to right,
+    #18C6C8,
+    #0B2545
+  ) !important;
+
+  transform: scaleX(0) !important;
+  transition: transform 0.4s ease-out !important;
+  pointer-events: none !important;
+}
+
+/* TOP LINE */
+.course-hover-tab::before {
+  top: 5px !important;
+  transform-origin: left !important;
+}
+
+/* BOTTOM LINE */
+.course-hover-tab::after {
+  bottom: 5px !important;
+  transform-origin: right !important;
+}
+
+/* MOUSE HOVER */
+.course-hover-tab:hover::before,
+.course-hover-tab:hover::after {
+  transform: scaleX(1) !important;
+}
 `}</style>
       {/* Hero */}
       <section
@@ -284,15 +463,28 @@ export default function Courses({ navigate }: Props) {
 >
         <div className="courses-tabs-inner">
           {COURSES.map((c, i) => (
-            <button key={c.code} onClick={() => setActive(i)} style={{
-              padding: '20px 32px', background: 'none', border: 'none', cursor: 'pointer',
-              fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 15,
-              color: active === i ? c.color : '#475569',
-              borderBottom: `3px solid ${active === i ? c.color : 'transparent'}`,
-              whiteSpace: 'nowrap', transition: 'all .25s',
-            }}>
-              {c.code} — {c.level}
-            </button>
+           
+           <button
+  key={c.code}
+  className="course-hover-tab"
+  onClick={() => setActive(i)}
+  style={{
+    padding: '20px 32px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+    fontWeight: 600,
+    fontSize: 15,
+    color: active === i ? c.color : '#475569',
+    borderBottom: `3px solid ${active === i ? c.color : 'transparent'}`,
+    whiteSpace: 'nowrap',
+  }}
+>
+  <span className="course-hover-tab-text">
+    {c.code} — {c.level}
+  </span>
+</button>
           ))}
         </div>
       </div>
@@ -304,8 +496,8 @@ export default function Courses({ navigate }: Props) {
 >
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           {/* Header */}
-          <div className="course-header">
-            <div>
+<div className="course-header course-scroll-reveal">
+              <div>
               <div style={{ display: 'inline-block', background: course.color, color: 'white', padding: '4px 16px', borderRadius: 100, fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, letterSpacing: '.08em', marginBottom: 20 }}>
                 {course.level}
               </div>
@@ -331,8 +523,8 @@ export default function Courses({ navigate }: Props) {
           <div className="course-details-grid">
             {/* Eligibility */}
             <Reveal type="left">
-              <div
-  className="course-card"
+  <div
+    className="course-card course-scroll-left course-delay-1"
   style={{
     background: 'white',
     borderRadius: 24,
@@ -355,7 +547,9 @@ export default function Courses({ navigate }: Props) {
 
             {/* Curriculum */}
             <Reveal type="right">
-              <div style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)', height: '100%' }}>
+  <div
+    className="course-scroll-right course-delay-2"
+     style={{ background: 'white', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)', height: '100%' }}>
                 <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Curriculum Overview</h3>
                 {course.curriculum.map((c, i) => (
                   <div key={c} style={{ display: 'flex', gap: 16, marginBottom: 18 }}>
@@ -390,7 +584,8 @@ export default function Courses({ navigate }: Props) {
 
             {/* Placements */}
             <Reveal delay={1}>
-              <div className="course-card" style={{ background: 'linear-gradient(135deg, rgba(11,37,69,.04), rgba(24,198,200,.05))', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
+  <div className="course-card course-scroll-right course-delay-4"
+   style={{ background: 'linear-gradient(135deg, rgba(11,37,69,.04), rgba(24,198,200,.05))', borderRadius: 24, padding: '36px', border: '1px solid rgba(11,37,69,.08)' }}>
                 <h3 className="font-sans" style={{ fontWeight: 600, fontSize: 20, color: '#0B2545', marginBottom: 24 }}>Where Our Graduates Work</h3>
                 {course.placements.map(p => (
                   <div key={p} style={{
@@ -406,8 +601,8 @@ export default function Courses({ navigate }: Props) {
 
           {/* FAQs */}
           <Reveal>
-            <div
-  className="course-faq-card"
+  <div
+    className="course-faq-card course-scroll-reveal"
   style={{
     background: 'white',
     borderRadius: 24,
@@ -424,7 +619,7 @@ export default function Courses({ navigate }: Props) {
 
           {/* Apply CTA */}
           <div
-  className="course-apply-cta"
+  className="course-apply-cta course-scroll-reveal"
   style={{
     marginTop: 48,
     background: 'linear-gradient(135deg, #0B2545, #1E5AA8)',

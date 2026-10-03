@@ -236,15 +236,151 @@ export default function Home({ navigate }: Props) {
     gap: 16px;
   }
 
-  .home-dept-card {
-  width: 100%;
-  height: 300px;
-}
 
+
+
+
+
+.home-dept-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+
+  background: linear-gradient(
+    to top,
+    rgba(6, 27, 54, 0.95) 0%,
+    rgba(6, 27, 54, 0.65) 25%,
+    rgba(6, 27, 54, 0.18) 55%,
+    transparent 75%
+  );
+}
 .home-dept-card img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.home-dept-card .dept-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  box-sizing: border-box;
+  padding: 0 28px 26px;
+}
+  .home-departments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* Keep every Reveal wrapper inside one equal grid cell */
+.home-departments-grid > * {
+  width: 100%;
+  height: 300px;
+  min-width: 0;
+  min-height: 300px;
+}
+
+/* Keep every department card exactly the same size */
+.home-departments-grid > * > .home-dept-card {
+  width: 100%;
+  height: 300px !important;
+  min-height: 300px;
+  max-height: 300px;
+  box-sizing: border-box;
+}
+  
+  /* =========================================
+   DEPARTMENT CARD HOLOGRAPHIC HOVER
+   ========================================= */
+
+.home-dept-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* Holographic light sweep */
+.home-dept-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(0, 255, 255, 0.28)
+  );
+  transform: rotate(-45deg) translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition:
+    opacity 0.5s ease,
+    transform 0.7s ease;
+}
+
+/* Hover */
+.home-dept-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 24px rgba(0, 255, 255, 0.32);
+}
+
+/* Sweep animation */
+.home-dept-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+/* Keep image below holographic light */
+.home-dept-card img {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+/* Very subtle image zoom */
+.home-dept-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Keep department text above the holographic layer */
+.home-dept-card .dept-content {
+  position: relative;
+  z-index: 6;
+}
+
+/* Mobile — no hover enlargement */
+@media (max-width: 768px) {
+  .home-dept-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .home-dept-card:hover img {
+    transform: none;
+  }
+
+  .home-dept-card::before {
+    display: none;
+  }
 }
 
   .home-feature-grid {
@@ -271,7 +407,56 @@ export default function Home({ navigate }: Props) {
     position: sticky;
     top: 120px;
   }
+/* =====================================================
+   DEPARTMENT CARD CONTENT — FINAL OVERRIDE
+   ===================================================== */
 
+.home-dept-card {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.home-dept-card img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  z-index: 1 !important;
+}
+
+.home-dept-card::after {
+  z-index: 3 !important;
+}
+
+.home-dept-card .dept-content {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0 28px 26px !important;
+  z-index: 10 !important;
+  display: block !important;
+}
+
+.home-dept-card .dept-tag-pill {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 10px !important;
+  z-index: 11 !important;
+}
+
+.home-dept-card .dept-content .font-sans {
+  position: relative !important;
+  display: block !important;
+  color: #ffffff !important;
+  z-index: 11 !important;
+}
   /* ================================
      CLINICAL TRAINING - DESKTOP
   ================================= */

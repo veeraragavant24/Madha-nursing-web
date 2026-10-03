@@ -552,6 +552,36 @@ export default function Contact({ navigate }: Props) {
           }
 
         }
+          /* ==========================================
+   CONTACT BOX MOUSE HOVER ANIMATION
+========================================== */
+
+/* Admission Enquiry + Right-side information boxes */
+.contact-form-card,
+.contact-info-card,
+.contact-map {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
+}
+
+/* Mouse hover */
+.contact-form-card:hover,
+.contact-info-card:hover,
+.contact-map:hover {
+  box-shadow: 0 25px 30px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.1);
+}
+
+/* Scale + lift animation */
+@media (prefers-reduced-motion: no-preference) {
+  .contact-form-card:hover,
+  .contact-info-card:hover,
+  .contact-map:hover {
+    transform: scale(1.08) translateY(-12px);
+  }
+}
 
       `}</style>
 

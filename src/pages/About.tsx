@@ -81,6 +81,7 @@ const ACHIEVEMENTS = [
 export default function About({ navigate }: Props) {
     const journeyRef = useRef<HTMLDivElement | null>(null)
   const [journeyVisible, setJourneyVisible] = useState(false)
+  const [hoveredAchievement, setHoveredAchievement] = useState<string | null>(null)
 
   useEffect(() => {
     const element = journeyRef.current
@@ -816,6 +817,69 @@ export default function About({ navigate }: Props) {
   }
 
 }
+/* =====================================================
+   ACHIEVEMENT CARDS
+   ===================================================== */
+
+.achievement-flip-card {
+  width: 100%;
+  height: 200px;
+  cursor: pointer;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.achievement-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+
+  transition: transform 0.6s ease;
+  -webkit-transition: transform 0.6s ease;
+}
+
+.achievement-flip-front,
+.achievement-flip-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border-radius: 24px;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.achievement-flip-front {
+  background: #ffffff;
+  border: 1px solid rgba(11, 37, 69, 0.07);
+  box-shadow: 0 2px 12px rgba(11, 37, 69, 0.04);
+}
+
+.achievement-flip-back {
+  background: #8b5cf6;
+  color: #ffffff;
+
+  border: 1px solid #8b5cf6;
+
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+
+  box-shadow: 0 2px 12px rgba(11, 37, 69, 0.12);
+}
        
       `}</style>
 
@@ -1313,100 +1377,129 @@ src="/campus/college-image.png"
             }}
           >
 
-            {ACHIEVEMENTS.map((a, i) => (
+            {ACHIEVEMENTS.map((a) => (
 
-              <Reveal
-                key={a.label}
-                delay={
-                  (i + 1) as
-                    | 1
-                    | 2
-                    | 3
-                    | 4
-                    | 5
-                    | 6
-                }
-                type="scale"
-              >
+  <div
+    key={a.label}
+    className="achievement-flip-card"
+    onMouseEnter={() => setHoveredAchievement(a.label)}
+    onMouseLeave={() => setHoveredAchievement(null)}
+    style={{
+      width: '100%',
+      height: '200px',
+      perspective: '1000px',
+      WebkitPerspective: '1000px',
+      cursor: 'pointer'
+    }}
+  >
 
-                <div
-                  style={{
-                    background: 'white',
-                    borderRadius: 24,
-                    padding: '36px 24px',
-                    textAlign: 'center',
-                    border:
-                      '1px solid rgba(11,37,69,.07)',
-                    transition:
-                      'all .4s cubic-bezier(.16,1,.3,1)',
-                    boxShadow:
-                      '0 2px 12px rgba(11,37,69,.04)'
-                  }}
+    <div
+      className="achievement-flip-inner"
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        transition: 'transform 0.6s ease',
+        transformStyle: 'preserve-3d',
+        WebkitTransformStyle: 'preserve-3d',
+        transform:
+          hoveredAchievement === a.label
+            ? 'rotateY(180deg)'
+            : 'rotateY(0deg)'
+      }}
+    >
 
-                  onMouseEnter={e => {
-                    const el =
-                      e.currentTarget as HTMLDivElement
+      {/* FRONT */}
+      <div
+        className="achievement-flip-front"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxSizing: 'border-box',
+          borderRadius: 24,
+          background: 'white',
+          border: '1px solid rgba(11,37,69,.07)',
+          boxShadow: '0 2px 12px rgba(11,37,69,.04)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
+        }}
+      >
 
-                    el.style.borderColor =
-                      'rgba(24,198,200,.35)'
+        <div style={{ fontSize: 36, marginBottom: 16 }}>
+          {a.icon}
+        </div>
 
-                    el.style.transform =
-                      'translateY(-8px)'
+        <div
+          className="font-sans"
+          style={{
+            fontWeight: 700,
+            fontSize: 19,
+            color: '#0B2545',
+            marginBottom: 6
+          }}
+        >
+          {a.label}
+        </div>
 
-                    el.style.boxShadow =
-                      '0 24px 48px rgba(11,37,69,.12)'
-                  }}
+        <div
+          style={{
+            color: '#18C6C8',
+            fontSize: 14,
+            fontWeight: 600
+          }}
+        >
+          {a.sub}
+        </div>
 
-                  onMouseLeave={e => {
-                    const el =
-                      e.currentTarget as HTMLDivElement
+      </div>
 
-                    el.style.borderColor =
-                      'rgba(11,37,69,.07)'
 
-                    el.style.transform = 'none'
+      {/* BACK */}
+      <div
+        className="achievement-flip-back"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxSizing: 'border-box',
+          borderRadius: 24,
+          background: '#8b5cf6',
+          color: 'white',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+          transform: 'rotateY(180deg)'
+        }}
+      >
 
-                    el.style.boxShadow =
-                      '0 2px 12px rgba(11,37,69,.04)'
-                  }}
-                >
+        <div
+          style={{
+            fontSize: 19,
+            fontWeight: 700,
+            color: 'white'
+          }}
+        >
+          {a.label}
+        </div>
 
-                  <div
-                    style={{
-                      fontSize: 36,
-                      marginBottom: 16
-                    }}
-                  >
-                    {a.icon}
-                  </div>
+      </div>
 
-                  <div
-                    className="font-sans"
-                    style={{
-                      fontWeight: 700,
-                      fontSize: 19,
-                      color: '#0B2545',
-                      marginBottom: 6
-                    }}
-                  >
-                    {a.label}
-                  </div>
+    </div>
 
-                  <div
-                    style={{
-                      color: '#18C6C8',
-                      fontSize: 14,
-                      fontWeight: 600
-                    }}
-                  >
-                    {a.sub}
-                  </div>
+  </div>
 
-                </div>
-
-              </Reveal>
-
-            ))}
+))}
 
           </div>
 
