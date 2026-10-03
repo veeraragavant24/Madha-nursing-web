@@ -41,18 +41,18 @@ const PROGRAMS = [
 
 const TESTIMONIALS = [
   {
-    quote: 'Madha College transformed me from a student to a confident healthcare professional. The clinical training at affiliated hospitals gave me exposure that I couldn\'t have gotten anywhere else.',
-    name: 'Priya Venkatesh', role: 'B.Sc. Nursing, Batch 2022', hospital: 'Apollo Hospitals, Chennai',
+    quote: 'My college was not just a place where I earned my B.Sc. Nursing degree; it was where I discovered my strength, confidence, and passion for caring.The guidance of my faculty, clinical exposure, and supportive learning environment shaped me both personally and professionally.I will always be proud to be an alumnus of my college.',
+    name: 'Muthamil Selvam M', role: 'B.Sc. Nursing, Batch 2017', hospital: 'AIIMS, Delhi',
     avatar: 'PV',
   },
   {
-    quote: 'The faculty here are not just teachers — they are mentors who genuinely care about your growth. The research opportunities and the state-of-the-art labs prepared me for my M.Sc. specialisation.',
-    name: 'Arjun Krishnamurthy', role: 'M.Sc. Nursing, Batch 2023', hospital: 'AIIMS, New Delhi',
+    quote: 'From classrooms to clinical practice, every experience during my M.Sc. Nursing journey contributed to who I am today. The experiences I gained here continue to guide me in my professional journey. Forever grateful for the foundation my institution gave me.',
+    name: 'Hari Gobu H', role: 'M.Sc. Nursing, Batch 2010', hospital: 'Government Medical College & Hospital, Chandigarh ',
     avatar: 'AK',
   },
   {
-    quote: 'From the moment I stepped into Madha College, I knew this was where I would become the nurse I always dreamed of being. The holistic education approach here is truly world-class.',
-    name: 'Kavitha Rajan', role: 'Post Basic B.Sc., Batch 2021', hospital: 'Fortis Healthcare, Bengaluru',
+    quote: 'Joining P.B.B.Sc. Nursing was a significant step in my professional journey. My college gave me opportunities to learn, grow, and discover my potential. The knowledge, values, and memories I gained here will always remain a treasured part of my career.',
+    name: 'Kanimozhi T ', role: 'Post Basic B.Sc., Batch 2022', hospital: 'Kanniyappa community college, Minjur',
     avatar: 'KR',
   },
 ]
@@ -1230,7 +1230,13 @@ export default function Home({ navigate }: Props) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={(i + 1) as 1 | 2 | 3} type="scale">
-                <div className="testimonial-card">
+                <div
+  className="testimonial-card"
+  style={{
+    height: '478px',
+    boxSizing: 'border-box',
+  }}
+>
                   {/* Stars */}
                   <div style={{ display: 'flex', gap: 3, marginBottom: 20 }}>
                     {Array.from({ length: 5 }).map((_, j) => (
