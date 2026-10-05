@@ -301,7 +301,7 @@ export default function Home({ navigate }: Props) {
 }
   
   /* =========================================
-   DEPARTMENT CARD HOLOGRAPHIC HOVER
+   DEPARTMENT CARD PREMIUM HOLOGRAPHIC ANIMATION
    ========================================= */
 
 .home-dept-card {
@@ -309,62 +309,108 @@ export default function Home({ navigate }: Props) {
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
+
+  transform: translateZ(0);
+  will-change: transform;
+
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.45s cubic-bezier(.16, 1, .3, 1),
+    box-shadow 0.45s ease;
 }
 
-/* Holographic light sweep */
+/* Holographic light layer */
 .home-dept-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -70%;
-  width: 200%;
-  height: 200%;
+
+  top: -100%;
+  left: -120%;
+
+  width: 180%;
+  height: 300%;
+
   background: linear-gradient(
-    0deg,
-    transparent,
-    transparent 30%,
-    rgba(0, 255, 255, 0.28)
+    115deg,
+    transparent 35%,
+    rgba(255,255,255,0.05) 42%,
+    rgba(24,198,200,0.35) 50%,
+    rgba(255,255,255,0.12) 56%,
+    transparent 65%
   );
-  transform: rotate(-45deg) translateY(-100%);
+
+  transform: translateX(-80%) rotate(12deg);
+
   opacity: 0;
+
   pointer-events: none;
+
   z-index: 5;
+
   transition:
-    opacity 0.5s ease,
-    transform 0.7s ease;
+    transform 0.9s cubic-bezier(.16,1,.3,1),
+    opacity 0.35s ease;
 }
 
-/* Hover */
+/* Desktop hover */
 .home-dept-card:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 24px rgba(0, 255, 255, 0.32);
+  transform: translateY(-8px) scale(1.035);
+
+  box-shadow:
+    0 20px 45px rgba(11,37,69,0.20),
+    0 0 30px rgba(24,198,200,0.20);
 }
 
-/* Sweep animation */
+/* Holographic sweep */
 .home-dept-card:hover::before {
   opacity: 1;
-  transform: rotate(-45deg) translateY(100%);
+  transform: translateX(120%) rotate(12deg);
 }
 
-/* Keep image below holographic light */
+/* Image */
 .home-dept-card img {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.5s ease;
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+
+  z-index: 1 !important;
+
+  transition:
+    transform 0.8s cubic-bezier(.16,1,.3,1),
+    filter 0.5s ease;
 }
 
-/* Very subtle image zoom */
+/* Image zoom */
 .home-dept-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.06);
+
+  filter: brightness(1.05) saturate(1.08);
 }
 
-/* Keep department text above the holographic layer */
+/* Text stays above animation */
 .home-dept-card .dept-content {
+  position: absolute !important;
+
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+
+  z-index: 10 !important;
+}
+
+/* Tag */
+.home-dept-card .dept-tag-pill {
   position: relative;
-  z-index: 6;
+  z-index: 11;
+}
+
+/* Department name */
+.home-dept-card .dept-content .font-sans {
+  position: relative;
+  z-index: 11;
 }
 
 /* Mobile — no hover enlargement */
@@ -942,13 +988,12 @@ export default function Home({ navigate }: Props) {
         <div style={{ maxWidth: 1280, margin: '0 auto' }}>
           {/* Content */}
           <div
-            style={{
-              width: '100%',
-              maxWidth: 1100,
-              margin: '0 auto',
-              textAlign: 'center',
-            }}
-          >
+  style={{
+    width: '100%',
+    maxWidth: 1500,
+    margin: '0 auto'
+  }}
+>
             <Reveal delay={1}>
               <span className="section-tag">Why Madha College</span>
             </Reveal>

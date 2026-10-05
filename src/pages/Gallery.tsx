@@ -330,7 +330,7 @@ export default function Gallery({ navigate }: Props) {
   }
 
   .gallery-category-grid {
-    max-width: 1280px;
+    max-width: 1450px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

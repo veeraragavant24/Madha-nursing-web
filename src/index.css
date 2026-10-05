@@ -794,3 +794,318 @@ body {
   font-family: inherit;
 }
 
+/* =========================================================
+   MADHA COLLEGE — GLOBAL RESPONSIVE SYSTEM
+========================================================= */
+
+/* ---------- GLOBAL RESET ---------- */
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   RESPONSIVE CONTAINERS
+========================================================= */
+
+.container,
+.page-container,
+.section-container {
+  width: min(100% - 80px, 1280px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1401px) {
+
+  .container,
+  .page-container,
+  .section-container {
+    width: min(100% - 100px, 1400px);
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1400px) {
+
+  .container,
+  .page-container,
+  .section-container {
+    width: min(100% - 64px, 1280px);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .container,
+  .page-container,
+  .section-container {
+    width: calc(100% - 48px);
+  }
+
+  /* Grids automatically become smaller */
+  .grid,
+  .responsive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Images */
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  /* Large headings */
+  h1 {
+    font-size: clamp(32px, 5vw, 56px);
+  }
+
+  h2 {
+    font-size: clamp(28px, 4vw, 44px);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container,
+  .page-container,
+  .section-container {
+    width: calc(100% - 32px);
+    max-width: 100%;
+  }
+
+  /* Sections */
+
+  section {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Grids */
+
+  .grid,
+  .responsive-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Flex layouts */
+
+  .responsive-flex {
+    flex-direction: column !important;
+  }
+
+  /* Images */
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Videos */
+
+  video {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Typography */
+
+  h1 {
+    font-size: clamp(30px, 8vw, 42px) !important;
+    line-height: 1.12 !important;
+  }
+
+  h2 {
+    font-size: clamp(26px, 7vw, 38px) !important;
+    line-height: 1.15 !important;
+  }
+
+  h3 {
+    font-size: clamp(20px, 5vw, 28px) !important;
+  }
+
+  p {
+    font-size: clamp(14px, 3.8vw, 17px);
+    line-height: 1.65;
+  }
+
+  /* Buttons */
+
+  button {
+    max-width: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .container,
+  .page-container,
+  .section-container {
+    width: calc(100% - 28px);
+  }
+
+  section {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  h1 {
+    font-size: clamp(28px, 8vw, 36px) !important;
+  }
+
+  h2 {
+    font-size: clamp(24px, 7vw, 32px) !important;
+  }
+
+  h3 {
+    font-size: 20px !important;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL OVERFLOW
+========================================================= */
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE TEXT WRAPPING
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div {
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   RESPONSIVE CARDS
+========================================================= */
+
+.card,
+[class*="card"] {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESPONSIVE FORM ELEMENTS
+========================================================= */
+
+input,
+textarea,
+select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   RESPONSIVE IFRAME / MAP
+========================================================= */
+
+iframe {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  button,
+  a,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+}

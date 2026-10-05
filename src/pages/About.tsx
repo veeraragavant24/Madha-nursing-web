@@ -1253,11 +1253,11 @@ src="/campus/college-image.png"
       >
 
         <div
-          style={{
-            maxWidth: 1280,
-            margin: '0 auto'
-          }}
-        >
+  style={{
+    maxWidth: 1450,
+    margin: '0 auto'
+  }}
+>
 
           <div
             className="about-vision-grid"
