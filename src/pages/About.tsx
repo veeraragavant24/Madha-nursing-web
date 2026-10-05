@@ -880,7 +880,275 @@ export default function About({ navigate }: Props) {
 
   box-shadow: 0 2px 12px rgba(11, 37, 69, 0.12);
 }
-       
+   /* =====================================================
+   MOBILE CAMPUS IMAGE + ACHIEVEMENT FIX
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* =========================================
+     CAMPUS IMAGE
+  ========================================= */
+
+  .about-campus-section {
+    padding: 0 16px 70px !important;
+  }
+
+  .about-campus-card {
+    width: 100% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    max-height: 300px !important;
+
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    clip-path: inset(0 round 24px) !important;
+
+    position: relative !important;
+    isolation: isolate;
+  }
+
+  .about-campus-card img {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+/* =========================================
+   MOBILE CAMPUS CONTENT FIX
+========================================= */
+
+.about-campus-content {
+  left: 24px !important;
+  right: 24px !important;
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+}
+
+.about-campus-content > div {
+  font-size: 28px !important;
+  line-height: 1.15 !important;
+  margin-bottom: 12px !important;
+  max-width: 100% !important;
+}
+
+.about-campus-content p {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.about-campus-content button {
+  margin-top: 16px !important;
+}
+  /* Dark overlay stays inside image */
+  .about-campus-card > div:nth-child(2) {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+  }
+
+  /* Text content stays INSIDE the image */
+  .about-campus-content {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 24px !important;
+    right: 24px !important;
+
+    width: auto !important;
+    max-width: none !important;
+
+    transform: translateY(-50%) !important;
+
+    z-index: 2 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .about-campus-content > div {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+
+    margin-bottom: 12px !important;
+
+    max-width: 100% !important;
+  }
+
+  .about-campus-content p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+
+    max-width: 100% !important;
+
+    margin: 0 !important;
+  }
+
+  .about-campus-content button {
+    margin-top: 16px !important;
+
+    padding: 11px 20px !important;
+
+    font-size: 13px !important;
+  }
+
+
+  /* =========================================
+     ACHIEVEMENT CARDS
+  ========================================= */
+
+  .achievement-flip-card {
+    width: 100% !important;
+    height: 200px !important;
+
+    perspective: 1000px !important;
+    -webkit-perspective: 1000px !important;
+
+    touch-action: manipulation !important;
+  }
+
+  .achievement-flip-inner {
+    width: 100% !important;
+    height: 100% !important;
+
+    transform-style: preserve-3d !important;
+    -webkit-transform-style: preserve-3d !important;
+
+    transition: transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+    -webkit-transition: transform 0.7s cubic-bezier(.16,1,.3,1) !important;
+  }
+
+  .achievement-flip-front,
+  .achievement-flip-back {
+    width: 100% !important;
+    height: 100% !important;
+
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  /* =========================================
+     SMALL MOBILE CAMPUS IMAGE
+  ========================================= */
+
+  .about-campus-section {
+    padding: 0 14px 60px !important;
+  }
+
+  .about-campus-card {
+    height: 270px !important;
+    min-height: 270px !important;
+    max-height: 270px !important;
+
+    border-radius: 22px !important;
+    clip-path: inset(0 round 22px) !important;
+  }
+
+  .about-campus-card img {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  .about-campus-content {
+    top: 50% !important;
+    left: 20px !important;
+    right: 20px !important;
+
+    transform: translateY(-50%) !important;
+  }
+
+  .about-campus-content > div {
+    font-size: 25px !important;
+    line-height: 1.12 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .about-campus-content p {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .about-campus-content button {
+    margin-top: 14px !important;
+    padding: 10px 18px !important;
+    font-size: 12px !important;
+  }
+@media (max-width: 480px) {
+
+  .about-campus-content {
+    top: 50% !important;
+    left: 18px !important;
+    right: 18px !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .about-campus-content > div {
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .about-campus-content p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .about-campus-content button {
+    margin-top: 14px !important;
+    padding: 10px 18px !important;
+    font-size: 12px !important;
+  }
+}
+
+  /* =========================================
+     ACHIEVEMENT MOBILE
+  ========================================= */
+
+  .achievement-flip-card {
+    height: 190px !important;
+  }
+
+} 
+  @media (max-width: 768px) {
+
+  .about-achievements {
+    padding: 70px 16px !important;
+  }
+
+  .about-achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+}
+  @media (max-width: 480px) {
+
+  .about-achievements {
+    padding: 60px 14px !important;
+  }
+
+  .about-achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+}   
       `}</style>
 
 
@@ -1380,10 +1648,15 @@ src="/campus/college-image.png"
             {ACHIEVEMENTS.map((a) => (
 
   <div
-    key={a.label}
-    className="achievement-flip-card"
-    onMouseEnter={() => setHoveredAchievement(a.label)}
-    onMouseLeave={() => setHoveredAchievement(null)}
+  key={a.label}
+  className="achievement-flip-card"
+  onMouseEnter={() => setHoveredAchievement(a.label)}
+  onMouseLeave={() => setHoveredAchievement(null)}
+  onClick={() =>
+    setHoveredAchievement(prev =>
+      prev === a.label ? null : a.label
+    )
+  }
     style={{
       width: '100%',
       height: '200px',
