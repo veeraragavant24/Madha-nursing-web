@@ -835,6 +835,69 @@ export default function Home({ navigate }: Props) {
       height: 230px !important;
     }
   }
+    /* =========================================
+   TESTIMONIAL MOBILE FIX
+========================================= */
+
+@media (max-width: 768px) {
+
+  .testimonial-card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+    padding: 24px 20px !important;
+    overflow: hidden !important;
+  }
+
+  .testimonial-card .testimonial-quote {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    margin-bottom: 24px !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .testimonial-card > div:last-child {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .testimonial-card > div:last-child > div:last-child {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .testimonial-card {
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .testimonial-card .testimonial-quote {
+    font-size: 15.5px !important;
+    line-height: 1.72 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .testimonial-card > div:last-child {
+    gap: 12px !important;
+    align-items: flex-start !important;
+  }
+
+  .testimonial-card > div:last-child > div:first-child {
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+  }
+
+}
 `}</style>
 
     <div className="home-page">
@@ -1416,10 +1479,13 @@ export default function Home({ navigate }: Props) {
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={(i + 1) as 1 | 2 | 3} type="scale">
                 <div
-  className="testimonial-card"
+ className="testimonial-card"
   style={{
-    height: '478px',
+    minHeight: '478px',
+    height: 'auto',
     boxSizing: 'border-box',
+    padding: '28px',
+    overflow: 'hidden',
   }}
 >
                   {/* Stars */}
@@ -1428,9 +1494,20 @@ export default function Home({ navigate }: Props) {
                       <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                     ))}
                   </div>
-                  <p style={{ color: '#F1F5F9', fontSize: 18, lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic' }}>
-                    "{t.quote}"
-                  </p>
+                  <p
+  className="testimonial-quote"
+  style={{
+    color: '#F1F5F9',
+    fontSize: 18,
+    lineHeight: 1.75,
+    margin: '0 0 28px',
+    fontStyle: 'italic',
+    overflowWrap: 'break-word',
+    wordBreak: 'normal',
+  }}
+>
+  "{t.quote}"
+</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                     <div style={{
                       width: 48, height: 48, borderRadius: '50%',
