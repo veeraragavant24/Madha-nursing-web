@@ -424,9 +424,6 @@ a.top-contact-item:hover {
    COMPUTER DESKTOP — WHITE SCROLL HEADER SPACING ONLY
    ========================================================= */
 
-@media (min-width: 1401px) {
-
-
 /* =========================================================
    INTERMEDIATE LAPTOP / SMALL DESKTOP
    Prevent college title from overlapping navigation
@@ -506,30 +503,6 @@ a.top-contact-item:hover {
     box-sizing: border-box !important;
   }
 
-/* =========================================================
-   NORMAL HEADER — MOVE MENU + APPLY NOW TO THE RIGHT
-   ALL LARGE DESKTOP WIDTHS
-   COLLEGE LOGO/TITLE STAYS FIXED
-   ========================================================= */
-
-@media (min-width: 1401px) {
-
-  .nav-root.transparent .nav-links {
-    position: relative !important;
-    left : 110px !important;
-  }
-
-  .nav-root.transparent .nav-right {
-    position: relative !important;
-    left: 110px !important;
-  }
-
-  .nav-root.transparent .btn-apply {
-    position: relative !important;
-    right: 30px !important;
-  }
-
-}
    .nav-root.solid .nav-inner {
     transform: none !important;
 
@@ -571,6 +544,7 @@ a.top-contact-item:hover {
   /* MENU AREA */
   .nav-root.solid .nav-links {
     flex: 1 1 auto !important;
+    width: auto !important;
 
     display: flex !important;
     align-items: center !important;
@@ -620,7 +594,6 @@ a.top-contact-item:hover {
     margin: 0 !important;
   }
 
-}
 
 /* Premium floating header transition */
 .nav-root.solid .nav-inner {
@@ -895,7 +868,8 @@ background: linear-gradient(
   align-items: center;
   justify-content: center;
 
-  width: 100%;
+  flex: 1 1 auto;
+  width: auto;
   min-width: 0;
 
   gap: 18px;
@@ -1024,7 +998,7 @@ letter-spacing: 0;
   height: 46px;
   padding: 12px;
 
-  transform: translateX(-50px);
+  transform: none;
 
   display: inline-flex;
 
@@ -1334,6 +1308,17 @@ font-weight: 700;
     box-sizing: border-box !important;
     padding-top: 10px !important;
 
+    overflow: visible !important;
+  }
+
+
+  /* FLEXIBLE DESKTOP MENU — prevents overlap on laptops */
+  .nav-links {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    justify-content: space-between !important;
+    gap: clamp(0px, 0.35vw, 5px) !important;
     overflow: visible !important;
   }
 
