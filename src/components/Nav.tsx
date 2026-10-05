@@ -603,7 +603,7 @@ a.top-contact-item:hover {
 
 
   /* APPLY NOW AREA */
-  .nav-root.solid .nav-right {git push origin main
+  .nav-root.solid .nav-right {
     margin-left: 4px !important;
     margin-right: 0 !important;
 
@@ -2730,8 +2730,311 @@ transform: none !important;
 }
 
 
+/* =========================================================
+   FINAL AUTO MENU SPACING
+   MENU SPACING ONLY
+   DO NOT CHANGE LOGO / ANIMATIONS / NAVIGATION
+   ========================================================= */
 
- 
+/* 1401px and above */
+@media screen and (min-width: 1401px) {
+
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: clamp(2px, 0.25vw, 6px) !important;
+
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+
+    margin: 0 !important;
+
+    padding-left: clamp(4px, 0.35vw, 8px) !important;
+    padding-right: clamp(4px, 0.35vw, 8px) !important;
+
+    white-space: nowrap !important;
+  }
+}
+
+
+/* 1201px → 1400px */
+@media screen and (min-width: 1201px) and (max-width: 1400px) {
+
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: clamp(0px, 0.2vw, 3px) !important;
+
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+
+    margin: 0 !important;
+
+    padding-left: clamp(2px, 0.25vw, 5px) !important;
+    padding-right: clamp(2px, 0.25vw, 5px) !important;
+
+    white-space: nowrap !important;
+  }
+}
+
+
+/* 1025px → 1200px */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 0 !important;
+
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+
+    margin: 0 !important;
+
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+
+    white-space: nowrap !important;
+  }
+}
+
+
+/* 769px → 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .nav-root.transparent .nav-links,
+  .nav-root.solid .nav-links {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 0 !important;
+
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+
+    margin: 0 !important;
+
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+
+    white-space: nowrap !important;
+  }
+}
+
+
+/* MOBILE — KEEP YOUR EXISTING HAMBURGER/DRAWER */
+@media screen and (max-width: 768px) {
+
+  .nav-root .nav-links {
+    display: none !important;
+  }
+
+  .nav-root .nav-hamburger {
+    display: flex !important;
+  }
+}
+ /* =========================================================
+   AUTO RESPONSIVE NAVIGATION
+   DESKTOP / LAPTOP ONLY
+   MOBILE HAMBURGER IS NOT TOUCHED
+   ========================================================= */
+
+@media screen and (min-width: 769px) {
+
+  /* Available space is automatically shared */
+  .nav-root .nav-inner {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Keep logo/title area from collapsing */
+  .nav-root .nav-brand {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  /* NAVIGATION — use only the space actually available */
+  .nav-root .nav-links {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+
+    gap: clamp(2px, 0.7vw, 14px) !important;
+
+    margin: 0 !important;
+    padding-left: clamp(0px, 0.4vw, 6px) !important;
+    padding-right: clamp(0px, 0.4vw, 6px) !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* Menu items automatically become tighter on smaller screens */
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+
+    white-space: nowrap !important;
+
+    padding-left: clamp(2px, 0.45vw, 9px) !important;
+    padding-right: clamp(2px, 0.45vw, 9px) !important;
+  }
+
+  /* Apply Now always keeps its own required space */
+  .nav-root .nav-right {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — EXISTING HAMBURGER / DRAWER UNCHANGED
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .nav-root .nav-links {
+    display: none !important;
+  }
+
+  .nav-root .nav-hamburger {
+    display: flex !important;
+  }
+
+}
+  /* =========================================
+   AUTO RESPONSIVE MENU
+   DESKTOP / LAPTOP ONLY
+========================================= */
+
+@media screen and (min-width: 769px) {
+
+  .nav-root .nav-inner {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* LOGO / TITLE — keep its existing design */
+  .nav-root .nav-brand {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  /* MENU TAKES ONLY THE REMAINING SPACE */
+  .nav-root .nav-links {
+    width: auto !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+
+    gap: clamp(2px, 0.65vw, 12px) !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* MENU ITEMS */
+  .nav-root.transparent .nav-item,
+  .nav-root.solid .nav-item {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+
+    white-space: nowrap !important;
+
+    padding-left: clamp(2px, 0.4vw, 8px) !important;
+    padding-right: clamp(2px, 0.4vw, 8px) !important;
+  }
+
+  /* APPLY NOW */
+  .nav-root .nav-right {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+  }
+}
+
+
+/* =========================================
+   MOBILE — DO NOT CHANGE
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+  .nav-root .nav-links {
+    display: none !important;
+  }
+
+  .nav-root .nav-hamburger {
+    display: flex !important;
+  }
+
+}
 
 `}</style>
 

@@ -1316,7 +1316,7 @@ Chennai – 600069.`
   
 
   window.open(
-    'https://www.google.com/maps/search/?api=1&query=Madha+College+of+Nursing,+Madha+Nagar,+Somangalam+Road,+Kunrathur,+Chennai+600069',
+    'https://www.google.com/maps/place/Madha+College+of+Nursing/data=!4m7!3m6!1s0x3a528b002a1c36c9:0x75738380d38996dd!8m2!3d12.9908868!4d80.0870701!16s%2Fg%2F11nw3nd12b!19sChIJyTYcKgCLUjoR3ZaJ04CDc3U?authuser=0&hl=en&g_ep=EgoyMDI2MDkzMC4wIJJjKgBIAVAD&rclk=1',
     '_blank',
     'noopener,noreferrer'
   )
