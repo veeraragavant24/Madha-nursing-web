@@ -210,6 +210,34 @@ const IMAGES = [
     h: 280,
   }
   , 
+  {
+  id: '/campus/campus1.png',
+  cat: 'Campus',
+  event: 'Campus',
+  alt: 'Madha College of Nursing campus',
+  h: 280,
+},
+ {
+  id: '/campus/campus3.png',
+  cat: 'Campus',
+  event: 'Campus',
+  alt: 'Madha College of Nursing campus',
+  h: 280,
+},
+ {
+  id: '/campus/campus2.png',
+  cat: 'Campus',
+  event: 'Campus',
+  alt: 'Madha College of Nursing campus',
+  h: 280,
+},
+ {
+  id: '/campus/campus4.png',
+  cat: 'Campus',
+  event: 'Campus',
+  alt: 'Madha College of Nursing campus',
+  h: 280,
+},
 ]
  
 

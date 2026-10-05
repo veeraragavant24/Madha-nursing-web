@@ -1083,25 +1083,46 @@ Please contact the college for the latest officially confirmed fee structure.`
     if (course === 'bsc-nursing') {
       return `B.Sc. Nursing — Eligibility
 
-The exact eligibility requirements should be taken from the current official college admission information.
+10+2 with Physics, Chemistry, Biology & English
+Candidates must have completed Higher Secondary education (10+2) from a recognized board with Physics, Chemistry, Biology, and English as the required subjects.
 
-Please contact the college to confirm the latest eligibility criteria before applying.`
+Minimum 45% Aggregate – General Category
+General category applicants must have secured at least 45% aggregate marks in the qualifying examination, subject to applicable admission regulations.
+
+Minimum 40% Aggregate – Reserved Category
+Reserved category applicants must have secured at least 40% aggregate marks, as per applicable government and regulatory guidelines.
+
+Age: 17–35 Years as on December 31
+Candidates must meet the prescribed age requirement, with the minimum age being 17 years and the maximum age being 35 years as calculated on December 31 of the relevant admission year.
+
+Physical Fitness Certificate Required
+Applicants must provide a valid medical fitness certificate confirming that they are physically fit to pursue nursing education and participate in academic, practical, and clinical training.`
     }
 
     if (course === 'pb-bsc-nursing') {
       return `P.B.B.Sc. Nursing — Eligibility
 
-Eligibility depends on the applicant's previous nursing qualification and other applicable requirements.
+GNM (General Nursing & Midwifery) Diploma
+A recognized GNM diploma is required, providing essential academic and practical training in nursing and midwifery.
 
-Please contact the college to confirm the current eligibility criteria.`
+Registered with State Nursing Council
+Candidates must have valid registration with the applicable State Nursing Council.
+
+Nursing Experience – Preferred, Not Mandatory
+Previous experience working as a nurse is preferred for practical exposure, but prior work experience is not mandatory.`
     }
 
     if (course === 'msc-nursing') {
       return `M.Sc. Nursing — Eligibility
 
-Eligibility depends on the applicant's previous nursing qualification and other applicable requirements.
+B.Sc. Nursing / P.B.B.Sc. Nursing from a Recognised University
+A recognized B.Sc. Nursing or P.B.B.Sc. Nursing qualification is required to demonstrate the candidate's academic and professional foundation in nursing.
 
-Please contact the college to confirm the current eligibility criteria.`
+Registered with State Nursing Council
+Candidates must have valid registration with the relevant State Nursing Council and fulfill the applicable professional registration requirements.
+
+Nursing Practice Experience – Preferred
+Previous clinical or professional nursing experience is preferred, providing valuable practical knowledge for teaching and supervising nursing students.`
     }
 
     return 'Please select a course first.'
