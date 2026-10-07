@@ -1116,7 +1116,41 @@ export default function About({ navigate }: Props) {
   }
 }
 
-        `}</style>
+  /* =========================================
+     ACHIEVEMENT MOBILE
+  ========================================= */
+
+  .achievement-flip-card {
+    height: 190px !important;
+  }
+
+} 
+  @media (max-width: 768px) {
+
+  .about-achievements {
+    padding: 70px 16px !important;
+  }
+
+  .about-achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+}
+  @media (max-width: 480px) {
+
+  .about-achievements {
+    padding: 60px 14px !important;
+  }
+
+  .about-achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+}   
+  
+      `}</style>
 
 
       {/* =====================================================

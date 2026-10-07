@@ -1,0 +1,365 @@
+/* ============================================================
+   MADHA COLLEGE OF NURSING
+   GLOBAL RESPONSIVE SYSTEM
+   ALL PAGES / ALL DEVICES
+   ============================================================ */
+
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+section,
+header,
+footer,
+main,
+nav,
+article,
+aside {
+  max-width: 100%;
+}
+
+
+/* ============================================================
+   GLOBAL CONTAINERS
+   ============================================================ */
+
+.container,
+.section-container,
+.page-container {
+  width: min(100% - 40px, 1400px);
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   LARGE CONTENT
+   ============================================================ */
+
+.content-wrapper {
+  width: min(100% - 40px, 1400px);
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   FLEX RESPONSIVENESS
+   ============================================================ */
+
+.flex-responsive {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   GRID RESPONSIVENESS
+   ============================================================ */
+
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 260px), 1fr)
+  );
+  gap: 24px;
+}
+
+
+/* ============================================================
+   RESPONSIVE CARDS
+   ============================================================ */
+
+.cards-responsive {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+}
+
+
+/* ============================================================
+   RESPONSIVE TEXT
+   ============================================================ */
+
+.responsive-heading {
+  font-size: clamp(28px, 3vw, 52px);
+  line-height: 1.15;
+}
+
+.responsive-subheading {
+  font-size: clamp(20px, 2vw, 34px);
+  line-height: 1.25;
+}
+
+.responsive-text {
+  font-size: clamp(14px, 1.1vw, 18px);
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   RESPONSIVE SPACING
+   ============================================================ */
+
+.section-padding {
+  padding-top: clamp(50px, 7vw, 110px);
+  padding-bottom: clamp(50px, 7vw, 110px);
+}
+
+
+/* ============================================================
+   RESPONSIVE IMAGES
+   ============================================================ */
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 600px;
+}
+
+
+/* ============================================================
+   DESKTOP DEFAULT
+   ============================================================ */
+
+@media screen and (min-width: 1201px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: min(100% - 60px, 1400px);
+  }
+
+}
+
+
+/* ============================================================
+   LAPTOP
+   1025px — 1200px
+   ============================================================ */
+
+@media screen and
+  (min-width: 1025px) and
+  (max-width: 1200px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: calc(100% - 50px);
+  }
+
+}
+
+
+/* ============================================================
+   TABLET
+   769px — 1024px
+   ============================================================ */
+
+@media screen and
+  (min-width: 769px) and
+  (max-width: 1024px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: calc(100% - 40px);
+  }
+
+  .grid-responsive,
+  .cards-responsive {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   481px — 768px
+   ============================================================ */
+
+@media screen and
+  (min-width: 481px) and
+  (max-width: 768px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: calc(100% - 30px);
+  }
+
+  .grid-responsive,
+  .cards-responsive {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   0 — 480px
+   ============================================================ */
+
+@media screen and
+  (max-width: 480px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: calc(100% - 24px);
+  }
+
+  .grid-responsive,
+  .cards-responsive {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+}
+
+
+/* ============================================================
+   VERY SMALL PHONE
+   ============================================================ */
+
+@media screen and
+  (max-width: 360px) {
+
+  .container,
+  .section-container,
+  .page-container,
+  .content-wrapper {
+    width: calc(100% - 18px);
+  }
+
+}
+
+
+/* ============================================================
+   LANDSCAPE PHONE
+   ============================================================ */
+
+@media screen and
+  (max-width: 900px) and
+  (orientation: landscape) {
+
+  .section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+}
+
+
+/* ============================================================
+   SHORT SCREEN
+   ============================================================ */
+
+@media screen and
+  (max-height: 650px) {
+
+  .section-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+}
+
+
+/* ============================================================
+   TOUCH DEVICES
+   ============================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+
+  /*
+     Don't rely only on hover for important content.
+  */
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
