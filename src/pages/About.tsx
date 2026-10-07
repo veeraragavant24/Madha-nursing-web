@@ -1149,6 +1149,236 @@ export default function About({ navigate }: Props) {
   }
 
 }   
+  /* =========================================================
+   ACHIEVEMENT CARDS
+   1920 × 1080 PREMIUM 3D FLIP ANIMATION
+   ========================================================= */
+
+@media screen and (min-width: 1600px) and (min-height: 900px) {
+
+  .achievement-flip-card {
+    width: 100% !important;
+    height: 220px !important;
+
+    perspective: 1400px !important;
+    -webkit-perspective: 1400px !important;
+
+    touch-action: manipulation !important;
+
+    cursor: pointer;
+  }
+
+
+  /* ---------------------------------------------------------
+     INNER CARD
+     --------------------------------------------------------- */
+
+  .achievement-flip-inner {
+    width: 100% !important;
+    height: 100% !important;
+
+    position: relative;
+
+    transform-style: preserve-3d !important;
+    -webkit-transform-style: preserve-3d !important;
+
+    transition:
+      transform 0.9s
+      cubic-bezier(.16, 1, .3, 1) !important;
+
+    -webkit-transition:
+      transform 0.9s
+      cubic-bezier(.16, 1, .3, 1) !important;
+
+    will-change: transform;
+  }
+
+
+  /* ---------------------------------------------------------
+     FRONT + BACK
+     --------------------------------------------------------- */
+
+  .achievement-flip-front,
+  .achievement-flip-back {
+    width: 100% !important;
+    height: 100% !important;
+
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+
+    transform-style: preserve-3d !important;
+    -webkit-transform-style: preserve-3d !important;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    transition:
+      box-shadow 0.5s ease,
+      filter 0.5s ease !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     FRONT CARD
+     --------------------------------------------------------- */
+
+  .achievement-flip-front {
+    transform:
+      rotateY(0deg)
+      translateZ(1px);
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.12);
+
+  }
+
+
+  /* ---------------------------------------------------------
+     BACK CARD
+     --------------------------------------------------------- */
+
+  .achievement-flip-back {
+    transform:
+      rotateY(180deg)
+      translateZ(1px);
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+
+  /* ---------------------------------------------------------
+     HOVER — PREMIUM 3D LIFT
+     --------------------------------------------------------- */
+
+  .achievement-flip-card:hover
+  .achievement-flip-inner {
+
+    transform:
+      rotateY(180deg)
+      translateY(-8px)
+      scale(1.025) !important;
+  }
+
+
+  /* ---------------------------------------------------------
+     HOVER GLOW
+     --------------------------------------------------------- */
+
+  .achievement-flip-card:hover
+  .achievement-flip-front,
+  .achievement-flip-card:hover
+  .achievement-flip-back {
+
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, 0.18),
+      0 0 25px rgba(24, 198, 200, 0.18);
+
+    filter: brightness(1.03);
+  }
+
+
+  /* ---------------------------------------------------------
+     CARD CONTENT DEPTH
+     --------------------------------------------------------- */
+
+  .achievement-flip-front > *,
+  .achievement-flip-back > * {
+
+    transform:
+      translateZ(25px);
+
+    transition:
+      transform 0.7s
+      cubic-bezier(.16, 1, .3, 1);
+  }
+
+
+  .achievement-flip-card:hover
+  .achievement-flip-front > *,
+  .achievement-flip-card:hover
+  .achievement-flip-back > * {
+
+    transform:
+      translateZ(38px);
+  }
+
+
+  /* ---------------------------------------------------------
+     LIGHT SHINE EFFECT
+     --------------------------------------------------------- */
+
+  .achievement-flip-front::before,
+  .achievement-flip-back::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+      linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 255, 255, 0.28),
+        transparent
+      );
+
+    transform:
+      skewX(-18deg);
+
+    pointer-events: none;
+
+    transition:
+      left 0.9s
+      cubic-bezier(.16, 1, .3, 1);
+  }
+
+
+  .achievement-flip-card:hover
+  .achievement-flip-front::before,
+  .achievement-flip-card:hover
+  .achievement-flip-back::before {
+
+    left: 140%;
+  }
+
+
+  /* ---------------------------------------------------------
+     SMALL FLOATING EFFECT
+     --------------------------------------------------------- */
+
+  .achievement-flip-card:hover {
+
+    transform:
+      translateY(-4px);
+
+    transition:
+      transform 0.45s
+      cubic-bezier(.16, 1, .3, 1);
+  }
+
+
+  /* ---------------------------------------------------------
+     ACTIVE / CLICK EFFECT
+     --------------------------------------------------------- */
+
+  .achievement-flip-card:active
+  .achievement-flip-inner {
+
+    transform:
+      rotateY(180deg)
+      translateY(-2px)
+      scale(0.99) !important;
+  }
+
+}
       `}</style>
 
 
