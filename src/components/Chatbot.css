@@ -1211,3 +1211,850 @@ border-radius: 24px;
   }
 
 }
+/* =========================================================
+   MCON AI — 1920x1080 FULL SCREEN BOT ANIMATION
+   OVERLAY ONLY
+   DOES NOT CHANGE EXISTING WEBSITE SCREEN
+   ========================================================= */
+
+@media (min-width: 1401px) {
+
+  /* -------------------------------------------------------
+     KEEP CHATBOT ABOVE EVERYTHING
+     ------------------------------------------------------- */
+
+  .madha-chatbot {
+    position: fixed !important;
+    right: 28px !important;
+    bottom: 28px !important;
+    z-index: 999999 !important;
+    pointer-events: none;
+  }
+
+  .madha-chatbot-launcher-wrap {
+    pointer-events: auto !important;
+  }
+
+
+  /* =======================================================
+     1. FLOATING ROBOT — CONTINUOUS POP + FLOAT
+     ======================================================= */
+
+  .madha-chatbot-floating-bot {
+    animation:
+      mconScreenRobot
+      4.8s
+      cubic-bezier(.16,1,.3,1)
+      infinite !important;
+
+    will-change:
+      transform,
+      opacity,
+      filter;
+  }
+
+
+  .madha-chatbot-floating-bot img {
+    animation:
+      mconRobotBodyFloat
+      3.2s
+      ease-in-out
+      infinite;
+
+    will-change: transform;
+  }
+
+
+  /* Robot appears → rises → floats → disappears */
+
+  @keyframes mconScreenRobot {
+
+    0% {
+      opacity: 0;
+      transform:
+        translate3d(55px, 25px, 0)
+        scale(.55)
+        rotate(-8deg);
+    }
+
+    12% {
+      opacity: 1;
+      transform:
+        translate3d(20px, 0, 0)
+        scale(.82)
+        rotate(-3deg);
+    }
+
+    25% {
+      opacity: 1;
+      transform:
+        translate3d(-12px, -8px, 0)
+        scale(1)
+        rotate(2deg);
+    }
+
+    45% {
+      opacity: 1;
+      transform:
+        translate3d(-12px, -15px, 0)
+        scale(1.03)
+        rotate(-2deg);
+    }
+
+    65% {
+      opacity: 1;
+      transform:
+        translate3d(-12px, -5px, 0)
+        scale(1)
+        rotate(2deg);
+    }
+
+    82% {
+      opacity: 1;
+      transform:
+        translate3d(-5px, 0, 0)
+        scale(.96)
+        rotate(0deg);
+    }
+
+    100% {
+      opacity: 0;
+      transform:
+        translate3d(45px, 20px, 0)
+        scale(.60)
+        rotate(7deg);
+    }
+  }
+
+
+  /* Small natural robot movement */
+
+  @keyframes mconRobotBodyFloat {
+
+    0%,
+    100% {
+      transform:
+        translateY(0)
+        rotate(0deg);
+    }
+
+    25% {
+      transform:
+        translateY(-5px)
+        rotate(-2deg);
+    }
+
+    50% {
+      transform:
+        translateY(-9px)
+        rotate(1deg);
+    }
+
+    75% {
+      transform:
+        translateY(-4px)
+        rotate(2deg);
+    }
+  }
+
+
+  /* =======================================================
+     2. ROBOT GLOW PULSE
+     ======================================================= */
+
+  .madha-chatbot-floating-bot img {
+
+    filter:
+      drop-shadow(0 0 5px rgba(24,198,200,.95))
+      drop-shadow(0 0 12px rgba(24,198,200,.75))
+      drop-shadow(0 0 25px rgba(24,198,200,.45));
+
+    animation:
+      mconRobotBodyFloat 3.2s ease-in-out infinite,
+      mconRobotGlow 2.4s ease-in-out infinite;
+  }
+
+
+  @keyframes mconRobotGlow {
+
+    0%,
+    100% {
+      filter:
+        drop-shadow(0 0 4px rgba(24,198,200,.75))
+        drop-shadow(0 0 10px rgba(24,198,200,.45))
+        drop-shadow(0 0 20px rgba(24,198,200,.25));
+    }
+
+    50% {
+      filter:
+        drop-shadow(0 0 7px rgba(24,198,200,1))
+        drop-shadow(0 0 18px rgba(24,198,200,.85))
+        drop-shadow(0 0 32px rgba(24,198,200,.50));
+    }
+  }
+
+
+  /* =======================================================
+     3. MCON AI BUTTON — SOFT FLOAT
+     ======================================================= */
+
+  .madha-chatbot-launcher {
+
+    animation:
+      mconButtonFloat
+      4s
+      ease-in-out
+      infinite;
+
+    will-change: transform;
+  }
+
+
+  @keyframes mconButtonFloat {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+
+  /* =======================================================
+     4. BUTTON GLOW PULSE
+     ======================================================= */
+
+  .madha-chatbot-launcher::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -4px;
+
+    border-radius: inherit;
+
+    border: 1px solid
+      rgba(24,198,200,.55);
+
+    pointer-events: none;
+
+    opacity: .6;
+
+    animation:
+      mconButtonPulse
+      2.2s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes mconButtonPulse {
+
+    0%,
+    100% {
+      opacity: .25;
+
+      box-shadow:
+        0 0 5px rgba(24,198,200,.20);
+    }
+
+    50% {
+      opacity: 1;
+
+      box-shadow:
+        0 0 12px rgba(24,198,200,.55),
+        0 0 28px rgba(24,198,200,.25);
+    }
+  }
+
+
+  /* =======================================================
+     5. "ASK ME ABOUT MCON" — AUTOMATIC APPEAR
+     ======================================================= */
+
+  .madha-chatbot-launcher-wrap::after {
+
+    animation:
+      mconAskMessage
+      6s
+      ease-in-out
+      infinite;
+
+    transform-origin: right center;
+  }
+
+
+  @keyframes mconAskMessage {
+
+    0%,
+    15% {
+      opacity: 0;
+      visibility: hidden;
+      transform:
+        translateX(15px)
+        scale(.85);
+    }
+
+    20%,
+    38% {
+      opacity: 1;
+      visibility: visible;
+      transform:
+        translateX(0)
+        scale(1);
+    }
+
+    45%,
+    100% {
+      opacity: 0;
+      visibility: hidden;
+      transform:
+        translateX(15px)
+        scale(.85);
+    }
+  }
+
+
+  /* =======================================================
+     6. TOOLTIP ARROW — SAME TIMING
+     ======================================================= */
+
+  .madha-chatbot-launcher-wrap::before {
+
+    animation:
+      mconAskArrow
+      6s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes mconAskArrow {
+
+    0%,
+    15% {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    20%,
+    38% {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    45%,
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+
+  /* =======================================================
+     7. OPEN CHATBOT WINDOW
+     ======================================================= */
+
+  .madha-chatbot-window {
+
+    animation:
+      mconChatWindowOpen
+      .45s
+      cubic-bezier(.16,1,.3,1)
+      both,
+      madhaChatbotWindowGlow
+      3s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes mconChatWindowOpen {
+
+    0% {
+      opacity: 0;
+
+      transform:
+        translateY(35px)
+        scale(.92);
+    }
+
+    70% {
+      opacity: 1;
+
+      transform:
+        translateY(-4px)
+        scale(1.01);
+    }
+
+    100% {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  }
+
+
+  /* =======================================================
+     8. OPENING ROBOT — RISE FROM CHAT WINDOW
+     ======================================================= */
+
+  .madha-chatbot-opening-robot {
+
+    animation:
+      mconOpeningRobotScreen
+      4.8s
+      cubic-bezier(.16,1,.3,1)
+      .15s
+      1
+      forwards;
+
+    will-change:
+      transform,
+      opacity;
+  }
+
+
+  @keyframes mconOpeningRobotScreen {
+
+    0% {
+      opacity: 0;
+
+      transform:
+        translateX(-50%)
+        translateY(90px)
+        scale(.70);
+    }
+
+    35% {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(20px)
+        scale(.88);
+    }
+
+    65% {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+    }
+
+    100% {
+      opacity: 1;
+
+      transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+    }
+  }
+
+
+  /* =======================================================
+     9. OPENING ROBOT HEAD — GENTLE FLOAT
+     ======================================================= */
+
+  .madha-opening-robot-main {
+
+    animation:
+      mconOpeningRobotFloat
+      3.5s
+      ease-in-out
+      1.8s
+      infinite;
+
+    transform-origin: center center;
+  }
+
+
+  @keyframes mconOpeningRobotFloat {
+
+    0%,
+    100% {
+      transform:
+        translateY(0)
+        rotate(0deg);
+    }
+
+    50% {
+      transform:
+        translateY(-7px)
+        rotate(-2deg);
+    }
+  }
+
+
+  /* =======================================================
+     10. ROBOT HAND WAVE
+     ======================================================= */
+
+  .madha-opening-robot-hand {
+
+    transform-origin: 85% 85%;
+
+    animation:
+      mconRobotWave
+      2.2s
+      ease-in-out
+      1.5s
+      infinite;
+  }
+
+
+  @keyframes mconRobotWave {
+
+    0%,
+    55%,
+    100% {
+      transform: rotate(0deg);
+    }
+
+    60% {
+      transform: rotate(-9deg);
+    }
+
+    66% {
+      transform: rotate(11deg);
+    }
+
+    72% {
+      transform: rotate(-10deg);
+    }
+
+    78% {
+      transform: rotate(8deg);
+    }
+
+    84% {
+      transform: rotate(-4deg);
+    }
+
+    90% {
+      transform: rotate(2deg);
+    }
+  }
+
+
+  /* =======================================================
+     11. CHATBOT AVATAR — ONLINE PULSE
+     ======================================================= */
+
+  .madha-chatbot-avatar {
+
+    animation:
+      mconAvatarPulse
+      2.8s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes mconAvatarPulse {
+
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 0
+        rgba(24,198,200,0);
+    }
+
+    50% {
+      box-shadow:
+        0 0 0 6px
+        rgba(24,198,200,.10),
+        0 0 18px
+        rgba(24,198,200,.25);
+    }
+  }
+
+
+  /* =======================================================
+     12. ONLINE DOT PULSE
+     ======================================================= */
+
+  .madha-chatbot-status-dot {
+
+    animation:
+      mconOnlineDot
+      1.8s
+      ease-in-out
+      infinite;
+  }
+
+
+  @keyframes mconOnlineDot {
+
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 0 4px
+        rgba(24,198,200,.12);
+    }
+
+    50% {
+      transform: scale(1.25);
+      box-shadow:
+        0 0 0 7px
+        rgba(24,198,200,.06),
+        0 0 12px
+        rgba(24,198,200,.70);
+    }
+  }
+
+
+  /* =======================================================
+     13. BOT MESSAGE ENTRY
+     ======================================================= */
+
+  .madha-chatbot-bot-row {
+
+    animation:
+      mconBotMessage
+      .45s
+      cubic-bezier(.16,1,.3,1)
+      both;
+  }
+
+
+  @keyframes mconBotMessage {
+
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(12px)
+        translateX(-8px)
+        scale(.97);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        translateX(0)
+        scale(1);
+    }
+  }
+
+
+  /* =======================================================
+     14. USER MESSAGE ENTRY
+     ======================================================= */
+
+  .madha-chatbot-user-row {
+
+    animation:
+      mconUserMessage
+      .4s
+      cubic-bezier(.16,1,.3,1)
+      both;
+  }
+
+
+  @keyframes mconUserMessage {
+
+    from {
+      opacity: 0;
+
+      transform:
+        translateY(10px)
+        translateX(8px)
+        scale(.97);
+    }
+
+    to {
+      opacity: 1;
+
+      transform:
+        translateY(0)
+        translateX(0)
+        scale(1);
+    }
+  }
+
+
+  /* =======================================================
+     15. OPTION BUTTON ANIMATION
+     ======================================================= */
+
+  .madha-chatbot-query-message {
+
+    animation:
+      mconOptionAppear
+      .5s
+      cubic-bezier(.16,1,.3,1)
+      both;
+  }
+
+
+  .madha-chatbot-query-message:nth-child(1) {
+    animation-delay: .05s;
+  }
+
+  .madha-chatbot-query-message:nth-child(2) {
+    animation-delay: .10s;
+  }
+
+  .madha-chatbot-query-message:nth-child(3) {
+    animation-delay: .15s;
+  }
+
+  .madha-chatbot-query-message:nth-child(4) {
+    animation-delay: .20s;
+  }
+
+  .madha-chatbot-query-message:nth-child(5) {
+    animation-delay: .25s;
+  }
+
+  .madha-chatbot-query-message:nth-child(6) {
+    animation-delay: .30s;
+  }
+
+
+  @keyframes mconOptionAppear {
+
+    from {
+      opacity: 0;
+      transform:
+        translateY(10px)
+        scale(.96);
+    }
+
+    to {
+      opacity: 1;
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  }
+
+
+  /* =======================================================
+     16. TYPING DOTS
+     ======================================================= */
+
+  .madha-chatbot-typing span {
+
+    animation:
+      mconTyping
+      1.2s
+      ease-in-out
+      infinite;
+  }
+
+  .madha-chatbot-typing span:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .madha-chatbot-typing span:nth-child(2) {
+    animation-delay: .15s;
+  }
+
+  .madha-chatbot-typing span:nth-child(3) {
+    animation-delay: .30s;
+  }
+
+
+  @keyframes mconTyping {
+
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: .45;
+    }
+
+    30% {
+      transform: translateY(-5px);
+      opacity: 1;
+    }
+  }
+
+
+  /* =======================================================
+     17. MOUSE HOVER — ROBOT COMES FORWARD
+     ======================================================= */
+
+  .madha-chatbot-launcher-wrap:hover
+  .madha-chatbot-floating-bot {
+
+    opacity: 1 !important;
+
+    animation:
+      mconRobotHover
+      1.2s
+      ease-in-out
+      infinite !important;
+  }
+
+
+  @keyframes mconRobotHover {
+
+    0%,
+    100% {
+      transform:
+        translate3d(-15px, 0, 0)
+        scale(1);
+    }
+
+    50% {
+      transform:
+        translate3d(-15px, -8px, 0)
+        scale(1.08);
+    }
+  }
+
+
+  /* =======================================================
+     18. PERFORMANCE
+     ======================================================= */
+
+  .madha-chatbot-floating-bot,
+  .madha-chatbot-floating-bot img,
+  .madha-chatbot-launcher,
+  .madha-chatbot-opening-robot,
+  .madha-opening-robot-main,
+  .madha-opening-robot-hand {
+
+    backface-visibility: hidden;
+
+    -webkit-backface-visibility: hidden;
+
+    will-change: transform, opacity;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   EXISTING SCREEN COMPLETELY UNCHANGED
+   ========================================================= */
+
+@media (max-width: 1400px) {
+
+  .madha-chatbot-floating-bot,
+  .madha-chatbot-floating-bot img,
+  .madha-chatbot-launcher,
+  .madha-chatbot-opening-robot,
+  .madha-opening-robot-main,
+  .madha-opening-robot-hand {
+
+    animation: none;
+  }
+
+}

@@ -453,100 +453,7 @@ export default function Home({ navigate }: Props) {
     position: sticky;
     top: 120px;
   }
-    /* =========================================
-   DEPARTMENT CARD LAPTOP ANIMATION
-   1920x1080 / DESKTOP ONLY
-   ========================================= */
-
-.home-dept-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  cursor: pointer;
-
-  transform: translateZ(0);
-  will-change: transform, box-shadow;
-
-  transition:
-    transform 0.45s cubic-bezier(.16, 1, .3, 1),
-    box-shadow 0.45s ease;
-}
-
-/* Continuous premium floating animation
-   ONLY for laptop / desktop screens */
-@media (min-width: 769px) {
-
-  .home-departments-grid > *:nth-child(1) .home-dept-card {
-    animation: deptFloat1 5s ease-in-out infinite;
-  }
-
-  .home-departments-grid > *:nth-child(2) .home-dept-card {
-    animation: deptFloat2 5.5s ease-in-out infinite;
-    animation-delay: .4s;
-  }
-
-  .home-departments-grid > *:nth-child(3) .home-dept-card {
-    animation: deptFloat3 5s ease-in-out infinite;
-    animation-delay: .8s;
-  }
-
-  .home-departments-grid > *:nth-child(4) .home-dept-card {
-    animation: deptFloat1 5.5s ease-in-out infinite;
-    animation-delay: 1.2s;
-  }
-
-  .home-departments-grid > *:nth-child(5) .home-dept-card {
-    animation: deptFloat2 5s ease-in-out infinite;
-    animation-delay: 1.6s;
-  }
-
-  .home-departments-grid > *:nth-child(6) .home-dept-card {
-    animation: deptFloat3 5.5s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-
-  /* Stop floating when user hovers */
-  .home-dept-card:hover {
-    animation-play-state: paused;
-
-    transform: translateY(-10px) scale(1.035);
-
-    box-shadow:
-      0 20px 45px rgba(11, 37, 69, 0.20),
-      0 0 30px rgba(24, 198, 200, 0.20);
-  }
-}
-
-/* Different floating movements */
-@keyframes deptFloat1 {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes deptFloat2 {
-  0%, 100% {
-    transform: translateY(-2px);
-  }
-
-  50% {
-    transform: translateY(5px);
-  }
-}
-
-@keyframes deptFloat3 {
-  0%, 100% {
-    transform: translateY(3px);
-  }
-
-  50% {
-    transform: translateY(-4px);
-  }
-}
+    
 /* =====================================================
    DEPARTMENT CARD CONTENT — FINAL OVERRIDE
    ===================================================== */
@@ -1037,6 +944,240 @@ export default function Home({ navigate }: Props) {
     min-width: 46px !important;
   }
 
+}
+  /* =========================================================
+   MADHA DEPARTMENT SCREEN PREMIUM ANIMATION
+   LAPTOP / DESKTOP ONLY
+   ========================================================= */
+
+@media (min-width: 769px) {
+
+  /* -----------------------------------------
+     SECTION HEADING ANIMATION
+     ----------------------------------------- */
+
+  .home-departments-grid {
+    perspective: 1200px;
+  }
+
+  /* -----------------------------------------
+     CARD ENTRY + FLOAT ANIMATION
+     ----------------------------------------- */
+
+  .home-departments-grid > * {
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+    animation:
+      departmentCardEntry 0.9s cubic-bezier(.16, 1, .3, 1)
+      forwards;
+  }
+
+  /* Card 1 */
+  .home-departments-grid > *:nth-child(1) {
+    animation-delay: 0.15s;
+  }
+
+  /* Card 2 */
+  .home-departments-grid > *:nth-child(2) {
+    animation-delay: 0.30s;
+  }
+
+  /* Card 3 */
+  .home-departments-grid > *:nth-child(3) {
+    animation-delay: 0.45s;
+  }
+
+  /* Card 4 */
+  .home-departments-grid > *:nth-child(4) {
+    animation-delay: 0.60s;
+  }
+
+  /* Card 5 */
+  .home-departments-grid > *:nth-child(5) {
+    animation-delay: 0.75s;
+  }
+
+  /* Card 6 */
+  .home-departments-grid > *:nth-child(6) {
+    animation-delay: 0.90s;
+  }
+
+
+  /* -----------------------------------------
+     CARD ENTRY
+     ----------------------------------------- */
+
+  @keyframes departmentCardEntry {
+
+    0% {
+      opacity: 0;
+      transform:
+        translateY(45px)
+        scale(0.96);
+    }
+
+    70% {
+      opacity: 1;
+      transform:
+        translateY(-4px)
+        scale(1.01);
+    }
+
+    100% {
+      opacity: 1;
+      transform:
+        translateY(0)
+        scale(1);
+    }
+  }
+
+
+  /* -----------------------------------------
+     AFTER ENTRY:
+     GENTLE FLOATING EFFECT
+     ----------------------------------------- */
+
+  .home-departments-grid > *:nth-child(1) .home-dept-card {
+    animation:
+      departmentFloat1 5.5s ease-in-out
+      1.05s infinite;
+  }
+
+  .home-departments-grid > *:nth-child(2) .home-dept-card {
+    animation:
+      departmentFloat2 6s ease-in-out
+      1.15s infinite;
+  }
+
+  .home-departments-grid > *:nth-child(3) .home-dept-card {
+    animation:
+      departmentFloat3 5.5s ease-in-out
+      1.25s infinite;
+  }
+
+  .home-departments-grid > *:nth-child(4) .home-dept-card {
+    animation:
+      departmentFloat2 6s ease-in-out
+      1.35s infinite;
+  }
+
+  .home-departments-grid > *:nth-child(5) .home-dept-card {
+    animation:
+      departmentFloat1 5.5s ease-in-out
+      1.45s infinite;
+  }
+
+  .home-departments-grid > *:nth-child(6) .home-dept-card {
+    animation:
+      departmentFloat3 6s ease-in-out
+      1.55s infinite;
+  }
+
+
+  /* -----------------------------------------
+     FLOATING MOVEMENT
+     ----------------------------------------- */
+
+  @keyframes departmentFloat1 {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+
+  @keyframes departmentFloat2 {
+
+    0%,
+    100% {
+      transform: translateY(-2px);
+    }
+
+    50% {
+      transform: translateY(5px);
+    }
+  }
+
+
+  @keyframes departmentFloat3 {
+
+    0%,
+    100% {
+      transform: translateY(3px);
+    }
+
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+
+  /* -----------------------------------------
+     IMAGE MOVEMENT
+     ----------------------------------------- */
+
+  .home-dept-card img {
+    transition:
+      transform 1.2s cubic-bezier(.16, 1, .3, 1),
+      filter 0.8s ease;
+  }
+
+  .home-dept-card:hover img {
+    transform: scale(1.06);
+    filter:
+      brightness(1.04)
+      saturate(1.06);
+  }
+
+
+  /* -----------------------------------------
+     HOVER EFFECT
+     ----------------------------------------- */
+
+  .home-dept-card:hover {
+    animation-play-state: paused;
+
+    transform:
+      translateY(-10px)
+      scale(1.025);
+
+    box-shadow:
+      0 20px 45px rgba(11, 37, 69, 0.20),
+      0 0 30px rgba(24, 198, 200, 0.18);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — KEEP EXISTING SCREEN UNCHANGED
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .home-departments-grid > * {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .home-dept-card {
+    animation: none !important;
+    transform: none;
+  }
+
+  .home-dept-card:hover {
+    transform: none;
+  }
+
+  .home-dept-card:hover img {
+    transform: none;
+  }
 }
 `}</style>
 
