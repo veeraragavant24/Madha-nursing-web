@@ -1,0 +1,1113 @@
+/* =========================================================
+   MADHA COLLEGE OF NURSING
+   GLOBAL RESPONSIVE OVERRIDES
+   ---------------------------------------------------------
+   Use this file AFTER index.css.
+   Import in main.tsx:
+       import "./styles/responsive.css";
+   This file only changes responsive behavior. It does not
+   change the desktop design intentionally.
+   ========================================================= */
+
+/* ---------- GLOBAL SAFETY ---------- */
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* Prevent long text from creating horizontal scroll */
+.home-page,
+.about-page,
+.courses-page,
+.departments-page,
+.gallery-page,
+.contact-page,
+.management-page,
+.principal-page,
+.news-events-page {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
+}
+
+@supports not (overflow: clip) {
+  .home-page,
+  .about-page,
+  .courses-page,
+  .departments-page,
+  .gallery-page,
+  .contact-page,
+  .management-page,
+  .principal-page,
+  .news-events-page {
+    overflow-x: hidden !important;
+  }
+}
+
+/* =========================================================
+   COMMON NAVIGATION / HEADER
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .nav-root {
+    width: 100% !important;
+  }
+
+  .nav-college-name {
+    max-width: 240px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav-links {
+    gap: 16px !important;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-root {
+    width: 100% !important;
+  }
+
+  .nav-college-name {
+    max-width: 210px !important;
+    font-size: 15px !important;
+  }
+
+  .nav-links {
+    gap: 10px !important;
+  }
+
+  .nav-item {
+    font-size: 13px !important;
+  }
+}
+
+/* Mobile navigation should never force page width */
+@media (max-width: 768px) {
+  .top-contact-bar,
+  .nav-root,
+  header {
+    max-width: 100vw !important;
+  }
+
+  .top-contact-bar {
+    overflow: hidden !important;
+  }
+
+  .nav-college-name {
+    max-width: 190px !important;
+    font-size: 14px !important;
+  }
+
+  .nav-links {
+    max-width: 100% !important;
+  }
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .about-banner {
+    height: 460px !important;
+  }
+
+  .about-vision-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .about-campus-section,
+  .about-timeline-section,
+  .about-achievements {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-banner {
+    height: 360px !important;
+    min-height: 360px !important;
+  }
+
+  .about-banner img {
+    object-position: center !important;
+  }
+
+  .about-timeline-section,
+  .about-campus-section,
+  .about-achievements {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .about-vision-grid,
+  .about-achievements-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 18px !important;
+  }
+
+  .about-vision-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .about-journey-row {
+    width: 100% !important;
+  }
+
+  .about-campus-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-banner {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+
+  .about-timeline-section,
+  .about-achievements {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .about-campus-section {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* =========================================================
+   COURSES
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .courses-page {
+    width: 100% !important;
+  }
+
+  .courses-detail-section {
+    width: 100% !important;
+  }
+
+  .course-details-grid {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-hero {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .courses-tabs {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .courses-tabs-inner {
+    width: max-content !important;
+    min-width: 100% !important;
+    max-width: none !important;
+    overflow-x: auto !important;
+  }
+
+  .course-header {
+    width: 100% !important;
+  }
+
+  .course-details-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .course-card,
+  .course-faq-card,
+  .course-apply-cta {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .course-apply-cta {
+    flex-direction: column !important;
+  }
+
+  .course-apply-cta button {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-hero {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .courses-detail-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .courses-tabs-inner button {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .course-card,
+  .course-faq-card {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+
+/* =========================================================
+   DEPARTMENTS
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .departments-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .departments-selector {
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .department-detail-card,
+  .department-detail-body,
+  .department-detail-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .department-detail-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .departments-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .department-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .department-main,
+  .department-sidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .departments-banner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .departments-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .departments-selector {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .department-selector-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .department-detail-body {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .department-detail-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .department-hero {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .department-hod {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .department-hod div {
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .department-sidebar {
+    width: 100% !important;
+  }
+
+  .department-sidebar > div {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .departments-banner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .departments-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .department-detail-body {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .department-hod {
+    padding: 18px !important;
+  }
+}
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .gallery-category-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .gallery-section,
+  .gallery-category-section {
+    width: 100% !important;
+  }
+
+  .event-gallery-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .event-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gallery-viewer-stage {
+    padding-left: 60px !important;
+    padding-right: 60px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-banner,
+  .gallery-section,
+  .gallery-category-section {
+    width: 100% !important;
+  }
+
+  .gallery-category-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gallery-category-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .event-gallery-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .event-gallery-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .gallery-viewer-stage {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+
+  .gallery-viewer-img {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-category-grid,
+  .event-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .gallery-category-card {
+    width: 100% !important;
+  }
+
+  .event-gallery-item {
+    height: 260px !important;
+  }
+
+  .gallery-viewer-stage {
+    padding-left: 44px !important;
+    padding-right: 44px !important;
+  }
+
+  .gallery-viewer-nav {
+    width: 42px !important;
+    height: 42px !important;
+  }
+}
+
+/* =========================================================
+   HOME
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .home-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .home-departments-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
+
+  .home-responsive-grid,
+  .home-clinical-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-admissions-grid {
+    width: 100% !important;
+  }
+
+  .home-research-cards {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-responsive-grid,
+  .home-clinical-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .home-admissions-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-research-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .home-departments-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .home-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .home-stat-divider {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-feature-grid,
+  .home-departments-grid,
+  .home-research-cards,
+  .home-responsive-grid,
+  .home-clinical-grid,
+  .home-admissions-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-departments-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-research-cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-responsive-grid,
+  .home-clinical-grid,
+  .home-admissions-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-dept-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-why-image,
+  .home-why-image-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-floating-stat {
+    max-width: calc(100vw - 32px) !important;
+  }
+
+  .home-inc-badge {
+    max-width: calc(100vw - 40px) !important;
+  }
+
+  .home-clinical-content,
+  .home-clinical-timeline {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-clinical-step {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .home-semester-accordion,
+  .home-semester-item {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .testimonial-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-feature-grid {
+    gap: 14px !important;
+  }
+
+  .home-departments-grid {
+    gap: 14px !important;
+  }
+
+  .home-dept-card {
+    height: 230px !important;
+  }
+
+  .home-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 28px 10px !important;
+  }
+
+  .home-clinical-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .home-clinical-section h2 {
+    font-size: 32px !important;
+  }
+
+  .home-floating-stat {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .testimonial-card {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+}
+
+/* =========================================================
+   MANAGEMENT
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .management-team-section,
+  .management-stats-section,
+  .management-cta {
+    width: 100% !important;
+  }
+
+  .management-team-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .management-stats-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .management-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .management-card {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .management-hero {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .management-team-section,
+  .management-stats-section,
+  .management-cta {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .management-team-grid {
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .management-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    flex-direction: column !important;
+  }
+
+  .management-card-image {
+    width: 100% !important;
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .management-card-content {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .management-card-content p {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .management-stats-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .management-cta-buttons {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .management-hero,
+  .management-team-section,
+  .management-stats-section,
+  .management-cta {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .management-card-image {
+    height: 360px !important;
+    min-height: 360px !important;
+    max-height: 360px !important;
+  }
+
+  .management-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .management-cta-buttons {
+    flex-direction: column !important;
+  }
+
+  .management-cta-buttons button {
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   NEWS & EVENTS
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .featured-inner,
+  .more-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .featured-card,
+  .more-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .more-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .featured-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .featured-media {
+    min-height: 340px !important;
+    height: 340px !important;
+  }
+
+  .more-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-events-banner,
+  .featured-section,
+  .more-section,
+  .empty-section {
+    width: 100% !important;
+  }
+
+  .featured-body {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .featured-desc {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .more-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .more-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .empty-card {
+    width: 100% !important;
+    max-width: 560px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .more-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .featured-media {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+
+  .featured-body {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  .empty-card {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* =========================================================
+   PRINCIPAL
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .principal-hero-grid {
+    width: 100% !important;
+    max-width: 1280px !important;
+  }
+
+  .principal-letter-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .principal-hero-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 40px !important;
+  }
+
+  .principal-letter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .principal-portrait-wrap {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .principal-hero {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .principal-hero-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 32px !important;
+  }
+
+  .principal-hero-content {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .principal-achievements {
+    width: 100% !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .principal-portrait {
+    width: min(100%, 360px) !important;
+    height: 430px !important;
+  }
+
+  .principal-letter-section,
+  .principal-cta {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .principal-letter-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .principal-info-card,
+  .principal-message-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .principal-hero {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .principal-hero-content h1 {
+    font-size: 34px !important;
+  }
+
+  .principal-achievements {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px 8px !important;
+  }
+
+  .principal-portrait {
+    width: 100% !important;
+    height: 400px !important;
+  }
+
+  .principal-letter-section,
+  .principal-cta {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .principal-message-card {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .principal-cta button {
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .contact-main-container {
+    width: 100% !important;
+    max-width: 1080px !important;
+  }
+
+  .contact-layout {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-banner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .contact-section {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .contact-main-container,
+  .contact-layout {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-form-card,
+  .contact-right-column,
+  .contact-info-card,
+  .contact-map {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-map {
+    min-height: 250px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-banner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .contact-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .contact-form-card {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .contact-map {
+    min-height: 230px !important;
+  }
+}
+
+/* =========================================================
+   TOUCH / MOBILE QUALITY
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .department-selector-card:hover,
+  .home-dept-card:hover {
+    transform: none !important;
+  }
+
+  .contact-form-card:hover,
+  .contact-info-card:hover,
+  .contact-map:hover {
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
