@@ -453,6 +453,100 @@ export default function Home({ navigate }: Props) {
     position: sticky;
     top: 120px;
   }
+    /* =========================================
+   DEPARTMENT CARD LAPTOP ANIMATION
+   1920x1080 / DESKTOP ONLY
+   ========================================= */
+
+.home-dept-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transform: translateZ(0);
+  will-change: transform, box-shadow;
+
+  transition:
+    transform 0.45s cubic-bezier(.16, 1, .3, 1),
+    box-shadow 0.45s ease;
+}
+
+/* Continuous premium floating animation
+   ONLY for laptop / desktop screens */
+@media (min-width: 769px) {
+
+  .home-departments-grid > *:nth-child(1) .home-dept-card {
+    animation: deptFloat1 5s ease-in-out infinite;
+  }
+
+  .home-departments-grid > *:nth-child(2) .home-dept-card {
+    animation: deptFloat2 5.5s ease-in-out infinite;
+    animation-delay: .4s;
+  }
+
+  .home-departments-grid > *:nth-child(3) .home-dept-card {
+    animation: deptFloat3 5s ease-in-out infinite;
+    animation-delay: .8s;
+  }
+
+  .home-departments-grid > *:nth-child(4) .home-dept-card {
+    animation: deptFloat1 5.5s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+
+  .home-departments-grid > *:nth-child(5) .home-dept-card {
+    animation: deptFloat2 5s ease-in-out infinite;
+    animation-delay: 1.6s;
+  }
+
+  .home-departments-grid > *:nth-child(6) .home-dept-card {
+    animation: deptFloat3 5.5s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  /* Stop floating when user hovers */
+  .home-dept-card:hover {
+    animation-play-state: paused;
+
+    transform: translateY(-10px) scale(1.035);
+
+    box-shadow:
+      0 20px 45px rgba(11, 37, 69, 0.20),
+      0 0 30px rgba(24, 198, 200, 0.20);
+  }
+}
+
+/* Different floating movements */
+@keyframes deptFloat1 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes deptFloat2 {
+  0%, 100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes deptFloat3 {
+  0%, 100% {
+    transform: translateY(3px);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
 /* =====================================================
    DEPARTMENT CARD CONTENT — FINAL OVERRIDE
    ===================================================== */
@@ -991,12 +1085,24 @@ export default function Home({ navigate }: Props) {
   style={{
     width: '100%',
     maxWidth: 1500,
-    margin: '0 auto'
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center'
   }}
 >
             <Reveal delay={1}>
-              <span className="section-tag">Why Madha College</span>
-            </Reveal>
+  <span
+    className="section-tag"
+    style={{
+      display: 'inline-block',
+      textAlign: 'center'
+    }}
+  >
+    Why Madha College
+  </span>
+</Reveal>
 
             <Reveal delay={2}>
               <h2
