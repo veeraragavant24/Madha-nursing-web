@@ -53,17 +53,38 @@ const IMAGES = [
   { id: '/gallery/lamplight2026/lamp-11.webp', cat: 'Events', event: 'Lamplighting Ceremony', alt: 'Lamplighting Cermonoy', h: 240 },
  
 
-  { id: '/gallery/pongal-2025/1.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/2.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/3.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/4.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/5.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/6.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/7.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/8.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/9.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
-  { id: '/gallery/pongal-2025/10.webp', cat: 'Events', event: 'Pongal Celebration', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/1.webp', cat: 'Events', event: 'Pongal Celebration -2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/2.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/3.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/4.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/5.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/6.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/7.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/8.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/9.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2025/10.webp', cat: 'Events', event: 'Pongal Celebration-2025', alt: 'Pongal Cermonoy', h: 280 },
   
+     { id: '/gallery/pongal-2026/pongal1.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal2.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal3.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal4.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal5.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal6.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  { id: '/gallery/pongal-2026/pongal7.JPG', cat: 'Events', event: 'Pongal Celebration-2026', alt: 'Pongal Cermonoy', h: 280 },
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
   { id: '/gallery/Xmas 25/1.webp', cat: 'Events', event: 'Christmas Celebration', alt: 'Christmas Celebration', h: 280 },
 { id: '/gallery/Xmas 25/2.webp', cat: 'Events', event: 'Christmas Celebration', alt: 'Christmas Celebration', h: 280 },
 { id: '/gallery/Xmas 25/3.webp', cat: 'Events', event: 'Christmas Celebration', alt: 'Christmas Celebration', h: 280 },
@@ -96,7 +117,54 @@ const IMAGES = [
  { id: '/gallery/Independence-Day/5.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/6.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
  { id: '/gallery/Independence-Day/7.webp', cat: 'Events', event: 'Independence Day', alt: 'Independence Day', h: 280 },
+
+
+{ id: '/gallery/graduation-2026/1.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/2.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/3.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/4.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/5.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/6.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/graduation-2026/7.webp', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/Graduation/image1.JPG', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/Graduation/image2.JPG', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/Graduation/image3.JPG', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/Graduation/image4.JPG', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+{ id: '/gallery/Graduation/image5.JPG', cat: 'Events', event: 'Graduation Day-2026', alt: 'Graduation Day-2026', h: 280 }, 
+
+
+{ id: '/gallery/yogo day/yogo1.jpeg', cat: 'Students', event: 'yogo ', alt: 'yogo', h: 280 }, 
+{ id: '/gallery/yogo day/yogo2.jpg', cat: 'Students', event: 'yogo ', alt: 'yogo', h: 280 }, 
+{ id: '/gallery/yogo day/yogo3.jpg', cat: 'Students', event: 'yogo ', alt: 'yogo', h: 280 }, 
+{ id: '/gallery/yogo day/yogo4.jpg', cat: 'Students', event: 'yogo ', alt: 'yogo', h: 280 }, 
+{ id: '/gallery/yogo day/yogo5.jpeg', cat: 'Students', event: 'yogo ', alt: 'yogo', h: 280 }, 
+
+
+{ id: '/gallery/onam/onam2 (1).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (2).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (3).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (4).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (5).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (6).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (7).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (8).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (9).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+{ id: '/gallery/onam/onam2 (10).JPG', cat: 'Events', event: 'Onam celebration-2026', alt: 'Onam celebration', h: 280 }, 
+
+{ id: '/gallery/students/student1 (1).png', cat: 'Students', event: 'study ', alt: 'study', h: 280 }, 
+{ id: '/gallery/students/student1 (2).png', cat: 'Students', event: 'study ', alt: 'study', h: 280 }, 
+{ id: '/gallery/students/student1 (3).png', cat: 'Students', event: 'study ', alt: 'study', h: 280 }, 
+{ id: '/gallery/students/student1 (4).png', cat: 'Students', event: 'study ', alt: 'study', h: 280 }, 
+{ id: '/gallery/students/student1 (5).png', cat: 'Students', event: 'study ', alt: 'study', h: 280 }, 
  
+
+
+
+
+
+
+
+
   // =====================================================
   // CLINICAL
   // =====================================================
@@ -1029,7 +1097,7 @@ export default function Gallery({ navigate }: Props) {
         >
           <div style={{ maxWidth: 1280, margin: '0 auto' }}>
          {filter === 'Events' ? (
-           ['Lamplighting Ceremony', 'Pongal Celebration', 'Christmas Celebration', 'Independence Day'].map((eventName, i) => {
+           ['Lamplighting Ceremony', 'Pongal Celebration-2025', 'Pongal Celebration-2026','Christmas Celebration','Onam celebration-2026', 'Independence Day','Gradualtion Day'].map((eventName, i) => {
              const eventImages = filtered.filter(img => img.event === eventName)
 
              if (eventImages.length === 0) return null
