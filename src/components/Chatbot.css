@@ -1044,7 +1044,8 @@ border-radius: 24px;
    Does NOT affect laptop, tablet or mobile
    ===================================================== */
 
-@media (min-width: 1401px) {
+@media (min-width: 1401px) and (min-width: 1600px) and (min-height: 900px) 
+ {
 
   .madha-chatbot-launcher {
     padding: 18px 28px !important;
