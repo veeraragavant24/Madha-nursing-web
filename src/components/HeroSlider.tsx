@@ -98,7 +98,7 @@ const SLIDES: Slide[] = [
     id: 'final-video',
     img: '',
     imgPos: 'center center',
-    video: 'https://4ngjekx8zocv8rkx.public.blob.vercel-storage.com/Video%20Project%201%20%281%29.mp4',
+    video: '/videos/madha-campus.mp4',
     videoDuration:60000,
     badge: 'Experience Madha',
     headline: ['Discover Life at', 'Madha College of Nursing.'],
@@ -140,17 +140,21 @@ export default function HeroSlider({ navigate, scrollY, heroIn }: HeroSliderProp
     }
   }, [])
 
-  const activeSlides = isDesktop
-    ? SLIDES
-    : SLIDES.filter((s) => !s.video)
-useEffect(() => {
-    if (current >= activeSlides.length) {
-      setCurrent(activeSlides.length - 1)
-      setPrev(null)
-      setTransitioning(false)
-    }
-  }, [activeSlides.length, current])
+ const activeSlides = isDesktop
+  ? SLIDES
+  : SLIDES.filter((s) => !s.video)
 
+useEffect(() => {
+  setCurrent((prev) => {
+    if (prev >= activeSlides.length) {
+      return 0
+    }
+    return prev
+  })
+
+  setPrev(null)
+  setTransitioning(false)
+}, [activeSlides.length])
 
 
   // Touch / swipe
@@ -438,7 +442,6 @@ useEffect(() => {
     min-height: 0 !important;
     background: transparent !important;
   }
-}
 
   .hero-content {
     padding-left: 20px !important;
@@ -550,21 +553,23 @@ useEffect(() => {
             }}>
               {s.video ? (
   <video
-    key={s.id}
-    src={s.video}
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="hero-video"
-    style={{
-      width: '100%',
-      height: '115%',
-      objectFit: 'cover',
-      objectPosition: s.imgPos,
-      display: 'block',
-    }}
-  />
+  key={s.id}
+  ref={isActive ? videoRef : null}
+  src={s.video}
+  autoPlay={isActive}
+  muted
+  loop
+  playsInline
+  preload="auto"
+  className="hero-video"
+  style={{
+    width: '100%',
+    height: '115%',
+    objectFit: 'cover',
+    objectPosition: s.imgPos,
+    display: isDesktop ? 'block' : 'none',
+  }}
+/>
 ) : (
   <img
     src={s.img}
